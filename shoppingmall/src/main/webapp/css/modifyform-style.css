@@ -1,0 +1,138 @@
+h4 {
+  width: 80%;
+  margin: 0 auto 4px auto;
+  font-weight: bold;
+}
+
+.modifyCheckForm {
+  width: 80%;
+  border-top: 1px solid black;
+  margin: 0 auto;
+}
+
+.modifyCheckDiv{
+  width: 80%;
+  height: 600px;
+  border-top: 1px solid black;
+  /*border: 1px solid black;*/
+  margin: 0 auto;
+  text-align: center;
+}
+
+.modifyCheckTable {
+  margin: 10% auto 0 auto;
+  /* border: 1px solid black; */
+}
+
+input[type="text"], input[type="password"] {
+  display: block;
+  padding: 4px 4px 4px 12px;
+  font-size: 10pt;
+  width: 480px;
+  height: 60px;
+  margin-bottom: 4px;
+}
+
+.inputBtn {
+  margin-top: 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  width: 480px;
+  height: 60px;
+}
+
+.modifyFormDiv {
+  width: 80%;
+  height: 600px;
+  border-top: 1px solid black;
+  margin: 0 auto;
+}
+
+.modifyTable {
+  margin: 8% auto 0 auto;
+  /* border: 1px solid black; */
+}
+
+input {
+  width: 650px;
+  height: 50px;
+  padding: 10px 14px;
+  border: none;
+  border-bottom: 1px solid black;
+  font-size: 13px;
+  font-weight: bold;
+  color: black;
+}
+
+.birth-td {
+  height: 50px;
+  padding-left: 14px;
+  border-bottom: 1px solid black;
+}
+
+label {
+  font-size: 14px;
+}
+
+#birth-calendar {
+  width: 250px;
+  border: none;
+}
+
+.form-control {
+  width: 180px;
+  display: inline-block;
+}
+
+input[name="gender"] {
+  width: 15px;
+  height: 15px;
+}
+
+.gender-td {
+  height: 50px;
+  padding-left: 13px;
+  border-bottom: 1px solid black;
+}
+
+input[name="phone"], input[name="certification-code"] {
+  width: 300px;
+  border: none;
+}
+
+.phone-td {
+  height: 50px;
+  border-bottom: 1px solid black;
+}
+
+.agreeDiv {
+  width: 650px;
+  margin: 0 auto;
+  
+}
+
+.agreeDiv input {
+  width: 15px;
+  height: 15px;
+}
+
+.modifyDiv {
+  width:650px;
+  margin: 20px auto 0 auto;
+}
+
+.modifyBtn {
+  height: 100px;
+  border: none;
+  font-size: 1.2rem;
+  background-color: black;
+  color: white;
+}
+
+.modifyBtn:hover {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  transition: .3s ease;
+}

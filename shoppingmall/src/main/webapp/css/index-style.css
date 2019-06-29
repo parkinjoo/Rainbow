@@ -1,0 +1,491 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.header1-index {
+  /*
+    네비바 고정, 배경 화이트로 잡아줘야 투명하게 안보임
+  */	
+  position:fixed;
+  z-index:999;	
+  background-color:white;
+
+  width: 100%;
+  height: 45px;
+  border-bottom: 1px solid #bdc3c7;
+  text-align: center;
+}
+
+.headerDiv-index {
+  display: inline-block;
+  width: 80%;
+  height: 45px;
+}
+
+#userId-index {
+  margin-top: 2px;
+  font-size: 13px;
+  color : #e08283;
+}
+
+.nav-link2-index {
+  color : #e08283;
+}
+
+.justify-content-end-index {
+  margin-right: 70px;
+}
+
+.logoArea-index {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  border-bottom: 1px solid #bdc3c7;
+  text-align: center;
+}
+
+#logoImg-index {
+  margin-top: 35px;
+  width: 200px;
+  height: 80px;
+}
+
+.nav-area-index {
+  padding-top : 7px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.nav-link1-index {
+  color: black;
+}
+
+.dropMenu-index {
+
+  display: none;
+  list-style: none;
+}
+
+.drop-item-index {
+  width: 80px;
+  margin: 0 auto;
+
+}
+
+.drop-link-index {
+  font-size: 10pt;
+  color : #abb7b7;
+}
+
+.drop-link-index:hover {
+
+  text-decoration: none;
+  color: black;
+}
+
+.slide-index {
+  margin-top: 0px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 80%;
+}
+
+
+
+.cardDiv-index {
+  width: 82%;
+  height: auto;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+
+
+.card-index {
+  text-align: left;
+  display: inline-block;
+  margin: 9px;
+}
+
+.card-title-index {
+  font-size: 0.8rem;
+  margin: 0 0 6px 0;
+}
+
+.card-text {
+  margin: 0;
+  font-size: 0.7rem;
+}
+.price-index {
+  margin: 0;
+  display: inline;
+  font-size: 0.8rem;
+  padding-bottom: 0;
+}
+
+.reserveItem-index {
+  float: right;
+}
+
+.footerDiv-index {
+  width: 80%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.square-index {
+  width: 40px;
+  height: 40px;
+  border-bottom: 3px solid black;
+  margin-bottom: 6px;
+}
+
+.footerText-index {
+  width: 50%;
+  display: inline-block;
+}
+
+.snsLogo-index {
+  margin: 5px 5px 0 5px;
+  width: 40px;
+  height: 40px;
+  float: right;
+}
+
+/* index-style */
+
+
+
+.h4-joinform {
+  width: 80%;
+  margin: 0 auto 4px auto;
+  font-weight: bold;
+}
+
+.joinForm-joinform {
+  width: 80%;
+  height: auto;
+  border-top: 1px solid black;
+  margin: 0 auto 10px auto;
+}
+
+.tableForm-joinform {
+  margin: 6% auto 0 auto;
+  border: 1px solid black;
+}
+
+
+
+.input-joinform {
+  width: 650px;
+  height: 50px;
+  padding: 10px 14px;
+  border: none;
+  border-bottom: 1px solid black;
+  font-size: 13px;
+  font-weight: bold;
+  color: black;
+  
+}
+
+.checkMessage-joinform {
+	position: relative;
+}
+
+.checkMessageDiv-joinform {
+	position: absolute;
+	font-size: 12px;
+	top: 16px;
+	color: red;
+	right: 10px;
+	
+}
+
+.inputLast-joinform {
+	border-bottom: none;
+}
+
+.birth-td-joinform {
+  height: 50px;
+  padding-left: 14px;
+  border-bottom: 1px solid black;
+}
+
+.label-joinform {
+  font-size: 14px;
+}
+
+#birth-calendar-joinform {
+  width: 250px;
+  border: none;
+}
+
+.gender-joinform {
+  width: 15px;
+  height: 15px;
+}
+
+.gender-td-joinform {
+  height: 50px;
+  padding-left: 13px;
+  border-bottom: 1px solid black;
+}
+
+.phone-joinform, .certification-joinform {
+  width: 300px;
+  border: none;
+}
+
+.num-joinform {
+  height: 50px;
+  border-bottom: 1px solid black;
+}
+
+.agreeDiv-joinform {
+  width: 650px;
+  margin: 0 auto;
+}
+
+.agree-joinform {
+  width: 15px;
+  height: 15px;
+}
+
+.joinDiv-joinform {
+  width:650px;
+  margin: 20px auto 20px auto;
+}
+
+.joinBtn-joinform {
+  height: 100px;
+  border: none;
+  font-size: 1.2rem;
+  background-color: black;
+  color: white;
+}
+
+.joinBtn-joinform:hover {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  transition: .3s ease;
+}
+
+/* joinForm-style */
+
+#login-box-loginform {
+  position: relative;
+  margin: 7% auto 1% auto;
+  width: 80%;
+  height: 500px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.6);
+}
+
+.left-box-loginform {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 100px 80px 80px 80px;
+  width: 45%;
+  height: 500px;
+}
+
+
+
+
+.login-title-loginform {
+  font-size: 2rem;
+}
+
+.login-text-loginform {
+  color: #bfbfbf;
+  font-size: 10pt;
+  margin-bottom: 4px;
+}
+
+.joinBtn-loginform {
+  margin-bottom: 10px;
+}
+
+
+
+
+
+.inputText-loginform {
+  display: block;
+  padding: 4px 4px 4px 12px;
+  font-size: 10pt;
+  width: 480px;
+  height: 60px;
+  margin-bottom: 4px;
+}
+
+.loginBtn-loginform {
+  margin-top: 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  width: 480px;
+  height: 60px;
+}
+
+.loginBtn-loginform:hover {
+  border: 1px solid black;
+  background-color: white;
+  color: black;
+  transition: .3s ease;
+}
+
+.btn-loginform {
+  margin-top: 10px;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  width: 480px;
+  height: 60px;
+}
+
+.btn-loginform:hover {
+  color : white;
+  background-color: black;
+  border: none;
+  transition: .3s ease;
+}
+
+.right-box-loginform {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 100px 30px 80px 5px;
+  width: 45%;
+  height: 500px;
+}
+
+.social-login-loginform {
+  width: 80%;
+  height: 100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.social-loginBtn-loginform {
+  width: 300px;
+  height: 50px;
+  border: 1px solid #dadfe1;
+  background-color: white;
+  border-radius: 4px;
+  margin: 2px 4px;
+  font-weight: bold;
+}
+
+.facebook-loginform {
+  color : #4d05e8;
+}
+
+.facebook-loginform:hover {
+  background-color: #4d05e8;
+  color: white;
+  transition: .3s ease;
+}
+
+.kakao-loginform {
+  color : #f5e51b;
+}
+
+.kakao-loginform:hover {
+  color: #96281b;
+  background-color: #f5e51b;
+  transition: .3s ease;
+}
+
+.naver-loginform {
+  color : #2ecc71;
+}
+
+.naver-loginform:hover {
+  color: white;
+  background-color: #2ecc71;
+  transition: .3s ease;
+}
+
+.nonMemberDiv-loginform {
+  width: 80%;
+  height: 300px;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 2%;
+}
+
+#nonMember-title-loginform {
+  margin-bottom: 20px;
+}
+
+#nonMemberName-loginform, #nonMemberCode-loginform {
+  margin: 0 auto 4px auto;
+}
+
+.searchingItemBtn-loginform {
+  width: 480px;
+  height: 60px;
+  margin-top: 10px;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  border: none;
+  font-size: 1.5rem;
+}
+
+.searchingItemBtn-loginform:hover {
+  background-color: white;
+  color: black;
+  transition: .3s ease;
+  border: 1px solid black;
+}
+
+/*loginForm-style*/
+
+.join-complete-join {
+    width: 80%;
+    height: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#join-complete-img-join {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 11rem;
+    height: 11rem;
+}
+
+.title-join {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#goMainBtn-join {
+    width: 220px;
+    height: 80px;
+    font-size: 1.6rem;
+    color: white;
+    background-color: black;
+    border: none;
+}
+
+#goMainBtn-join:hover {
+    background-color: white;
+    color: black;
+    transition: .3s ease;
+    border: 1px solid black;
+}
+
+/* join-style */

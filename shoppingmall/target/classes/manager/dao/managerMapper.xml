@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="managerSQL">
+	
+	<!-- 유저리스트 목록 -->
+	<select id="getUserList" resultType="user">
+		 select * from user_table
+	</select>
+	
+	<!-- 유저리스트 선택 삭제 -->
+	<delete id="userDelete" parameterType="String">
+		delete from user_table where id = #{id}
+	</delete>
+	
+	<!-- 물품 등록 -->
+   	<insert id="itemboardWrite" parameterType="itemboard">
+	   begin
+	      insert into itemtable(itemcode, itemname, saleprice, costprice, itemcontent, registday, img1, img2, img3, img4, itemKeyword)
+	     	 values(#{itemCode}, #{itemName}, #{salePrice}, #{costPrice}, #{itemContent}, sysdate, #{img1}, #{img2}, #{img3}, #{img4}, #{itemKeyword});
+	     	 
+	      insert into stocktable(itemcode, col1, col1s, col1m, col1l, col1x, col1f,
+	      						 col2, col2s, col2m, col2l, col2x, col2f,
+	      						 col3, col3s, col3m, col3l, col3x, col3f,
+	      						 col4, col4s, col4m, col4l, col4x, col4f,
+	      						 totqty)
+	      values(#{itemCode}, #{col1}, #{col1s}, #{col1m}, #{col1l}, #{col1x}, #{col1f},
+	               #{col2}, #{col2s}, #{col2m}, #{col2l}, #{col2x}, #{col2f},
+	               #{col3}, #{col3s}, #{col3m}, #{col3l}, #{col3x}, #{col3f},
+	               #{col4}, #{col4s}, #{col4m}, #{col4l}, #{col4x}, #{col4f},
+	               #{totQty});
+	   end;
+   </insert>
+   
+   <!-- 물품 리스트 -->
+   <select id="getItemboardList" resultType="itemboard">
+ 	  select * from itemtable
+   </select>
+   
+</mapper>

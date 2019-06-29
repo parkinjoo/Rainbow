@@ -1,0 +1,32 @@
+h4 {
+  width: 80%;
+  margin: 0 auto 4px auto;
+  font-weight: bold;
+}
+
+.myPage {
+  width: 80%;
+  height: 300px;
+  border-top: 1px solid black;
+  /*border: 1px solid black;*/
+  margin: 0 auto;
+  position: relative;
+}
+
+.myPage2 {
+	width: 75%;
+	margin: 0 auto;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.myItem {
+  width: 60%;
+  height: 1000px;
+  /* border: 1px solid black; */
+  margin: 0 auto;
+}
+
+

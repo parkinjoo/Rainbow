@@ -1,0 +1,42 @@
+@charset "UTF-8";
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#find-box {
+  position: relative;
+  margin: 7% auto 1% auto;
+  width: 80%;
+  height: 500px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.6);
+}
+
+.left-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  padding: 100px 80px 80px 80px;
+  width: 45%;
+  height: 500px;
+
+}
+.right-box {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 100px 30px 80px 5px;
+  width: 45%;
+  height: 500px;
+}
+
+#find-title {
+  font-size: 2rem;
+}
+#find-text {
+  color: #bfbfbf;
+  font-size: 10pt;
+  margin-bottom: 4px;
+}

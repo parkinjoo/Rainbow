@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userSQL">
+	<!-- 아이디 중복체크 -->
+	<select id="checkId" parameterType="String" resultType="user">
+		select * from user_table where id=#{id}
+	</select>
+	
+	<!-- 회원가입 -->
+	<insert id="join" parameterType="user">
+		insert into user_table(name, id, pwd, email) values(#{name},#{id},#{pwd},#{email})
+	</insert>
+	
+	<!-- 로그인 -->
+	<select id="login" parameterType="String" resultType="user">		  
+		  select * from user_table where id=#{id}
+	</select>
+	
+	<!-- 등급조정 -->
+	<update id="grade" parameterType="String">
+	update USER_TABLE set grade= 
+		(select case when totalpay <![CDATA[<]]> '200000' then 'general'
+				    when totalpay <![CDATA[<]]> '500000' then 'silver'
+					when totalpay <![CDATA[<]]> '1000000' then 'gold'
+					else 'VIP' 
+		 		end as grade
+	from user_table where id=#{id})
+	</update>
+	
+	<!-- 암호화된 비밀번호 가져오기 -->
+	<select id="pwdCheck" parameterType="String" resultType="String">
+		select pwd from user_table where id=#{id}
+	</select>
+	
+	<!-- 내 정보 수정 -->
+	<update id="modify" parameterType="user">
+		update user_table set name=#{name}, pwd=#{pwd}, email=#{email} where id=#{id}
+	</update>
+	
+	<!-- 아이디찾기 -->
+	<select id="findId" parameterType="java.util.Map" resultType="user">
+		select * from user_table where name=#{name} and email=#{email}
+	</select>
+	
+	<!-- 비밀번호찾기 -->
+	<select id="findpwd" parameterType="java.util.Map" resultType="user">
+		select * from user_table where id=#{id} and email=#{email}
+	</select>
+	
+	<!-- 임시비밀번호발급(비밀번호변경) -->
+	<update id="updatePW" parameterType="user">
+		update user_table set pwd=#{pwd} where id=#{id}
+	</update>
+</mapper>
