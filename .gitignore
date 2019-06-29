@@ -1,3 +1,7 @@
+#eclipse
+pom.properties
+MANIFEST.MF
+
 # Compiled class file
 *.class
 
