@@ -52,4 +52,19 @@
 	<update id="updatePW" parameterType="user">
 		update user_table set pwd=#{pwd} where id=#{id}
 	</update>
+	
+	<!-- 탈퇴한 회원목록 -->
+	<insert id="userOuted" parameterType="String">
+		insert into recovery_table(usercode,name,id,pwd,email,totalpay,point,grade,cash) select * from user_table where id=#{id}
+	</insert>
+	
+	<!-- 탈퇴한 회원 탈퇴이유 -->
+	<update id= "because" parameterType="java.util.Map">
+		update recovery_table set reason=#{reason} where id=#{id}
+	</update>
+		
+	<!-- 회원탈퇴 -->
+	<delete id="userOut" parameterType ="String">
+		delete user_table where id=#{id}
+	</delete>
 </mapper>

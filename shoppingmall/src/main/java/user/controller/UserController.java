@@ -142,14 +142,22 @@ public class UserController {
 	//아이디찾기 
 	@RequestMapping(value="/findId.do", method=RequestMethod.POST)
 	@ResponseBody
-	public String FindId(@RequestParam String name,@RequestParam String email) {
+	public StringBuilder FindId(@RequestParam String name,@RequestParam String email) {
 		UserDTO userDTO = userDAO.findId(name,email);
 		
 		
 		if(userDTO!=null) {
-			return userDTO.getId();
-		}else
-			return "findFail";
+			StringBuilder id = new StringBuilder(userDTO.getId());
+			id.setCharAt(id.length()-1,'*');
+			id.setCharAt(id.length()-2,'*');
+
+			
+			
+			return id;
+		}else {
+			StringBuilder id = new StringBuilder("findFail");
+			return id;
+		}
 	}
 	
 	//비밀번호 찾기 누를때 있는계정인지 확인
@@ -182,4 +190,33 @@ public class UserController {
 		}else 
 			return "fail";
 	}
+	//회원탈퇴창으로
+	@RequestMapping(value="/Withdrawal.do", method=RequestMethod.GET)
+	public String Withdrawal(Model model) {
+		model.addAttribute("display", "/user/Withdrawal.jsp");
+		return "/main/index";
+	}
+		
+		
+		//회원탈퇴진행
+		@RequestMapping(value="/out.do", method=RequestMethod.POST)
+		@ResponseBody
+		public String out(@RequestParam String id,@RequestParam String reason, HttpSession session) {
+			//1 . 탈퇴할시  DB 해당정보 유저 테이블복사
+			System.out.println("1");
+			userDAO.userOuted(id);
+			
+			//2 . 탈퇴할 유저의 사유를 받는다
+			userDAO.because(id,reason);
+			System.out.println("2");
+
+			//3 . 기존 유저테이블에서 삭제시킨다
+			userDAO.userOut(id);
+			System.out.println("3");
+			
+			session.invalidate();
+			return "out";
+		}
+	
+	
 }

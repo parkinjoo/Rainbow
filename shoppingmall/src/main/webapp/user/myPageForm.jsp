@@ -13,6 +13,7 @@
 		    <h5 class="card-title">${userDTO.name} 님 (${userDTO.email})</h5>
 		    <p class="card-text">회원등급 : ${userDTO.grade} 등급</p>
 		    <a href="/shoppingmall/user/modifyCheckForm.do" class="card-link">내 정보 변경</a>
+		  	 <a href=javascript:userOut(); class="card-link">회원 탈퇴</a>
 		  </div>
 		</div>
 		
@@ -60,6 +61,10 @@
 </div>
 
 <script>
+function userOut(){
+	if(confirm('회원탈퇴를 하시겠습니까?'))
+		location.href="/shoppingmall/user/Withdrawal.do";
+}
 $(document).ready(function(){
 	var point = ${userDTO.point};
 	var cash = ${userDTO.cash};

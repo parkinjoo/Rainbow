@@ -26,4 +26,10 @@ public interface UserDAO {
 	public void updatePassword(UserDTO userDTO);
 	
 	public void grade(String id);
+	
+	public void userOut(String id);
+
+	public void userOuted(String id);
+
+	public void because(String id, String reason);
 }

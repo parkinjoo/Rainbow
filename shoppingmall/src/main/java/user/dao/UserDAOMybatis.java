@@ -69,4 +69,25 @@ public class UserDAOMybatis implements UserDAO {
 		sqlSession.update("userSQL.updatePW", userDTO);
 		
 	}
+	
+	@Override
+	public void userOut(String id) {
+		sqlSession.delete("userSQL.userOut",id);
+		
+	}
+
+	@Override
+	public void userOuted(String id) {
+		sqlSession.update("userSQL.userOuted",id);
+		
+	}
+
+	@Override
+	public void because(String id, String reason) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("reason", reason);
+		sqlSession.update("userSQL.because",map);
+		
+	}
 }
