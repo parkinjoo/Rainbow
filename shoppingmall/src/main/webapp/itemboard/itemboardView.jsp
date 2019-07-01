@@ -257,6 +257,7 @@ $(document).ready(function(){
 		} 
 	});
 });
+
 $('#itemBasket').click(function(){
 	$('#itemboardView').submit();
 });

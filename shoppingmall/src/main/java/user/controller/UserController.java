@@ -198,25 +198,25 @@ public class UserController {
 	}
 		
 		
-		//회원탈퇴진행
-		@RequestMapping(value="/out.do", method=RequestMethod.POST)
-		@ResponseBody
-		public String out(@RequestParam String id,@RequestParam String reason, HttpSession session) {
-			//1 . 탈퇴할시  DB 해당정보 유저 테이블복사
-			System.out.println("1");
-			userDAO.userOuted(id);
-			
-			//2 . 탈퇴할 유저의 사유를 받는다
-			userDAO.because(id,reason);
-			System.out.println("2");
+	//회원탈퇴진행
+	@RequestMapping(value="/out.do", method=RequestMethod.POST)
+	@ResponseBody
+	public String out(@RequestParam String id,@RequestParam String reason, HttpSession session) {
+		//1 . 탈퇴할시  DB 해당정보 유저 테이블복사
+		System.out.println("1");
+		userDAO.userOuted(id);
+		
+		//2 . 탈퇴할 유저의 사유를 받는다
+		userDAO.because(id,reason);
+		System.out.println("2");
 
-			//3 . 기존 유저테이블에서 삭제시킨다
-			userDAO.userOut(id);
-			System.out.println("3");
-			
-			session.invalidate();
-			return "out";
-		}
+		//3 . 기존 유저테이블에서 삭제시킨다
+		userDAO.userOut(id);
+		System.out.println("3");
+		
+		session.invalidate();
+		return "out";
+	}
 	
 	
 }

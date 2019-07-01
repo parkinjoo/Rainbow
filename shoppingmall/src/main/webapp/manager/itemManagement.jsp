@@ -426,6 +426,7 @@
 					            <div id="itemKeywordDiv"></div>
 					         </td>
 					      </tr>
+					      <tr>
 					         <td colspan="7" align="center">
 					            <input type="submit" value="상품 등록" > 
 					            <input type="reset" value="다시작성">
