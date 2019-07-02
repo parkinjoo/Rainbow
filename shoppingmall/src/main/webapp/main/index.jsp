@@ -27,7 +27,12 @@
 <c:if test="${display == null }">
 	<jsp:include page="../template/body.jsp"/>
 </c:if>
-<div class="btn_gotop" style="display:none">
+<div class="cartBox">
+	m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>
+	m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>
+	m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>
+</div>
+<div class="btn_gotop">
 	<img class="topBtn" src="../images/top.png">
 </div>
 <jsp:include page="../template/footer.jsp" />

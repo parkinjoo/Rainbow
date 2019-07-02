@@ -160,11 +160,11 @@ body {
   float: right;
 }
 
-/* top 踰꾪듉 */
 .btn_gotop {
+  display : none;
   position: fixed;
-  top: 630px;
-  right: 50px;
+  top: 650px;
+  right: 45px;
   text-align: right;
   font-size: 30px;
   cursor:pointer;
@@ -172,6 +172,18 @@ body {
 .topBtn {
   width: 60px;
   height: 60px;
+}
+
+.cartBox {
+  position: fixed;
+  width: 100px;
+  height: 350px;
+  top: 280px;
+  right: 25px;
+  text-align: right;
+  border: 1px solid #c8c8c8;
+  background-color: yellow;
+  overflow: auto;
 }
 
 /* index-style */
