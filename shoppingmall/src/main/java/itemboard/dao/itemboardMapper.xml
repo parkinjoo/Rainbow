@@ -25,7 +25,7 @@
 	
 	<!-- 장바구니 등록 -->
 	<insert id="itemBasket" parameterType="itembasket">
-		insert into itembasketTable values(#{itemCode}, #{itemName}, #{itemPrice}, #{itemCol}, #{itemQty}, sysdate)
+		insert into itembasketTable (itemcode, itemname, itemprice, itemcol, itemqty, registday, id) values(#{itemCode}, #{itemName}, #{itemPrice}, #{itemCol}, #{itemQty}, sysdate, #{id})
 	</insert>
   
     <!-- 장바구니 리스트 -->

@@ -1,40 +1,40 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
 <div class="tab-pane fade" id="item-management">
-	<!-- ±¸ºĞ¼±(»óÇ°°ü¸® ¼¼ºÎ) -->
+	<!-- êµ¬ë¶„ì„ (ìƒí’ˆê´€ë¦¬ ì„¸ë¶€) -->
 	<ul class="nav nav-pills mb-3 bottomNav-managerPage">
 		<li class="nav-item"><a class="nav-link active"
-			data-toggle="pill" href="#pills-home-insert-data" aria-selected="true">Àç°í °ü¸®</a></li>
+			data-toggle="pill" href="#pills-home-insert-data" aria-selected="true">ì¬ê³  ê´€ë¦¬</a></li>
 		<li class="nav-item"><a class="nav-link"
-			data-toggle="pill" href="#pills-profile-dataManage" aria-selected="false">¹°Ç°µî·Ï</a></li>
+			data-toggle="pill" href="#pills-profile-dataManage" aria-selected="false">ë¬¼í’ˆë“±ë¡</a></li>
 		<li class="nav-item"><a class="nav-link"
-			data-toggle="pill" href="#pills-profile-edit" aria-selected="false">Àç°í ¼öÁ¤/»èÁ¦</a></li>
+			data-toggle="pill" href="#pills-profile-edit" aria-selected="false">ì¬ê³  ìˆ˜ì •/ì‚­ì œ</a></li>
 	</ul>
 	
 <div class="tab-content" id="pills-tabContent">
-	<!-- ±¸ºĞ¼± -->
+	<!-- êµ¬ë¶„ì„  -->
 	
 			<div class="tab-pane fade show active listDiv-managerPage" id="pills-home-insert-data">
 				<div class="deleteBtnDiv-managerPage">
 					<input type="button" class="deleteBtn-managerPage" name="deleteBtn"
-						value="¼±ÅÃ ¸ñ·Ï »èÁ¦" id="selectedItemboardDeleteBtn">
+						value="ì„ íƒ ëª©ë¡ ì‚­ì œ" id="selectedItemboardDeleteBtn">
 				</div>
 				<table class="table table-hover">
 					<thead>
 						<tr>
 							<th scope="col">#</th>
-							<th scope="col">»óÇ°ÄÚµå</th>
-							<th scope="col">»óÇ°¸í</th>
-							<th scope="col">ÀÌ¹ÌÁö</th>
-							<th scope="col">»óÇ°¿ø°¡</th>
-							<th scope="col">ÆÇ¸Å´Ü°¡</th>
+							<th scope="col">ìƒí’ˆì½”ë“œ</th>
+							<th scope="col">ìƒí’ˆëª…</th>
+							<th scope="col">ì´ë¯¸ì§€</th>
+							<th scope="col">ìƒí’ˆì›ê°€</th>
+							<th scope="col">íŒë§¤ë‹¨ê°€</th>
 							<th scope="col"><input type="checkbox" id="selectAll-itemboard">
 							</th>
 						</tr>
 					</thead>
 					<tbody id="itemList">
-						<!-- ajax·Î È£ÃâµÇ´Â ºÎºĞ -->
+						<!-- ajaxë¡œ í˜¸ì¶œë˜ëŠ” ë¶€ë¶„ -->
 					</tbody>
 				</table>
 			</div>
@@ -43,36 +43,36 @@
 				<form id="itemboardWriteForm" method="post" enctype="multipart/form-data" action="/shoppingmall/manager/itemboardWrite.do">
 					<table class="table table-hover" >
 					      <tr>
-					         <td align="center">»óÇ°ÄÚµå</td>
+					         <td align="center">ìƒí’ˆì½”ë“œ</td>
 					         <td colspan="6">
 					            <input type="text" name="itemCode" id="itemCode" value="M">
 					            <div id="itemCodeDiv"></div>
 					         </td>
 					      <tr>
 					      <tr>
-					         <td align="center">»óÇ°¸í</td>
+					         <td align="center">ìƒí’ˆëª…</td>
 					         <td colspan="6">
-					            <input type="text" name="itemName" id="itemName" size="70" placeholder="»óÇ°¸í ÀÔ·Â">
+					            <input type="text" name="itemName" id="itemName" size="70" placeholder="ìƒí’ˆëª… ì…ë ¥">
 					            <div id="itemNameDiv"></div>
 					         </td>
 					      </tr>
 					
 					      <tr>
-					         <td align="center">ÆÇ¸Å ´Ü°¡</td>
+					         <td align="center">íŒë§¤ ë‹¨ê°€</td>
 					         <td colspan="2">
-					            <input type="text" name="salePrice" id="salePrice" placeholder="ÆÇ¸Å ´Ü°¡ ÀÔ·Â">
+					            <input type="text" name="salePrice" id="salePrice" placeholder="íŒë§¤ ë‹¨ê°€ ì…ë ¥">
 					            <div id="salePriceDiv"></div>
 					         </td>
 					         
-					         <td colspan="2" align="center">»óÇ° ¿ø°¡</td>
+					         <td colspan="2" align="center">ìƒí’ˆ ì›ê°€</td>
 					         <td colspan="2">
-					            <input type="text" name="costPrice" id="costPrice" placeholder="»óÇ° ¿ø°¡ ÀÔ·Â">
+					            <input type="text" name="costPrice" id="costPrice" placeholder="ìƒí’ˆ ì›ê°€ ì…ë ¥">
 					            <div id="costPriceDiv"></div>
 					         </td>
 					      </tr>
 					
 					      <tr>
-					         <td align="center">»ö»ó/»çÀÌÁî</td>
+					         <td align="center">ìƒ‰ìƒ/ì‚¬ì´ì¦ˆ</td>
 					         <td width="60" align="center">S (90)</td>
 					         <td width="60" align="center">M (95)</td>
 					         <td width="60" align="center">L (100)</td>
@@ -83,7 +83,7 @@
 					
 					      <tr>
 					         <td align="center">
-					            <input type="text" name="col1" id="col1" list="col1List" placeholder="»ö»ó1 ÀÔ·Â">
+					            <input type="text" name="col1" id="col1" list="col1List" placeholder="ìƒ‰ìƒ1 ì…ë ¥">
 					            <div id="col1Div"></div>
 					            <datalist id="col1List">
 					               <option value="black">
@@ -159,7 +159,7 @@
 					
 					      <tr>
 					         <td align="center">
-					            <input type="text" name="col2" id="col2" list="col2List" placeholder="»ö»ó2 ÀÔ·Â"> 
+					            <input type="text" name="col2" id="col2" list="col2List" placeholder="ìƒ‰ìƒ2 ì…ë ¥"> 
 					            <datalist id="col2List">
 					               <option value="black">
 					               <option value="white">
@@ -230,7 +230,7 @@
 					
 					      <tr>
 					         <td align="center">
-					            <input type="text" name="col3" id="col3"  list="col3List" placeholder="»ö»ó3 ÀÔ·Â"> 
+					            <input type="text" name="col3" id="col3"  list="col3List" placeholder="ìƒ‰ìƒ3 ì…ë ¥"> 
 					            <datalist id="col3List">
 					               <option value="black">
 					               <option value="white">
@@ -301,7 +301,7 @@
 					
 					      <tr>
 					         <td align="center">
-					            <input type="text" name="col4" id="col4" list="col4List" placeholder="»ö»ó4 ÀÔ·Â"> 
+					            <input type="text" name="col4" id="col4" list="col4List" placeholder="ìƒ‰ìƒ4 ì…ë ¥"> 
 					            <datalist id="col4List">
 					               <option value="black">
 					               <option value="white">
@@ -393,42 +393,42 @@
 					      </tr>
 					
 					      <tr>
-					         <td align="center">³»¿ë</td>
-					         <td colspan="6"><textarea cols="70" rows="10" name="itemContent" id="itemContent" placeholder="³»¿ë ÀÔ·Â"></textarea>
+					         <td align="center">ë‚´ìš©</td>
+					         <td colspan="6"><textarea cols="70" rows="10" name="itemContent" id="itemContent" placeholder="ë‚´ìš© ì…ë ¥"></textarea>
 					         <div id="itemContentDiv"></div>
 					         </td>
 					      </tr>
 					
 					      <tr>
-					         <td align="center">ÀÌ¹ÌÁö1</td>
+					         <td align="center">ì´ë¯¸ì§€1</td>
 					         <td colspan="6"><input type="file" name="img" id="img1"></td>
 					      </tr>
 					
 					      <tr>
-					         <td align="center">ÀÌ¹ÌÁö2</td>
+					         <td align="center">ì´ë¯¸ì§€2</td>
 					         <td colspan="6"><input type="file" name="img" id="img2"></td>
 					      </tr>
 					
 					      <tr>
-					         <td align="center">ÀÌ¹ÌÁö3</td>
+					         <td align="center">ì´ë¯¸ì§€3</td>
 					         <td colspan="6"><input type="file" name="img" id="img3"></td>
 					      </tr>
 					
 					      <tr>
-					         <td align="center">ÀÌ¹ÌÁö4</td>
+					         <td align="center">ì´ë¯¸ì§€4</td>
 					         <td colspan="6"><input type="file" name="img" id="img4"></td>
 					      </tr>
 					      
 					      <tr>
-					         <td align="center">Å°¿öµå</td>
+					         <td align="center">í‚¤ì›Œë“œ</td>
 					         <td colspan="6">
-					            <input type="text" name="itemKeyword" id="itemKeyword" size="70" placeholder="Å°¿öµå ÀÔ·Â">
+					            <input type="text" name="itemKeyword" id="itemKeyword" size="70" placeholder="í‚¤ì›Œë“œ ì…ë ¥">
 					            <div id="itemKeywordDiv"></div>
 					         </td>
 					      </tr>
 					         <td colspan="7" align="center">
-					            <input type="submit" value="»óÇ° µî·Ï" > 
-					            <input type="reset" value="´Ù½ÃÀÛ¼º">
+					            <input type="submit" value="ìƒí’ˆ ë“±ë¡" > 
+					            <input type="reset" value="ë‹¤ì‹œì‘ì„±">
 					         </td>
 					      </tr>
 					      
@@ -437,7 +437,7 @@
 			</div>
 			
 			<div class="tab-pane fade" id="pills-profile-edit">
-			¼öÁ¤/»èÁ¦ ºÎºĞ
+			ìˆ˜ì •/ì‚­ì œ ë¶€ë¶„
 			</div>
 	</div>
 </div>
@@ -451,17 +451,17 @@ $('#itemboardWriteBtn').click(function() {
     $('#itemContentDiv').empty();
 
     if ($('#itemCode').val() == 'M') {
-       $('#itemCodeDiv').text("»óÇ°ÄÚµå¸¦ ÀÔ·ÂÇÏ¼¼¿ä.").css('color', 'red').css('font-size', '9pt');
+       $('#itemCodeDiv').text("ìƒí’ˆì½”ë“œë¥¼ ì…ë ¥í•˜ì„¸ìš”.").css('color', 'red').css('font-size', '9pt');
     } else if ($('#itemName').val() == '') {
-       $('#itemNameDiv').text("»óÇ°¸íÀ» ÀÔ·ÂÇÏ¼¼¿ä.").css('color', 'red').css('font-size', '9pt');
+       $('#itemNameDiv').text("ìƒí’ˆëª…ì„ ì…ë ¥í•˜ì„¸ìš”.").css('color', 'red').css('font-size', '9pt');
     } else if ($('#salePrice').val() == '') {
-       $('#salePriceDiv').text("ÆÇ¸Å´Ü°¡¸¦ ÀÔ·ÂÇÏ¼¼¿ä.").css('color', 'red').css('font-size', '9pt');
+       $('#salePriceDiv').text("íŒë§¤ë‹¨ê°€ë¥¼ ì…ë ¥í•˜ì„¸ìš”.").css('color', 'red').css('font-size', '9pt');
     } else if ($('#costPrice').val() == '') {
-       $('#costPriceDiv').text("»óÇ°¿ø°¡¸¦ ÀÔ·ÂÇÏ¼¼¿ä.").css('color', 'red').css('font-size', '9pt');
-    } else if ($('#col1').val() == '»ö»ó1 ÀÔ·Â') {
-       $('#col1Div').text("»ö»óÀ» ÀÔ·ÂÇÏ¼¼¿ä.").css('color', 'red').css('font-size', '9pt');
+       $('#costPriceDiv').text("ìƒí’ˆì›ê°€ë¥¼ ì…ë ¥í•˜ì„¸ìš”.").css('color', 'red').css('font-size', '9pt');
+    } else if ($('#col1').val() == 'ìƒ‰ìƒ1 ì…ë ¥') {
+       $('#col1Div').text("ìƒ‰ìƒì„ ì…ë ¥í•˜ì„¸ìš”.").css('color', 'red').css('font-size', '9pt');
     } else if ($('#itemContent').val() == '') {
-       $('#itemContentDiv').text("³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä.").css('color', 'red').css('font-size', '9pt');
+       $('#itemContentDiv').text("ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”.").css('color', 'red').css('font-size', '9pt');
     } else {
        $('#itemboardWriteForm').submit();
     }
@@ -540,7 +540,7 @@ $(document).ready(function() {
    
  });
  
-//Ã¼Å©¹Ú½º ÀüÃ¼¼±ÅÃ ±â´É
+//ì²´í¬ë°•ìŠ¤ ì „ì²´ì„ íƒ ê¸°ëŠ¥
 $('#selectAll-itemboard').click(function(){
 	if($('#selectAll-itemboard').prop("checked")) {
 		$('.deleteCheck-itemboard').prop("checked", true);
@@ -549,7 +549,7 @@ $('#selectAll-itemboard').click(function(){
 	}
 });
 
-//¼±ÅÃµÈ ¸ñ·Ï »èÁ¦ÇÏ±â
+//ì„ íƒëœ ëª©ë¡ ì‚­ì œí•˜ê¸°
 $('#selectedItemboardDeleteBtn').click(function(){
 	
 });

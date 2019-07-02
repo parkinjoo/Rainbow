@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<form id="itemboardView" name="itemboardView" method="POST" action="/shoppingmall/itemboard/itemBasket.do">
+<form id="itemboardView" name="itemboardView" method="POST" action="">
 <table id="itemboardViewTable" border="1" cellpadding="5" cellspacing="0" frame="hsides" rules="rows" align="center">
 	<tr>
 	   <td align="center">상품코드</td>
@@ -257,7 +258,41 @@ $(document).ready(function(){
 		} 
 	});
 });
-$('#itemBasket').click(function(){
-	$('#itemboardView').submit();
-});
+if(${userDTO != null}){
+	$('#itemBasket').click(function(){
+		alert("uerDTO.id=${userDTO.id}");
+		
+		var itemCode = $('#itemCode').val();
+		var itemName = $('#itemName').val();
+	    var itemPrice = $('#salePrice').val(); 
+		var itemCol = $('#col1').val();
+		var itemQty = $('#col1s').val();
+		var id = '${userDTO.id }';
+		$.ajax({
+			type: 'post',
+			url: '/shoppingmall/itemboard/itemBasket.do',
+			data: 'itemCode='+itemCode+'&itemName='+itemName+'&itemPrice='+itemPrice+'&itemCol='+itemCol+'&itemQty='+itemQty+'&id='+id+'&categoryCode=${categoryCode}&pg=${pg}',
+			success: function(){
+				if(confirm("상품이 저장되었습니다. 장바구니로 가시겠습니까?")){
+					location.href="/shoppingmall/itemboard/itemBasketList.do";
+				}
+				
+			} 
+		});
+	});
+} else if(${userDTO == null}){
+	$('#itemBasket').click(function(){
+		alert("로그인해주세여ㅛ");
+	});
+}
 </script>
+
+
+
+
+
+
+
+
+
+

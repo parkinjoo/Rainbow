@@ -27,7 +27,7 @@
       </c:if>
 
         <li class="nav-item">
-          <a class="nav-link nav-link2-index" href="#" tabindex="-1" aria-disabled="true">CART</a>
+          <a class="nav-link nav-link2-index"  tabindex="-1" aria-disabled="true" href="/shoppingmall/itemboard/itemBasketList.do">CART</a>
         </li>
         
       	<c:if test="${userDTO.userCode == 1 }">

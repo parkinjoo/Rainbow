@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -113,10 +114,18 @@ public class ItemboardController {
 		return "/main/index";
 	}
 	
+	@RequestMapping(value="/itemBasketList.do", method=RequestMethod.GET)
+	public String itemBasketList(@RequestParam(required=false, defaultValue="1") String pg, @RequestParam(required=false, defaultValue="") String categoryCode, Model model) {
+		model.addAttribute("pg", pg);
+		model.addAttribute("categoryCode", categoryCode);
+		model.addAttribute("display", "/itemboard/itemBasketList.jsp");
+		return "/main/index";
+	}
+	
 	@RequestMapping(value="/getItemboardList.do", method=RequestMethod.POST)
 	public ModelAndView getItemboardList(@RequestParam(required=false, defaultValue="1") String pg, @RequestParam(required=false, defaultValue="") String categoryCode) {
 //		System.out.println("categoryCode = " + categoryCode);
-		//DB - 1페이지당 3개씩
+		//DB - 1�럹�씠吏��떦 3媛쒖뵫
 		int endNum = Integer.parseInt(pg)*4;
 		int startNum = endNum-3;
 		
@@ -127,7 +136,7 @@ public class ItemboardController {
 	
 		List<ItemboardDTO> list = itemboardDAO.getItemboardList(map);
 		
-		//페이징처리
+		//�럹�씠吏뺤쿂由�
 		int totalA = itemboardDAO.getTotalA(map);
 		itemboardPaging.setCurrentPage(Integer.parseInt(pg));
 		itemboardPaging.setPageBlock(3);
@@ -161,7 +170,7 @@ public class ItemboardController {
 		
 		List<ItemBasketListDTO> list = itemboardDAO.getItembasketList(map);
 		
-		//����¡ó��
+		//占쏙옙占쏙옙징처占쏙옙
 		int totalA = itemboardDAO.getTotalA(map);
 		itemboardPaging.setCurrentPage(Integer.parseInt(pg));
 		itemboardPaging.setPageBlock(3);
@@ -209,14 +218,15 @@ public class ItemboardController {
 		return mav;
 	}
 	
-	//장바구니
+	//�옣諛붽뎄�땲
 	@RequestMapping(value="/itemBasket.do", method=RequestMethod.POST)
-	public String itemBasket(@ModelAttribute ItemBasketDTO itemBasketDTO, Model model) {
+	@ResponseBody
+	public void itemBasket(@ModelAttribute ItemBasketDTO itemBasketDTO, Model model) {
 		
-	
+		System.out.println("itemCode="+itemBasketDTO.getItemCode()+"itemName="+itemBasketDTO.getItemName()+"itemPrice="+itemBasketDTO.getItemPrice()+"itemCol="+itemBasketDTO.getItemCol()+"itemQty="+itemBasketDTO.getItemQty());
 		itemboardDAO.itemBasket(itemBasketDTO);
 		
-		model.addAttribute("display", "/itemboard/itemBasket.jsp");
-		return "/main/index";
+		
+		
 	}
 }
