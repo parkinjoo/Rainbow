@@ -190,10 +190,20 @@ public class UserController {
 		}else 
 			return "fail";
 	}
+	
+	
+	@RequestMapping(value="/withdrawalCheckForm.do", method=RequestMethod.GET)
+	public String withdrawalCheckForm(Model model) {
+		model.addAttribute("title", "본인확인");
+		model.addAttribute("display", "/user/withdrawalCheckForm.jsp");
+		return "/main/index";
+	}
+	
 	//회원탈퇴창으로
-	@RequestMapping(value="/Withdrawal.do", method=RequestMethod.GET)
-	public String Withdrawal(Model model) {
-		model.addAttribute("display", "/user/Withdrawal.jsp");
+	@RequestMapping(value="/withdrawal.do", method=RequestMethod.GET)
+	public String withdrawal(Model model) {
+		model.addAttribute("title", "탈퇴 사유");
+		model.addAttribute("display", "/user/withdrawal.jsp");
 		return "/main/index";
 	}
 		

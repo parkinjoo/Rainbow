@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>        
-<head>
-<link rel="stylesheet" href="../css/Withdrawal-style.css"> 
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
+<link rel="stylesheet" href="../css/withdrawal-style.css"> 
+
 <div id="mySecede">
 	<div class="page-body">
 		<div class="d-box-wrap">
@@ -22,7 +19,7 @@
 		      </div>
 		</div><!-- .dbox-wrap -->   
 	
-		<!-- 사유 입력 폼 -->	 
+		<!-- 사유 입력 폼 -->	
 		<div class="scede-frm">
 		    <fieldset>
 		       <div class="tb-center">

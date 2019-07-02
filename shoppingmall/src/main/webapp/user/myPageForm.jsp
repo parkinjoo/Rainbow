@@ -63,7 +63,7 @@
 <script>
 function userOut(){
 	if(confirm('회원탈퇴를 하시겠습니까?'))
-		location.href="/shoppingmall/user/Withdrawal.do";
+		location.href="/shoppingmall/user/withdrawalCheckForm.do";
 }
 $(document).ready(function(){
 	var point = ${userDTO.point};
