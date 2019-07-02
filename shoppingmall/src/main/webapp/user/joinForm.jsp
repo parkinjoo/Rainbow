@@ -51,6 +51,9 @@
 //회원가입 유효성검사
 
 $('.joinBtn-joinform').click(function(){
+	var repwd = RegExp(/^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{6,20}$/);
+
+	
 	$('.nameCheck-joinform').empty();
 	$('.idCheck-joinform').empty();
 	$('.pwdCheck-joinform').empty();
@@ -65,6 +68,8 @@ $('.joinBtn-joinform').click(function(){
 		alert("아이디 중복체크가 완료되지 않았습니다")
 	}else if($('.inputPwd-joinform').val()==''){
 		$('.pwdCheck-joinform').text('비밀번호를 입력하세요')
+	}else if(!repwd.test($('.inputPwd-joinform').val())){
+		$('.pwdCheck-joinform').text('대/소문자를구분한 6~20자리 ,특수문자와 숫자1개 반드시포함')
 	}else if($('.inputPwd-joinform').val()!=$('.inputPwd2-joinform').val()){
 		$('.pwdDoublecheck-joinform').text('비밀번호가 일치하지 않습니다')
 	}else if($('.inputEmail-joinform').val()==''){
@@ -79,8 +84,14 @@ $('.joinBtn-joinform').click(function(){
 //중복체크
 
 $('.inputId-joinform').focusout(function(){
+	var checkid = $('.inputId-joinform').val();
+	var checkpwd = $('.inputPwd-joinform').val();
+	var getCheck= RegExp(/^[a-zA-Z0-9]{4,10}$/);
+	
 	if($('.inputId-joinform').val()=='')
 		$('.idCheck-joinform').text("먼저 아이디를 입력하세요");
+	else if(!getCheck.test(checkid))
+		$('.idCheck-joinform').html('대/소문자 와 숫자를포함한 4~12자리만가능합니다').css('color', 'red');
 	else 
 		$.ajax({
 			type : 'post',
@@ -88,13 +99,16 @@ $('.inputId-joinform').focusout(function(){
 			data : "id="+$('.inputId-joinform').val(),
 			dataType : 'text',
 			success : function(data){
+					
 				if(data=='exist'){
 					$('.idCheck-joinform').html('이미 사용 중인 아이디입니다').css('color', 'red');
 					$('#idCheck-hidden-joinform').val("");
 				}else if(data=='not_exist'){
 					$('.idCheck-joinform').html('사용 가능한 아이디입니다').css('color', 'blue');
 					$('#idCheck-hidden-joinform').val($('.inputId-joinform').val());
+						
 				}
+				
 			}
 		});
 });

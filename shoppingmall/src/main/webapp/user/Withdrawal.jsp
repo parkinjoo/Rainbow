@@ -22,7 +22,7 @@
 		      </div>
 		</div><!-- .dbox-wrap -->   
 	
-		<!-- 사유 입력 폼 -->	
+		<!-- 사유 입력 폼 -->	 
 		<div class="scede-frm">
 		    <fieldset>
 		       <div class="tb-center">
