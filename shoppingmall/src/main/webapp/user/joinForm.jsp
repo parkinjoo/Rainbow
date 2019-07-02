@@ -7,30 +7,39 @@
 
 		<table class="tableForm-joinform">
 			<tr>
-				<td class="checkMessage-joinform"><input class="input-joinform inputName-joinform"
-					type="text" name="name" placeholder="이름">
-					<div class="checkMessageDiv-joinform nameCheck-joinform"></div></td>
+				<td class="checkMessage-joinform">
+					<input class="input-joinform inputName-joinform" type="text" name="name" placeholder="이름">
+					<div class="checkMessageDiv-joinform nameCheck-joinform"></div>
+				</td>
 			</tr>
 			<tr>
-				<td class="checkMessage-joinform"><input class="input-joinform inputId-joinform"
-					type="text" name="id" placeholder="아이디">
+				<td class="checkMessage-joinform">
+					<input class="input-joinform inputId-joinform" type="text" name="id" placeholder="아이디">
 					<input type="hidden" id="idCheck-hidden-joinform" value="">
-					<div class="checkMessageDiv-joinform idCheck-joinform"></div></td>
+					<div class="checkMessageDiv-joinform idCheck-joinform"></div>
+				</td>
 			</tr>
 			<tr>
-				<td class="checkMessage-joinform"><input class="input-joinform inputPwd-joinform"
-					type="password" name="pwd" placeholder="비밀번호">
-					<div class="checkMessageDiv-joinform pwdCheck-joinform"></div></td>
+				<td class="checkMessage-joinform">
+					<input class="input-joinform inputPwd-joinform" type="password" name="pwd" placeholder="비밀번호">
+					<div class="checkMessageDiv-joinform pwdCheck-joinform"></div>
+				</td>
 			</tr>
 			<tr>
-				<td class="checkMessage-joinform"><input class="input-joinform inputPwd2-joinform"
-					type="password" name="email1" placeholder="비밀번호 확인">
-					<div class="checkMessageDiv-joinform pwdDoublecheck-joinform"></div></td>
+				<td class="checkMessage-joinform">
+					<input class="input-joinform inputPwd2-joinform" type="password" name="email1" placeholder="비밀번호 확인">
+					<div class="checkMessageDiv-joinform pwdDoublecheck-joinform"></div>
+				</td>
 			</tr>
 			<tr>
-				<td class="checkMessage-joinform"><input
-					class="input-joinform inputLast-joinform inputEmail-joinform" type="text" name="email"
-					placeholder="이메일">
+				<td class="checkMessage-joinform">
+					<input class="input-joinform inputTel-joinform inputTel-joinform" type="text" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="tel" placeholder="헨드폰">
+					<div class="checkMessageDiv-joinform telCheck-joinform"></div>	
+				</td>
+			</tr>
+			<tr>
+				<td class="checkMessage-joinform">
+					<input class="input-joinform inputLast-joinform inputEmail-joinform" type="email" name="email" placeholder="이메일"><!-- email Type효과가 안먹음 -->
 					<div class="checkMessageDiv-joinform emailCheck-joinform"></div></td>
 			</tr>
 		</table>
@@ -55,22 +64,25 @@ $('.joinBtn-joinform').click(function(){
 	$('.idCheck-joinform').empty();
 	$('.pwdCheck-joinform').empty();
 	$('.pwdDoublecheck-joinform').empty();
+	$('.telCheck-joinform').empty();
 	$('.emailCheck-joinform').empty();
 	
 	if($('.inputName-joinform').val()==''){
-		$('.nameCheck-joinform').text('이름을 입력하세요')
+		$('.nameCheck-joinform').text('이름을 입력하세요');
 	}else if($('.inputId-joinform').val()==''){
-		$('.idCheck-joinform').text('아이디를 입력하세요')
+		$('.idCheck-joinform').text('아이디를 입력하세요');
 	}else if($('#idCheck-hidden-joinform').val()==''){
-		alert("아이디 중복체크가 완료되지 않았습니다")
+		alert("아이디 중복체크가 완료되지 않았습니다");
 	}else if($('.inputPwd-joinform').val()==''){
-		$('.pwdCheck-joinform').text('비밀번호를 입력하세요')
+		$('.pwdCheck-joinform').text('비밀번호를 입력하세요');
 	}else if($('.inputPwd-joinform').val()!=$('.inputPwd2-joinform').val()){
-		$('.pwdDoublecheck-joinform').text('비밀번호가 일치하지 않습니다')
+		$('.pwdDoublecheck-joinform').text('비밀번호가 일치하지 않습니다');
+	}else if($('.inputTel-joinform').val()==''){//헨드폰번호입력
+		$('.telCheck-joinform').text('헨드폰 번호를 입력하세요');
 	}else if($('.inputEmail-joinform').val()==''){
-		$('.emailCheck-joinform').text('이메일을 입력하세요')
+		$('.emailCheck-joinform').text('이메일을 입력하세요');
 	}else if(!$('.agree-joinform').prop('checked')) {
-		alert('약관에 동의해주세요')
+		alert('약관에 동의해주세요');
 	}else {
 		$('#joinForm').submit();
 	}

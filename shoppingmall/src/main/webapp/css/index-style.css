@@ -10,7 +10,7 @@ body {
 
 .header1-index {
   /*
-    네비바 고정, 배경 화이트로 잡아줘야 투명하게 안보임
+    �꽕鍮꾨컮 怨좎젙, 諛곌꼍 �솕�씠�듃濡� �옟�븘以섏빞 �닾紐낇븯寃� �븞蹂댁엫
   */	
   position:fixed;
   z-index:999;	
@@ -160,7 +160,7 @@ body {
   float: right;
 }
 
-/* top 버튼 */
+/* top 踰꾪듉 */
 .btn_gotop {
   position: fixed;
   top: 630px;
