@@ -29,8 +29,8 @@
 </c:if>
 <div class="cartBox">
 	m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>
-	m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>
-	m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>
+	m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>
+	m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>
 </div>
 <div class="btn_gotop">
 	<img class="topBtn" src="../images/top.png">

@@ -181,7 +181,7 @@ body {
   top: 280px;
   right: 25px;
   text-align: right;
-  border: 1px solid black;
+  border: 1px solid #c8c8c8;
   background-color: yellow;
   overflow: auto;
 }
