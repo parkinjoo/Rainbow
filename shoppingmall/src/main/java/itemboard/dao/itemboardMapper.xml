@@ -36,5 +36,10 @@
 		 where itemcode like '%'||#{itemCode}||'%' order by itembaskettable.registday desc)tt
 		)where rn>=#{startNum} and rn <![CDATA[<=]]> ${endNum}
 	</select>
+	<!-- 겟사이즈-->	
+	<select id="getSize" parameterType="java.util.Map" resultType="itemboard">
+		select  ${color}s, ${color}m, ${color}l, ${color}x
+				 from stocktable where itemcode=#{itemCode}
+	</select>
 	
 </mapper>

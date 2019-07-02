@@ -20,4 +20,6 @@ public interface ItemboardDAO {
 	public void itemBasket(ItemBasketDTO itemBasketDTO);
 
 	public List<ItemBasketListDTO> getItembasketList(Map<String, Object> map);
+
+	public ItemboardDTO getSize(Map<String, String> map);
 }

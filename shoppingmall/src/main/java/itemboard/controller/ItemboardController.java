@@ -183,6 +183,8 @@ public class ItemboardController {
 	@RequestMapping(value="/itemboardView.do", method=RequestMethod.GET)
 	public String itemboardView(@RequestParam String categoryCode, @RequestParam String itemCode, @RequestParam String pg, Model model) {
 		
+		ItemboardDTO itemboardDTO = itemboardDAO.getItemboardView(itemCode);
+		model.addAttribute("itemboardDTO",itemboardDTO);
 		model.addAttribute("categoryCode", categoryCode);
 		model.addAttribute("itemCode", itemCode);
 		model.addAttribute("pg", pg);
@@ -207,6 +209,21 @@ public class ItemboardController {
 		mav.addObject("map", map);
 		mav.setViewName("jsonView");
 		return mav;
+	}
+	//컬러 선택시 사이즈 얻기 
+	@RequestMapping(value="/getSize.do",method=RequestMethod.POST)
+	public ModelAndView getSize(@RequestParam String itemCode, @RequestParam String color) {
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("itemCode",itemCode);
+		map.put("color",color); 
+		ItemboardDTO itemboardDTO = itemboardDAO.getSize(map);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("itemboardDTO",itemboardDTO);
+		mav.setViewName("jsonView");
+		
+		return mav;
+		 
 	}
 	
 	//장바구니

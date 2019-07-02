@@ -1,264 +1,451 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>아이템 페이지</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/index-style.css">
+    <link rel="stylesheet" href="../css/itemPage-style.css">
 
-<form id="itemboardView" name="itemboardView" method="POST" action="/shoppingmall/itemboard/itemBasket.do">
-<table id="itemboardViewTable" border="1" cellpadding="5" cellspacing="0" frame="hsides" rules="rows" align="center">
-	<tr>
-	   <td align="center">상품코드</td>
-	   <td colspan="6">
-	   	  <input type="text" name="itemCode" id="itemCode" value="" readonly>
-	   </td>
-	</tr>
-	
-	<tr>
-	   <td align="center">상품명</td>
-	   <td colspan="6">
-	      <input type="text" value="" readonly name="itemName" id="itemName"> 
-	   </td>
-	</tr>
-	
-	<tr>
-	   <td align="center">판매 단가</td>
-	   <td colspan="2">
-	      <input type="text" value="" readonly name="itemPrice" id="salePrice"> 
-	   </td>
-	   
-	   <td colspan="2" align="center">상품 원가</td>
-	   <td colspan="2">
-	      <input type="text" value="" readonly id="costPrice"> 
-	   </td>
-	</tr>
-	
-	<tr>
-	   <td align="center">색상/사이즈</td>
-	   <td width="60" align="center">S (90)</td>
-	   <td width="60" align="center">M (95)</td>
-	   <td width="60" align="center">L (100)</td>
-	   <td width="60" align="center">XL (105)</td>
-	   <td width="60" align="center">Free</td>
-	   <td width="60" align="center">Total</td>
-	</tr>
-	
-	<tr>
-	   <td>
-	      <input type="text" value="" readonly name="itemCol" id="col1"> 
-	   </td>
-	   <td>
-	      <input type="text" value="" readonly name="itemQty" id="col1s"> 
-	   </td>
-	   <td>
-	      <input type="text" value="" readonly id="col1m"> 
-	   </td>
-	   <td>
-	      <input type="text" value="" readonly id="col1l"> 
-	   </td>
-	   <td>
-	      <input type="text" value="" readonly id="col1x"> 
-	   </td>
-	   <td>
-	   	<input type="text" value="" readonly id="col1f"> 
-	   </td>
-	   <td>
-	   	<!-- <input type="text" value="" readonly id="col1tot">  -->
-	   </td>
-	</tr>
-	
-	<tr>
-	   <td>
-	      <input type="text" value="" readonly id="col2"> 
-	   </td>
-	   <td>
-	      <input type="text" value="" readonly id="col2s"> 
-	   </td>
-	   <td>
-	      <input type="text" value="" readonly id="col2m"> 
-	   </td>
-	   <td>
-	      <input type="text" value="" readonly id="col2l"> 
-	   </td>
-	   <td>
-	      <input type="text" value="" readonly id="col2x"> 
-	   </td>
-	   <td>
-	      <input type="text" value="" readonly id="col2f"> 
-	   </td>
-	   <td>
-	   	<!-- <input type="text" value="" readonly id="col2tot">  -->
-	   </td>
-	</tr>
-	
-	<tr>
-	   <td>
-	      <input type="text" value="" readonly id="col3"> 
-	   </td>
-	   <td>
-	      <input type="text" value="" readonly id="col3s"> 
-	   </td>
-	   <td>
-	      <input type="text" value="" readonly id="col3m"> 
-	   </td>
-	   <td>
-	      <input type="text" value="" readonly id="col3l"> 
-	   </td>
-	   <td>
-	      <input type="text" value="" readonly id="col3x"> 
-	   </td>
-	   <td>
-	      <input type="text" value="" readonly id="col3f"> 
-	   </td>
-	   <td>
-	   	<!-- <input type="text" value="" readonly id="col3tot">  -->
-	   </td>
-	</tr>
-	
-	<tr>
-	   <td>
-	      <input type="text" value="" readonly id="col4"> 
-	   </td>
-	   <td>
-	      <input type="text" value="" readonly id="col4s"> 
-	   </td>
-	   <td>
-	      <input type="text" value="" readonly id="col4m"> 
-	   </td>
-	   <td>
-	      <input type="text" value="" readonly id="col4l"> 
-	   </td>
-	   <td>
-	      <input type="text" value="" readonly id="col4x"> 
-	   </td>
-	   <td>
-	      <input type="text" value="" readonly id="col4f"> 
-	   </td>
-	   <td>
-	   	<!-- <input type="text" value="" readonly id="col4tot">  -->
-	   </td>
-	</tr>
-	
-	<tr>
-	   <td></td>
-	   <td>
-	      <!-- <input type="text" value="" readonly id="s">  -->
-	  </td>
-	  <td>
-	  	<!-- <input type="text" value="" readonly id="m">  -->
-	  </td>
-	  <td>
-	  	<!-- <input type="text" value="" readonly id="l">  -->
-	  </td>
-	  <td>
-	  	<!-- <input type="text" value="" readonly id="x">  -->
-	  </td>
-	  <td>
-	  	<!-- <input type="text" value="" readonly id="f">  -->
-	   </td>
-	   <td>
-	   	<input type="text" value="" readonly id="totQty"> 
-	   </td>
-	</tr>
-	
-	<tr>
-	   <td align="center">내용</td>
-	   <td style="white-space: pre-wrap;" colspan="2" height="100" valign="top"><input type="text" value="" readonly id="itemContent"> </td>
-	</tr>
-	
-	<tr>
-	   <td align="center">이미지1</td>
-	   <td colspan="6"><img name="img" id="img1" width="360" height="500"></td>
-	</tr>
-	
-	<tr>
-	   <td align="center">이미지2</td>
-	   <td colspan="6"><img id="img2" width="360" height="500"></td>
-	</tr>
-	
-	<tr>
-	   <td align="center">이미지3</td>
-	   <td colspan="6"><img id="img3" width="360" height="500"></td>
-	</tr>
-	
-	<tr>
-	   <td align="center">이미지4</td>
-	   <td colspan="6"><img id="img4" width="360" height="500"></td>
-	</tr>
-	
-	<tr>
-	   <td align="center">키워드</td>
-	   <td colspan="6">
-	      <input type="text" value="" readonly id="itemKeyword"> 
-	   </td>
-	</tr>
-	<!-- 장바구니 -->
-	<input type="button" value="장바구니" id="itemBasket">
-	
-	<tr>
-	   <td colspan="7" align="center">
-	      <input type="button" value="목록" onclick="location.href='itemboardList.do?categoryCode=${categoryCode }&pg=${pg}'">
-	   </td>
-	</tr>
-</table>
-</form>
-<script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+  </head>
+  <body>
+  <div id="item-box-itemPage">
+    <div class="left-box-itemPage">
+     <%-- <img src="../storage/${itemboardDTO.img1}"> --%>
+    </div>
+    <div class="right-box-itemPage">
+      <div class="topDiv-itemPage">
+        <h6 class="itemName-itemPage"><b></b></h6>
+        <c:if test="${itemboardDTO.col1f eq 0}">
+       	 <p class="sizeTop-itemPage">S~XL</p>
+        </c:if>
+        <c:if test="${itemboardDTO.col1f > 0}">
+       	 <p class="sizeTop-itemPage">FREE</p>
+        </c:if>
+      </div>
+      <div class="middleDiv1">
+        <p class="itemText-itemPage"></p>
+          <table class="table-itemPage">
+            <tr class="tr-itemPage">
+              <td class="title-itemPage td-itemPage">판매가</td>
+              <td class="itemPrice-itemPage"><b></b></td>
+            </tr>
+            <tr class="tr-itemPage">
+              <td class="title-itemPage td-itemPage">색상</td>
+              <td class="td-itemPage">
+               	<select id="color_option" style="width: 110px;">
+									
+				</select>
+              </td>
+            </tr>
+            <tr class="tr-itemPage">
+              <td class="title-itemPage td-itemPage">사이즈</td>
+              <td class="td-itemPage">
+               	<c:if test="${itemboardDTO.col1f eq 0}">
+			      			<select id="size_option" style="width: 110px;" onchange="">
+									
+							</select>
+						</c:if>
+						<c:if test="${itemboardDTO.col1f > 0}">					
+							Free
+						</c:if>
+              </td>
+            </tr>
+            <tr class="tr-itemPage">
+              <td class="title-itemPage">배송정보</td>
+              <td class="td-itemPage"><a href="#" class="showItem-itemPage">실시간 재고 보기</a></td>
+            </tr>
+          </table>
+      </div>
+      <hr>
+      <div class="middleDiv2">
+        <p class="colorAndSize-itemPage">챠콜, S(28)</p><br>
+        <input type="text" class="itemAccount-itemPage" value="1">
+
+        <button type="button" class="accountBtn-itemPage plus">+</button>
+        <button type="button" class="accountBtn-itemPage minus">-</button>
+
+        <p class="price-itemPage">34,900원</p>
+      </div>
+      <hr>
+      <p class="totalPric-itemPage"><span class="totalPriceText-itemPage">총 상품 금액</span> &nbsp;&nbsp;&nbsp;34,900원</p>
+      <hr>
+      <div class="btnDiv-itemPage">
+        <button type="button" class="purchaseBtn-itemPage">BUY NOW</button>
+        <button type="button" class="btn-itemPage cartBtn-itemPage">
+          <img src="" class="cartImg-itemPage">
+        </button>
+        <button type="button" class="btn-itemPage likeBtn-itemPage">
+          <img src="" class="likeImg-itemPage">
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="withItemDiv-itemPage">
+    <div id="carouselExampleFade" class="carousel slide carousel-fade withItemDiv1-itemPage" data-ride="carousel">
+      <div class="carousel-inner withItemDiv2-itemPage">
+        <h3 class="withItem-itemPage">추천 코디</h3>
+        <div class="carousel-item active withItemDiv3-itemPag">
+
+          <div class="card innerDivTest1-itemPage" style="width: 14rem;">
+            <img src="" class="card-img-top cardImg-itemPage" alt="...">
+            <div class="card-body card-body-itemPage">
+              <h5 class="card-title card-title-itemPage">슬랙스 9부 팬츠</h5>
+              <p class="card-text card-text-itemPage">15,901</p>
+            </div>
+          </div>
+
+          <div class="card innerDivTest1-itemPage" style="width: 14rem;">
+            <img src="" class="card-img-top cardImg-itemPage" alt="...">
+            <div class="card-body card-body-itemPage">
+              <h5 class="card-title card-title-itemPage">슬랙스 9부 팬츠</h5>
+              <p class="card-text card-text-itemPage">15,900</p>
+            </div>
+          </div>
+
+          <div class="card innerDivTest1-itemPage" style="width: 14rem;">
+            <img src="" class="card-img-top cardImg-itemPage" alt="...">
+            <div class="card-body card-body-itemPage">
+              <h5 class="card-title card-title-itemPage">슬랙스 9부 팬츠</h5>
+              <p class="card-text card-text-itemPage">15,900</p>
+            </div>
+          </div>
+
+          <div class="card innerDivTest1-itemPage" style="width: 14rem;">
+            <img src="" class="card-img-top cardImg-itemPage" alt="...">
+            <div class="card-body card-body-itemPage">
+              <h5 class="card-title card-title-itemPage">슬랙스 9부 팬츠</h5>
+              <p class="card-text card-text-itemPage">15,900</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="carousel-item withItemDiv3-itemPag">
+
+          <div class="card innerDivTest1-itemPage" style="width: 14rem;">
+            <img src="" class="card-img-top cardImg-itemPage" alt="...">
+            <div class="card-body card-body-itemPage">
+              <h5 class="card-title card-title-itemPage">슬랙스 9부 팬츠</h5>
+              <p class="card-text card-text-itemPage">15,902</p>
+            </div>
+          </div>
+
+
+
+          <div class="card innerDivTest1-itemPage" style="width: 14rem;">
+            <img src="" class="card-img-top cardImg-itemPage" alt="...">
+            <div class="card-body card-body-itemPage">
+              <h5 class="card-title card-title-itemPage">슬랙스 9부 팬츠</h5>
+              <p class="card-text card-text-itemPage">15,900</p>
+            </div>
+          </div>
+
+
+          <div class="card innerDivTest1-itemPage" style="width: 14rem;">
+            <img src="" class="card-img-top cardImg-itemPage" alt="...">
+            <div class="card-body card-body-itemPage">
+              <h5 class="card-title card-title-itemPage">슬랙스 9부 팬츠</h5>
+              <p class="card-text card-text-itemPage">15,900</p>
+            </div>
+          </div>
+
+
+          <div class="card innerDivTest1-itemPage" style="width: 14rem;">
+            <img src="" class="card-img-top cardImg-itemPage" alt="...">
+            <div class="card-body card-body-itemPage">
+              <h5 class="card-title card-title-itemPage">슬랙스 9부 팬츠</h5>
+              <p class="card-text card-text-itemPage">15,900</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item withItemDiv3-itemPage">
+
+          <div class="card innerDivTest1-itemPage" style="width: 14rem;">
+            <img src="" class="card-img-top cardImg-itemPage" alt="...">
+            <div class="card-body card-body-itemPage">
+              <h5 class="card-title card-title-itemPage">슬랙스 9부 팬츠</h5>
+              <p class="card-text card-text-itemPage">15,900</p>
+            </div>
+          </div>
+
+          <div class="card innerDivTest1-itemPage" style="width: 14rem;">
+            <img src="" class="card-img-top cardImg-itemPage" alt="...">
+            <div class="card-body card-body-itemPage">
+              <h5 class="card-title card-title-itemPage">슬랙스 9부 팬츠</h5>
+              <p class="card-text card-text-itemPage">15,900</p>
+            </div>
+          </div>
+
+          <div class="card innerDivTest1-itemPage" style="width: 14rem;">
+            <img src="" class="card-img-top cardImg-itemPage" alt="...">
+            <div class="card-body card-body-itemPage">
+              <h5 class="card-title card-title-itemPage">슬랙스 9부 팬츠</h5>
+              <p class="card-text card-text-itemPage">15,900</p>
+            </div>
+          </div>
+
+          <div class="card innerDivTest1-itemPage" style="width: 14rem;">
+            <img src="" class="card-img-top cardImg-itemPage" alt="...">
+            <div class="card-body card-body-itemPage">
+              <h5 class="card-title card-title-itemPage">슬랙스 9부 팬츠</h5>
+              <p class="card-text card-text-itemPage">15,903</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+    <hr>
+
+
+  </body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+
+
+$('.nav-area-index').on('click', function(){
+  $($('.nav-item').children('ul')).slideDown();
+});
+$('.nav-area-index').on('mouseleave', function(){
+  $($('.nav-item').children('ul')).slideUp();
+});
+
+
+//---선택한 색상에 배경색 입히기---
+
+$('.red').click(function(){
+  $('.colorLink-itemPage').css('background-color','')
+                 .css('color', 'black');
+  $('.red').css('background-color', 'red')
+           .css('color', 'white');
+})
+
+$('.black').click(function(){
+  $('.colorLink-itemPage').css('background-color','')
+                 .css('color', 'black');
+  $('.black').css('background-color', 'black')
+           .css('color', 'white');
+})
+
+$('.yellow').click(function(){
+  $('.colorLink-itemPage').css('background-color','')
+                 .css('color', 'black');
+  $('.yellow').css('background-color', 'yellow')
+
+})
+
+$('.green').click(function(){
+  $('.colorLink-itemPage').css('background-color','')
+                 .css('color', 'black');
+  $('.green').css('background-color', 'green')
+           .css('color', 'white');
+})
+//--선택한 색상에 배경색 입히기
+
+//--선택한 사이즈에 배경색 입히기
+
+$('.s28').click(function(){
+  $('.sizeLink-itemPage').css('background-color', '');
+  $('.s28').css('background-color', '#bdc3c7');
+});
+
+$('.m30').click(function(){
+  $('.sizeLink-itemPage').css('background-color', '');
+  $('.m30').css('background-color', '#bdc3c7');
+});
+
+$('.l32').click(function(){
+  $('.sizeLink-itemPage').css('background-color', '');
+  $('.l32').css('background-color', '#bdc3c7');
+});
+
+$('.xl34').click(function(){
+  $('.sizeLink-itemPage').css('background-color', '');
+  $('.xl34').css('background-color', '#bdc3c7');
+});
+
+$('.xxl36').click(function(){
+  $('.sizeLink-itemPage').css('background-color', '');
+  $('.xxl36').css('background-color', '#bdc3c7');
+});
+
+
+
+</script>
 <script type="text/javascript">
 $(document).ready(function(){
 	$.ajax({
 		type: 'post',
 		url: '/shoppingmall/itemboard/getItemboardView.do',
-		data: 'itemCode=${itemCode}&categoryCode=${categoryCode}&pg=${pg}',
+		data: 'itemCode=${itemCode}&pg=${pg}&categoryCode=${categoryCode}',
 		dataType: 'json',
 		success: function(data){
-			//alert(JSON.stringify(data));
+			alert(JSON.stringify(data));
+			 $('.itemName-itemPage').text(data.itemboardDTO.itemName);
+			 $('.itemText-itemPage').text(data.itemboardDTO.itemContent);
+			 $('.itemPrice-itemPage').text(data.itemboardDTO.salePrice);
+			/*$('#salePrice').text(data.itemboardDTO.salePrice);
+			$('#costPrice').text(data.itemboardDTO.costPrice);
+			$('.itemcontent').text(data.itemboardDTO.itemContent);
+			$('.saleprice_right').text(data.itemboardDTO.salePrice);
 			
-			$('#itemCode').val(data.itemboardDTO.itemCode);
-			$('#itemName').val(data.itemboardDTO.itemName);
-			$('#salePrice').val(data.itemboardDTO.salePrice);
-			$('#costPrice').val(data.itemboardDTO.costPrice);
 			
-			$('#col1').val(data.itemboardDTO.col1);
-			$('#col1s').val(data.itemboardDTO.col1s);
-			$('#col1m').val(data.itemboardDTO.col1m);
-			$('#col1l').val(data.itemboardDTO.col1l);
-			$('#col1x').val(data.itemboardDTO.col1x);
-			$('#col1f').val(data.itemboardDTO.col1f);
-			
-			$('#col2').val(data.itemboardDTO.col2);
-			$('#col2s').val(data.itemboardDTO.col2s);
-			$('#col2m').val(data.itemboardDTO.col2m);
-			$('#col2l').val(data.itemboardDTO.col2l);
-			$('#col2x').val(data.itemboardDTO.col2x);
-			$('#col2f').val(data.itemboardDTO.col2f);
-			
-			$('#col3').val(data.itemboardDTO.col3);
-			$('#col3s').val(data.itemboardDTO.col3s);
-			$('#col3m').val(data.itemboardDTO.col3m);
-			$('#col3l').val(data.itemboardDTO.col3l);
-			$('#col3x').val(data.itemboardDTO.col3x);
-			$('#col3f').val(data.itemboardDTO.col3f);
-			
-			$('#col4').val(data.itemboardDTO.col4);
-			$('#col4s').val(data.itemboardDTO.col4s);
-			$('#col4m').val(data.itemboardDTO.col4m);
-			$('#col4l').val(data.itemboardDTO.col4l);
-			$('#col4x').val(data.itemboardDTO.col4x);
-			$('#col4f').val(data.itemboardDTO.col4f);
-			
-			$('#totQty').val(data.itemboardDTO.totQty);
+			$('#totQty').text(data.itemboardDTO.totQty);
 
-			$('#itemContent').val(data.itemboardDTO.itemContent);
+			$('#itemContent').text(data.itemboardDTO.itemContent);
 			
 			$('#img1').prop('src', '../storage/'+data.itemboardDTO.img1);
 			$('#img2').prop('src', '../storage/'+data.itemboardDTO.img2);
 			$('#img3').prop('src', '../storage/'+data.itemboardDTO.img3);
 			$('#img4').prop('src', '../storage/'+data.itemboardDTO.img4);
 			
+			$('#itemKeyword').text(data.itemboardDTO.itemKeyword);
+			*/
 			
-			$('#itemKeyword').val(data.itemboardDTO.itemKeyword);
+			//컬러 셀렉트박스 유동적 변경
+			$('#color_option').empty();
+			$('<option/>',{
+				value : '0',
+				text : '색상선택'
+			}).appendTo($('#color_option'));
+			$('<option/>',{
+				value : 'col1',
+				text : data.itemboardDTO.col1
+			}).appendTo($('#color_option'));
+			$('<option/>',{
+				value : 'col2',
+				text : data.itemboardDTO.col2
+			}).appendTo($('#color_option'));
+			$('<option/>',{
+				value : 'col3',
+				text : data.itemboardDTO.col3
+			}).appendTo($('#color_option'));
+			$('<option/>',{
+				value : 'col4',
+				text : data.itemboardDTO.col4
+			}).appendTo($('#color_option')); 
 		} 
 	});
 });
 
-$('#itemBasket').click(function(){
-	$('#itemboardView').submit();
-});
+$('#color_option').change(function(){
+	
+	//var color = '${itemCode}';
+	//var color = {'${itemCode}'+$('#color_option').val()};
+	//alert(color);
+	
+	 $.ajax({
+		type : 'post',
+		url : '/shoppingmall/itemboard/getSize.do',
+		data : {'itemCode': '${itemCode}',
+				'color': $('#color_option').val()},
+		dataType : 'json',
+		success : function(data){
+			
+			var color= $('#color_option').val();
+			
+			$('#size_option').empty();
+			$('<option/>',{
+				value : '0',
+				text : '사이즈선택'
+			}).appendTo($('#size_option')); 
+			
+			 if(color=='col1'){
+				$('<option/>',{
+					value : '11',
+					text : 'S 수량:'+data.itemboardDTO.col1s
+				}).appendTo($('#size_option'));
+				$('<option/>',{
+					value : '12',
+					text : 'M 수량:'+data.itemboardDTO.col1m
+				}).appendTo($('#size_option'));
+				$('<option/>',{
+					value : '13',
+					text : 'L 수량:'+data.itemboardDTO.col1l
+				}).appendTo($('#size_option'));
+				$('<option/>',{
+					value : '14',
+					text : 'XL 수량:'+data.itemboardDTO.col1x
+				}).appendTo($('#size_option'));
+			}else if(color=='col2'){
+				$('<option/>',{
+					value : '21',
+					text : 'S 수량:'+data.itemboardDTO.col2s
+				}).appendTo($('#size_option'));
+				$('<option/>',{
+					value : '22',
+					text : 'M 수량:'+data.itemboardDTO.col2m
+				}).appendTo($('#size_option'));
+				$('<option/>',{
+					value : '23',
+					text : 'L 수량:'+data.itemboardDTO.col2l
+				}).appendTo($('#size_option'));
+				$('<option/>',{
+					value : '24',
+					text : 'XL 수량:'+data.itemboardDTO.col2x
+				}).appendTo($('#size_option'));
+				
+			}else if(color=='col3'){
+				
+				$('<option/>',{
+					value : '31',
+					text :'S 수량:'+data.itemboardDTO.col3s
+				}).appendTo($('#size_option'));
+				$('<option/>',{
+					value : '32',
+					text : 'M 수량:'+data.itemboardDTO.col3m
+				}).appendTo($('#size_option'));
+				$('<option/>',{
+					value : '33',
+					text : 'L 수량:'+data.itemboardDTO.col3l
+				}).appendTo($('#size_option'));
+				$('<option/>',{
+					value : '34',
+					text : 'XL 수량:'+data.itemboardDTO.col3x
+				}).appendTo($('#size_option'));
+			}else if(color=='col4'){
+				$('<option/>',{
+					value : '41',
+					text : 'S 수량:'+data.itemboardDTO.col4s
+				}).appendTo($('#size_option'));
+				$('<option/>',{
+					value : '42',
+					text : 'M 수량:'+data.itemboardDTO.col4m
+				}).appendTo($('#size_option'));
+				$('<option/>',{
+					value : '43',
+					text : 'L 수량:'+data.itemboardDTO.col4l
+				}).appendTo($('#size_option'));
+				$('<option/>',{
+					value : '44',
+					text : 'XL 수량:'+data.itemboardDTO.col4x
+				}).appendTo($('#size_option'));
+			}   
+		}
+			
+	}); 
+	
+	
+})
 </script>
+
+</html>
