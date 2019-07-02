@@ -37,4 +37,10 @@
  	  select * from itemtable
    </select>
    
+     <!-- 신규 상품 리스트 , 8 개 정도만 뿌림-->
+    <select id="getIndexBodyNewList" resultType="itemboard">
+ 		 select rownum , tt.* from 
+ 		 (select * from itemtable order by registday desc)tt where rownum<![CDATA[<]]>9
+   </select>
+   
 </mapper>

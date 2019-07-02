@@ -144,5 +144,22 @@ public class ManagerController {
 		mav.setViewName("jsonView");
 		return mav;
 	}
+	
+    @RequestMapping(value="getIndexBodyNewList.do", method=RequestMethod.POST)
+    public ModelAndView getIndexBodyNewList() {
+		ModelAndView mav = new ModelAndView();
+		List<ItemboardDTO> list = managerDAO.getIndexBodyNewList();
+		mav.addObject("list", list);
+		mav.setViewName("jsonView");
+		return mav;
+    }
+    @RequestMapping(value="getIndexBodyList.do", method=RequestMethod.POST)
+    public ModelAndView getIndexBodyList() {
+		ModelAndView mav = new ModelAndView();
+		List<ItemboardDTO> list = managerDAO.getItemboardList();
+		mav.addObject("list", list);
+		mav.setViewName("jsonView");
+		return mav;
+    }
 
 }

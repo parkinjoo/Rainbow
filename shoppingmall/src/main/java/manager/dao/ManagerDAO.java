@@ -15,4 +15,6 @@ public interface ManagerDAO {
 
 	public List<ItemboardDTO> getItemboardList();
 
+	public List<ItemboardDTO> getIndexBodyNewList();
+
 }

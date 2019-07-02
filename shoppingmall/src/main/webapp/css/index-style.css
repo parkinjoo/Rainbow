@@ -96,7 +96,23 @@ body {
   width: 80%;
 }
 
+.card-index-leftArrow {
+   display: inline-block;
+   left: -10px;
+   margin-bottom: 200px;
+   border: 20px solid transparent;
+   border-right-color: #000;
+   cursor: pointer;
+}
 
+.card-index-rightArrow {
+  display: inline-block;
+  left: 10px;
+  margin-bottom: 200px;
+  border: 20px solid transparent;
+  border-left-color: #000;  
+  cursor: pointer;
+}
 
 .cardDiv-index {
   width: 82%;
