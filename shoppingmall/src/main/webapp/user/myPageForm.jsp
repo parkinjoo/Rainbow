@@ -51,9 +51,17 @@
 	  	<li class="nav-item">
 	    	<a id="item-ed" class="nav-link active" href="#">배송완료 상품</a>
 	  	</li>
+	</ul>
+</div>
+<div class="myItem">
+    <ul class="nav nav-tabs">
 	  	<li class="nav-item">
 	    	<a id="item-ing" class="nav-link" href="#">배송중인 상품</a>
 	  	</li>
+	</ul>
+</div>
+<div class="myItem">
+    <ul class="nav nav-tabs">
 	  	<li class="nav-item">
 	    	<a id="item-re" class="nav-link" href="#">환불요청 중인 상품</a>
 	  	</li>
