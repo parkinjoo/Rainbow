@@ -44,7 +44,7 @@
    </select>
    
    	<!-- 아이템 선택 삭제 -->
-	<delete id="itemDelete" parameterType="String">
+	<delete id="deleteItemboard" parameterType="String">
 		delete from itemtable where itemcode = #{itemcode}
 	</delete>
    

@@ -42,8 +42,8 @@ public class ManagerDAOMybatis implements ManagerDAO {
 	}
 
 	@Override
-	public void itemDelete(String itemcode) {
-		sqlSession.delete("managerSQL.itemDelete", itemcode);
+	public void deleteItemboard(String itemcode) {
+		sqlSession.delete("managerSQL.deleteItemboard", itemcode);
 	}
 
 

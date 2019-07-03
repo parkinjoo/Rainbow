@@ -172,7 +172,7 @@ public class ManagerController {
     @ResponseBody
     public void deleteItemboard(@RequestParam(value="chkbox[]") List<String> itemcode) {
     	for(int i=0; i<itemcode.size(); i++) {
-    		managerDAO.itemDelete(itemcode.get(i));
+    		managerDAO.deleteItemboard(itemcode.get(i));
     	}
     }
 
