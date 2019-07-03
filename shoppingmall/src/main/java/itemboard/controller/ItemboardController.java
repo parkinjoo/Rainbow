@@ -37,7 +37,8 @@ public class ItemboardController {
 	public String itemboardWrite(@ModelAttribute ItemboardDTO itemboardDTO,
 								  @RequestParam MultipartFile[] img,
 								  Model model) {
-		String filePath = "C:\\Users\\gslee\\Documents\\itbank\\Spring\\project\\springproject\\src\\main\\webapp\\storage";
+		//filePath 이 부분 통힐하기 전까지 각자 설정하셔야 해요
+		String filePath = "C:\\Spring\\project\\shoppingmall\\src\\main\\webapp\\storage";
 		String fileName;
 		File file;
 		
