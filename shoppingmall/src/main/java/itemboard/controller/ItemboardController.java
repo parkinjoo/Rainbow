@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +25,7 @@ import itemboard.bean.ItemBasketListDTO;
 import itemboard.bean.ItemboardDTO;
 import itemboard.bean.ItemboardPaging;
 import itemboard.dao.ItemboardDAO;
+import user.bean.UserDTO;
 
 @Controller
 @RequestMapping(value="/itemboard")
@@ -229,9 +232,9 @@ public class ItemboardController {
 	
 	//장바구니
 	@RequestMapping(value="/itemBasket.do", method=RequestMethod.POST)
-	public String itemBasket(@ModelAttribute ItemBasketDTO itemBasketDTO, Model model) {
-		
-	
+	public String itemBasket(@ModelAttribute ItemBasketDTO itemBasketDTO, Model model,HttpSession session) {
+		UserDTO userDTO = (UserDTO) session.getAttribute("userDTO");
+		itemBasketDTO.setId(userDTO.getId());
 		itemboardDAO.itemBasket(itemBasketDTO);
 		
 		model.addAttribute("display", "/itemboard/itemBasket.jsp");
