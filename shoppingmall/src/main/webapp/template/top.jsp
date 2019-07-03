@@ -32,7 +32,7 @@
         
       	<c:if test="${userDTO.userCode == 1 }">
 	        <li class="nav-item">
-	          <a class="nav-link nav-link2-inde nav-link3" id="managerPage" href="/shoppingmall/manager/managerPage.do" >관리자 페이지</a>
+	          <a class="nav-link nav-link2-inde nav-link3" id="managerPage" href="/shoppingmall/manager/managerPageForm.do" >관리자 페이지</a>
 	        </li>
         </c:if>        
       </ul>
