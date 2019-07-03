@@ -32,4 +32,5 @@ public interface UserDAO {
 	public void userOuted(String id);
 
 	public void because(String id, String reason);
+
 }

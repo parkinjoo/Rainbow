@@ -28,6 +28,11 @@ public class ManagerController {
 	//매니저컨트롤러는 반드시 managerDAO 만 사용 userDAO 삭제
 	@Autowired
 	private ManagerDAO managerDAO;
+	
+	@RequestMapping(value="/managerPageForm.do")
+	public String managerPageForm() {
+		return "/manager/managerPageForm";
+	}
 
 	@RequestMapping(value = "/managerPage.do", method = RequestMethod.GET)
 	public String writeForm(Model model) {
