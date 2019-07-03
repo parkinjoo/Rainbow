@@ -10,7 +10,7 @@ body {
 
 .header1-index {
   /*
-    �꽕鍮꾨컮 怨좎젙, 諛곌꼍 �솕�씠�듃濡� �옟�븘以섏빞 �닾紐낇븯寃� �븞蹂댁엫
+   네비게이션 바 고정
   */	
   position:fixed;
   z-index:999;	
@@ -200,6 +200,11 @@ body {
   border: 1px solid black;
   background-color: #c8c8c8;
   overflow: auto;
+}
+
+.newImg {
+	display:inline-block;
+	margin:0 195px 0 0;
 }
 
 /* index-style */
