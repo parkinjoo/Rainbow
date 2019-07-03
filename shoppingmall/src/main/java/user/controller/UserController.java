@@ -103,6 +103,7 @@ public class UserController {
 				if(userDTO.getUserCode()==1) {
 					session.removeAttribute("userDTO");
 					session.setAttribute("userDTO", userDTO);
+					session.setAttribute("managerPageOk", "managerPageOk"); //임시
 					return "loginOk";
 				}
 			}
