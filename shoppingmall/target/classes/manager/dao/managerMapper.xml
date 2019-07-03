@@ -43,4 +43,9 @@
  		 (select * from itemtable order by registday desc)tt where rownum<![CDATA[<]]>9
    </select>
    
+   	<!-- 아이템 선택 삭제 -->
+	<delete id="itemDelete" parameterType="String">
+		delete from itemtable where itemcode = #{itemcode}
+	</delete>
+   
 </mapper>

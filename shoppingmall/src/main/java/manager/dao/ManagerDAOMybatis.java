@@ -41,5 +41,10 @@ public class ManagerDAOMybatis implements ManagerDAO {
 		return sqlSession.selectList("managerSQL.getIndexBodyNewList");
 	}
 
+	@Override
+	public void itemDelete(String itemcode) {
+		sqlSession.delete("managerSQL.itemDelete", itemcode);
+	}
+
 
 }

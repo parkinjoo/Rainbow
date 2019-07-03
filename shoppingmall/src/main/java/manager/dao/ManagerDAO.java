@@ -17,4 +17,6 @@ public interface ManagerDAO {
 
 	public List<ItemboardDTO> getIndexBodyNewList();
 
+	public void itemDelete(String itemcode);
+
 }

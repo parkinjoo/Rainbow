@@ -158,6 +158,7 @@ public class ManagerController {
 		mav.setViewName("jsonView");
 		return mav;
     }
+    
     @RequestMapping(value="getIndexBodyList.do", method=RequestMethod.POST)
     public ModelAndView getIndexBodyList() {
 		ModelAndView mav = new ModelAndView();
@@ -165,6 +166,15 @@ public class ManagerController {
 		mav.addObject("list", list);
 		mav.setViewName("jsonView");
 		return mav;
+    }
+    
+    @RequestMapping(value="/deleteItemboard.do", method=RequestMethod.POST)
+    @ResponseBody
+    public void deleteItemboard(@RequestParam(value="chkbox[]") List<String> itemcode) {
+    	System.out.println(itemcode);
+    	for(int i=0; i<itemcode.size(); i++) {
+    		managerDAO.itemDelete(itemcode.get(i));
+    	}
     }
 
 }
