@@ -171,7 +171,6 @@ public class ManagerController {
     @RequestMapping(value="/deleteItemboard.do", method=RequestMethod.POST)
     @ResponseBody
     public void deleteItemboard(@RequestParam(value="chkbox[]") List<String> itemcode) {
-    	System.out.println(itemcode);
     	for(int i=0; i<itemcode.size(); i++) {
     		managerDAO.itemDelete(itemcode.get(i));
     	}
