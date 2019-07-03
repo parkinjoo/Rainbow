@@ -43,7 +43,7 @@
 				<form id="itemboardWriteForm" method="post" enctype="multipart/form-data" action="/shoppingmall/manager/itemboardWrite.do">
 					<table class="table table-hover" >
 					      <tr>
-					         <td width="300px" align="right">상품코드</td>
+					         <td width="300px" align="right">상품코드란</td>
 					         <td colspan="6">
 					            <input type="text" name="itemCode" id="itemCode" value="M">
 					            <div id="itemCodeDiv"></div>
