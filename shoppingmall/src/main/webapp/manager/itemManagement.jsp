@@ -94,63 +94,24 @@
 					            </datalist>
 					         </td>
 					         <td>
-					            <input type="text" name="col1s" id="col1s" list="col1sList" size="5" value="0">
+					            <input type="number" min="0" step="10" style="text-align:right; width:70px;" name="col1s" id="col1s" value="0">
 					            <div id="col1sDiv"></div> 
-					            <datalist id="col1sList">
-					               <option value="10">
-					               <option value="20">
-					               <option value="30">
-					               <option value="40">
-					               <option value="50">
-					               <option value="100">
-					            </datalist>
 					         </td>
 					         <td>
 					            <input type="text" name="col1m" id="col1m" list="col1mList" size="5" value="0">
 					            <div id="col1mDiv"></div> 
-					            <datalist id="col1mList">
-					               <option value="10">
-					               <option value="20">
-					               <option value="30">
-					               <option value="40">
-					               <option value="50">
-					               <option value="100">
-					            </datalist>
 					         </td>
 					         <td>
 					            <input type="text" name="col1l" id="col1l" list="col1lList" size="5" value="0">
 					            <div id="col1lDiv"></div> 
-					            <datalist id="col1lList">
-					               <option value="10">
-					               <option value="20">
-					               <option value="30">
-					               <option value="40">
-					               <option value="50">
-					               <option value="100">
-					            </datalist>
 					         </td>
 					         <td>
 					            <input type="text" name="col1x" id="col1x" list="col1xList" size="5" value="0">
 					            <div id="col1xDiv"></div> 
-					            <datalist id="col1xList">
-					               <option value="10">
-					               <option value="20">
-					               <option value="30">
-					               <option value="40">
-					               <option value="50">
-					               <option value="100">
-					            </datalist>
 					         </td>
-					         <td><input type="text" name="col1f" id="col1f" list="col1fList" size="5" value="0">
+					         <td>
+					         	<input type="text" name="col1f" id="col1f" list="col1fList" size="5" value="0">
 					            <div id="col1fDiv"></div> 
-					            <datalist  id="col1fList">
-					               <option value="10">
-					               <option value="20">
-					               <option value="30">
-					               <option value="40">
-					               <option value="50">
-					               <option value="100">
-					            </datalist>
 					         </td>
 					         <td>
 					            <input type="text" name="col1tot" id="col1tot" value="0" size="5" style="text-align: right;" readonly>
@@ -170,58 +131,18 @@
 					         </td>
 					         <td>
 					            <input type="text" name="col2s" id="col2s" list="col2sList" size="5" value="0"> 
-					            <datalist id="col2sList">
-					               <option value="10">
-					               <option value="20">
-					               <option value="30">
-					               <option value="40">
-					               <option value="50">
-					               <option value="100">
-					            </datalist>
 					         </td>
 					         <td>
 					            <input type="text" name="col2m" id="col2m" list="col2mList" size="5" value="0"> 
-					            <datalist id="col2mList">
-					               <option value="10">
-					               <option value="20">
-					               <option value="30">
-					               <option value="40">
-					               <option value="50">
-					               <option value="100">
-					            </datalist>
 					         </td>
 					         <td>
 					            <input type="text" name="col2l" id="col2l" list="col2lList" size="5" value="0"> 
-					            <datalist id="col2lList">
-					               <option value="10">
-					               <option value="20">
-					               <option value="30">
-					               <option value="40">
-					               <option value="50">
-					               <option value="100">
-					            </datalist>
 					         </td>
 					         <td>
 					            <input type="text" name="col2x" id="col2x" list="col2xList" size="5" value="0"> 
-					            <datalist id="col2xList">
-					               <option value="10">
-					               <option value="20">
-					               <option value="30">
-					               <option value="40">
-					               <option value="50">
-					               <option value="100">
-					            </datalist>
 					         </td>
 					         <td>
 					            <input type="text" name="col2f" id="col2f" list="col2fList" size="5" value="0"> 
-					            <datalist id="col2fList">
-					               <option value="10">
-					               <option value="20">
-					               <option value="30">
-					               <option value="40">
-					               <option value="50">
-					               <option value="100">
-					            </datalist>
 					         </td>
 					         <td>
 					            <input type="text" name="col2tot" id="col2tot" value="0" size="5" style="text-align: right;" readonly>
@@ -241,58 +162,18 @@
 					         </td>
 					         <td>
 					            <input type="text" name="col3s" id="col3s" list="col3sList" size="5" value="0"> 
-					            <datalist id="col3sList">
-					               <option value="10">
-					               <option value="20">
-					               <option value="30">
-					               <option value="40">
-					               <option value="50">
-					               <option value="100">
-					            </datalist>
 					         </td>
 					         <td>
 					            <input type="text" name="col3m" id="col3m" list="col3mList" size="5" value="0"> 
-					            <datalist id="col3mList">
-					               <option value="10">
-					               <option value="20">
-					               <option value="30">
-					               <option value="40">
-					               <option value="50">
-					               <option value="100">
-					            </datalist>
 					         </td>
 					         <td>
 					            <input type="text" name="col3l" id="col3l" list="col3lList" size="5" value="0"> 
-					            <datalist id="col3lList">
-					               <option value="10">
-					               <option value="20">
-					               <option value="30">
-					               <option value="40">
-					               <option value="50">
-					               <option value="100">
-					            </datalist>
 					         </td>
 					         <td>
 					            <input type="text" name="col3x" id="col3x" list="col3xList" size="5" value="0"> 
-					            <datalist id="col3xList">
-					               <option value="10">
-					               <option value="20">
-					               <option value="30">
-					               <option value="40">
-					               <option value="50">
-					               <option value="100">
-					            </datalist>
 					         </td>
 					         <td>
 					            <input type="text" name="col3f" id="col3f" list="col3fList" size="5" value="0"> 
-					            <datalist id="col3fList">
-					               <option value="10">
-					               <option value="20">
-					               <option value="30">
-					               <option value="40">
-					               <option value="50">
-					               <option value="100">
-					            </datalist>
 					         </td>
 					         <td>
 					            <input type="text" name="col3tot" id="col3tot" value="0" size="5" style="text-align: right;"  readonly>
@@ -312,58 +193,18 @@
 					         </td>
 					         <td>
 					            <input type="text" name="col4s" id="col4s" list="col4sList" size="5" value="0"> 
-					            <datalist id="col4sList">
-					               <option value="10">
-					               <option value="20">
-					               <option value="30">
-					               <option value="40">
-					               <option value="50">
-					               <option value="100">
-					            </datalist>
 					         </td>
 					         <td>
 					            <input type="text" name="col4m" id="col4m" list="col4mList" size="5" value="0"> 
-					            <datalist id="col4mList">
-					               <option value="10">
-					               <option value="20">
-					               <option value="30">
-					               <option value="40">
-					               <option value="50">
-					               <option value="100">
-					            </datalist>
 					         </td>
 					         <td>
 					            <input type="text" name="col4l" id="col4l" list="col4lList" size="5" value="0"> 
-					            <datalist id="col4lList">
-					               <option value="10">
-					               <option value="20">
-					               <option value="30">
-					               <option value="40">
-					               <option value="50">
-					               <option value="100">
-					            </datalist>
 					         </td>
 					         <td>
 					            <input type="text" name="col4x" id="col4x" list="col4xList" size="5" value="0"> 
-					            <datalist id="col4xList">
-					               <option value="10">
-					               <option value="20">
-					               <option value="30">
-					               <option value="40">
-					               <option value="50">
-					               <option value="100">
-					            </datalist>
 					         </td>
 					         <td>
 					            <input type="text" name="col4f" id="col4f" list="col4fList" size="5" value="0"> 
-					            <datalist id="col4fList">
-					               <option value="10">
-					               <option value="20">
-					               <option value="30">
-					               <option value="40">
-					               <option value="50">
-					               <option value="100">
-					            </datalist>
 					         </td>
 					         <td>
 					            <input type="text" name="col4tot" id="col4tot" value="0" size="5" style="text-align: right;" readonly>
