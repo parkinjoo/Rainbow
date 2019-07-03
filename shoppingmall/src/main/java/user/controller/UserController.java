@@ -229,4 +229,12 @@ public class UserController {
 	}
 	
 	
+	
+	 @RequestMapping(value="/getItemList.do", method=RequestMethod.POST)
+	 @ResponseBody 
+	 public String getItemList(@RequestParam String id) {
+		 
+		 return "null"; 
+	 }
+	 
 }
