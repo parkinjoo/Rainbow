@@ -5,7 +5,7 @@
 
 <link rel="stylesheet" href="../css/board.css">
 
-<form name="itemboardListForm" method="" action="/shoppingmall/itemboard/itemboardDelete.do">
+<form name="itemboardListForm">
 
 <!-- test -->
 <!-- 카드 영역 -->
@@ -13,8 +13,12 @@
 <!-- <h2 class="cardDiv-title">반팔 티셔츠</h2>	 -->  
 </div>
 
-<div style="width: 650px; float: left; text-align: center;">${itemboardPaging.pagingHTML }</div>
-<div id="itemboardPagingDiv" style="width: 100%; float: left; text-align: center;"></div>
+			<!-- 이 부분에 페이징 처리 -->
+			<nav aria-label="Page navigation example">
+				<ul id="itemboardPagingDiv" class="pagination justify-content-center">
+				</ul>
+			</nav>
+			<!-- 페이징 -->
 </form>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
