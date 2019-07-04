@@ -90,4 +90,5 @@ public class UserDAOMybatis implements UserDAO {
 		sqlSession.update("userSQL.because",map);
 		
 	}
+	
 }

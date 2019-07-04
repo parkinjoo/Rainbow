@@ -68,4 +68,5 @@
 	<delete id="userOut" parameterType ="String">
 		delete user_table where id=#{id}
 	</delete>
+	
 </mapper>

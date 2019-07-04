@@ -331,8 +331,8 @@ $(document).ready(function() {
 									  "<td>"+
 									  "<input type='checkbox' name='deleteCheck'"+
 									  		 "class='deleteCheck-itemboard'"+
-									  		 "value="+items.itemcode+">"+
-									  "<input value='"+items.itemcode+
+									  		 "value="+items.itemCode+">"+
+									  "<input value='"+items.itemCode+
 									  	   "' type='hidden' class='hiddenId' id='modifyHidden"+index+"'>"+
 									  "</td>"+
 									  "</tr>");		
@@ -397,6 +397,30 @@ $('#selectAll-itemboard').click(function(){
 //선택된 목록 삭제하기
 $('#selectedItemboardDeleteBtn').click(function(){
 	
+	var checkArr = [];
+	
+	$('.deleteCheck-itemboard:checked').each(function(i){
+		checkArr.push($(this).val());
+	});
+	
+	if(checkArr.length==0){
+		alert("선택된 목록이 없습니다");
+	}else {
+		var deleteConfirm = confirm("선택하신 정보는 삭제 됩니다.");
+		if(deleteConfirm){
+			
+			$.ajax({
+				type: 'POST',
+				url : '/shoppingmall/manager/deleteItemboard.do' ,
+				data : {
+					chkbox : checkArr
+				},
+				success: function(){
+					alert("삭제되었습니다");
+					location.href = "/shoppingmall/manager/managerPage.do";
+				}
+			});	
+		}
+	}
 });
-   
 </script>
