@@ -27,7 +27,16 @@
 <c:if test="${display == null }">
 	<jsp:include page="../template/body.jsp"/>
 </c:if>
-<hr>
+<!--  
+<div class="cartBox">
+	m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>
+	m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>
+	m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>
+</div>
+-->
+<div class="btn_gotop">
+	<img class="topBtn" src="../images/top.png">
+</div>
 <jsp:include page="../template/footer.jsp" />
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -40,6 +49,18 @@ $('.nav-area-index').on('click', function(){
 });
 $('.nav-area-index').on('mouseleave', function(){
 	$($('.nav-item').children('ul')).slideUp();
+});
+
+$(document).ready( function(){
+	//따라다니는 TOP버튼
+	$(window).on("scroll touchmove mousewheel DOMMouseScroll", function(e) {
+		if($(window).scrollTop() >= 20) $(".btn_gotop").fadeIn();
+		else $(".btn_gotop").fadeOut();
+	});
+		
+	$(".btn_gotop").click(function(){
+		$("html,body").animate({ scrollTop: 0 }, "slow");
+	});
 });
 </script>
 </html>

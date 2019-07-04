@@ -1,0 +1,25 @@
+@charset "UTF-8";
+#mySecede .page-body { padding:70px 90px 0 }
+
+￿￿
+#mySecede .d-box-wrap { padding-bottom:30px; text-align:center }
+#mySecede .d-box-wrap h3 { font-size:44px; color:#000; line-height:44px; letter-spacing:-2px }
+#mySecede .d-box-wrap .d-box { padding-top:15px }
+#mySecede .d-box-wrap li { padding-top:10px; line-height:20px }
+#mySecede .d-box-wrap li.t1 { font-size:14px; color:#7f7f7f }
+#mySecede .d-box-wrap li.t2 { font-size:15px; color:#000; font-weight:500 }
+
+
+#mySecede .scede-frm textarea { width:100%; height:280px; border:1px solid #ddd }
+#mySecede .btn-foot { margin-top:40px; text-align:center }
+#mySecede .btn-foot a { margin:0 3px; width:228px; height:58px; font-size:16px; line-height:58px }
+
+
+
+.Withdrawal_CSSbuttonBlack { display:inline-block; color:#fff; text-align:center; border:1px solid #231f20; background: #231f20; -webkit-transition:all 0.3s ease; transition:all 0.3s ease }
+.Withdrawal_CSSbuttonBlack:hover { color:#231f20; background:#fff }
+.Withdrawal_CSSbuttonBlack:active { position:relative; top:1px }
+
+.Withdrawal_CSSbuttonWhite { display:inline-block;  color:#231f20; text-align:center;  border:1px solid #231f20; background:#fff; -webkit-transition:all 0.3s ease; transition:all 0.3s ease }
+.Withdrawal_CSSbuttonWhite:hover { color:#fff; background:#231f20 }
+.Withdrawal_CSSbuttonWhite:active { position: relative; top: 1px }

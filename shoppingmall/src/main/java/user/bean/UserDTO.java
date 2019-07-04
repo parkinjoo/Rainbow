@@ -11,7 +11,12 @@ public class UserDTO {
 	private String name;
 	private String id;
 	private String pwd;
+	private String tel;
 	private String email;
+	private String zipcode;
+	private String addr1;
+	private String addr2;
+	private String joinday;
 	private int totalPay;
 	private int point;
 	private String grade;

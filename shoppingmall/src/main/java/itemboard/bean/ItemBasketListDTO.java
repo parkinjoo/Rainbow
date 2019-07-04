@@ -13,4 +13,5 @@ public class ItemBasketListDTO {
 	private String itemCol;
 	private int itemQty;
 	private String img1;
+	private String id;
 }

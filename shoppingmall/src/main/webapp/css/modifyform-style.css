@@ -44,7 +44,7 @@ input[type="text"], input[type="password"] {
 
 .modifyFormDiv {
   width: 80%;
-  height: 600px;
+  height: 750px;
   border-top: 1px solid black;
   margin: 0 auto;
 }

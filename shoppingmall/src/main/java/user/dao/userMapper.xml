@@ -9,7 +9,7 @@
 	
 	<!-- 회원가입 -->
 	<insert id="join" parameterType="user">
-		insert into user_table(name, id, pwd, email) values(#{name},#{id},#{pwd},#{email})
+		insert into user_table(name, id, pwd, tel, email, joinday) values(#{name},#{id},#{pwd},#{tel}, #{email},sysdate)
 	</insert>
 	
 	<!-- 로그인 -->
@@ -35,7 +35,7 @@
 	
 	<!-- 내 정보 수정 -->
 	<update id="modify" parameterType="user">
-		update user_table set name=#{name}, pwd=#{pwd}, email=#{email} where id=#{id}
+		update user_table set name=#{name}, pwd=#{pwd}, tel=#{tel}, email=#{email}, zipcode=#{zipcode}, addr1=#{addr1}, addr2=#{addr2} where id=#{id}
 	</update>
 	
 	<!-- 아이디찾기 -->
@@ -52,4 +52,19 @@
 	<update id="updatePW" parameterType="user">
 		update user_table set pwd=#{pwd} where id=#{id}
 	</update>
+	
+	<!-- 탈퇴한 회원목록 -->
+	<insert id="userOuted" parameterType="String">
+		insert into recovery_table(usercode,name,id,pwd,email,totalpay,point,grade,cash) select * from user_table where id=#{id}
+	</insert>
+	
+	<!-- 탈퇴한 회원 탈퇴이유 -->
+	<update id= "because" parameterType="java.util.Map">
+		update recovery_table set reason=#{reason} where id=#{id}
+	</update>
+		
+	<!-- 회원탈퇴 -->
+	<delete id="userOut" parameterType ="String">
+		delete user_table where id=#{id}
+	</delete>
 </mapper>

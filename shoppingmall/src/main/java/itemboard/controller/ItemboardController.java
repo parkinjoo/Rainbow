@@ -157,6 +157,7 @@ public class ItemboardController {
 	public ModelAndView getItembasketList(@RequestParam(required=false, defaultValue="") String itemCode,
 										  @RequestParam(required=false, defaultValue="1") String pg,
 										  @RequestParam(required=false, defaultValue="") String categoryCode,
+										  String id,
 										  Model model) {
 		
 		int endNum = Integer.parseInt(pg)*4;
@@ -167,6 +168,7 @@ public class ItemboardController {
 		map.put("endNum", endNum);
 		map.put("categoryCode", categoryCode);
 		map.put("itemCode", itemCode);
+		map.put("id", id);
 		
 		List<ItemBasketListDTO> list = itemboardDAO.getItembasketList(map);
 		
@@ -192,6 +194,8 @@ public class ItemboardController {
 	@RequestMapping(value="/itemboardView.do", method=RequestMethod.GET)
 	public String itemboardView(@RequestParam String categoryCode, @RequestParam String itemCode, @RequestParam String pg, Model model) {
 		
+		ItemboardDTO itemboardDTO = itemboardDAO.getItemboardView(itemCode);
+		model.addAttribute("itemboardDTO",itemboardDTO);
 		model.addAttribute("categoryCode", categoryCode);
 		model.addAttribute("itemCode", itemCode);
 		model.addAttribute("pg", pg);
@@ -217,16 +221,46 @@ public class ItemboardController {
 		mav.setViewName("jsonView");
 		return mav;
 	}
+	//컬러 선택시 사이즈 얻기 
+	@RequestMapping(value="/getSize.do",method=RequestMethod.POST)
+	public ModelAndView getSize(@RequestParam String itemCode, @RequestParam String color) {
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("itemCode",itemCode);
+		map.put("color",color); 
+		ItemboardDTO itemboardDTO = itemboardDAO.getSize(map);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("itemboardDTO",itemboardDTO);
+		mav.setViewName("jsonView");
+		
+		return mav;
+		 
+	}
 	
 	//�옣諛붽뎄�땲
 	@RequestMapping(value="/itemBasket.do", method=RequestMethod.POST)
 	@ResponseBody
 	public void itemBasket(@ModelAttribute ItemBasketDTO itemBasketDTO, Model model) {
 		
-		System.out.println("itemCode="+itemBasketDTO.getItemCode()+"itemName="+itemBasketDTO.getItemName()+"itemPrice="+itemBasketDTO.getItemPrice()+"itemCol="+itemBasketDTO.getItemCol()+"itemQty="+itemBasketDTO.getItemQty());
+		
 		itemboardDAO.itemBasket(itemBasketDTO);
 		
 		
 		
 	}
+	@RequestMapping(value="/basketFlush.do", method=RequestMethod.POST)
+	@ResponseBody
+	public void basketFlush(@RequestParam String id) {
+		
+		itemboardDAO.basketFlush(id);
+		
+	}
+	
+	@RequestMapping(value="/basketDelete.do", method=RequestMethod.POST)
+    @ResponseBody
+    public void basketDelete(@RequestParam(value="chkbox[]") List<String> itemCode) {
+    	for(int i=0; i<itemCode.size(); i++) {
+    		itemboardDAO.basketDelete(itemCode.get(i));
+    	}
+    }
 }

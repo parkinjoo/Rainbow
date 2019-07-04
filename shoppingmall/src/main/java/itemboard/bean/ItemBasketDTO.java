@@ -14,4 +14,5 @@ public class ItemBasketDTO {
 	private int itemQty;
 	private String registday;
 	private String id;
+	private String stus;
 }

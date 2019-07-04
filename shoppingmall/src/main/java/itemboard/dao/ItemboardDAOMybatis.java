@@ -47,4 +47,21 @@ public class ItemboardDAOMybatis implements ItemboardDAO{
 	public List<ItemBasketListDTO> getItembasketList(Map<String, Object> map) {
 		return sqlSession.selectList("itemboardSQL.getItembasketList", map);
 	}
+
+	@Override
+	public ItemboardDTO getSize(Map<String, String> map) {
+		return sqlSession.selectOne("itemboardSQL.getSize",map);
+	}
+
+	@Override
+	public void basketFlush(String id) {
+		sqlSession.delete("itemboardSQL.basketFlush", id);
+		
+	}
+
+	@Override
+	public int basketDelete(String itemCode) {
+		return sqlSession.delete("itemboardSQL.basketDelete", itemCode);
+		
+	}
 }

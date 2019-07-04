@@ -34,5 +34,10 @@ public class ManagerDAOMybatis implements ManagerDAO {
 	public List<ItemboardDTO> getItemboardList() {
 		return sqlSession.selectList("managerSQL.getItemboardList");
 	}
+	
+	@Override
+	public List<ItemboardDTO> getIndexBodyNewList() {
+		return sqlSession.selectList("managerSQL.getIndexBodyNewList");
+	}
 
 }

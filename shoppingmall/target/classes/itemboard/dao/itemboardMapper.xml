@@ -19,7 +19,7 @@
 	</select>
 	
    
-   <select id="getItemboardView" parameterType="String" resultType="itemboard">
+    <select id="getItemboardView" parameterType="String" resultType="itemboard">
    		select * from itemtable join stocktable using(itemcode) where itemcode=#{itemCode}
 	</select>
 	
@@ -31,10 +31,23 @@
     <!-- 장바구니 리스트 -->
 	<select id="getItembasketList" parameterType="java.util.Map" resultType="itembasketList">
 		select * from
-		(select rownum rn, tt.* from
-		(select * from itembasketTable join ITEMTABLE using (itemcode) 
-		 where itemcode like '%'||#{itemCode}||'%' order by itembaskettable.registday desc)tt
-		)where rn>=#{startNum} and rn <![CDATA[<=]]> ${endNum}
+	(select tt.*from
+ 	(select * from itembasketTable join ITEMTABLE using (itemcode) 
+	 where itemcode like '%'||#{itemCode}||'%' and stus = 'cart' )tt) where id like '%'||#{id}||'%'
+	</select>
+	<!-- 겟사이즈-->	
+	<select id="getSize" parameterType="java.util.Map" resultType="itemboard">
+		select  ${color}s, ${color}m, ${color}l, ${color}x
+				 from stocktable where itemcode=#{itemCode}
 	</select>
 	
+	<!-- 장바구니 비우기 -->
+	<delete id="basketFlush" parameterType="String">
+		delete itembasketTable where id like '%'||#{id}||'%'
+	</delete>
+	
+	<!-- 장바구니 선택 삭제 -->
+	<delete id="basketDelete" parameterType="String">
+		delete from itembaskettable where itemCode = #{itemCode}
+	</delete>
 </mapper>
