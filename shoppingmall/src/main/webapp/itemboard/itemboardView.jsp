@@ -67,18 +67,18 @@
             </tr>
           </table>
       </div>
-      <hr>
-      <div class="middleDiv2">
-        <p class="colorAndSize-itemPage">챠콜, S(28)</p><br>
+      <hr class ="itemList">
+    	<div class="middleDiv2">
+        <!-- <p class="colorAndSize-itemPage"></p><br>
         <input type="text" class="itemAccount-itemPage" value="1">
 
         <button type="button" class="accountBtn-itemPage plus">+</button>
         <button type="button" class="accountBtn-itemPage minus">-</button>
 
-        <p class="price-itemPage">34,900원</p>
-      </div>
+        <p class="price-itemPage"></p> --> 
+      </div> 
       <hr>
-      <p class="totalPric-itemPage"><span class="totalPriceText-itemPage">총 상품 금액</span> &nbsp;&nbsp;&nbsp;34,900원</p>
+      <p class="totalPric-itemPage"><span class="totalPriceText-itemPage">총 상품 금액</span> &nbsp;&nbsp;&nbsp;</p>
       <hr>
       <div class="btnDiv-itemPage">
         <button type="button" class="purchaseBtn-itemPage">BUY NOW</button>
@@ -243,70 +243,13 @@ $('.nav-area-index').on('mouseleave', function(){
 });
 
 
-//---선택한 색상에 배경색 입히기---
-
-$('.red').click(function(){
-  $('.colorLink-itemPage').css('background-color','')
-                 .css('color', 'black');
-  $('.red').css('background-color', 'red')
-           .css('color', 'white');
-})
-
-$('.black').click(function(){
-  $('.colorLink-itemPage').css('background-color','')
-                 .css('color', 'black');
-  $('.black').css('background-color', 'black')
-           .css('color', 'white');
-})
-
-$('.yellow').click(function(){
-  $('.colorLink-itemPage').css('background-color','')
-                 .css('color', 'black');
-  $('.yellow').css('background-color', 'yellow')
-
-})
-
-$('.green').click(function(){
-  $('.colorLink-itemPage').css('background-color','')
-                 .css('color', 'black');
-  $('.green').css('background-color', 'green')
-           .css('color', 'white');
-})
-//--선택한 색상에 배경색 입히기
-
-//--선택한 사이즈에 배경색 입히기
-
-$('.s28').click(function(){
-  $('.sizeLink-itemPage').css('background-color', '');
-  $('.s28').css('background-color', '#bdc3c7');
-});
-
-$('.m30').click(function(){
-  $('.sizeLink-itemPage').css('background-color', '');
-  $('.m30').css('background-color', '#bdc3c7');
-});
-
-$('.l32').click(function(){
-  $('.sizeLink-itemPage').css('background-color', '');
-  $('.l32').css('background-color', '#bdc3c7');
-});
-
-$('.xl34').click(function(){
-  $('.sizeLink-itemPage').css('background-color', '');
-  $('.xl34').css('background-color', '#bdc3c7');
-});
-
-$('.xxl36').click(function(){
-  $('.sizeLink-itemPage').css('background-color', '');
-  $('.xxl36').css('background-color', '#bdc3c7');
-});
-
-
-
 </script>
 
 <script type="text/javascript">
 $(document).ready(function(){
+	var salePrice=0; //가격을 표현할 변수
+	var sumPrice = 0; //선택한 물품의 수량의 총 가격을 담을 변수 
+	var initCount=1;//동적 변수를위한 수
 	$('#itemCodeDiv').hide();
 	$.ajax({
 		type: 'post',
@@ -537,9 +480,9 @@ $('#size_option').change(function(){
 });
 
 // 장바구니 회원
-if(${userDTO != null}){
-	$('.cartImg-itemPage').click(function(){
-		
+
+$('.cartImg-itemPage').click(function(){
+	if(${userDTO != null}){
 		
 		var itemCode = $('#itemCodeDiv').text();
 		var itemName = $('.itemName-itemPage').text();
@@ -560,13 +503,15 @@ if(${userDTO != null}){
 				
 			} 
 		});
-	});
-//장바구니 비회원
-} else if(${userDTO == null}){
-	$('.cartImg-itemPage').click(function(){
-		alert("로그인해주세여ㅛ");
-	});
-}
+	
+	}else if(${userDTO == null}){
+	      if(confirm('비회원으로 구매를 진행하시겠습니까?')){
+	         location.href = "/shoppingmall/itemboard/itemBasketList.do";
+	      }else
+	         location.href = "/shoppingmall/user/loginForm.do"
+	}
+});
+ 
 </script>
 </html>
 
