@@ -1,6 +1,6 @@
 h4 {
   width: 80%;
-  margin: 0 auto 4px auto;
+  margin: 50px auto 4px auto;
   font-weight: bold;
 }
 
@@ -8,25 +8,28 @@ h4 {
   width: 80%;
   height: 300px;
   border-top: 1px solid black;
-  /*border: 1px solid black;*/
   margin: 0 auto;
-  position: relative;
+  /* position: relative; */
 }
 
 .myPage2 {
-	width: 75%;
-	margin: 0 auto;
-    position:absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+	margin: 80px auto;
 }
 
-.myItem {
-  width: 60%;
-  height: 1000px;
+.myItemDiv {
+  width: 80%;
   /* border: 1px solid black; */
-  margin: 0 auto;
+  margin: auto auto 100px auto;
 }
 
+.myItemTableDiv {
+  margin: auto auto;
+  /* border: 1px solid black; */
+  
+}
 
+.table {
+  border-top: 5px solid white;
+  border-bottom: 1px solid #c8c8c8;
+  
+}

@@ -212,7 +212,6 @@ public class UserController {
 			return "fail";
 	}
 
-
 	@RequestMapping(value="/withdrawalCheckForm.do", method=RequestMethod.GET)
 	public String withdrawalCheckForm(Model model) {
 		model.addAttribute("title", "본인확인");
@@ -227,7 +226,6 @@ public class UserController {
 		model.addAttribute("display", "/user/withdrawal.jsp");
 		return "/main/index";
 	}
-
 
 	//회원탈퇴진행
 	@RequestMapping(value="/out.do", method=RequestMethod.POST)
@@ -248,6 +246,12 @@ public class UserController {
 		session.invalidate();
 		return "out";
 	}
-
-
+	
+	 @RequestMapping(value="/getItemList.do", method=RequestMethod.POST)
+	 @ResponseBody 
+	 public String getItemList(@RequestParam String id) {
+		 
+		 return "null"; 
+	 }
+	 
 }

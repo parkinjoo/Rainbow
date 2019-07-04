@@ -22,7 +22,7 @@ public class ItemboardPaging {
 		if(endPage > totalPage) endPage = totalPage;
 		
 		if(startPage>pageBlock) {
-			pagingHTML.append("[<span id='paging' onclick='itemboardPaging("+(startPage-1)+")'>ÀÌÀü</span>]");
+			pagingHTML.append("[<span id='paging' onclick='itemboardPaging("+(startPage-1)+")'>ì´ì „</span>]");
 		}//if
 		
 		for(int i=startPage; i<=endPage; i++) {
@@ -34,7 +34,7 @@ public class ItemboardPaging {
 		}//for
 		
 		if(endPage<totalPage) {
-			pagingHTML.append("[<span id='paging' onclick='itemboardPaging("+(endPage+1)+")'>´ÙÀ½</span>]");
+			pagingHTML.append("[<span id='paging' onclick='itemboardPaging("+(endPage+1)+")'>ë‹¤ìŒ</span>]");
 		}//if
 	}
 }

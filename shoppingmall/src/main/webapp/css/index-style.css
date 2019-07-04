@@ -114,16 +114,23 @@ body {
   cursor: pointer;
 }
 
-.cardDiv-index {
+/* .cardDiv-index {
   width: 82%;
   height: auto;
   margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+} */
+
+.cardDiv-index {
+  width: 1500px;
+  height: auto;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
-
-
 
 .card-index {
   text-align: left;
@@ -213,7 +220,7 @@ body {
 
 .h4-joinform {
   width: 80%;
-  margin: 0 auto 4px auto;
+  margin: 50px auto 4px auto;
   font-weight: bold;
 }
 
