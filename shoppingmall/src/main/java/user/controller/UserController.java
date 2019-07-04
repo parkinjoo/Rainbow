@@ -93,7 +93,7 @@ public class UserController {
 	public String managerLogin(@RequestParam Map<String,String> map, HttpSession session) {
 		String repwd = userDAO.pwdCheck(map.get("id"));
 
-		if(repwd.length()<1) {
+		if(repwd==null || repwd.length()<1) {
 			return "loginFail";
 		}
 
