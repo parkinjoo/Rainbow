@@ -19,11 +19,12 @@
   </head>
   <body>
   <div id="item-box-itemPage">
-    <div class="left-box-itemPage">
-     <%-- <img src="../storage/${itemboardDTO.img1}"> --%>
+    <div class="left-box-itemPage" style="background-image:url('../storage/${itemboardDTO.img1}')">
+     
     </div>
     <div class="right-box-itemPage">
       <div class="topDiv-itemPage">
+      <div id="itemCodeDiv"></div>
         <h6 class="itemName-itemPage"><b></b></h6>
         <c:if test="${itemboardDTO.col1f eq 0}">
        	 <p class="sizeTop-itemPage">S~XL</p>
@@ -82,7 +83,7 @@
       <div class="btnDiv-itemPage">
         <button type="button" class="purchaseBtn-itemPage">BUY NOW</button>
         <button type="button" class="btn-itemPage cartBtn-itemPage">
-          <img src="" class="cartImg-itemPage" >
+          <img src="../images/basket.gif" class="cartImg-itemPage" >
         </button>
         <button type="button" class="btn-itemPage likeBtn-itemPage">
           <img src="" class="likeImg-itemPage">
@@ -217,6 +218,12 @@
     </div>
   </div>
     <hr>
+    <div class="itemPictureDiv">
+     <img src="../storage/${itemboardDTO.img2 }">
+     <img src="../storage/${itemboardDTO.img3 }">
+     <img src="../storage/${itemboardDTO.img4 }">
+  
+  </div>
 
 
   </body>
@@ -300,13 +307,15 @@ $('.xxl36').click(function(){
 
 <script type="text/javascript">
 $(document).ready(function(){
+	$('#itemCodeDiv').hide();
 	$.ajax({
 		type: 'post',
 		url: '/shoppingmall/itemboard/getItemboardView.do',
 		data: 'itemCode=${itemCode}&pg=${pg}&categoryCode=${categoryCode}',
 		dataType: 'json',
 		success: function(data){
-			alert(JSON.stringify(data));
+			//alert(JSON.stringify(data));
+			 $('#itemCodeDiv').text(data.itemboardDTO.itemCode);
 			 $('.itemName-itemPage').text(data.itemboardDTO.itemName);
 			 $('.itemText-itemPage').text(data.itemboardDTO.itemContent);
 			 $('.itemPrice-itemPage').text(data.itemboardDTO.salePrice);
@@ -457,19 +466,21 @@ $('#color_option').change(function(){
 })
 // 장바구니 회원
 if(${userDTO != null}){
-	$('.cartImg-itemPage').onclick(function(){
-		//alert("uerDTO.id=${userDTO.id}");
+	$('.cartImg-itemPage').click(function(){
 		
-		var itemCode = $('#itemCode').val();
-		var itemName = $('#itemName').val();
-	    var itemPrice = $('#salePrice').val(); 
-		var itemCol = $('#col1').val();
-		var itemQty = $('#col1s').val();
+		
+		var itemCode = $('#itemCodeDiv').text();
+		var itemName = $('.itemName-itemPage').text();
+	    var itemCol = $('#color_option option:selected').text();
+		var itemQty = 1;
+		var itemSize = $('#size_option option:selected').text();
 		var id = '${userDTO.id }';
+		//건들지마세요
+		var stus = 'cart';
 		$.ajax({
 			type: 'post',
 			url: '/shoppingmall/itemboard/itemBasket.do',
-			data: 'itemCode='+itemCode+'&itemName='+itemName+'&itemPrice='+itemPrice+'&itemCol='+itemCol+'&itemQty='+itemQty+'&id='+id+'&categoryCode=${categoryCode}&pg=${pg}',
+			data: 'itemCode='+itemCode+'&itemName='+itemName+'&itemCol='+itemCol+'&itemQty='+itemQty+'&itemSize='+itemSize+'&id='+id+'&stus='+stus+'&categoryCode=${categoryCode}&pg=${pg}',
 			success: function(){
 				if(confirm("상품이 저장되었습니다. 장바구니로 가시겠습니까?")){
 					location.href="/shoppingmall/itemboard/itemBasketList.do";

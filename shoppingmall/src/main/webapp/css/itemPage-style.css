@@ -109,8 +109,7 @@
 
 
 
-.withItemDiv1-itemPage {
-
+.withItemDiv-itemPage {
 }
 
 .colorAndSize-itemPage {
@@ -136,6 +135,8 @@
   background-color: black;
   border: none;
 }
+
+
 
 
 .price-itemPage {
@@ -281,4 +282,11 @@
 .withItem-itemPage {
   margin-top: 30px;
   margin-bottom: 0;
+}
+/* �뼇�뿴 異붽� */
+.itemPictureDiv{
+   position: relative;
+  width: 60%;
+  margin: 3% auto 1% auto;
+  background: #fff;
 }

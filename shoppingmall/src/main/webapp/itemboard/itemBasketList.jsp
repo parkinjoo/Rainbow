@@ -55,10 +55,10 @@ $(document).ready(function(){
 									  "</th>"+
 									  "<td>"+items.itemName+"</td>"+
 									  "<td><img src='../storage/"+items.img1+"' style='cursor: pointer; width:100px; height:100px;'></td>"+
-									  "<td>"+items.itemPrice+"</td>"+
+									  "<td>"+items.salePrice+"</td>"+
 									  "<td>"+items.itemCol+"</td>"+
 									  "<td>"+items.itemQty+"</td>"+
-									  "<td>"+items.itemCode+"</td>"+
+									  "<td>"+items.itemSize+"</td>"+
 									  "<td>"+
 									  "<input type='checkbox' id='deleteCheck'  name='deleteCheck'"+
 									  		"class='deleteCheck-basket'"+
