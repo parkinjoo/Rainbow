@@ -43,14 +43,14 @@
 				<form id="itemboardWriteForm" method="post" enctype="multipart/form-data" action="/shoppingmall/manager/itemboardWrite.do">
 					<table class="table table-hover" >
 					      <tr>
-					         <td width="300px" align="right">상품코드</td>
-					         <td colspan="6">
+					         <td width="350px" align="center">상품코드</td>
+					         <td width="360px" colspan="6">
 					            <input type="text" name="itemCode" id="itemCode" value="M">
 					            <div id="itemCodeDiv"></div>
 					         </td>
 					      <tr>
 					      <tr>
-					         <td align="right">상품명</td>
+					         <td align="center">상품명</td>
 					         <td colspan="6">
 					            <input type="text" name="itemName" id="itemName" size="100" placeholder="상품명 입력">
 					            <div id="itemNameDiv"></div>
@@ -58,13 +58,13 @@
 					      </tr>
 					
 					      <tr>
-					         <td align="right">판매 단가</td>
+					         <td align="center">판매 단가</td>
 					         <td colspan="2">
 					            <input type="number" min="0" step="1000" style="text-align:right;" name="salePrice" id="salePrice" value="000" placeholder="판매 단가 입력">
 					            <div id="salePriceDiv"></div>
 					         </td>
 					         
-					         <td align="right">상품 원가</td>
+					         <td align="center">상품 원가</td>
 					         <td colspan="3">
 					            <input type="number" min="0" step="1000" style="text-align:right;" name="costPrice" id="costPrice" value="000" placeholder="상품 원가 입력">
 					            <div id="costPriceDiv"></div>
@@ -72,17 +72,17 @@
 					      </tr>
 					
 					      <tr>
-					         <td align="right">색상/사이즈</td>
-					         <td align="center">S (90)</td>
-					         <td align="center">M (95)</td>
-					         <td align="center">L (100)</td>
-					         <td align="center">XL (105)</td>
-					         <td align="center">Free</td>
-					         <td align="center">Total</td>
+					         <td width="60px" align="center">색상/사이즈</td>
+					         <td width="60px" align="center">S (90)</td>
+					         <td width="60px" align="center">M (95)</td>
+					         <td width="60px" align="center">L (100)</td>
+					         <td width="60px" align="center">XL (105)</td>
+					         <td width="60px" align="center">Free</td>
+					         <td width="60px" align="center">Total</td>
 					      </tr>
 					
 					      <tr>
-					         <td align="right">
+					         <td align="center">
 					            <input type="text" name="col1" id="col1" size="10" list="col1List" placeholder="색상1 입력">
 					            <div id="col1Div"></div>
 					            <datalist id="col1List">
@@ -119,7 +119,7 @@
 					      </tr>
 					
 					      <tr>
-					         <td align="right">
+					         <td align="center">
 					            <input type="text" name="col2" id="col2" size="10" list="col2List" placeholder="색상2 입력"> 
 					            <datalist id="col2List">
 					               <option value="black">
@@ -150,7 +150,7 @@
 					      </tr>
 					
 					      <tr>
-					         <td align="right">
+					         <td align="center">
 					            <input type="text" name="col3" id="col3" size="10"  list="col3List" placeholder="색상3 입력"> 
 					            <datalist id="col3List">
 					               <option value="black">
@@ -181,7 +181,7 @@
 					      </tr>
 					
 					      <tr>
-					         <td align="right">
+					         <td align="center">
 					            <input type="text" name="col4" id="col4" size="10" list="col4List" placeholder="색상4 입력"> 
 					            <datalist id="col4List">
 					               <option value="black">
@@ -234,34 +234,34 @@
 					      </tr>
 					
 					      <tr>
-					         <td align="right">내용</td>
+					         <td align="center">내용</td>
 					         <td colspan="6"><textarea cols="80" rows="2" name="itemContent" id="itemContent" placeholder="내용 입력"></textarea>
 					         <div id="itemContentDiv"></div>
 					         </td>
 					      </tr>
 					
 					      <tr>
-					         <td align="right">이미지1</td>
+					         <td align="center">이미지1</td>
 					         <td colspan="6"><input type="file" name="img" id="img1"></td>
 					      </tr>
 					
 					      <tr>
-					         <td align="right">이미지2</td>
+					         <td align="center">이미지2</td>
 					         <td colspan="6"><input type="file" name="img" id="img2"></td>
 					      </tr>
 					
 					      <tr>
-					         <td align="right">이미지3</td>
+					         <td align="center">이미지3</td>
 					         <td colspan="6"><input type="file" name="img" id="img3"></td>
 					      </tr>
 					
 					      <tr>
-					         <td align="right">이미지4</td>
+					         <td align="center">이미지4</td>
 					         <td colspan="6"><input type="file" name="img" id="img4"></td>
 					      </tr>
 					      
 					      <tr>
-					         <td align="right">키워드</td>
+					         <td align="center">키워드</td>
 					         <td colspan="6">
 					            <input type="text" name="itemKeyword" id="itemKeyword" size="100" placeholder="키워드 입력">
 					            <div id="itemKeywordDiv"></div>
