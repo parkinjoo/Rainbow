@@ -18,12 +18,12 @@
   	  </tr>
   	  <tr>
   	    <td>
-	      <input type="text" name="id" id="id" placeholder="ID" />
+	      <input type="text" name="id" id="id" onkeyup="enterkey();" placeholder="ID" />
 	    </td>
   	  </tr>
   	  <tr>
 	    <td>
-	      <input type="password" name="password" id="pwd" placeholder="PASSWORD" />
+	      <input type="password" name="password" id="pwd" onkeyup="enterkey();" placeholder="PASSWORD" />
   		</td>
   	  </tr>
   	  <tr>
@@ -62,6 +62,36 @@ $('#inputBtn').click(function(){
 		});	
 	}
 });
+
+function enterkey() {
+    if (window.event.keyCode == 13) {
+    
+         // 엔터키가 눌렸을 때 실행할 내용
+         var id=$('#id').val();
+		var pwd=$('#pwd').val();
+	
+		if(id=='') {
+			alert('아이디를 입력해 주세요.');
+		}else if(pwd=='') {
+			alert("비밀번호를 입력해주세요")
+		}else {	
+			$.ajax({
+				type : 'POST',
+				url : '/shoppingmall/user/managerLogin.do',
+				data : {"id":id,
+						"pwd":pwd},
+				dataType : 'text',
+				success : function(data){
+					if(data=='loginFail'){
+						alert("올바르지 않은 정보입니다. 다시 확인해주세요.");
+					}else if(data=='loginOk'){
+						location.href='/shoppingmall/manager/managerPage.do';
+					}
+				}
+			});	
+		}
+    }
+}
 </script>
 
 </html>
