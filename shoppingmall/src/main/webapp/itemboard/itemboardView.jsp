@@ -464,6 +464,78 @@ $('#color_option').change(function(){
 	
 	
 })
+
+$('#size_option').change(function(){
+	var color= $('#color_option').val();
+	var size = $('#size_option').val();
+	var colorText = $('#color_option option:selected').text();
+	var sizeText = $('#size_option option:selected').text();
+	if(color==0){
+		alert('색상을 선택하세요!');
+	}
+	else if(size==0){
+		alert('사이즈를 선택하세요!');
+	}
+	else{
+		var itemCount=1;
+		//이부분이 여기 생성되는곳
+		//eval('initItemCount'+initCount+'='+1);
+		/* $('<div/>',{
+			class : 'middleDiv2 '+initCount
+		}).appendTo($('.itemList')); */
+		
+		 $('<p/>',{
+			 class : 'colorAndSize-itemPage',
+			 text : colorText+sizeText	 
+		 }).appendTo($('.middleDiv2'));
+		 
+		 $('<input/>',{
+			 type : 'text',
+			 class : 'itemAccount-itemPage',
+			 value : itemCount
+		 }).appendTo($('.middleDiv2'));
+		 
+		 $('<button/>',{
+			 type : 'button',
+			 class : 'accountBtn-itemPage plus '+color+size,
+			 text : '+'
+		 }).appendTo($('.middleDiv2'));
+		 
+		 $('<button/>',{
+			 type : 'button',
+			 class : 'accountBtn-itemPage minus '+color+size,
+			 text : '-'
+		 }).appendTo($('.middleDiv2'));
+		 
+		 $('<p/>',{
+			 class : 'price-itemPage',
+			 text : itemCount
+		 }).appendTo($('.middleDiv2'));
+		 
+		 sumPrice = salePrice;
+		 $('.plus').click(function(){
+			 itemCount = itemCount+1;
+			 sumPrice = sumPrice+salePrice;
+			 $('.itemAccount-itemPage').val(itemCount);
+			 $('.price-itemPage').text(sumPrice);
+			 $('.totalPric-itemPage').text(sumPrice);
+			 $('<span/>',{
+					class :'totalPriceText-itemPage',
+					text : '총 상품 금액   '+sumPrice
+			}).appendTo($('.totalPric-itemPage'));
+		 });
+		 $('.minus').click(function(){
+			 itemCount = itemCount-1;
+			 sumPrice = sumPrice-salePrice;
+			 $('.itemAccount-itemPage').val(itemCount);
+			 $('<span/>',{
+					class :'totalPriceText-itemPage',
+					text : '총 상품 금액   '+sumPrice
+			}).appendTo($('.totalPric-itemPage'));
+		 });
+	}
+});
+
 // 장바구니 회원
 if(${userDTO != null}){
 	$('.cartImg-itemPage').click(function(){
@@ -495,8 +567,9 @@ if(${userDTO != null}){
 		alert("로그인해주세여ㅛ");
 	});
 }
-
 </script>
+</html>
+
 
 
 
