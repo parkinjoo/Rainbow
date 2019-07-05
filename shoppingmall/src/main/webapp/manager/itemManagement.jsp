@@ -16,6 +16,13 @@
 	<!-- êµ¬ë¶„ì„  -->
 	
 			<div class="tab-pane fade show active listDiv-managerPage" id="pills-home-insert-data">
+				<div class="searchDiv">
+					<form class="form-inline my-2 my-lg-0 searchBtn-managerPage">
+						<input class="form-control mr-sm-2" type="search" placeholder="Search">
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					</form>
+					<button type="button" id="newItemAdd" class="btn btn-secondary addItemBtn-managerPage">ìƒˆ ìƒí’ˆ ë“±ë¡</button>
+				</div>
 				<div class="deleteBtnDiv-managerPage">
 					<input type="button" class="deleteBtn-managerPage" name="deleteBtn"
 						value="ì„ íƒ ëª©ë¡ ì‚­ì œ" id="selectedItemboardDeleteBtn">
@@ -29,6 +36,7 @@
 							<th scope="col">ì´ë¯¸ì§€</th>
 							<th scope="col">ìƒí’ˆì›ê°€</th>
 							<th scope="col">íŒë§¤ë‹¨ê°€</th>
+							<th scope="col"></th>
 							<th scope="col"><input type="checkbox" id="selectAll-itemboard">
 							</th>
 						</tr>
@@ -43,80 +51,47 @@
 				<form id="itemboardWriteForm" method="post" enctype="multipart/form-data" action="/shoppingmall/manager/itemboardWrite.do">
 					<table class="table table-hover" >
 					      <tr>
-<<<<<<< HEAD
-					         <td align="center">ìƒí’ˆì½”ë“œ</td>
+					         <td width="300px" align="right">ìƒí’ˆì½”ë“œ</td>
 					         <td colspan="6">
-=======
-					         <td width="350px" align="center">»óÇ°ÄÚµå</td>
-					         <td width="360px" colspan="6">
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
 					            <input type="text" name="itemCode" id="itemCode" value="M">
 					            <div id="itemCodeDiv"></div>
 					         </td>
 					      <tr>
 					      <tr>
-					         <td align="center">ìƒí’ˆëª…</td>
+					         <td align="right">ìƒí’ˆëª…</td>
 					         <td colspan="6">
-<<<<<<< HEAD
-					            <input type="text" name="itemName" id="itemName" size="70" placeholder="ìƒí’ˆëª… ì…ë ¥">
-=======
-					            <input type="text" name="itemName" id="itemName" size="100" placeholder="»óÇ°¸í ÀÔ·Â">
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
+					            <input type="text" name="itemName" id="itemName" size="100" placeholder="ìƒí’ˆëª… ì…ë ¥">
 					            <div id="itemNameDiv"></div>
 					         </td>
 					      </tr>
 					
 					      <tr>
-					         <td align="center">íŒë§¤ ë‹¨ê°€</td>
+					         <td align="right">íŒë§¤ ë‹¨ê°€</td>
 					         <td colspan="2">
-<<<<<<< HEAD
-					            <input type="text" name="salePrice" id="salePrice" placeholder="íŒë§¤ ë‹¨ê°€ ì…ë ¥">
-=======
-					            <input type="number" min="0" step="1000" style="text-align:right;" name="salePrice" id="salePrice" value="000" placeholder="ÆÇ¸Å ´Ü°¡ ÀÔ·Â">
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
+					            <input type="number" min="0" step="1000" style="text-align:right;" name="salePrice" id="salePrice" value="000" placeholder="íŒë§¤ ë‹¨ê°€ ì…ë ¥">
 					            <div id="salePriceDiv"></div>
 					         </td>
 					         
-<<<<<<< HEAD
-					         <td colspan="2" align="center">ìƒí’ˆ ì›ê°€</td>
-					         <td colspan="2">
-					            <input type="text" name="costPrice" id="costPrice" placeholder="ìƒí’ˆ ì›ê°€ ì…ë ¥">
-=======
-					         <td align="center">»óÇ° ¿ø°¡</td>
+					         <td align="right">ìƒí’ˆ ì›ê°€</td>
 					         <td colspan="3">
-					            <input type="number" min="0" step="1000" style="text-align:right;" name="costPrice" id="costPrice" value="000" placeholder="»óÇ° ¿ø°¡ ÀÔ·Â">
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
+					            <input type="number" min="0" step="1000" style="text-align:right;" name="costPrice" id="costPrice" value="000" placeholder="ìƒí’ˆ ì›ê°€ ì…ë ¥">
 					            <div id="costPriceDiv"></div>
 					         </td>
 					      </tr>
 					
 					      <tr>
-<<<<<<< HEAD
-					         <td align="center">ìƒ‰ìƒ/ì‚¬ì´ì¦ˆ</td>
-					         <td width="60" align="center">S (90)</td>
-					         <td width="60" align="center">M (95)</td>
-					         <td width="60" align="center">L (100)</td>
-					         <td width="60" align="center">XL (105)</td>
-					         <td width="60" align="center">Free</td>
-					         <td width="60" align="center">Total</td>
-=======
-					         <td width="60px" align="center">»ö»ó/»çÀÌÁî</td>
-					         <td width="60px" align="center">S (90)</td>
-					         <td width="60px" align="center">M (95)</td>
-					         <td width="60px" align="center">L (100)</td>
-					         <td width="60px" align="center">XL (105)</td>
-					         <td width="60px" align="center">Free</td>
-					         <td width="60px" align="center">Total</td>
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
+					         <td align="right">ìƒ‰ìƒ/ì‚¬ì´ì¦ˆ</td>
+					         <td align="center">S (90)</td>
+					         <td align="center">M (95)</td>
+					         <td align="center">L (100)</td>
+					         <td align="center">XL (105)</td>
+					         <td align="center">Free</td>
+					         <td align="center">Total</td>
 					      </tr>
 					
 					      <tr>
-					         <td align="center">
-<<<<<<< HEAD
-					            <input type="text" name="col1" id="col1" list="col1List" placeholder="ìƒ‰ìƒ1 ì…ë ¥">
-=======
-					            <input type="text" name="col1" id="col1" size="10" list="col1List" placeholder="»ö»ó1 ÀÔ·Â">
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
+					         <td align="right">
+					            <input type="text" name="col1" id="col1" size="10" list="col1List" placeholder="ìƒ‰ìƒ1 ì…ë ¥">
 					            <div id="col1Div"></div>
 					            <datalist id="col1List">
 					               <option value="black">
@@ -152,12 +127,8 @@
 					      </tr>
 					
 					      <tr>
-					         <td align="center">
-<<<<<<< HEAD
-					            <input type="text" name="col2" id="col2" list="col2List" placeholder="ìƒ‰ìƒ2 ì…ë ¥"> 
-=======
-					            <input type="text" name="col2" id="col2" size="10" list="col2List" placeholder="»ö»ó2 ÀÔ·Â"> 
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
+					         <td align="right">
+					            <input type="text" name="col2" id="col2" size="10" list="col2List" placeholder="ìƒ‰ìƒ2 ì…ë ¥"> 
 					            <datalist id="col2List">
 					               <option value="black">
 					               <option value="white">
@@ -187,12 +158,8 @@
 					      </tr>
 					
 					      <tr>
-					         <td align="center">
-<<<<<<< HEAD
-					            <input type="text" name="col3" id="col3"  list="col3List" placeholder="ìƒ‰ìƒ3 ì…ë ¥"> 
-=======
-					            <input type="text" name="col3" id="col3" size="10"  list="col3List" placeholder="»ö»ó3 ÀÔ·Â"> 
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
+					         <td align="right">
+					            <input type="text" name="col3" id="col3" size="10"  list="col3List" placeholder="ìƒ‰ìƒ3 ì…ë ¥"> 
 					            <datalist id="col3List">
 					               <option value="black">
 					               <option value="white">
@@ -222,12 +189,8 @@
 					      </tr>
 					
 					      <tr>
-					         <td align="center">
-<<<<<<< HEAD
-					            <input type="text" name="col4" id="col4" list="col4List" placeholder="ìƒ‰ìƒ4 ì…ë ¥"> 
-=======
-					            <input type="text" name="col4" id="col4" size="10" list="col4List" placeholder="»ö»ó4 ÀÔ·Â"> 
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
+					         <td align="right">
+					            <input type="text" name="col4" id="col4" size="10" list="col4List" placeholder="ìƒ‰ìƒ4 ì…ë ¥"> 
 					            <datalist id="col4List">
 					               <option value="black">
 					               <option value="white">
@@ -279,57 +242,43 @@
 					      </tr>
 					
 					      <tr>
-<<<<<<< HEAD
-					         <td align="center">ë‚´ìš©</td>
-					         <td colspan="6"><textarea cols="70" rows="10" name="itemContent" id="itemContent" placeholder="ë‚´ìš© ì…ë ¥"></textarea>
-=======
-					         <td align="center">³»¿ë</td>
-					         <td colspan="6"><textarea cols="80" rows="2" name="itemContent" id="itemContent" placeholder="³»¿ë ÀÔ·Â"></textarea>
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
+					         <td align="right">ë‚´ìš©</td>
+					         <td colspan="6"><textarea cols="80" rows="2" name="itemContent" id="itemContent" placeholder="ë‚´ìš© ì…ë ¥"></textarea>
 					         <div id="itemContentDiv"></div>
 					         </td>
 					      </tr>
 					
 					      <tr>
-					         <td align="center">ì´ë¯¸ì§€1</td>
+					         <td align="right">ì´ë¯¸ì§€1</td>
 					         <td colspan="6"><input type="file" name="img" id="img1"></td>
 					      </tr>
 					
 					      <tr>
-					         <td align="center">ì´ë¯¸ì§€2</td>
+					         <td align="right">ì´ë¯¸ì§€2</td>
 					         <td colspan="6"><input type="file" name="img" id="img2"></td>
 					      </tr>
 					
 					      <tr>
-					         <td align="center">ì´ë¯¸ì§€3</td>
+					         <td align="right">ì´ë¯¸ì§€3</td>
 					         <td colspan="6"><input type="file" name="img" id="img3"></td>
 					      </tr>
 					
 					      <tr>
-					         <td align="center">ì´ë¯¸ì§€4</td>
+					         <td align="right">ì´ë¯¸ì§€4</td>
 					         <td colspan="6"><input type="file" name="img" id="img4"></td>
 					      </tr>
 					      
 					      <tr>
-					         <td align="center">í‚¤ì›Œë“œ</td>
+					         <td align="right">í‚¤ì›Œë“œ</td>
 					         <td colspan="6">
-<<<<<<< HEAD
-					            <input type="text" name="itemKeyword" id="itemKeyword" size="70" placeholder="í‚¤ì›Œë“œ ì…ë ¥">
-=======
-					            <input type="text" name="itemKeyword" id="itemKeyword" size="100" placeholder="Å°¿öµå ÀÔ·Â">
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
+					            <input type="text" name="itemKeyword" id="itemKeyword" size="100" placeholder="í‚¤ì›Œë“œ ì…ë ¥">
 					            <div id="itemKeywordDiv"></div>
 					         </td>
 					      </tr>
 					      <tr>
 					         <td colspan="7" align="center">
-<<<<<<< HEAD
-					            <input type="submit" value="ìƒí’ˆ ë“±ë¡" > 
+					            <input type="button" id="itemboardWriteBtn" value="ìƒí’ˆ ë“±ë¡" > 
 					            <input type="reset" value="ë‹¤ì‹œì‘ì„±">
-=======
-					            <input type="button" id="itemboardWriteBtn" value="»óÇ° µî·Ï" > 
-					            <input type="reset" value="´Ù½ÃÀÛ¼º">
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
 					         </td>
 					      </tr>
 					      
@@ -352,40 +301,21 @@ $('#itemboardWriteBtn').click(function() {
     $('#itemContentDiv').empty();
 
     if ($('#itemCode').val() == 'M') {
-<<<<<<< HEAD
-       $('#itemCodeDiv').text("ìƒí’ˆì½”ë“œë¥¼ ì…ë ¥í•˜ì„¸ìš”.").css('color', 'red').css('font-size', '9pt');
-=======
-    	//$('#itemCodeDiv').text("»óÇ°ÄÚµå¸¦ ÀÔ·ÂÇÏ¼¼¿ä.").css('color', 'red').css('font-size', '9pt');
-		alert("»óÇ° ÄÚµå¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
+    	//$('#itemCodeDiv').text("ìƒí’ˆì½”ë“œë¥¼ ì…ë ¥í•˜ì„¸ìš”.").css('color', 'red').css('font-size', '9pt');
+		alert("ìƒí’ˆ ì½”ë“œë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
     } else if ($('#itemName').val() == '') {
-<<<<<<< HEAD
-       $('#itemNameDiv').text("ìƒí’ˆëª…ì„ ì…ë ¥í•˜ì„¸ìš”.").css('color', 'red').css('font-size', '9pt');
-    } else if ($('#salePrice').val() == '') {
-       $('#salePriceDiv').text("íŒë§¤ë‹¨ê°€ë¥¼ ì…ë ¥í•˜ì„¸ìš”.").css('color', 'red').css('font-size', '9pt');
-    } else if ($('#costPrice').val() == '') {
-       $('#costPriceDiv').text("ìƒí’ˆì›ê°€ë¥¼ ì…ë ¥í•˜ì„¸ìš”.").css('color', 'red').css('font-size', '9pt');
-    } else if ($('#col1').val() == 'ìƒ‰ìƒ1 ì…ë ¥') {
-       $('#col1Div').text("ìƒ‰ìƒì„ ì…ë ¥í•˜ì„¸ìš”.").css('color', 'red').css('font-size', '9pt');
-=======
-    	alert("»óÇ° ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä.");
+    	alert("ìƒí’ˆ ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”.");
     } else if ($('#salePrice').val() == '000') {
-    	alert("ÆÇ¸Å ´Ü°¡¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+    	alert("íŒë§¤ ë‹¨ê°€ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
     } else if ($('#costPrice').val() == '000') {
-    	alert("»óÇ° ¿ø°¡¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+    	alert("ìƒí’ˆ ì›ê°€ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
     } else if ($('#col1').val() == '') {
-    	alert("»ö»ó1À» ÀÔ·ÂÇÏ¼¼¿ä.");
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
+    	alert("ìƒ‰ìƒ1ì„ ì…ë ¥í•˜ì„¸ìš”.");
     } else if ($('#itemContent').val() == '') {
-<<<<<<< HEAD
-       $('#itemContentDiv').text("ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”.").css('color', 'red').css('font-size', '9pt');
-    } else {
-=======
-    	alert("»óÇ° ³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä.");
+    	alert("ìƒí’ˆ ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”.");
     } else if ($('#itemKeyword').val() == '') {
-    	alert("»óÇ° Å°¿öµå¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+    	alert("ìƒí’ˆ í‚¤ì›Œë“œë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
     }else {
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
        $('#itemboardWriteForm').submit();
     }
 });
@@ -406,11 +336,14 @@ $(document).ready(function() {
 									  "<td><img src='../storage/"+items.img1+"' style='cursor: pointer; width:50px; height:50px;'></td>"+
 									  "<td>"+items.costPrice+"</td>"+
 									  "<td>"+items.salePrice+"</td>"+
+									  "<td><button type='button'"+ 
+						  			  "class='btn btn-secondary'"+
+						  			  "'>ìˆ˜ì •</button></td>"+
 									  "<td>"+
 									  "<input type='checkbox' name='deleteCheck'"+
 									  		 "class='deleteCheck-itemboard'"+
-									  		 "value="+items.itemCode+">"+
-									  "<input value='"+items.itemCode+
+									  		 "value="+items.itemcode+">"+
+									  "<input value='"+items.itemcode+
 									  	   "' type='hidden' class='hiddenId' id='modifyHidden"+index+"'>"+
 									  "</td>"+
 									  "</tr>");		
@@ -475,30 +408,11 @@ $('#selectAll-itemboard').click(function(){
 //ì„ íƒëœ ëª©ë¡ ì‚­ì œí•˜ê¸°
 $('#selectedItemboardDeleteBtn').click(function(){
 	
-	var checkArr = [];
-	
-	$('.deleteCheck-itemboard:checked').each(function(i){
-		checkArr.push($(this).val());
-	});
-	
-	if(checkArr.length==0){
-		alert("¼±ÅÃµÈ ¸ñ·ÏÀÌ ¾ø½À´Ï´Ù");
-	}else {
-		var deleteConfirm = confirm("¼±ÅÃÇÏ½Å Á¤º¸´Â »èÁ¦ µË´Ï´Ù.");
-		if(deleteConfirm){
-			
-			$.ajax({
-				type: 'POST',
-				url : '/shoppingmall/manager/deleteItemboard.do' ,
-				data : {
-					chkbox : checkArr
-				},
-				success: function(){
-					alert("»èÁ¦µÇ¾ú½À´Ï´Ù");
-					location.href = "/shoppingmall/manager/managerPage.do";
-				}
-			});	
-		}
-	}
 });
+
+//ìƒˆ ìƒí’ˆ ë“±ë¡ ë²„íŠ¼ ëˆ„ë¥´ë©´ ëª¨ë‹¬ì°½ì´ ë™‡
+$('#newItemAdd').click(function(){
+	$('#itemModal').modal();
+});
+   
 </script>
