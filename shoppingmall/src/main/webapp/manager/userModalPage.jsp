@@ -17,77 +17,70 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text" id="inputGroup-sizing-default">이름</span>
 					</div>
-					<input type="text" id="modal-name" class="form-control">
+					<input type="text" id="modal-name" class="form-control" readonly>
 				</div>
 				<div class="input-group mb-3">
 					<div class="input-group-prepend">
 						<span class="input-group-text" id="inputGroup-sizing-default">아이디</span>
 					</div>
-					<input type="text" class="form-control" value="" readonly>
+					<input type="text" id="modal-id" class="form-control" value="" readonly>
 				</div>
 				<div class="input-group mb-3">
 					<div class="input-group-prepend">
 						<span class="input-group-text" id="inputGroup-sizing-default">이메일</span>
 					</div>
-					<input type="text" class="form-control" value="">
-				</div>
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-						<span class="input-group-text" id="inputGroup-sizing-default">생년월일</span>
-					</div>
-					<input type="text" class="form-control" value="">
+					<input type="text" id="modal-email" class="form-control" value="" readonly>
 				</div>
 				<div class="input-group mb-3">
 					<div class="input-group-prepend">
 						<span class="input-group-text" id="inputGroup-sizing-default">회원 가입일</span>
 					</div>
-					<input type="text" class="form-control" value="" readonly>
+					<input type="text" id="modal-joinday" class="form-control" value="" readonly>
 				</div>
 				<div class="input-group mb-3">
 					<div class="input-group-prepend">
 						<span class="input-group-text" id="inputGroup-sizing-default">연락처</span>
 					</div>
-					<input type="text" class="form-control" value="">
+					<input type="text" id="modal-tel" class="form-control" value="" readonly>
 				</div>
 				<div class="input-group mb-3">
 					<div class="input-group-prepend">
 						<span class="input-group-text" id="inputGroup-sizing-default">우편 번호</span>
-						<button class="btn btn-secondary" type="button" id="button-addon1">우편 번호 검색</button>
 					</div>
-					<input type="text" class="form-control" value="">
+					<input type="text" id="modal-zipcode" class="form-control" value="" readonly>
 				</div>
 				<div class="input-group mb-3">
 					<div class="input-group-prepend">
 						<span class="input-group-text" id="inputGroup-sizing-default">집주소</span>
 					</div>
-					<input type="text" class="form-control" value="">
+					<input type="text" id="modal-addr1" class="form-control" value="" readonly>
 				</div>
 				<div class="input-group mb-3">
 					<div class="input-group-prepend">
 						<span class="input-group-text" id="inputGroup-sizing-default">상세주소</span>
 					</div>
-					<input type="text" class="form-control" value="">
+					<input type="text" id="modal-addr2" class="form-control" value="" readonly>
 				</div>
 				<div class="input-group mb-3">
 					<div class="input-group-prepend">
 						<span class="input-group-text" id="inputGroup-sizing-default">보유 포인트</span>
 					</div>
-					<input type="text" class="form-control" value="">
+					<input type="text" id="modal-point" class="form-control" value="">
 				</div>
 				<div class="input-group mb-3">
 					<div class="input-group-prepend">
 						<span class="input-group-text" id="inputGroup-sizing-default">보유 캐쉬</span>
 					</div>
-					<input type="text" class="form-control" value="">
+					<input type="text" id="modal-cash" class="form-control" value="">
 				</div>
 				<div class="input-group mb-3">
 					<div class="input-group-prepend">
 						<span class="input-group-text" id="inputGroup-sizing-default">총 구매 금액</span>
 					</div>
-					<input type="text" class="form-control" value="" readonly>
+					<input type="text" id="modal-totalPay" class="form-control" value="" readonly>
 				</div>
 				<div class="input-group">
-					<input type="text" class="form-control" value="General" id="gradeArea">
+					<input type="text" class="form-control gradeArea" id="modal-grade">
 					<div class="input-group-append">
 						<button class="btn btn-outline-secondary dropdown-toggle"
 							type="button" data-toggle="dropdown">회원 등급</button>
@@ -101,7 +94,6 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-				<button type="button" class="btn btn-primary">저장하기</button>
 			</div>
 		</div>
 	</div>
@@ -126,16 +118,5 @@
 	});
 	//------------------------------------------------------------
 	
-	$(document).on("click",".modifyBtn-managerPage", function(){
-		$.ajax({
-			type : 'post',
-			url: '/shoppingmall/manager/getUserInfo.do',
-			data : 'id='+$('.modifyBtn0').val(),
-			dataType : 'text',
-			success : function(){
-				alert("test success");
-			}
-		});
-		
-	}); 
+
 </script>

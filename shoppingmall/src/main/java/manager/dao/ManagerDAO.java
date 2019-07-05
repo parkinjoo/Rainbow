@@ -19,4 +19,6 @@ public interface ManagerDAO {
 
 	public void deleteItemboard(String itemcode);
 
+	public UserDTO getUserInfo(String id);
+
 }

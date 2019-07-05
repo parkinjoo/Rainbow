@@ -39,7 +39,7 @@ public class ManagerController {
 		model.addAttribute("title", "관리자 페이지");
 		model.addAttribute("managerUserDisplay", "/manager/userManagement.jsp");
 		model.addAttribute("managerItemDisplay", "/manager/itemManagement.jsp");
-		model.addAttribute("modalPageDisplay", "/manager/modalPage.jsp");
+		model.addAttribute("userModalPageDisplay", "/manager/userModalPage.jsp");
 		model.addAttribute("display", "/manager/managerPage.jsp");
 		return "/main/index";
 	}
@@ -53,10 +53,13 @@ public class ManagerController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/getUserInfo.do")
-	@ResponseBody
-	public void getUserInfo(@RequestParam String id) {
-		System.out.println(id);
+	@RequestMapping(value= "/getUserInfo.do")
+	public ModelAndView getUserInfo(@RequestParam String id) {
+		UserDTO userDTO = managerDAO.getUserInfo(id);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("userDTO", userDTO);
+		mav.setViewName("jsonView");
+		return mav;
 	}
 
 	
