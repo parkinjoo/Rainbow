@@ -103,18 +103,18 @@
 <script>
 	//회원 등급 조정 기능 (--> modal popup 모음 페이지로 이동)
 	$('#general-grade').click(function(){
-		$('#gradeArea').empty();
-		$('#gradeArea').val('General');
+		$('.gradeArea').empty();
+		$('.gradeArea').val('general');
 	});
 	
 	$('#vip-grade').click(function(){
-		$('#gradeArea').empty();
-		$('#gradeArea').val('VIP');
+		$('.gradeArea').empty();
+		$('.gradeArea').val('VIP');
 	});
 	
 	$('#vvip-grade').click(function(){
-		$('#gradeArea').empty();
-		$('#gradeArea').val('VVIP');
+		$('.gradeArea').empty();
+		$('.gradeArea').val('VVIP');
 	});
 	//------------------------------------------------------------
 	
