@@ -1,18 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>아이템 페이지</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/index-style.css">
-    <link rel="stylesheet" href="../css/itemPage-style.css">
 
-  </head>
-  <body>
   <div id="item-box-itemPage">
     <div class="left-box-itemPage" style="background-image:url('../storage/${itemboardDTO.img1}')">
      
@@ -219,16 +208,9 @@
      <img src="../storage/${itemboardDTO.img4 }">
   
   </div>
-
-
-  </body>
+  
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script>
-
-
 $('.nav-area-index').on('click', function(){
   $($('.nav-item').children('ul')).slideDown();
 });
@@ -236,9 +218,6 @@ $('.nav-area-index').on('mouseleave', function(){
   $($('.nav-item').children('ul')).slideUp();
 });
 
-
-</script>
-<script type="text/javascript">
 $(document).ready(function(){
    $('#itemCodeDiv').hide();
    $.ajax({
@@ -513,23 +492,4 @@ $('.cartImg-itemPage').click(function(){
    }
 });
 </script>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -199,6 +199,7 @@ public class ItemboardController {
 	public String itemboardView(@RequestParam String categoryCode, @RequestParam String itemCode, @RequestParam String pg, Model model) {
 		
 		ItemboardDTO itemboardDTO = itemboardDAO.getItemboardView(itemCode);
+		System.out.println(itemboardDTO);
 		model.addAttribute("itemboardDTO",itemboardDTO);
 		model.addAttribute("categoryCode", categoryCode);
 		model.addAttribute("itemCode", itemCode);
