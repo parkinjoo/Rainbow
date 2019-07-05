@@ -245,7 +245,7 @@ public class ItemboardController {
 	@RequestMapping(value="/itemBasket.do", method=RequestMethod.POST)
 	@ResponseBody
 	public void itemBasket(@ModelAttribute ItemBasketDTO itemBasketDTO, Model model) {
-		
+		/*
 		System.out.println("itemCode="+itemBasketDTO.getItemCode());
 		System.out.println("itemName =" + itemBasketDTO.getItemName());
 	    
@@ -255,8 +255,10 @@ public class ItemboardController {
 	    System.out.println("itemRegistday =" + itemBasketDTO.getRegistday());
 	    System.out.println("Id =" + itemBasketDTO.getId());
 	    System.out.println("stus= "+ itemBasketDTO.getStus());
+	    */
 	    itemboardDAO.itemBasket(itemBasketDTO);
 	}    
+	
 	@RequestMapping(value="/basketFlush.do", method=RequestMethod.POST)
 	@ResponseBody
 	public void basketFlush(@RequestParam String id) {
