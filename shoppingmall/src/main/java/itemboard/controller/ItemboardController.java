@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -117,10 +118,18 @@ public class ItemboardController {
 		return "/main/index";
 	}
 	
+	@RequestMapping(value="/itemBasketList.do", method=RequestMethod.GET)
+	public String itemBasketList(@RequestParam(required=false, defaultValue="1") String pg, @RequestParam(required=false, defaultValue="") String categoryCode, Model model) {
+		model.addAttribute("pg", pg);
+		model.addAttribute("categoryCode", categoryCode);
+		model.addAttribute("display", "/itemboard/itemBasketList.jsp");
+		return "/main/index";
+	}
+	
 	@RequestMapping(value="/getItemboardList.do", method=RequestMethod.POST)
 	public ModelAndView getItemboardList(@RequestParam(required=false, defaultValue="1") String pg, @RequestParam(required=false, defaultValue="") String categoryCode) {
 //		System.out.println("categoryCode = " + categoryCode);
-		//DB - 1페이지당 3개씩
+		//DB - 1�럹�씠吏��떦 3媛쒖뵫
 		int endNum = Integer.parseInt(pg)*4;
 		int startNum = endNum-3;
 		
@@ -131,7 +140,7 @@ public class ItemboardController {
 	
 		List<ItemboardDTO> list = itemboardDAO.getItemboardList(map);
 		
-		//페이징처리
+		//�럹�씠吏뺤쿂由�
 		int totalA = itemboardDAO.getTotalA(map);
 		itemboardPaging.setCurrentPage(Integer.parseInt(pg));
 		itemboardPaging.setPageBlock(3);
@@ -152,6 +161,7 @@ public class ItemboardController {
 	public ModelAndView getItembasketList(@RequestParam(required=false, defaultValue="") String itemCode,
 										  @RequestParam(required=false, defaultValue="1") String pg,
 										  @RequestParam(required=false, defaultValue="") String categoryCode,
+										  String id,
 										  Model model) {
 		
 		int endNum = Integer.parseInt(pg)*4;
@@ -162,10 +172,11 @@ public class ItemboardController {
 		map.put("endNum", endNum);
 		map.put("categoryCode", categoryCode);
 		map.put("itemCode", itemCode);
+		map.put("id", id);
 		
 		List<ItemBasketListDTO> list = itemboardDAO.getItembasketList(map);
 		
-		//����¡ó��
+		//占쏙옙占쏙옙징처占쏙옙
 		int totalA = itemboardDAO.getTotalA(map);
 		itemboardPaging.setCurrentPage(Integer.parseInt(pg));
 		itemboardPaging.setPageBlock(3);
@@ -230,14 +241,36 @@ public class ItemboardController {
 		 
 	}
 	
-	//장바구니
+	//�옣諛붽뎄�땲
 	@RequestMapping(value="/itemBasket.do", method=RequestMethod.POST)
-	public String itemBasket(@ModelAttribute ItemBasketDTO itemBasketDTO, Model model,HttpSession session) {
-		UserDTO userDTO = (UserDTO) session.getAttribute("userDTO");
-		itemBasketDTO.setId(userDTO.getId());
-		itemboardDAO.itemBasket(itemBasketDTO);
+	@ResponseBody
+	public void itemBasket(@ModelAttribute ItemBasketDTO itemBasketDTO, Model model) {
 		
-		model.addAttribute("display", "/itemboard/itemBasket.jsp");
-		return "/main/index";
+		System.out.println("itemCode="+itemBasketDTO.getItemCode());
+		System.out.println("itemName =" + itemBasketDTO.getItemName());
+	    
+	    System.out.println("itemCol =" + itemBasketDTO.getItemCol());
+	    System.out.println("itemQty =" + itemBasketDTO.getItemQty());
+	    System.out.println("itemSize="+itemBasketDTO.getItemSize());
+	    System.out.println("itemRegistday =" + itemBasketDTO.getRegistday());
+	    System.out.println("Id =" + itemBasketDTO.getId());
+	    System.out.println("stus= "+ itemBasketDTO.getStus());
+	    itemboardDAO.itemBasket(itemBasketDTO);
+	}    
+	@RequestMapping(value="/basketFlush.do", method=RequestMethod.POST)
+	@ResponseBody
+	public void basketFlush(@RequestParam String id) {
+		
+		
+		itemboardDAO.basketFlush(id);
+		
 	}
+	
+	@RequestMapping(value="/basketDelete.do", method=RequestMethod.POST)
+    @ResponseBody
+    public void basketDelete(@RequestParam(value="chkbox[]") List<String> itemCode) {
+    	for(int i=0; i<itemCode.size(); i++) {
+    		itemboardDAO.basketDelete(itemCode.get(i));
+    	}
+    }
 }

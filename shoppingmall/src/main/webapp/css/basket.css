@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+.listDiv-basketPage{
+	width: 85%; 
+	margin: 0 auto;
+	
+}
+
+.btn-order-ctrl { margin:40px 0 50px; text-align: center }
+.btn-order-ctrl a { width:178px; height:58px; font-size:16px; line-height:58px }
+
+.CSSbuttonBlack { display:inline-block; color:#fff; text-align:center; border:1px solid #231f20; background: #231f20; -webkit-transition:all 0.3s ease; transition:all 0.3s ease }
+.CSSbuttonBlack:hover { color:#231f20; background:#fff }
+.CSSbuttonBlack:active { position:relative; top:1px }
+
+.CSSbuttonWhite { display:inline-block;  color:#231f20; text-align:center;  border:1px solid #231f20; background:#fff; -webkit-transition:all 0.3s ease; transition:all 0.3s ease }
+.CSSbuttonWhite:hover { color:#fff; background:#231f20 }
+.CSSbuttonWhite:active { position: relative; top: 1px }
