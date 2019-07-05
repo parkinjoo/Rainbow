@@ -408,6 +408,31 @@ $('#selectAll-itemboard').click(function(){
 //선택된 목록 삭제하기
 $('#selectedItemboardDeleteBtn').click(function(){
 	
+	var checkArr = [];
+	
+	$('.deleteCheck-itemboard:checked').each(function(i){
+		checkArr.push($(this).val());
+	});
+	
+	if(checkArr.length==0){
+		alert("선택된 항목 없음");
+	}else {
+		var deleteConfirm = confirm("선택된 목록을 삭제합니다.");
+		if(deleteConfirm){
+			
+			$.ajax({
+				type: 'POST',
+				url : '/shoppingmall/manager/deleteItemboard.do' ,
+				data : {
+					chkbox : checkArr
+				},
+				success: function(){
+					alert("삭제완료.");
+					location.href = "/shoppingmall/manager/managerPage.do";
+				}
+			});	
+		}
+	}
 });
 
 //새 상품 등록 버튼 누르면 모달창이 뙇
