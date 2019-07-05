@@ -155,6 +155,7 @@ body {
 }
 
 .reserveItem-index {
+  margin-bottom:10px;
   float: right;
 }
 
@@ -210,9 +211,17 @@ body {
 }
 
 .newImg {
-	display:inline-block;
-	margin:0 195px 0 0;
+  display:inline-block;
+  margin:0 195px 0 0;
 }
+
+.cartImg {
+  float: right;
+  cursor: pointer;
+  display:inline-block;
+  margin-bottom: 0px;
+}
+
 
 /* index-style */
 

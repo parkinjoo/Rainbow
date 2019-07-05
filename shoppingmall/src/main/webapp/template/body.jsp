@@ -92,8 +92,8 @@ $(document).ready(function(){
 									  "<h5 class='card-title-index'>"+items.itemCode+"</h5>"+
 									  "<p class='card-text card-text-index'>"+items.itemName+"</p>"+
 									  "<p class='card-text card-text-index'>"+items.salePrice+"</p>"+
-									  "<p class='card-text card-text-index'>"+items.itemContent+"</p>"+
-									  "<a class='reserveItem-index' href='#'><img src='../images/cart_image.png' class='cartImg'></a>"+						
+									  "<p class='card-text card-text-index'>"+items.itemContent+
+									  "<img src='../images/cart_image.png' class='cartImg'></p>"+						
 									  "</div>"+
 									  "</div>");
 				
@@ -118,8 +118,8 @@ $(document).ready(function(){
 							  "<h5 class='card-title-index'>"+items.itemCode+"</h5>"+
 							  "<p class='card-text card-text-index'>"+items.itemName+"</p>"+
 							  "<p class='card-text card-text-index'>"+items.salePrice+"</p>"+
-							  "<p class='card-text card-text-index'>"+items.itemContent+"</p>"+
-							  "<a class='reserveItem-index' href='#'><img src='../storage/new_icon.gif' class='newImg'><img src='../images/cart_image.png' class='cartImg'></a>"+						
+							  "<p class='card-text card-text-index'>"+items.itemContent+"</p><img src='../storage/new_icon.gif' class='newImg'>"+
+							  "<img src='../images/cart_image.png' class='cartImg'>"+						
 							  "</div>"+
 							  "</div>");	
 				}else {
@@ -129,8 +129,8 @@ $(document).ready(function(){
 							  "<h5 class='card-title-index'>"+items.itemCode+"</h5>"+
 							  "<p class='card-text card-text-index'>"+items.itemName+"</p>"+
 							  "<p class='card-text card-text-index'>"+items.salePrice+"</p>"+
-							  "<p class='card-text card-text-index'>"+items.itemContent+"</p>"+
-							  "<a class='reserveItem-index' href='#'><img src='../storage/new_icon.gif' class='newImg'><img src='../images/cart_image.png' class='cartImg'></a>"+						
+							  "<p class='card-text card-text-index'>"+items.itemContent+"</p><img src='../storage/new_icon.gif' class='newImg'>"+
+							  "<img src='../images/cart_image.png' class='cartImg'>"+						
 							  "</div>"+
 							  "</div>");
 				}
