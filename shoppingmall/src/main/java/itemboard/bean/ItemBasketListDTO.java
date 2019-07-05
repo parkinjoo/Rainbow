@@ -9,8 +9,10 @@ import lombok.Data;
 public class ItemBasketListDTO {
 	private String itemCode;
 	private String itemName;
-	private int itemPrice;
+	private int salePrice;
 	private String itemCol;
 	private int itemQty;
 	private String img1;
+	private String id;
+	private String itemSize;
 }

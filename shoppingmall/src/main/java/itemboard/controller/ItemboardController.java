@@ -259,6 +259,7 @@ public class ItemboardController {
 	    itemboardDAO.itemBasket(itemBasketDTO);
 	}    
 	
+
 	@RequestMapping(value="/basketFlush.do", method=RequestMethod.POST)
 	@ResponseBody
 	public void basketFlush(@RequestParam String id) {
