@@ -22,19 +22,19 @@ public class ItemboardPaging {
 		if(endPage > totalPage) endPage = totalPage;
 		
 		if(startPage>pageBlock) {
-			pagingHTML.append("[<span id='paging' onclick='itemboardPaging("+(startPage-1)+")'>ÀÌÀü</span>]");
+			pagingHTML.append("<li class='page-item'><span class='page-link' aria-hidden='true' onclick='itemboardPaging("+(startPage-1)+")'>ì´ì „</span></li>");
 		}//if
 		
 		for(int i=startPage; i<=endPage; i++) {
 			if(i==currentPage) {
-				pagingHTML.append("[<span id='currentPaging' onclick='itemboardPaging("+i+")'>"+i+"</span>]");
+				pagingHTML.append("<li class='page-item'><span class='page-link' id='currentPaging' onclick='itemboardPaging("+i+")'>"+i+"</span></li>");
 			} else {
-				pagingHTML.append("[<span id='paging' onclick='itemboardPaging("+i+")'>"+i+"</span>]");
+				pagingHTML.append("<li class='page-item'><span class='page-link' onclick='itemboardPaging("+i+")'>"+i+"</span></li>");
 			}
 		}//for
 		
 		if(endPage<totalPage) {
-			pagingHTML.append("[<span id='paging' onclick='itemboardPaging("+(endPage+1)+")'>´ÙÀ½</span>]");
+			pagingHTML.append("<li class='page-item'><span class='page-link' aria-hidden='true' onclick='itemboardPaging("+(endPage+1)+")'>ë‹¤ìŒ</span></li>");
 		}//if
 	}
 }

@@ -28,6 +28,11 @@ public class ManagerController {
 	//매니저컨트롤러는 반드시 managerDAO 만 사용 userDAO 삭제
 	@Autowired
 	private ManagerDAO managerDAO;
+	
+	@RequestMapping(value="/managerPageForm.do")
+	public String managerPageForm() {
+		return "/manager/managerPageForm";
+	}
 
 	@RequestMapping(value = "/managerPage.do", method = RequestMethod.GET)
 	public String writeForm(Model model) {
@@ -153,6 +158,7 @@ public class ManagerController {
 		mav.setViewName("jsonView");
 		return mav;
     }
+    
     @RequestMapping(value="getIndexBodyList.do", method=RequestMethod.POST)
     public ModelAndView getIndexBodyList() {
 		ModelAndView mav = new ModelAndView();
@@ -160,6 +166,14 @@ public class ManagerController {
 		mav.addObject("list", list);
 		mav.setViewName("jsonView");
 		return mav;
+    }
+    
+    @RequestMapping(value="/deleteItemboard.do", method=RequestMethod.POST)
+    @ResponseBody
+    public void deleteItemboard(@RequestParam(value="chkbox[]") List<String> itemcode) {
+    	for(int i=0; i<itemcode.size(); i++) {
+    		managerDAO.deleteItemboard(itemcode.get(i));
+    	}
     }
 
 }

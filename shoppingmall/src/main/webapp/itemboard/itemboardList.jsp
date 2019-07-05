@@ -5,12 +5,20 @@
 
 <link rel="stylesheet" href="../css/board.css">
 
-<form name="itemboardListForm" method="" action="/shoppingmall/itemboard/itemboardDelete.do">
-<table border="1" id="itemboardTable" frame="hsides" rules="rows" align="center">
-</table>
+<form name="itemboardListForm">
 
-<div style="width: 650px; float: left; text-align: center;">${itemboardPaging.pagingHTML }</div>
-<div id="itemboardPagingDiv" style="width: 100%; float: left; text-align: center;"></div>
+<!-- test -->
+<!-- 카드 영역 -->
+<div class="cardDiv-index">
+<!-- <h2 class="cardDiv-title">반팔 티셔츠</h2>	 -->  
+</div>
+
+			<!-- 이 부분에 페이징 처리 -->
+			<nav aria-label="Page navigation example">
+				<ul id="itemboardPagingDiv" class="pagination justify-content-center">
+				</ul>
+			</nav>
+			<!-- 페이징 -->
 </form>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -29,23 +37,26 @@ $(document).ready(function(){
 				 'categoryCode': '${categoryCode}'},
 		dataType : 'json',
 		success : function(data){
-			$.each(data.list, function(index, items){
-				$('<td/>').append($('<td/>',{
-					align: 'center',
-					text : items.itemCode
-					})).append($('<td/>',{
-					align: 'center'
-					}).append($('<img/>',{
-						src: '../storage/'+items.img1,
-						style: 'cursor:pointer; width: 360px; height: 500px;',
-						class: items.itemCode
-				}))).appendTo($('#itemboardTable'));
+			
+			$.each(data.list, function(index,items){
+				$('.cardDiv-index').append("<div class='card card-index' style='width:18rem;'>"+
+											"<img class='card-img-top "+items.itemCode+"' src='../storage/"+items.img1+"'>"+
+											"<div class='card-body'>"+
+											"<h5 class='card-title-index'>"+items.itemName+"(상품 이름 나오게)</h5>"+
+											"<p class='card-text cart-text-index'>상품에 대한 설명(약 2줄 db에 추가해야할듯)<br>S~XL(28~34)</p>"+
+											"<p class='card-text-index price-index'>"+items.salePrice+"(가격)</p>"+
+											"<a class='reserveItem-index' href='#'>"+
+											"<img src='../images/cart_image.png' class='cardImg'>"+
+											"</a>"+
+											"</div>"+
+											"</div>"
+						);	
 				
-				//이미지보기
+ 				//이미지보기
 				$('.'+items.itemCode).css('cursor', 'pointer');
 				$('.'+items.itemCode).click(function(){
 					location.href='/shoppingmall/itemboard/itemboardView.do?itemCode='+items.itemCode+'&categoryCode=${categoryCode}&pg=${pg}';     
-				});
+				}); 
 			});
 			
 			$('#itemboardPagingDiv').html(data.itemboardPaging.pagingHTML);

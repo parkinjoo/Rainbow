@@ -55,7 +55,8 @@
 	
 	<!-- 탈퇴한 회원목록 -->
 	<insert id="userOuted" parameterType="String">
-		insert into recovery_table(usercode,name,id,pwd,email,totalpay,point,grade,cash) select * from user_table where id=#{id}
+		insert into recovery_table(usercode,name,id,pwd,tel,email,zipcode,addr1,addr2,
+									totalpay,point,grade,cash,joinday) select * from user_table where id=#{id}
 	</insert>
 	
 	<!-- 탈퇴한 회원 탈퇴이유 -->
@@ -67,4 +68,5 @@
 	<delete id="userOut" parameterType ="String">
 		delete user_table where id=#{id}
 	</delete>
+	
 </mapper>

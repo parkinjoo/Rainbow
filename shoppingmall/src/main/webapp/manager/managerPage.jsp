@@ -31,6 +31,16 @@
 			<jsp:include page="${modalPageDisplay }"/>
 		<!-- modalPage.jsp Include Area  -->
 		
-
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>		
+<script>
+$(document).ready(function(){
+	var managerPageOk = '${managerPageOk}';
+	if (managerPageOk=='') {
+		location.href="/shoppingmall/manager/managerPageForm.do";
+	}else {
+		return false;
+	}
+});
+</script>
 
 

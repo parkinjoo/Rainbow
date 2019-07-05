@@ -8,8 +8,8 @@
     <p class="login-text-loginform">가입하신 아이디와 비밀번호를 입력해주세요.<br>
       비밀번호는 대소문자를 구분합니다.</p>
       <form name="joinForm" id="joinForm">
-        <input class="inputText-loginform" type="text" name="id" id="id" placeholder="MEMBER ID" />
-        <input class="inputText-loginform" type="password" name="pwd" id="pwd" placeholder="PASSWORD" />
+        <input class="inputText-loginform" type="text" name="id" id="id" onkeyup="enterkey();" placeholder="MEMBER ID" />
+        <input class="inputText-loginform" type="password" name="pwd" id="pwd" onkeyup="enterkey();" placeholder="PASSWORD" />
         <input type="button" value="로그인" class="loginBtn-loginform"/>
       </form>
     </div>
@@ -69,4 +69,30 @@ $('.joinBtn-loginform').click(function(){
 $('.searchBtn').click(function(){
 	location.href='/shoppingmall/user/findForm.do';
 })
+
+function enterkey() {
+    if (window.event.keyCode == 13) {
+    
+         // 엔터키가 눌렸을 때 실행할 내용
+    	if($('#id').val()=='')
+    		alert("아이디를 입력해주세요")
+    	else if($('#pwd').val()=='')
+    		alert("비밀번호를 입력해주세요")
+    	else
+    		$.ajax({
+    			type : 'POST',
+    			url : '/shoppingmall/user/login.do',
+    			data : {"id":$('#id').val(),
+    					"pwd":$('#pwd').val()},
+    			dataType : 'text',
+    			success : function(data){
+    				if(data=='loginFail'){
+    					alert("아이디또는 비밀번호를 확인해주세요");
+    				}else if(data=='loginOk'){
+    					location.href='/shoppingmall/main/index.do';
+    				}
+    			}
+    		});
+    }
+}
  </script>

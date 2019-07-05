@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +26,7 @@ import itemboard.bean.ItemBasketListDTO;
 import itemboard.bean.ItemboardDTO;
 import itemboard.bean.ItemboardPaging;
 import itemboard.dao.ItemboardDAO;
+import user.bean.UserDTO;
 
 @Controller
 @RequestMapping(value="/itemboard")
@@ -38,7 +41,8 @@ public class ItemboardController {
 	public String itemboardWrite(@ModelAttribute ItemboardDTO itemboardDTO,
 								  @RequestParam MultipartFile[] img,
 								  Model model) {
-		String filePath = "C:\\Users\\gslee\\Documents\\itbank\\Spring\\project\\springproject\\src\\main\\webapp\\storage";
+		//filePath 이 부분 통힐하기 전까지 각자 설정하셔야 해요
+		String filePath = "C:\\Spring\\project\\shoppingmall\\src\\main\\webapp\\storage";
 		String fileName;
 		File file;
 		
@@ -251,11 +255,8 @@ public class ItemboardController {
 	    System.out.println("itemRegistday =" + itemBasketDTO.getRegistday());
 	    System.out.println("Id =" + itemBasketDTO.getId());
 	    System.out.println("stus= "+ itemBasketDTO.getStus());
-		itemboardDAO.itemBasket(itemBasketDTO);
-		
-		
-		
-	}
+	    itemboardDAO.itemBasket(itemBasketDTO);
+	}    
 	@RequestMapping(value="/basketFlush.do", method=RequestMethod.POST)
 	@ResponseBody
 	public void basketFlush(@RequestParam String id) {
