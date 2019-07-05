@@ -70,10 +70,10 @@
         <button type="button" class="accountBtn-itemPage plus">+</button>
         <button type="button" class="accountBtn-itemPage minus">-</button>
 
-        <p class="price-itemPage"></p>  -->
+        <p class="price-ietemPage"></p>  -->
       </div>
       <hr>
-      <p class="totalPric-itemPage"><span class="totalPriceText-itemPage"></span> &nbsp;&nbsp;&nbsp;</p>
+      <p class="totalPrice-itemPage"><span class="totalPriceText-itemPage"></span> &nbsp;&nbsp;&nbsp;</p>
       <hr>
       <div class="btnDiv-itemPage">
         <button type="button" class="purchaseBtn-itemPage">BUY NOW</button>
@@ -240,7 +240,6 @@ $('.nav-area-index').on('mouseleave', function(){
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
-   $('#itemCodeDiv').hide();
    $.ajax({
       type: 'post',
       url: '/shoppingmall/itemboard/getItemboardView.do',
@@ -450,6 +449,7 @@ $('#size_option').change(function(){
           text : salePrice
        }).appendTo($('.middleDiv2'));
        optionCnt++;
+       sumPrice = sumPrice + salePrice;
       
    }
 });
@@ -462,7 +462,8 @@ $(document).on('click','.plus',function(){
    qty++;          
    $('#itemAccount-itemPage'+num).val(qty);
    $('#price-itemPage'+num).text(qty * salePrice);
-   sumPrice = sumPrice+(qty * salePrice);
+   sumPrice = sumPrice+salePrice;
+   $('.totalPriceText-itemPage').text(sumPrice);
 });
 
 //감소
@@ -474,8 +475,10 @@ $(document).on('click','.minus',function(){
       qty--;   
       $('#itemAccount-itemPage'+num).val(qty);
       $('#price-itemPage'+num).text(qty * salePrice);
+      sumPrice = sumPrice-salePrice;
    }             
    $('#itemAccount-itemPage'+num).val(qty);
+   $('.totalPriceText-itemPage').text(sumPrice);
    
 });
 
