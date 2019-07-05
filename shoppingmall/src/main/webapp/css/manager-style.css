@@ -37,4 +37,12 @@
 	background-color: #e8e8e8;
 }
 
+.searchBtn-managerPage {
+	display: inline-block;
+	width: 400px;
+}
+.addItemBtn-managerPage {
+	float: right;
+}
+
 

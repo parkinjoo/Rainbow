@@ -19,6 +19,12 @@
 		<!--사용자 목록 세부-->
 		<div class="tab-pane fade show active listDiv-managerPage"
 			id="pills-home">
+			<div class="searchDiv">
+				<form class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2" type="search" placeholder="Search">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				</form>
+			</div>
 			<div class="deleteBtnDiv-managerPage">
 				<input type="button" class="deleteBtn-managerPage" name="deleteBtn"
 					value="선택 목록 삭제" id="selectedItemDeleteBtn">
@@ -87,20 +93,56 @@ $(document).ready(function(){
 									  "<td>"+items.email+"</td>"+
 									  "<td><button type='button'"+ 
 									  			  "class='btn btn-secondary modifyBtn-managerPage'"+
-									  			  "name=id"+
-									  			  "value='jinsol'"+
-									  			  "id='modifyBtn"+index+
 									  			  "'>수정</button></td>"+
 									  "<td>"+
 									  "<input type='checkbox' name='deleteCheck'"+
 									  		 "class='deleteCheck-managerPage'"+
 									  		 "value="+items.id+">"+
 									  "<input value='"+items.id+
-									  	   "' type='hidden' class='hiddenId' id='modifyHidden"+index+"'>"+
+									  	   "' type='hidden' class='hiddenId'>"+
 									  "</td>"+
-									  "</tr>");		
+									  "</tr>");
+				
+				$('.modifyBtn-managerPage').each(function(index, item){
+					$(item).addClass('modifyArr_'+index);
+				});
+				
+				$('.hiddenId').each(function(index, item){
+					$(item).addClass('hiddenArr_'+index);
+				});
 				
 			});//each;
+			
+			$('.modifyBtn-managerPage').each(function(index, item){
+				$(item).click(function(){
+					
+					$.ajax({
+						type : 'post',
+						url: '/shoppingmall/manager/getUserInfo.do',
+						data : 'id='+$('.hiddenArr_'+index).val(),
+						dataType : 'json',
+						success : function(data){
+							//alert(data.userDTO.id);
+							$('#modal-name').val(data.userDTO.name);
+							$('#modal-id').val(data.userDTO.id);
+							$('#modal-email').val(data.userDTO.email);
+							$('#modal-joinday').val(data.userDTO.joinday);
+							$('#modal-tel').val(data.userDTO.tel);
+							$('#modal-zipcode').val(data.userDTO.zipcode);
+							$('#modal-addr1').val(data.userDTO.addr1);
+							$('#modal-addr2').val(data.userDTO.addr2);
+							$('#modal-point').val(data.userDTO.point);
+							$('#modal-cash').val(data.userDTO.cash);
+							$('#modal-totalPay').val(data.userDTO.totalPay);
+							$('#modal-grade').val(data.userDTO.grade);
+							$('#userModal').modal();
+							
+						}
+					});
+					//$('#modal-name').val($('.hiddenArr_'+index).val());
+					//$('#userModal').modal()
+				});
+			});
 		}
 	});
 	//---------------------------------------------------	

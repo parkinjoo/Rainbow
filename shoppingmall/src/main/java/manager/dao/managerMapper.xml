@@ -13,6 +13,11 @@
 		delete from user_table where id = #{id}
 	</delete>
 	
+	<!-- 모달창으로 회원 상세 정보 불러오기 -->
+	<select id="getUserInfo" parameterType="String" resultType="user">
+		select * from user_table where id = #{id}
+	</select>
+	
 	<!-- 물품 등록 -->
    	<insert id="itemboardWrite" parameterType="itemboard">
 	   begin

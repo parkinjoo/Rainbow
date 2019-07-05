@@ -16,6 +16,13 @@
 	<!-- 구분선 -->
 	
 			<div class="tab-pane fade show active listDiv-managerPage" id="pills-home-insert-data">
+				<div class="searchDiv">
+					<form class="form-inline my-2 my-lg-0 searchBtn-managerPage">
+						<input class="form-control mr-sm-2" type="search" placeholder="Search">
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					</form>
+					<button type="button" id="newItemAdd" class="btn btn-secondary addItemBtn-managerPage">새 상품 등록</button>
+				</div>
 				<div class="deleteBtnDiv-managerPage">
 					<input type="button" class="deleteBtn-managerPage" name="deleteBtn"
 						value="선택 목록 삭제" id="selectedItemboardDeleteBtn">
@@ -29,6 +36,7 @@
 							<th scope="col">이미지</th>
 							<th scope="col">상품원가</th>
 							<th scope="col">판매단가</th>
+							<th scope="col"></th>
 							<th scope="col"><input type="checkbox" id="selectAll-itemboard">
 							</th>
 						</tr>
@@ -43,80 +51,47 @@
 				<form id="itemboardWriteForm" method="post" enctype="multipart/form-data" action="/shoppingmall/manager/itemboardWrite.do">
 					<table class="table table-hover" >
 					      <tr>
-<<<<<<< HEAD
-					         <td align="center">상품코드</td>
+					         <td width="300px" align="right">상품코드</td>
 					         <td colspan="6">
-=======
-					         <td width="350px" align="center">��ǰ�ڵ�</td>
-					         <td width="360px" colspan="6">
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
 					            <input type="text" name="itemCode" id="itemCode" value="M">
 					            <div id="itemCodeDiv"></div>
 					         </td>
 					      <tr>
 					      <tr>
-					         <td align="center">상품명</td>
+					         <td align="right">상품명</td>
 					         <td colspan="6">
-<<<<<<< HEAD
-					            <input type="text" name="itemName" id="itemName" size="70" placeholder="상품명 입력">
-=======
-					            <input type="text" name="itemName" id="itemName" size="100" placeholder="��ǰ�� �Է�">
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
+					            <input type="text" name="itemName" id="itemName" size="100" placeholder="상품명 입력">
 					            <div id="itemNameDiv"></div>
 					         </td>
 					      </tr>
 					
 					      <tr>
-					         <td align="center">판매 단가</td>
+					         <td align="right">판매 단가</td>
 					         <td colspan="2">
-<<<<<<< HEAD
-					            <input type="text" name="salePrice" id="salePrice" placeholder="판매 단가 입력">
-=======
-					            <input type="number" min="0" step="1000" style="text-align:right;" name="salePrice" id="salePrice" value="000" placeholder="�Ǹ� �ܰ� �Է�">
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
+					            <input type="number" min="0" step="1000" style="text-align:right;" name="salePrice" id="salePrice" value="000" placeholder="판매 단가 입력">
 					            <div id="salePriceDiv"></div>
 					         </td>
 					         
-<<<<<<< HEAD
-					         <td colspan="2" align="center">상품 원가</td>
-					         <td colspan="2">
-					            <input type="text" name="costPrice" id="costPrice" placeholder="상품 원가 입력">
-=======
-					         <td align="center">��ǰ ����</td>
+					         <td align="right">상품 원가</td>
 					         <td colspan="3">
-					            <input type="number" min="0" step="1000" style="text-align:right;" name="costPrice" id="costPrice" value="000" placeholder="��ǰ ���� �Է�">
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
+					            <input type="number" min="0" step="1000" style="text-align:right;" name="costPrice" id="costPrice" value="000" placeholder="상품 원가 입력">
 					            <div id="costPriceDiv"></div>
 					         </td>
 					      </tr>
 					
 					      <tr>
-<<<<<<< HEAD
-					         <td align="center">색상/사이즈</td>
-					         <td width="60" align="center">S (90)</td>
-					         <td width="60" align="center">M (95)</td>
-					         <td width="60" align="center">L (100)</td>
-					         <td width="60" align="center">XL (105)</td>
-					         <td width="60" align="center">Free</td>
-					         <td width="60" align="center">Total</td>
-=======
-					         <td width="60px" align="center">����/������</td>
-					         <td width="60px" align="center">S (90)</td>
-					         <td width="60px" align="center">M (95)</td>
-					         <td width="60px" align="center">L (100)</td>
-					         <td width="60px" align="center">XL (105)</td>
-					         <td width="60px" align="center">Free</td>
-					         <td width="60px" align="center">Total</td>
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
+					         <td align="right">색상/사이즈</td>
+					         <td align="center">S (90)</td>
+					         <td align="center">M (95)</td>
+					         <td align="center">L (100)</td>
+					         <td align="center">XL (105)</td>
+					         <td align="center">Free</td>
+					         <td align="center">Total</td>
 					      </tr>
 					
 					      <tr>
-					         <td align="center">
-<<<<<<< HEAD
-					            <input type="text" name="col1" id="col1" list="col1List" placeholder="색상1 입력">
-=======
-					            <input type="text" name="col1" id="col1" size="10" list="col1List" placeholder="����1 �Է�">
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
+					         <td align="right">
+					            <input type="text" name="col1" id="col1" size="10" list="col1List" placeholder="색상1 입력">
 					            <div id="col1Div"></div>
 					            <datalist id="col1List">
 					               <option value="black">
@@ -152,12 +127,8 @@
 					      </tr>
 					
 					      <tr>
-					         <td align="center">
-<<<<<<< HEAD
-					            <input type="text" name="col2" id="col2" list="col2List" placeholder="색상2 입력"> 
-=======
-					            <input type="text" name="col2" id="col2" size="10" list="col2List" placeholder="����2 �Է�"> 
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
+					         <td align="right">
+					            <input type="text" name="col2" id="col2" size="10" list="col2List" placeholder="색상2 입력"> 
 					            <datalist id="col2List">
 					               <option value="black">
 					               <option value="white">
@@ -187,12 +158,8 @@
 					      </tr>
 					
 					      <tr>
-					         <td align="center">
-<<<<<<< HEAD
-					            <input type="text" name="col3" id="col3"  list="col3List" placeholder="색상3 입력"> 
-=======
-					            <input type="text" name="col3" id="col3" size="10"  list="col3List" placeholder="����3 �Է�"> 
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
+					         <td align="right">
+					            <input type="text" name="col3" id="col3" size="10"  list="col3List" placeholder="색상3 입력"> 
 					            <datalist id="col3List">
 					               <option value="black">
 					               <option value="white">
@@ -222,12 +189,8 @@
 					      </tr>
 					
 					      <tr>
-					         <td align="center">
-<<<<<<< HEAD
-					            <input type="text" name="col4" id="col4" list="col4List" placeholder="색상4 입력"> 
-=======
-					            <input type="text" name="col4" id="col4" size="10" list="col4List" placeholder="����4 �Է�"> 
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
+					         <td align="right">
+					            <input type="text" name="col4" id="col4" size="10" list="col4List" placeholder="색상4 입력"> 
 					            <datalist id="col4List">
 					               <option value="black">
 					               <option value="white">
@@ -279,57 +242,43 @@
 					      </tr>
 					
 					      <tr>
-<<<<<<< HEAD
-					         <td align="center">내용</td>
-					         <td colspan="6"><textarea cols="70" rows="10" name="itemContent" id="itemContent" placeholder="내용 입력"></textarea>
-=======
-					         <td align="center">����</td>
-					         <td colspan="6"><textarea cols="80" rows="2" name="itemContent" id="itemContent" placeholder="���� �Է�"></textarea>
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
+					         <td align="right">내용</td>
+					         <td colspan="6"><textarea cols="80" rows="2" name="itemContent" id="itemContent" placeholder="내용 입력"></textarea>
 					         <div id="itemContentDiv"></div>
 					         </td>
 					      </tr>
 					
 					      <tr>
-					         <td align="center">이미지1</td>
+					         <td align="right">이미지1</td>
 					         <td colspan="6"><input type="file" name="img" id="img1"></td>
 					      </tr>
 					
 					      <tr>
-					         <td align="center">이미지2</td>
+					         <td align="right">이미지2</td>
 					         <td colspan="6"><input type="file" name="img" id="img2"></td>
 					      </tr>
 					
 					      <tr>
-					         <td align="center">이미지3</td>
+					         <td align="right">이미지3</td>
 					         <td colspan="6"><input type="file" name="img" id="img3"></td>
 					      </tr>
 					
 					      <tr>
-					         <td align="center">이미지4</td>
+					         <td align="right">이미지4</td>
 					         <td colspan="6"><input type="file" name="img" id="img4"></td>
 					      </tr>
 					      
 					      <tr>
-					         <td align="center">키워드</td>
+					         <td align="right">키워드</td>
 					         <td colspan="6">
-<<<<<<< HEAD
-					            <input type="text" name="itemKeyword" id="itemKeyword" size="70" placeholder="키워드 입력">
-=======
-					            <input type="text" name="itemKeyword" id="itemKeyword" size="100" placeholder="Ű���� �Է�">
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
+					            <input type="text" name="itemKeyword" id="itemKeyword" size="100" placeholder="키워드 입력">
 					            <div id="itemKeywordDiv"></div>
 					         </td>
 					      </tr>
 					      <tr>
 					         <td colspan="7" align="center">
-<<<<<<< HEAD
-					            <input type="submit" value="상품 등록" > 
+					            <input type="button" id="itemboardWriteBtn" value="상품 등록" > 
 					            <input type="reset" value="다시작성">
-=======
-					            <input type="button" id="itemboardWriteBtn" value="��ǰ ���" > 
-					            <input type="reset" value="�ٽ��ۼ�">
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
 					         </td>
 					      </tr>
 					      
@@ -352,40 +301,21 @@ $('#itemboardWriteBtn').click(function() {
     $('#itemContentDiv').empty();
 
     if ($('#itemCode').val() == 'M') {
-<<<<<<< HEAD
-       $('#itemCodeDiv').text("상품코드를 입력하세요.").css('color', 'red').css('font-size', '9pt');
-=======
-    	//$('#itemCodeDiv').text("��ǰ�ڵ带 �Է��ϼ���.").css('color', 'red').css('font-size', '9pt');
-		alert("��ǰ �ڵ带 �Է��ϼ���.");
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
+    	//$('#itemCodeDiv').text("상품코드를 입력하세요.").css('color', 'red').css('font-size', '9pt');
+		alert("상품 코드를 입력하세요.");
     } else if ($('#itemName').val() == '') {
-<<<<<<< HEAD
-       $('#itemNameDiv').text("상품명을 입력하세요.").css('color', 'red').css('font-size', '9pt');
-    } else if ($('#salePrice').val() == '') {
-       $('#salePriceDiv').text("판매단가를 입력하세요.").css('color', 'red').css('font-size', '9pt');
-    } else if ($('#costPrice').val() == '') {
-       $('#costPriceDiv').text("상품원가를 입력하세요.").css('color', 'red').css('font-size', '9pt');
-    } else if ($('#col1').val() == '색상1 입력') {
-       $('#col1Div').text("색상을 입력하세요.").css('color', 'red').css('font-size', '9pt');
-=======
-    	alert("��ǰ �̸��� �Է��ϼ���.");
+    	alert("상품 이름을 입력하세요.");
     } else if ($('#salePrice').val() == '000') {
-    	alert("�Ǹ� �ܰ��� �Է��ϼ���.");
+    	alert("판매 단가를 입력하세요.");
     } else if ($('#costPrice').val() == '000') {
-    	alert("��ǰ ������ �Է��ϼ���.");
+    	alert("상품 원가를 입력하세요.");
     } else if ($('#col1').val() == '') {
-    	alert("����1�� �Է��ϼ���.");
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
+    	alert("색상1을 입력하세요.");
     } else if ($('#itemContent').val() == '') {
-<<<<<<< HEAD
-       $('#itemContentDiv').text("내용을 입력하세요.").css('color', 'red').css('font-size', '9pt');
-    } else {
-=======
-    	alert("��ǰ ������ �Է��ϼ���.");
+    	alert("상품 내용을 입력하세요.");
     } else if ($('#itemKeyword').val() == '') {
-    	alert("��ǰ Ű���带 �Է��ϼ���.");
+    	alert("상품 키워드를 입력하세요.");
     }else {
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
        $('#itemboardWriteForm').submit();
     }
 });
@@ -406,11 +336,14 @@ $(document).ready(function() {
 									  "<td><img src='../storage/"+items.img1+"' style='cursor: pointer; width:50px; height:50px;'></td>"+
 									  "<td>"+items.costPrice+"</td>"+
 									  "<td>"+items.salePrice+"</td>"+
+									  "<td><button type='button'"+ 
+						  			  "class='btn btn-secondary'"+
+						  			  "'>수정</button></td>"+
 									  "<td>"+
 									  "<input type='checkbox' name='deleteCheck'"+
 									  		 "class='deleteCheck-itemboard'"+
-									  		 "value="+items.itemCode+">"+
-									  "<input value='"+items.itemCode+
+									  		 "value="+items.itemcode+">"+
+									  "<input value='"+items.itemcode+
 									  	   "' type='hidden' class='hiddenId' id='modifyHidden"+index+"'>"+
 									  "</td>"+
 									  "</tr>");		
@@ -501,4 +434,10 @@ $('#selectedItemboardDeleteBtn').click(function(){
 		}
 	}
 });
+
+//새 상품 등록 버튼 누르면 모달창이 뙇
+$('#newItemAdd').click(function(){
+	$('#itemModal').modal();
+});
+   
 </script>
