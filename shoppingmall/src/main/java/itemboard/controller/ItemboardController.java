@@ -26,7 +26,6 @@ import itemboard.bean.ItemBasketListDTO;
 import itemboard.bean.ItemboardDTO;
 import itemboard.bean.ItemboardPaging;
 import itemboard.dao.ItemboardDAO;
-import user.bean.UserDTO;
 
 @Controller
 @RequestMapping(value="/itemboard")
@@ -199,7 +198,6 @@ public class ItemboardController {
 	public String itemboardView(@RequestParam String categoryCode, @RequestParam String itemCode, @RequestParam String pg, Model model) {
 		
 		ItemboardDTO itemboardDTO = itemboardDAO.getItemboardView(itemCode);
-		System.out.println(itemboardDTO);
 		model.addAttribute("itemboardDTO",itemboardDTO);
 		model.addAttribute("categoryCode", categoryCode);
 		model.addAttribute("itemCode", itemCode);
@@ -264,10 +262,7 @@ public class ItemboardController {
 	@RequestMapping(value="/basketFlush.do", method=RequestMethod.POST)
 	@ResponseBody
 	public void basketFlush(@RequestParam String id) {
-		
-		
 		itemboardDAO.basketFlush(id);
-		
 	}
 	
 	@RequestMapping(value="/basketDelete.do", method=RequestMethod.POST)

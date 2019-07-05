@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+ 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/itemPage-style.css">
+ 
   <div id="item-box-itemPage">
     <div class="left-box-itemPage" style="background-image:url('../storage/${itemboardDTO.img1}')">
      
@@ -69,7 +74,7 @@
         <button type="button" class="btn-itemPage cartBtn-itemPage">
           <img src="../images/basket.gif" class="cartImg-itemPage">
         </button>
-        <button type="button" class="btn-itemPage likeBtn-itemPage">
+        <button class="btn-itemPage likeBtn-itemPage">
           <img src="" class="likeImg-itemPage">
         </button>
       </div>
@@ -277,8 +282,6 @@ $(document).ready(function(){
 
 $('#color_option').change(function(){
    
-   
-   
     $.ajax({
       type : 'post',
       url : '/shoppingmall/itemboard/getSize.do',
@@ -461,34 +464,40 @@ $(document).on('click','.minus',function(){
 
 // 장바구니 회원
 
-$('.cartImg-itemPage').click(function(){
-   if(${userDTO != null}){
+$('.cartBtn-itemPage').click(function(){
+	
+   var userDTO = '${userDTO}';
+   
+   if(userDTO != null && userDTO != ''){
       
+	  var itemPrice = $('.itemPrice-itemPage').text();
       var itemCode = $('#itemCodeDiv').text();
       var itemName = $('.itemName-itemPage').text();
       var itemCol = $('#color_option option:selected').text();
       var itemQty = 1;
       var itemSize = $('#size_option option:selected').text();
-      var id = '${userDTO.id }';
+      var id = '${userDTO.id}';
+      
+      alert(itemPrice);
       //건들지마세요
       var stus = 'cart';
+      alert(itemSize);
       $.ajax({
          type: 'post',
          url: '/shoppingmall/itemboard/itemBasket.do',
-         data: 'itemCode='+itemCode+'&itemName='+itemName+'&itemCol='+itemCol+'&itemQty='+itemQty+'&itemSize='+itemSize+'&id='+id+'&stus='+stus+'&categoryCode=${categoryCode}&pg=${pg}',
+         data: 'itemCode='+itemCode+'&itemPrice='+itemPrice+'&itemName='+itemName+'&itemCol='+itemCol+'&itemQty='+itemQty+'&itemSize='+itemSize+'&id='+id+'&stus='+stus+'&categoryCode=${categoryCode}&pg=${pg}',
          success: function(){
             if(confirm("상품이 저장되었습니다. 장바구니로 가시겠습니까?")){
                location.href="/shoppingmall/itemboard/itemBasketList.do";
             }
             
          } 
-      });
-   
-   }else if(${userDTO == null}){
-         if(confirm('비회원으로 구매를 진행하시겠습니까?')){
-            location.href = "/shoppingmall/itemboard/itemBasketList.do";
-         }else
-            location.href = "/shoppingmall/user/loginForm.do";
+      });   
+   }else if(userDTO=='') {
+       if(confirm('비회원으로 구매를 진행하시겠습니까?')){
+           location.href = "/shoppingmall/itemboard/itemBasketList.do";
+        }else
+           location.href = "/shoppingmall/user/loginForm.do";
    }
 });
 </script>
