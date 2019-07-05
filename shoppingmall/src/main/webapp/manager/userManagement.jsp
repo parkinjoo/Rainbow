@@ -19,6 +19,12 @@
 		<!--사용자 목록 세부-->
 		<div class="tab-pane fade show active listDiv-managerPage"
 			id="pills-home">
+			<div class="searchDiv">
+				<form class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2" type="search" placeholder="Search">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				</form>
+			</div>
 			<div class="deleteBtnDiv-managerPage">
 				<input type="button" class="deleteBtn-managerPage" name="deleteBtn"
 					value="선택 목록 삭제" id="selectedItemDeleteBtn">

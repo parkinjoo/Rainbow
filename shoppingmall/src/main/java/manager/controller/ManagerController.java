@@ -40,6 +40,7 @@ public class ManagerController {
 		model.addAttribute("managerUserDisplay", "/manager/userManagement.jsp");
 		model.addAttribute("managerItemDisplay", "/manager/itemManagement.jsp");
 		model.addAttribute("userModalPageDisplay", "/manager/userModalPage.jsp");
+		model.addAttribute("itemModalPageDisplay", "/manager/itemModalPage.jsp");
 		model.addAttribute("display", "/manager/managerPage.jsp");
 		return "/main/index";
 	}

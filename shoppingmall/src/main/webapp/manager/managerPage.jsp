@@ -31,6 +31,10 @@
 			<jsp:include page="${userModalPageDisplay }"/>
 		<!-- modalPage.jsp Include Area  -->
 		
+		<!-- modalPage.jsp Include Area  -->
+			<jsp:include page="${itemModalPageDisplay }"/>
+		<!-- modalPage.jsp Include Area  -->
+		
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>		
 <script>
 $(document).ready(function(){

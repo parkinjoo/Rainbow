@@ -16,6 +16,13 @@
 	<!-- 구분선 -->
 	
 			<div class="tab-pane fade show active listDiv-managerPage" id="pills-home-insert-data">
+				<div class="searchDiv">
+					<form class="form-inline my-2 my-lg-0 searchBtn-managerPage">
+						<input class="form-control mr-sm-2" type="search" placeholder="Search">
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					</form>
+					<button type="button" id="newItemAdd" class="btn btn-secondary addItemBtn-managerPage">새 상품 등록</button>
+				</div>
 				<div class="deleteBtnDiv-managerPage">
 					<input type="button" class="deleteBtn-managerPage" name="deleteBtn"
 						value="선택 목록 삭제" id="selectedItemboardDeleteBtn">
@@ -29,6 +36,7 @@
 							<th scope="col">이미지</th>
 							<th scope="col">상품원가</th>
 							<th scope="col">판매단가</th>
+							<th scope="col"></th>
 							<th scope="col"><input type="checkbox" id="selectAll-itemboard">
 							</th>
 						</tr>
@@ -402,6 +410,7 @@ $('#selectedItemboardDeleteBtn').click(function(){
 	
 });
 
+//새 상품 등록 버튼 누르면 모달창이 뙇
 $('#newItemAdd').click(function(){
 	$('#itemModal').modal();
 });
