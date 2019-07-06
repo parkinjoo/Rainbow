@@ -18,8 +18,17 @@
 			<div class="tab-pane fade show active listDiv-managerPage" id="pills-home-insert-data">
 				<div class="searchDiv">
 					<form class="form-inline my-2 my-lg-0 searchBtn-managerPage">
-						<input class="form-control mr-sm-2" type="search" placeholder="Search">
-						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+						<div class="input-group mb-3 searchDiv">
+						  <div class="input-group-prepend">
+						    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">검색어</button>
+						    <div class="dropdown-menu">
+						      <a class="dropdown-item" href="#">상품코드</a>
+						      <a class="dropdown-item" href="#">상품명</a>
+						    </div>
+						  </div>
+						  <input type="text" class="form-control keywordInput">
+						  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+						</div>
 					</form>
 					<button type="button" id="newItemAdd" class="btn btn-secondary addItemBtn-managerPage">새 상품 등록</button>
 				</div>

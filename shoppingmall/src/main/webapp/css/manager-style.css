@@ -45,4 +45,16 @@
 	float: right;
 }
 
+.searchKeywordDiv {
+	margin-right: 20px;
+}
+
+.keywordInput {
+	margin-right: 5px;
+}
+
+.searchDiv {
+	border-radius: 4px;
+}
+
 

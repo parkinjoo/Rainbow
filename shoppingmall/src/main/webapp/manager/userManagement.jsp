@@ -21,8 +21,19 @@
 			id="pills-home">
 			<div class="searchDiv">
 				<form class="form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2" type="search" placeholder="Search">
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					<!-- <input class="form-control mr-sm-2" type="search" placeholder="Search"> -->
+					<div class="input-group mb-3 searchDiv">
+					  <div class="input-group-prepend">
+					    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">검색어</button>
+					    <div class="dropdown-menu">
+					      <a class="dropdown-item" href="#">이름</a>
+					      <a class="dropdown-item" href="#">아이디</a>
+					      <a class="dropdown-item" href="#">이메일</a>
+					    </div>
+					  </div>
+					  <input type="text" class="form-control keywordInput">
+					  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					</div>
 				</form>
 			</div>
 			<div class="deleteBtnDiv-managerPage">
