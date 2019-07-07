@@ -129,26 +129,7 @@ $(document).ready(function(){
 		success : function(data){
 			if(data!='null'){
 				$.each(data.list, function(index,items){
-					$('#itemList1').append("<tr>"+
-							  "<th scope='row'>"+(index+1)+
-							  "</th>"+
-							  "<td>"+items.name+"</td>"+
-							  "<td>"+items.id+"</td>"+
-							  "<td>"+items.email+"</td>"+
-							  "<td><button type='button'"+ 
-							  			  "class='btn btn-secondary modifyBtn-managerPage'"+
-							  			  "name=id"+
-							  			  "value='jinsol'"+
-							  			  "id='modifyBtn"+index+
-							  			  "'>수정</button></td>"+
-							  "<td>"+
-							  "<input type='checkbox' name='deleteCheck'"+
-							  		 "class='deleteCheck-managerPage'"+
-							  		 "value="+items.id+">"+
-							  "<input value='"+items.id+
-							  	   "' type='hidden' class='hiddenId' id='modifyHidden"+index+"'>"+
-							  "</td>"+
-							  "</tr>");
+					$('#itemList1').append();
 					
 					$('#itemList2').append();
 					

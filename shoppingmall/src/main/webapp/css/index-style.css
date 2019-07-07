@@ -197,16 +197,46 @@ body {
   height: 60px;
 }
 
-.cartBox {
+.sideBar {
   position: fixed;
-  width: 100px;
-  height: 350px;
+  width: 120px;
+  height: 450px;
   top: 280px;
-  right: 2%;
-  text-align: right;
-  border: 1px solid black;
-  background-color: #c8c8c8;
-  overflow: auto;
+  right: 1%;
+  border: 1px solid #969696;
+  box-shadow: 5px 5px rgba(0,0,0,0.2);
+}
+
+.cartBoxImage {
+  margin: 10px 45px;
+  cursor: pointer;
+}
+
+.cartBox {
+  height: 400px;
+  background-color: white;
+  overflow: scroll;
+}
+
+.cartBoxItem {
+  position: relative;
+  margin: 5px 5px;
+  width: 90px;
+  height: 90px;
+  border: 1px solid #969696;
+}
+
+.cartItem {
+  width: 100%;
+  height: 100%;
+}
+
+.cartDelete {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 0;
+  cursor: pointer;
 }
 
 .newImg {

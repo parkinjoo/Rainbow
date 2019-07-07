@@ -27,13 +27,19 @@
 <c:if test="${display == null }">
 	<jsp:include page="../template/body.jsp"/>
 </c:if>
-<!--  
-<div class="cartBox">
-	m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>
-	m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>
-	m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>
+
+<div class="sideBar">
+	<div class="cartBoxImage">
+	   	<img src="../images/cart_image.png" class="cart_image">
+	</div>
+	<div class="cartBox">
+		<div class="cartBoxItem item1">
+	    	<img src="../images/x.png" class="cartDelete">
+	    	<img src="../storage/MT0000_00.gif" class="cartItem">
+		</div>
+	</div>
 </div>
--->
+
 <div class="btn_gotop">
 	<img class="topBtn" src="../images/top.png">
 </div>
@@ -62,5 +68,10 @@ $(document).ready( function(){
 		$("html,body").animate({ scrollTop: 0 }, "slow");
 	});
 });
+
+$('.cart_image').click(function(){
+	location.href="/shoppingmall/itemboard/itemBasketList.do";
+});
+
 </script>
 </html>
