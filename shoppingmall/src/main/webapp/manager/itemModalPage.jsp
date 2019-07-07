@@ -226,7 +226,7 @@
 					</div>
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" name="img" id="img1" aria-describedby="inputGroupFileAddon01">
-						<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+						<label class="custom-file-label" id="img1" for="inputGroupFile01">Choose file</label>
 					</div>
 				</div>
 
@@ -236,7 +236,7 @@
 					</div>
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" name="img" id="img2" aria-describedby="inputGroupFileAddon01">
-						<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+						<label class="custom-file-label" id="img2" for="inputGroupFile01">Choose file</label>
 					</div>
 				</div>
 
@@ -246,7 +246,7 @@
 					</div>
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" name="img" id="img3" aria-describedby="inputGroupFileAddon01">
-						<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+						<label class="custom-file-label" id="img3" for="inputGroupFile01">Choose file</label>
 					</div>
 				</div>
 
@@ -256,7 +256,7 @@
 					</div>
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" name="img" id="img4" aria-describedby="inputGroupFileAddon01">
-						<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+						<label class="custom-file-label" id="img4" for="inputGroupFile01">Choose file</label>
 					</div>
 				</div>
 
@@ -341,4 +341,59 @@ $('input').focusout(function() {
     $('#f').val(f);
     $('#totQty').val(s + m + l + x + f);
  });
+ 
+$(document).ready(function(){ 
+	var fileTarget = $('#img1'); 
+	fileTarget.on('change', function(){ // 값이 변경되면
+		if(window.FileReader){ // modern browser 
+			var filename = $(this)[0].files[0].name; 
+		} else { // old IE 
+			var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+			} 
+	
+	// 추출한 파일명 삽입 
+	//$("label[for = 'inputGroupFile01']").text(filename);
+	$("label[id='img1']").text(filename);
+	});
+	
+	var fileTarget = $('#img2'); 
+	fileTarget.on('change', function(){ // 값이 변경되면
+		if(window.FileReader){ // modern browser 
+			var filename = $(this)[0].files[0].name; 
+		} else { // old IE 
+			var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+			} 
+	
+	// 추출한 파일명 삽입 
+	//$("label[for = 'inputGroupFile01']").text(filename);
+	$("label[id='img2']").text(filename);
+	});
+	
+	var fileTarget = $('#img3'); 
+	fileTarget.on('change', function(){ // 값이 변경되면
+		if(window.FileReader){ // modern browser 
+			var filename = $(this)[0].files[0].name; 
+		} else { // old IE 
+			var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+			} 
+	
+	// 추출한 파일명 삽입 
+	//$("label[for = 'inputGroupFile01']").text(filename);
+	$("label[id='img3']").text(filename);
+	});
+	
+	var fileTarget = $('#img4'); 
+	fileTarget.on('change', function(){ // 값이 변경되면
+		if(window.FileReader){ // modern browser 
+			var filename = $(this)[0].files[0].name; 
+		} else { // old IE 
+			var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+			} 
+	
+	// 추출한 파일명 삽입 
+	//$("label[for = 'inputGroupFile01']").text(filename);
+	$("label[id='img4']").text(filename);
+	});
+}); 
+
 </script>
