@@ -275,8 +275,11 @@ public class ItemboardController {
     }
 	
 	@RequestMapping(value="/itemPurchaseForm.do", method=RequestMethod.GET)
-	public String itemPurchaseForm(Model model) {
-		model.addAttribute("display", "itemboard/itemPurchaseForm.jsp");
-		return "/main/index";	
+	public ModelAndView itemPurchaseForm(Model model) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("title", "구매하기");
+		mav.addObject("display", "/itemboard/itemPurchaseForm.jsp");
+		mav.setViewName("/main/index");
+		return mav;
 	}
 }
