@@ -40,6 +40,10 @@
 		<!-- modalPage.jsp Include Area  -->
 		
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>		
+<script type="text/javascript" src="../js/jquery.jqplot.js"></script>
+<script type="text/javascript" src="../js/plugins/jqplot.pointLabels.js"></script>
+<script type="text/javascript" src="../js/plugins/jqplot.categoryAxisRenderer.js"></script>
+<script type="text/javascript" src="../js/plugins/jqplot.barRenderer.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	var managerPageOk = '${managerPageOk}';
