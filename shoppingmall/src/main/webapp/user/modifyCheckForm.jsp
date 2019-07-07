@@ -21,7 +21,7 @@
   	  </tr>
   	  <tr>
 	    <td>
-	      <input type="password" name="password" id="pwd" placeholder="PASSWORD" />
+	      <input type="password" name="password" id="pwd" onkeyup="enterkey();" placeholder="PASSWORD" />
   		</td>
   	  </tr>
   	  <tr>
@@ -53,4 +53,28 @@ $('#inputBtn').click(function(){
 			}
 		});	
 });
+
+function enterkey() {
+    if (window.event.keyCode == 13) {
+    
+         // 엔터키가 눌렸을 때 실행할 내용
+    	if($('#pwd').val()=='')
+    		alert("비밀번호를 입력해주세요")
+    	else
+    		$.ajax({
+    			type : 'POST',
+    			url : '/shoppingmall/user/login.do',
+    			data : {"id":$('#id').val(),
+    					"pwd":$('#pwd').val()},
+    			dataType : 'text',
+    			success : function(data){
+    				if(data=='loginFail'){
+    					alert("비밀번호가 틀렸습니다. 다시 확인해주세요.");
+    				}else if(data=='loginOk'){
+    					location.href='/shoppingmall/user/modifyForm.do';
+    				}
+    			}
+    		});	
+    }
+}
 </script>

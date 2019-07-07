@@ -18,8 +18,17 @@
 			<div class="tab-pane fade show active listDiv-managerPage" id="pills-home-insert-data">
 				<div class="searchDiv">
 					<form class="form-inline my-2 my-lg-0 searchBtn-managerPage">
-						<input class="form-control mr-sm-2" type="search" placeholder="Search">
-						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+						<div class="input-group mb-3 searchDiv">
+						  <div class="input-group-prepend">
+						    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">검색어</button>
+						    <div class="dropdown-menu">
+						      <a class="dropdown-item" href="#">상품코드</a>
+						      <a class="dropdown-item" href="#">상품명</a>
+						    </div>
+						  </div>
+						  <input type="text" class="form-control keywordInput">
+						  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+						</div>
 					</form>
 					<button type="button" id="newItemAdd" class="btn btn-secondary addItemBtn-managerPage">새 상품 등록</button>
 				</div>
@@ -48,6 +57,7 @@
 			</div>
 			
 			<div class="tab-pane fade"	id="pills-profile-dataManage">
+			<!--  
 				<form id="itemboardWriteForm" method="post" enctype="multipart/form-data" action="/shoppingmall/manager/itemboardWrite.do">
 					<table class="table table-hover" >
 					      <tr>
@@ -284,6 +294,7 @@
 					      
 					 </table>
 				</form>	
+				-->
 			</div>
 			
 			<div class="tab-pane fade" id="pills-profile-edit">
@@ -293,33 +304,6 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
-$('#itemboardWriteBtn').click(function() {
-    $('#itemCodeDiv').empty();
-    $('#itemNameDiv').empty();
-    $('#salePriceDiv').empty();
-    $('#costPriceDiv').empty();
-    $('#itemContentDiv').empty();
-
-    if ($('#itemCode').val() == 'M') {
-    	//$('#itemCodeDiv').text("상품코드를 입력하세요.").css('color', 'red').css('font-size', '9pt');
-		alert("상품 코드를 입력하세요.");
-    } else if ($('#itemName').val() == '') {
-    	alert("상품 이름을 입력하세요.");
-    } else if ($('#salePrice').val() == '000') {
-    	alert("판매 단가를 입력하세요.");
-    } else if ($('#costPrice').val() == '000') {
-    	alert("상품 원가를 입력하세요.");
-    } else if ($('#col1').val() == '') {
-    	alert("색상1을 입력하세요.");
-    } else if ($('#itemContent').val() == '') {
-    	alert("상품 내용을 입력하세요.");
-    } else if ($('#itemKeyword').val() == '') {
-    	alert("상품 키워드를 입력하세요.");
-    }else {
-       $('#itemboardWriteForm').submit();
-    }
-});
-
 $(document).ready(function() {
 	
 	$.ajax({
@@ -342,8 +326,8 @@ $(document).ready(function() {
 									  "<td>"+
 									  "<input type='checkbox' name='deleteCheck'"+
 									  		 "class='deleteCheck-itemboard'"+
-									  		 "value="+items.itemcode+">"+
-									  "<input value='"+items.itemcode+
+									  		 "value="+items.itemCode+">"+
+									  "<input value='"+items.itemCode+
 									  	   "' type='hidden' class='hiddenId' id='modifyHidden"+index+"'>"+
 									  "</td>"+
 									  "</tr>");		
@@ -351,49 +335,6 @@ $(document).ready(function() {
 			});//each;
 		}
 	});
-	
-    $('input').focusout(function() {
-       var col1s = parseInt($("#col1s").val());
-       var col1m = parseInt($("#col1m").val());
-       var col1l = parseInt($("#col1l").val());
-       var col1x = parseInt($("#col1x").val());
-       var col1f = parseInt($("#col1f").val());
-       $('#col1tot').val(col1s + col1m + col1l + col1x + col1f);
-       
-       var col2s = parseInt($("#col2s").val());
-       var col2m = parseInt($("#col2m").val());
-       var col2l = parseInt($("#col2l").val());
-       var col2x = parseInt($("#col2x").val());
-       var col2f = parseInt($("#col2f").val());
-       $('#col2tot').val(col2s + col2m + col2l + col2x + col2f);
-       
-       var col3s = parseInt($("#col3s").val());
-       var col3m = parseInt($("#col3m").val());
-       var col3l = parseInt($("#col3l").val());
-       var col3x = parseInt($("#col3x").val());
-       var col3f = parseInt($("#col3f").val());
-       $('#col3tot').val(col3s + col3m + col3l + col3x + col3f);
-       
-       var col4s = parseInt($("#col4s").val());
-       var col4m = parseInt($("#col4m").val());
-       var col4l = parseInt($("#col4l").val());
-       var col4x = parseInt($("#col4x").val());
-       var col4f = parseInt($("#col4f").val());
-       $('#col4tot').val(col4s + col4m + col4l + col4x + col4f);
-       
-       var s = col1s + col2s + col3s + col4s;
-       var m = col1m + col2m + col3m + col4m;
-       var l = col1l+ col2l + col3l + col4l;
-       var x = col1x + col2x + col3x + col4x;
-       var f = col1f + col2f + col3f + col4f;
-       $('#s').val(s);
-       $('#m').val(m);
-       $('#l').val(l);
-       $('#x').val(x);
-       $('#f').val(f);
-       $('#totQty').val(s + m + l + x + f);
-    });
-   
  });
  
 //체크박스 전체선택 기능
@@ -407,30 +348,29 @@ $('#selectAll-itemboard').click(function(){
 
 //선택된 목록 삭제하기
 $('#selectedItemboardDeleteBtn').click(function(){
-	
 	var checkArr = [];
 	
+
 	$('.deleteCheck-itemboard:checked').each(function(i){
 		checkArr.push($(this).val());
 	});
 	
 	if(checkArr.length==0){
-		alert("선택된 항목 없음");
+		alert("선택된 목록이 없습니다")
 	}else {
-		var deleteConfirm = confirm("선택된 목록을 삭제합니다.");
-		if(deleteConfirm){
-			
+		var deleteConfirm = confirm("삭제된 상품은 복구할 수 없습니다. 정말 삭제 하시겠습니까?");
+		if(deleteConfirm) {
 			$.ajax({
 				type: 'POST',
-				url : '/shoppingmall/manager/deleteItemboard.do' ,
+				url: "/shoppingmall/manager/deleteItemboard.do",
 				data : {
 					chkbox : checkArr
 				},
 				success: function(){
-					alert("삭제완료.");
-					location.href = "/shoppingmall/manager/managerPage.do";
+					alert("삭제 되었습니다");
+					location.href="/shoppingmall/manager/managerPage.do";
 				}
-			});	
+			});
 		}
 	}
 });

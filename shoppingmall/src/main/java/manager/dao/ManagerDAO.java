@@ -17,8 +17,9 @@ public interface ManagerDAO {
 
 	public List<ItemboardDTO> getIndexBodyNewList();
 
-	public void deleteItemboard(String itemcode);
+	public int deleteItemboard(String itemCode);
 
 	public UserDTO getUserInfo(String id);
+
 
 }

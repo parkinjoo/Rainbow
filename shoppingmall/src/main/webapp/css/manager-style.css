@@ -45,4 +45,49 @@
 	float: right;
 }
 
+.searchKeywordDiv {
+	margin-right: 20px;
+}
+
+.keywordInput {
+	margin-right: 5px;
+}
+
+.searchDiv {
+	border-radius: 4px;
+}
+
+.addnewItemDiv1grid {
+	width: 97%;
+	margin: 0 auto;
+}
+
+.tableDivModal {
+	width: 97%;
+	margin: 0 auto;
+}
+
+.colInputModal {
+	width: 150px;
+	height: 35px;
+	padding: 10px 10px;
+	border: none;
+}
+
+.sizeInputModal {
+	width: 90px;
+	height: 35px;
+	padding: 5px 5px;
+	border: none;
+}
+
+.itemExplain {
+	width: 97%;
+	margin: 0 auto 20px auto;
+}
+
+.imageUploadDiv {
+	width: 97%;
+	margin: 0 auto 10px auto;
+}
 

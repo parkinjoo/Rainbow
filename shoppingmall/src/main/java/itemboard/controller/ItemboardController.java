@@ -270,4 +270,13 @@ public class ItemboardController {
     		itemboardDAO.basketDelete(itemCode.get(i));
     	}
     }
+	
+	@RequestMapping(value="/itemPurchaseForm.do", method=RequestMethod.GET)
+	public ModelAndView itemPurchaseForm(Model model) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("title", "구매하기");
+		mav.addObject("display", "/itemboard/itemPurchaseForm.jsp");
+		mav.setViewName("/main/index");
+		return mav;
+	}
 }

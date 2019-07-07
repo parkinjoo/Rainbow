@@ -71,6 +71,8 @@ public class ManagerController {
     		managerDAO.userDelete(id.get(i));
     	}
     }
+    
+
 
 	@RequestMapping(value="/itemboardWrite.do", method=RequestMethod.POST)
 	public String itemboardWrite(@ModelAttribute ItemboardDTO itemboardDTO, @RequestParam MultipartFile[] img, Model model) {
@@ -174,9 +176,9 @@ public class ManagerController {
     
     @RequestMapping(value="/deleteItemboard.do", method=RequestMethod.POST)
     @ResponseBody
-    public void deleteItemboard(@RequestParam(value="chkbox[]") List<String> itemcode) {
-    	for(int i=0; i<itemcode.size(); i++) {
-    		managerDAO.deleteItemboard(itemcode.get(i));
+    public void deleteItemboard(@RequestParam(value="chkbox[]") List<String> itemCode) {
+    	for(int i=0; i<itemCode.size(); i++) {
+    		managerDAO.deleteItemboard(itemCode.get(i));
     	}
     }
 
