@@ -122,6 +122,7 @@ public class ItemboardController {
 	public String itemBasketList(@RequestParam(required=false, defaultValue="1") String pg, @RequestParam(required=false, defaultValue="") String categoryCode, Model model) {
 		model.addAttribute("pg", pg);
 		model.addAttribute("categoryCode", categoryCode);
+		model.addAttribute("title", "나의 장바구니");
 		model.addAttribute("display", "/itemboard/itemBasketList.jsp");
 		return "/main/index";
 	}
@@ -281,5 +282,23 @@ public class ItemboardController {
 		mav.addObject("display", "/itemboard/itemPurchaseForm.jsp");
 		mav.setViewName("/main/index");
 		return mav;
+	}
+	
+	@RequestMapping(value="/getSideBarList.do", method=RequestMethod.POST)
+	public ModelAndView getSideBarList(@RequestParam String id, Model model) {
+		
+		List<ItemBasketListDTO> list = itemboardDAO.getSideBarList(id);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		mav.setViewName("jsonView");
+		return mav;
+		
+	}
+	
+	@RequestMapping(value="/SideBarDeleteItem.do", method=RequestMethod.POST)
+	@ResponseBody
+	public void SideBarDeleteItem(@RequestParam int seq) {
+		itemboardDAO.SideBarDeleteItem(seq);
 	}
 }

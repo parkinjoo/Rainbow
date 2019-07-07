@@ -145,7 +145,7 @@ public class UserController {
 		userDAO.modify(userDTO);
 		userDTO = userDAO.checkId(userDTO.getId());
 
-		//회원가입 하자마자 로그인되게끔 세션에 등록
+		//수정된 정보를 세션에 새로등록
 		session.setAttribute("userDTO", userDTO);
 
 		model.addAttribute("title", "내 정보 수정 성공");
