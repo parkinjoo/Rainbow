@@ -259,6 +259,8 @@ div.jqplot-noData-container {
 }
 
 #chart .jqplot-point-label {
+	width:750px;
+	height:324px;
     border:1.5px solid #AAAAAA;
     padding:1px 3px;
     background-color:#EECCDD;

@@ -28,6 +28,10 @@
 		<!-- salesManagement.jsp Include Area -->
 			
 	</div>
+	
+				테스트
+				<div id="chart"></div>
+			테스트2
 </div>
 
 

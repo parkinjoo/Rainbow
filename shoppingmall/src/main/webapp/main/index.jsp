@@ -43,11 +43,10 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/plugins/jqplot.barRenderer.js"></script>
 <script type="text/javascript" src="../js/jquery.jqplot.js"></script>
-<script type="text/javascript" src="../plugins/jqplot.pointLabels.js"></script>
+<script type="text/javascript" src="../js/plugins/jqplot.pointLabels.js"></script>
 <script type="text/javascript" src="../plugins/jqplot.categoryAxisRenderer.js"></script>
-<script type="text/javascript" src="../plugins/jqplot.barRenderer.js"></script>
+<script type="text/javascript" src="../js/plugins/jqplot.barRenderer.js"></script>
 <script type="text/javascript">
 $('.nav-area-index').on('click', function(){
 	$($('.nav-item').children('ul')).slideDown();
@@ -66,6 +65,46 @@ $(document).ready( function(){
 	$(".btn_gotop").click(function(){
 		$("html,body").animate({ scrollTop: 0 }, "slow");
 	});
+});
+
+jQuery(document).ready(function() { 
+
+    var barChart1 = [9, 8, 6, 8, 7, 6, 4];
+    var barChart2 = [5, 3, 4, 6, 2, 7, 8];
+    var lineChart = [12, 7, 4, 10, 8, 5, 7];
+    
+    jQuery("#chart").jqplot([barChart1, barChart2, lineChart], {
+          title : "막대 그래프 & 꺽은선 그래프"
+        , stackSeries : true     
+        , series : [
+            {     
+                  renderer : jQuery.jqplot.BarRenderer
+                , rendererOptions : {
+                      barWidth : 35                 
+                    , barPadding : -15                
+                    , highlightMouseOver : false  
+                }
+            }
+            , {   
+                  renderer : jQuery.jqplot.BarRenderer
+                , rendererOptions : {
+                      barWidth : 35                   
+                    , barPadding : -15               
+                    , highlightMouseOver : false   
+                }
+            }
+            , {  
+                  disableStack : true 
+                , renderer : jQuery.jqplot.LineRenderer
+            }
+        ]
+        , axes: {
+            xaxis : { 
+                  renderer : jQuery.jqplot.CategoryAxisRenderer
+                , ticks : ['A Name', 'B Name', 'C Name', 'D Name', 'E Name', 'F Name', 'G Name']
+            }
+        }
+    });
 });
 </script>
 </html>
