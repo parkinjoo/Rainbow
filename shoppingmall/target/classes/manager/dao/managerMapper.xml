@@ -50,7 +50,7 @@
    
    	<!-- 아이템 선택 삭제 -->
 	<delete id="deleteItemboard" parameterType="String">
-		delete from itemtable where itemcode = #{itemcode}
+		delete from itemtable where itemCode = #{itemCode}
 	</delete>
    
 </mapper>
