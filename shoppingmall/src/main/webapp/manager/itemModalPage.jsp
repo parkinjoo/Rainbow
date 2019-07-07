@@ -2,7 +2,7 @@
     pageEncoding="EUC-KR"%>
     
 <div class="modal fade bd-example-modal-xl" id="itemModal" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-<form id="itemboardWriteForm" method="post" enctype="multipart/form-data" action="/shoppingmall/manager/itemboardWrite.do">
+<form name="itemboardWriteForm" id="itemboardWriteForm" method="post" enctype="multipart/form-data" action="/shoppingmall/manager/itemboardWrite.do">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
 			<div class="modal-header">
@@ -283,18 +283,25 @@
 $('#itemboardWriteBtn').click(function() {
     if ($('#itemCode').val() == 'M') {
 		alert("상품 코드를 입력하세요.");
+		document.itemboardWriteForm.itemCode.focus();
     } else if ($('#itemName').val() == '') {
     	alert("상품명을 입력하세요.");
+    	document.itemboardWriteForm.itemName.focus();
     } else if ($('#salePrice').val() == '') {
     	alert("판매 단가를 입력하세요.");
+    	document.itemboardWriteForm.salePrice.focus();
     } else if ($('#costPrice').val() == '') {
     	alert("상품 원가를 입력하세요.");
+    	document.itemboardWriteForm.costPrice.focus();
     } else if ($('#col1').val() == '') {
     	alert("색상1을 입력하세요.");
+    	document.itemboardWriteForm.col1.focus();
     } else if ($('#itemContent').val() == '') {
     	alert("상품 설명을 입력하세요.");
+    	document.itemboardWriteForm.itemContent.focus();
     } else if ($('#itemKeyword').val() == '') {
     	alert("상품 키워드를 입력하세요.");
+    	document.itemboardWriteForm.itemKeyword.focus();
     }else {
        $('#itemboardWriteForm').submit();
     }
