@@ -40,7 +40,7 @@
 		<!-- modalPage.jsp Include Area  -->
 		
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>		
-<script>
+<script type="text/javascript">
 $(document).ready(function(){
 	var managerPageOk = '${managerPageOk}';
 	if (managerPageOk=='') {

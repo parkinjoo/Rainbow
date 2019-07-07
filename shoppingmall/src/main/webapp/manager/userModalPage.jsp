@@ -100,7 +100,7 @@
 </div>
 <!-- Large modal/수정 버튼을 누르면 상세 정보가 모달창으로 확대 -->
 
-<script>
+<script type="text/javascript">
 	//회원 등급 조정 기능 (--> modal popup 모음 페이지로 이동)
 	$('#general-grade').click(function(){
 		$('.gradeArea').empty();
