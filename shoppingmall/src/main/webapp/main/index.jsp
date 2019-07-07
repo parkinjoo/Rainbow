@@ -33,14 +33,7 @@
 	   	<img src="../images/cart_image.png" class="cart_image">
 	</div>
 	<div class="cartBox">
-		<!-- 
-	    <img src="../images/nothing.png" class="cartItem">
-		
-		<div class="cartBoxItem item1">
-	    	<img src="../images/x.png" class="cartDelete">
-	    	<img src="../storage/MT0000_00.gif" class="cartItem">
-		</div>
-		 -->
+		<!-- 장바구니 list -->
 	</div>
 </div>
 
