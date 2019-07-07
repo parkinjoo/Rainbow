@@ -37,6 +37,10 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
+$(document).ready(function() {
+	 document.modifyCheckForm.id.focus();
+});
+
 $('#inputBtn').click(function(){
 	var id=$('#id').val();
 	var pwd=$('#pwd').val();
