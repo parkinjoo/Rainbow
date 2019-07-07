@@ -257,3 +257,9 @@ div.jqplot-noData-container {
     text-align: center;
     background-color: rgba(96%, 96%, 96%, 0.3);
 }
+
+#chart .jqplot-point-label {
+    border:1.5px solid #AAAAAA;
+    padding:1px 3px;
+    background-color:#EECCDD;
+}

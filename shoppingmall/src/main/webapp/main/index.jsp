@@ -6,6 +6,7 @@
   <head>
     <meta charset="utf-8">
     <title>${title } / Rainbowmall</title>
+    <link rel="stylesheet" type="text/css" href="../css/jquery.jqplot.css"/>
     <link rel="stylesheet"
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/index-style.css">
@@ -42,12 +43,11 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="../js/jquery.jqplot.js"></script>
 <script type="text/javascript" src="../js/plugins/jqplot.pointLabels.js"></script>
 <script type="text/javascript" src="../js/plugins/jqplot.categoryAxisRenderer.js"></script>
 <script type="text/javascript" src="../js/plugins/jqplot.barRenderer.js"></script>
-<script>
+<script type="text/javascript">
 $('.nav-area-index').on('click', function(){
 	$($('.nav-item').children('ul')).slideDown();
 });
