@@ -20,6 +20,8 @@
 	<resources location="/js/" mapping="/js/**"/>		
 	<resources location="/css/" mapping="/css/**" />
 	<resources location="/storage/" mapping="/storage/**" />	
+	
+	<resources location="/plugin/" mapping="/plugin/**" />
 
 	<!-- json -->
 	<beans:bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">

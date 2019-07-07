@@ -84,6 +84,7 @@
 	</div>
 	<!-- 구분선 -->
 </div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 //---------------페이지가 뜨면 실행되는 함수-----------------------
 

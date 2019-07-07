@@ -44,9 +44,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/jquery.jqplot.js"></script>
-<script type="text/javascript" src="../js/plugins/jqplot.pointLabels.js"></script>
-<script type="text/javascript" src="../js/plugins/jqplot.categoryAxisRenderer.js"></script>
-<script type="text/javascript" src="../js/plugins/jqplot.barRenderer.js"></script>
+<script type="text/javascript" src="../plugins/jqplot.pointLabels.js"></script>
+<script type="text/javascript" src="../plugins/jqplot.categoryAxisRenderer.js"></script>
+<script type="text/javascript" src="../plugins/jqplot.barRenderer.js"></script>
 <script type="text/javascript">
 $('.nav-area-index').on('click', function(){
 	$($('.nav-item').children('ul')).slideDown();
