@@ -39,6 +39,7 @@ public class ManagerController {
 		model.addAttribute("title", "관리자 페이지");
 		model.addAttribute("managerUserDisplay", "/manager/userManagement.jsp");
 		model.addAttribute("managerItemDisplay", "/manager/itemManagement.jsp");
+		model.addAttribute("managerSalesDisplay", "/manager/salesManagement.jsp");
 		model.addAttribute("userModalPageDisplay", "/manager/userModalPage.jsp");
 		model.addAttribute("itemModalPageDisplay", "/manager/itemModalPage.jsp");
 		model.addAttribute("display", "/manager/managerPage.jsp");

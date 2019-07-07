@@ -19,11 +19,8 @@
 	<resources location="/images/" mapping="/images/**"/>		
 	<resources location="/js/" mapping="/js/**"/>		
 	<resources location="/css/" mapping="/css/**" />
-	<resources location="/storage/" mapping="/storage/**" />
-	
-	<resources location="/plugins/" mapping="/plugins/**" />
-	<resources location="/main/" mapping="/main/**" />
-	
+	<resources location="/storage/" mapping="/storage/**" />	
+	<resources location="/js//plugins/" mapping="/js/plugins/**" />
 
 	<!-- json -->
 	<beans:bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">

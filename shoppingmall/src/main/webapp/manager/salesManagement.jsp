@@ -1,14 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> -->    
-<!DOCTYPE html >
-<html>
-<head>
-<title>jQplot</title>
-</head>
-<body>
-<div id="chart" style="width:750px;height:324px;"></div>
-</body>
+
+<link rel="stylesheet" type="text/css" href="../css/jquery.jqplot.css"/>
+<style type="text/css">
+#chart .jqplot-point-label {
+    border:1.5px solid #AAAAAA;
+    padding:1px 3px;
+    background-color:#EECCDD;
+}
+</style>
+
+<div class="tab-pane fade" id="sales-management">
+	<!-- 备盒急(惑前包府 技何) -->
+	<ul class="nav nav-pills mb-3 bottomNav-managerPage">
+		<li class="nav-item"><a class="nav-link active"
+			data-toggle="pill" href="#pills-home-daily-sales" aria-selected="true">老老 概免 包府</a></li>
+		<li class="nav-item"><a class="nav-link"
+			data-toggle="pill" href="#pills-profile-monthly-sales" aria-selected="false">岿喊 概免 包府</a></li>
+	</ul>
+	
+	<div class="tab-content" id="pills-tabContent">
+	<!-- 备盒急 -->
+	
+			<div class="tab-pane fade show active listDiv-managerPage" id="pills-home-daily-sales">
+				<div id="chart" style="width:750px;height:324px;"></div>
+			</div>
+						
+			<div class="tab-pane fade" id="pills-profile-monthly-sales">
+			岿喊 概免 包府 何盒
+			</div>
+	</div>
+</div>    
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="../js/jquery.jqplot.js"></script>
 <script type="text/javascript" src="../js/plugins/jqplot.pointLabels.js"></script>
@@ -56,4 +80,3 @@ jQuery(document).ready(function() {
     });
 });
 </script>
-</html>
