@@ -27,13 +27,23 @@
 <c:if test="${display == null }">
 	<jsp:include page="../template/body.jsp"/>
 </c:if>
-<!--  
-<div class="cartBox">
-	m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>
-	m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>
-	m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>m<br>
+
+<div class="sideBar">
+	<div class="cartBoxImage">
+	   	<img src="../images/cart_image.png" class="cart_image">
+	</div>
+	<div class="cartBox">
+		<!-- 
+	    <img src="../images/nothing.png" class="cartItem">
+		
+		<div class="cartBoxItem item1">
+	    	<img src="../images/x.png" class="cartDelete">
+	    	<img src="../storage/MT0000_00.gif" class="cartItem">
+		</div>
+		 -->
+	</div>
 </div>
--->
+
 <div class="btn_gotop">
 	<img class="topBtn" src="../images/top.png">
 </div>
@@ -61,6 +71,52 @@ $(document).ready( function(){
 	$(".btn_gotop").click(function(){
 		$("html,body").animate({ scrollTop: 0 }, "slow");
 	});
+
+	//----------------------------------------------------------
+	
+	//sideBar상단 cart_image를 클릭시 cart페이지로 감
+	$('.cart_image').click(function(){
+		location.href="/shoppingmall/itemboard/itemBasketList.do";
+	});
+	
+	//sideBar에 cart리스트 출력
+	if('${userDTO}'!=''){
+		$.ajax({
+			type: 'POST',
+			url: '/shoppingmall/itemboard/getSideBarList.do',
+			data: 'id=${userDTO.id}',
+			dataType : 'json',
+			success : function(data){
+				if(data.list != ''){
+					$.each(data.list, function(index,items){
+						$('.cartBox').append("<div class='cartBoxItem'>"+
+											 	"<img src='../images/x.png' class='cartDelete item"+items.seq+"'>"+
+											 	"<img src='../storage/"+items.img1+"' class='cartItem'>"+
+											 "</div>");
+						
+						$('.item'+items.seq).click(function(){
+							$.ajax({
+								type: 'POST',
+								url: '/shoppingmall/itemboard/SideBarDeleteItem.do',
+								data: 'seq='+items.seq,
+								dataType : 'text',
+								success : function(data){
+									alert('장바구니에서 삭제 되었습니다');
+									location.reload();
+								}
+							});
+						});
+					});//each
+					
+					
+				}else{
+					$('.cartBox').append("<img src='../images/nothing.png' class='cartItem'>");
+				}
+			}
+		});
+	}else{
+		$('.cartBox').append("<img src='../images/need_login.png' class='cartItem'>");
+	}
 });
 </script>
 </html>

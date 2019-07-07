@@ -486,7 +486,7 @@ $(document).on('click','.minus',function(){
 // 장바구니 회원
 
 $('.cartImg-itemPage').click(function(){
-   if(${userDTO != null}){
+	if('${userDTO}'!=''){
       
       var itemCode = $('#itemCodeDiv').text();
       var itemName = $('.itemName-itemPage').text();
@@ -496,19 +496,26 @@ $('.cartImg-itemPage').click(function(){
       var id = '${userDTO.id }';
       //건들지마세요
       var stus = 'cart';
-      $.ajax({
-         type: 'post',
-         url: '/shoppingmall/itemboard/itemBasket.do',
-         data: 'itemCode='+itemCode+'&itemName='+itemName+'&itemCol='+itemCol+'&itemQty='+itemQty+'&itemSize='+itemSize+'&id='+id+'&stus='+stus+'&categoryCode=${categoryCode}&pg=${pg}',
-         success: function(){
-            if(confirm("상품이 저장되었습니다. 장바구니로 가시겠습니까?")){
-               location.href="/shoppingmall/itemboard/itemBasketList.do";
-            }
-            
-         } 
-      });
+      //alert(itemCol+','+itemSize);
+      if(itemCol!='색상선택' && itemSize!='사이즈선택'){
+	      $.ajax({
+	         type: 'post',
+	         url: '/shoppingmall/itemboard/itemBasket.do',
+	         data: 'itemCode='+itemCode+'&itemName='+itemName+'&itemCol='+itemCol+'&itemQty='+itemQty+'&itemSize='+itemSize+'&id='+id+'&stus='+stus+'&categoryCode=${categoryCode}&pg=${pg}',
+	         success: function(){
+	            if(confirm("상품이 저장되었습니다. 장바구니로 가시겠습니까?")){
+	               location.href="/shoppingmall/itemboard/itemBasketList.do";
+	            }else{
+					location.reload();
+	            }
+	            
+	         } 
+	      });
+      }else{
+    	  alert("색상과 사이즈를 선택해주세요.");
+      }
    
-   }else if(${userDTO == null}){
+   }else {
          if(confirm('비회원으로 구매를 진행하시겠습니까?')){
             location.href = "/shoppingmall/itemboard/itemBasketList.do";
          }else

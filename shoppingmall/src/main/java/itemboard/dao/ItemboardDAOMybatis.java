@@ -60,8 +60,19 @@ public class ItemboardDAOMybatis implements ItemboardDAO{
 	}
 
 	@Override
-	public int basketDelete(String itemCode) {
-		return sqlSession.delete("itemboardSQL.basketDelete", itemCode);
+	public void basketDelete(String itemCode) {
+		sqlSession.delete("itemboardSQL.basketDelete", itemCode);
+		
+	}
+
+	@Override
+	public List<ItemBasketListDTO> getSideBarList(String id) {
+		return sqlSession.selectList("itemboardSQL.getSideBarList", id);
+	}
+
+	@Override
+	public void SideBarDeleteItem(int seq) {
+		sqlSession.delete("itemboardSQL.SideBarDeleteItem", seq);
 		
 	}
 }

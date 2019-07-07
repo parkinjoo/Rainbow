@@ -104,72 +104,79 @@
 </div>
 
 <script>
-function userOut(){
-	if(confirm('회원탈퇴를 하시겠습니까?'))
-		location.href="/shoppingmall/user/withdrawalCheckForm.do";
-}
 $(document).ready(function(){
 	var point = ${userDTO.point};
 	var cash = ${userDTO.cash};
 	$('#point').text(point.toLocaleString()+' 점');
 	$('#cash').text(cash.toLocaleString()+' 원');	//.toLocaleString() 3자리수마다 쉼표
-/*
-	$('ul.nav li a').click(function(){
-		$('ul.nav li a').removeClass('active');
-		$(this).attr('class', 'nav-link active');
-	});
-*/
-	var id = ${userDTO.id};
-	//-------------아이템 목록을 뿌려주는 함수-------------------
+
+	//--------------------------------------- 출고 대기중 리스트 -----------------------------------
 	$.ajax({
 		type : 'POST' ,
 		url : '/shoppingmall/user/getItemList.do',
-		data : 'id='+id,
+		data : 'id=${userDTO.id}',
 		dataType : 'text',
 		success : function(data){
 			if(data!='null'){
 				$.each(data.list, function(index,items){
-					$('#itemList1').append("<tr>"+
-							  "<th scope='row'>"+(index+1)+
-							  "</th>"+
-							  "<td>"+items.name+"</td>"+
-							  "<td>"+items.id+"</td>"+
-							  "<td>"+items.email+"</td>"+
-							  "<td><button type='button'"+ 
-							  			  "class='btn btn-secondary modifyBtn-managerPage'"+
-							  			  "name=id"+
-							  			  "value='jinsol'"+
-							  			  "id='modifyBtn"+index+
-							  			  "'>수정</button></td>"+
-							  "<td>"+
-							  "<input type='checkbox' name='deleteCheck'"+
-							  		 "class='deleteCheck-managerPage'"+
-							  		 "value="+items.id+">"+
-							  "<input value='"+items.id+
-							  	   "' type='hidden' class='hiddenId' id='modifyHidden"+index+"'>"+
-							  "</td>"+
-							  "</tr>");
-					
-					$('#itemList2').append();
-					
-					$('#itemList3').append();
-					
-					$('#itemList4').append();
+					$('#itemList1').append();
 				});//each;
 			}else{
 				$('#itemList1').append("<tr>"+
 										  "<td align='center'>출고 대기중인 상품이 없습니다.</td>"+
 									  "</tr>");
-				
+			}
+		}
+	});
+	//----------------------------------------- 배송중인 상품 리스트 --------------------------------
+	$.ajax({
+		type : 'POST' ,
+		url : '/shoppingmall/user/getItemList.do',
+		data : 'id=${userDTO.id}',
+		dataType : 'text',
+		success : function(data){
+			if(data!='null'){
+				$.each(data.list, function(index,items){
+					$('#itemList2').append();
+				});//each;
+			}else{
 				$('#itemList2').append("<tr>"+
 										  "<td align='center'>배송중인 상품이 없습니다.</td>"+
 									  "</tr>");
-				
+			}
+		}
+	});
+	//-------------------------------------- 환불 요청중인 상품 리스트 --------------------------------
+	$.ajax({
+		type : 'POST' ,
+		url : '/shoppingmall/user/getItemList.do',
+		data : 'id=${userDTO.id}',
+		dataType : 'text',
+		success : function(data){
+			if(data!='null'){
+				$.each(data.list, function(index,items){
+					$('#itemList3').append();
+				});//each;
+			}else{
 				$('#itemList3').append("<tr>"+
 										  "<td align='center'>환불요청 중인 상품이 없습니다."+
 										  "</th>"+
 									  "</tr>");
-				
+			}
+		}
+	});
+	//----------------------------------------- 배송완료 상품 리스트 --------------------------------
+	$.ajax({
+		type : 'POST' ,
+		url : '/shoppingmall/user/getItemList.do',
+		data : 'id=${userDTO.id}',
+		dataType : 'text',
+		success : function(data){
+			if(data!='null'){
+				$.each(data.list, function(index,items){
+					$('#itemList4').append();
+				});//each;
+			}else{
 				$('#itemList4').append("<tr>"+
 										  "<td align='center'>배송완료 상품이 없습니다."+
 										  "</th>"+
@@ -177,6 +184,10 @@ $(document).ready(function(){
 			}
 		}
 	});
-	//---------------------------------------------------	
 });
+
+function userOut(){
+	if(confirm('회원탈퇴를 하시겠습니까?'))
+		location.href="/shoppingmall/user/withdrawalCheckForm.do";
+}
 </script>
