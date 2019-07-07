@@ -515,6 +515,10 @@ $('.cartImg-itemPage').click(function(){
             location.href = "/shoppingmall/user/loginForm.do";
    }
 });
+
+$('.purchaseBtn-itemPage').click(function(){
+	location.href = "/shoppingmall/itemboard/itemPurchaseForm.do"
+})
 </script>
 </html>
 

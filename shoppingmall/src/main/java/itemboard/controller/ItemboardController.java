@@ -273,4 +273,10 @@ public class ItemboardController {
     		itemboardDAO.basketDelete(itemCode.get(i));
     	}
     }
+	
+	@RequestMapping(value="/itemPurchaseForm.do", method=RequestMethod.GET)
+	public String itemPurchaseForm(Model model) {
+		model.addAttribute("display", "itemboard/itemPurchaseForm.jsp");
+		return "/main/index";	
+	}
 }
