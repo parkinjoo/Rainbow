@@ -5,13 +5,7 @@
 <!-- 구분선(회원관리 세부) -->
 <div class="tab-pane fade show active" id="user-management">
 
-	<!-- 회원 관리 세부 메뉴 -->
-	<ul class="nav nav-pills mb-3 bottomNav-managerPage">
-		<li class="nav-item"><a class="nav-link active"
-			data-toggle="pill" href="#pills-home" aria-selected="true">사용자 목록</a></li>
-		<li class="nav-item"><a class="nav-link" data-toggle="pill"
-			href="#pills-profile" aria-selected="false">탈퇴 회원 관리</a></li>
-	</ul>
+
 	<!-- 회원 관리 세부 메뉴 -->
 
 	<div class="tab-content" id="pills-tabContent">
@@ -75,12 +69,6 @@
 			<!-- 페이징 -->
 		</div>
 		<!-- 사용자 목록 세부 -->
-
-		<div class="tab-pane fade" id="pills-profile">
-			<!-- 탈퇴회원 목록 세부 -->
-		</div>
-
-
 	</div>
 	<!-- 구분선 -->
 </div>
