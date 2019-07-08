@@ -260,7 +260,7 @@ $(document).ready(function(){
 										      "</td>"+
 										      "<td align='center' width='15%' class='itemList'>"+
 										      	"<div class='test'>"+
-									      			"<input type='button' value='리뷰쓰기' class='orderCancle"+items.seq+"'><br>"+
+									      			"<input type='button' value='리뷰쓰기' class='review"+items.seq+"'><br>"+
 									      			"<input type='button' value='환불요청' class='refund"+items.seq+"'>"+
 										      	"</div>"+
 										      "</td>"+
@@ -276,9 +276,13 @@ $(document).ready(function(){
 								success : function(data){
 									alert('정상적으로 환불요청 처리되었습니다.');
 									location.reload();
+									location.href='/shoppingmall/itemboard/itemboardView.do?itemCode='+items.itemCode+'&categoryCode=${categoryCode}&pg=${pg}'; 
 								}
 							});
 						}
+					});
+					$('.review'+items.seq).click(function(){
+						location.href='/shoppingmall/itemboard/itemboardView.do?itemCode='+items.itemCode+'&categoryCode=${categoryCode}'; 
 					});
 				});//each;
 			}else{

@@ -198,7 +198,10 @@ public class ItemboardController {
 	}
 	
 	@RequestMapping(value="/itemboardView.do", method=RequestMethod.GET)
-	public String itemboardView(@RequestParam String categoryCode, @RequestParam String itemCode, @RequestParam String pg, Model model) {
+	public String itemboardView(@RequestParam String categoryCode,
+								@RequestParam String itemCode,
+								@RequestParam(required=false, defaultValue="1") String pg,
+								Model model) {
 		
 		ItemboardDTO itemboardDTO = itemboardDAO.getItemboardView(itemCode);
 		model.addAttribute("itemboardDTO",itemboardDTO);
