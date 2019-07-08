@@ -275,13 +275,25 @@ public class ItemboardController {
     	}
     }
 	
-	@RequestMapping(value="/itemPurchaseForm.do", method=RequestMethod.GET)
-	public ModelAndView itemPurchaseForm(Model model) {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("title", "구매하기");
-		mav.addObject("display", "/itemboard/itemPurchaseForm.jsp");
-		mav.setViewName("/main/index");
-		return mav;
+	@RequestMapping(value="/itemPurchaseForm.do", method=RequestMethod.POST)
+	public String itemPurchaseForm(@RequestParam String csName,
+									@RequestParam String csVal,
+									@RequestParam String initQty,
+									@RequestParam String salePrice,
+									@RequestParam String sumPrice,
+									@RequestParam String imgName,
+									@RequestParam String itemName,
+									Model model) {
+		model.addAttribute("title", "구매하기");
+		model.addAttribute("csName",csName);
+		model.addAttribute("itemName",itemName);
+		model.addAttribute("imgName",imgName);
+		model.addAttribute("csVal",csVal);
+		model.addAttribute("initQty",initQty);
+		model.addAttribute("salePrice",salePrice);
+		model.addAttribute("sumPrice",sumPrice);
+		model.addAttribute("display", "/itemboard/itemPurchaseForm.jsp");
+		return "/main/index";
 	}
 	
 	@RequestMapping(value="/getSideBarList.do", method=RequestMethod.POST)
