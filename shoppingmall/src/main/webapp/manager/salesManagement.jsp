@@ -25,14 +25,15 @@
 	</div>
 </div>	
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>	
 <script type="text/javascript">
-$('#sales-management').on('click', function(){
-    var barChart1 = [9, 8, 6, 8, 7, 6, 4];
+
+setInterval(function(){
+	var barChart1 = [9, 8, 6, 8, 7, 6, 4];
     var barChart2 = [5, 3, 4, 6, 2, 7, 8];
     var lineChart = [12, 7, 4, 10, 8, 5, 7];
-    
     jQuery("#chart").jqplot([barChart1, barChart2, lineChart], {
+
           title : "막대 그래프 & 꺽은선 그래프"
         , stackSeries : true     
         , series : [
@@ -64,6 +65,5 @@ $('#sales-management').on('click', function(){
             }
         }
     });
-});
+},1000);
 </script>
-

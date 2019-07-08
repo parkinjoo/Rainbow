@@ -10,7 +10,7 @@
 		<li class="nav-item"><a class="nav-link" data-toggle="tab"
 			href="#item-management" role="tab">상품 관리</a></li>
 		<li class="nav-item"><a class="nav-link" data-toggle="tab"
-			href="#sales-management" role="tab" id="test">매출 관리(개발 보류)</a></li>
+			href="#sales-management" role="tab" id="clickTest">매출 관리(개발 보류)</a></li>
 	</ul>
 	
 	<div class="tab-content" id="myTabContent">
@@ -48,13 +48,15 @@
 <script type="text/javascript" src="../js/plugins/jqplot.barRenderer.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	
+
 	var managerPageOk = '${managerPageOk}';
 	if (managerPageOk=='') {
 		location.href="/shoppingmall/manager/managerPageForm.do";
 	}else {
 		return false;
 	}
-	
-});
+
+}); 
+
+
 </script>
