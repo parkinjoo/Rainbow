@@ -25,6 +25,7 @@ import itemboard.bean.ItemBasketDTO;
 import itemboard.bean.ItemBasketListDTO;
 import itemboard.bean.ItemboardDTO;
 import itemboard.bean.ItemboardPaging;
+import itemboard.bean.ReviewDTO;
 import itemboard.dao.ItemboardDAO;
 import user.bean.UserDTO;
 
@@ -322,7 +323,9 @@ public class ItemboardController {
 	}
 	
 	@RequestMapping(value="/review.do", method=RequestMethod.POST)
-	public String review(@RequestParam MultipartFile[] img,Model model) {
+	public String review(@ModelAttribute ReviewDTO reviewDTO,
+						@RequestParam MultipartFile[] img,
+						Model model) {
 		
 		String filePath = "C:\\Spring\\project\\shoppingmall\\src\\main\\webapp\\storage";
 		String fileName;
@@ -338,9 +341,9 @@ public class ItemboardController {
 				e.printStackTrace();
 			}
 		
-			//itemboardDTO.setImg1(fileName);
+			reviewDTO.setImg1(fileName);
 		}else {
-			//itemboardDTO.setImg1(null);
+			reviewDTO.setImg1(null);
 		}
 		//-------------------
 		if(img[1]!=null) {
@@ -352,11 +355,12 @@ public class ItemboardController {
 				e.printStackTrace();
 			}
 		
-			//itemboardDTO.setImg2(fileName);
+			reviewDTO.setImg2(fileName);
 		}else {
-			//itemboardDTO.setImg2(null);
+			reviewDTO.setImg2(null);
 		}
 		
+		itemboardDAO.reviewWrite(reviewDTO);
 		
 		model.addAttribute("display", "/itemboard/itemboardView.jsp");
 		return "/main/index";

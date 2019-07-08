@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import itemboard.bean.ItemBasketDTO;
 import itemboard.bean.ItemBasketListDTO;
 import itemboard.bean.ItemboardDTO;
+import itemboard.bean.ReviewDTO;
 
 @Transactional
 @Repository
@@ -73,6 +74,12 @@ public class ItemboardDAOMybatis implements ItemboardDAO{
 	@Override
 	public void SideBarDeleteItem(int seq) {
 		sqlSession.delete("itemboardSQL.SideBarDeleteItem", seq);
+		
+	}
+
+	@Override
+	public void reviewWrite(ReviewDTO reviewDTO) {
+		sqlSession.delete("itemboardSQL.reviewWrite",reviewDTO);
 		
 	}
 }

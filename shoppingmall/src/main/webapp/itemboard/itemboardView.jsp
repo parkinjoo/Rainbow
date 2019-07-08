@@ -21,6 +21,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/index-style.css">
     <link rel="stylesheet" href="../css/itemPage-style.css">
+    <link rel="stylesheet" href="../css/review.css">
 
   </head>
   <body>
@@ -230,7 +231,64 @@
      <img src="../storage/${itemboardDTO.img4 }">
   
   </div>
-
+  <div class="manager-managerPage"><!-- 전체 영역 감싸고 있음 -->
+	<!-- 최상단 메뉴 [회원 관리(사용자 목록, 탈퇴 회원 관리), 상품 관리(??), 매출 관리(보류)]-->
+	<ul class="nav nav-tabs" id="myTab" role="tablist">
+		<li class="nav-item"><a class="nav-link active" data-toggle="tab"
+			href="#user-management">리뷰 작성</a></li>
+		<li class="nav-item"><a class="nav-link" data-toggle="tab"
+			href="#item-management" role="tab">리뷰 보기 </a></li>
+	</ul>
+	
+	<div class="tab-content" id="myTabContent">
+	
+		<!-- userManagement.jsp Include Area -->
+			<jsp:include page="${managerUserDisplay }"/>
+		<!-- userManagement.jsp Include Area -->
+		
+		<!-- itemManagement.jsp Include Area -->
+			<jsp:include page="${managerItemDisplay }"/>
+		<!-- itemManagement.jsp Include Area -->	
+			
+	</div>
+</div>
+  
+	<table border="0" cellpading="0" cellpacing="0" width="1200">
+		<tr id="review_name">
+			<td colspan="1" align="center">
+				<font color="black" size="2" face="돋움">작성자</font>
+			</td>
+			<td align="left" colspan="1">
+				<input type="text" id="re_input_name" >
+			</td>
+		</tr>
+		<tr id="review_content">
+			<td align="center" colspan="1" height="30">
+				<font color="black" size="2" face="돋움">리뷰 내용</font>
+			</td>
+			<td height="10" colspan="2">
+				<textarea class="review_txt" id="review_txt" placeholder="로그인후 작성가능합니다"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td align="center" colspan="1" height="20">
+				<font color="black" size="2" face="돋움">사진 등록</font>
+			<td height="10" colspan="2">
+				<input type="file"  name="img" id="img1">
+				
+		</tr>
+		<tr>
+			<td align="center" colspan="1" height="20">
+				<font color="black" size="2" face="돋움">사진 등록</font>
+			<td height="10" colspan="2">
+				<input type="file" class="custom-file-input" name="img" id="img2">
+		</tr>
+		<tr>
+			<td align="right" colspan="3">
+				<input type="button" id="sb_review" value="리뷰 등록하기">
+			</td>
+		</tr>	
+	</table>
 
   </body>
 
@@ -568,6 +626,65 @@ $('.purchaseBtn-itemPage').click(function(){
 	document.viewForm.submit();
 });
 
+
+
+
+$('#review_txt').click(function(){
+
+	if(${userDTO == null}){
+		alert('로그인후 작성가능합니다 ')
+		this.blur();
+	}		
+})
+
+/*
+$(document).ready(function(){ 
+	var fileTarget = $('#img1'); 
+	fileTarget.on('change', function(){ // 값이 변경되면
+		if(window.FileReader){ // modern browser 
+			var filename = $(this)[0].files[0].name; 
+		} else { // old IE 
+			var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+			} 
+	
+	// 추출한 파일명 삽입 
+	
+	//$("label[id='img1']").text(filename);
+	});
+	
+	
+	var fileTarget = $('#img2'); 
+	fileTarget.on('change', function(){ // 값이 변경되면
+		if(window.FileReader){ // modern browser 
+			var filename = $(this)[0].files[0].name; 
+		} else { // old IE 
+			var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+			} 
+	
+	// 추출한 파일명 삽입 
+	
+	//$("label[id='img2']").text(filename);
+});
+	*/
+$('#sb_review').click(function(){
+	if($('.review_txt').val()== null || $('.review_txt').val()=="로그인후 작성가능합니다"){
+		alert('리뷰를 작성해주세요')
+	}else{
+		$.ajax({
+			type: 'POST',
+			url: '/shoppingmall/itemboard/review.do',
+			data: {'name': ${'#re_input_name'}.val(),
+					'review': ${'.review_txt'}.val(),
+					'img1':${'#img1'}.val()},
+					//'ima2':${'#img2'}.val()},
+			dataType : 'text',
+			success : function(data){
+				alert('성공')
+			}
+			})
+	}
+})
+*/
 </script>
 </html>
 

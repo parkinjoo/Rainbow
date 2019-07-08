@@ -63,4 +63,9 @@
 	<delete id="SideBarDeleteItem" parameterType="int">
 		delete itembasketTable where seq=#{seq}
 	</delete>
+	
+	<!--  리뷰 작성 -->
+	<insert id="reviewWrite" parameterType="review">
+	 	insert into reviewtable(seq,id,name,review,img1,img2,registday) values(seq_reviewtable, #{id},#{name},#{review},#{img1},#img{2},sysdate)
+	</insert>
 </mapper>

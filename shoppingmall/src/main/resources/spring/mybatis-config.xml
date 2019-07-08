@@ -8,5 +8,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="itemboard.bean.ItemboardDTO" alias="itemboard"/>
 		<typeAlias type="itemboard.bean.ItemBasketDTO" alias="itembasket"/>
 		<typeAlias type="itemboard.bean.ItemBasketListDTO" alias="itembasketList"/>
+		<typeAlias type="itemboard.bean.ReviewDTO" alias="review"/>
 	</typeAliases>
 </configuration>

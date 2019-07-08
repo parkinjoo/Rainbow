@@ -10,6 +10,7 @@ import lombok.Data;
 public class ReviewDTO {
 	private int seq;
 	private String id;
+	private String name;
 	private String review;
 	private String img1;
 	private String img2;
