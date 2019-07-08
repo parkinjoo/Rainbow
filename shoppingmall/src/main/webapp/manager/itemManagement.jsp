@@ -14,6 +14,7 @@
 	<!-- 구분선 -->
 	
 			<div class="tab-pane fade show active listDiv-managerPage" id="pills-home-insert-data">
+			
 				<div class="searchDiv">
 					<form class="form-inline my-2 my-lg-0 searchBtn-managerPage">
 						<div class="input-group mb-3 searchDiv">

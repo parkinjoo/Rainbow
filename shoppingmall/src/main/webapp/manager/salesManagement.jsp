@@ -5,60 +5,32 @@
 	<!-- 구분선(상품관리 세부) -->
 	<ul class="nav nav-pills mb-3 bottomNav-managerPage">
 		<li class="nav-item">
-			<a class="nav-link active" data-toggle="pill" href="#pills-home-daily-sales" aria-selected="true">일일 매출 관리</a>
+			<a class="nav-link active" data-toggle="pill" href="#pills-home-dailySales" aria-selected="true">일일 매출 관리</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link"	data-toggle="pill" href="#pills-profile-monthly-sales" aria-selected="false">월별 매출 관리</a>
 		</li>
 	</ul>
 	
-	
 	<div class="tab-content" id="pills-tabContent">
-	<!-- 구분선 -->
-	
-			<div class="tab-pane fade show active listDiv-managerPage" id="pills-home-daily-sales">
-	
-			</div>
-						
-			<div class="tab-pane fade" id="pills-profile-monthly-sales">
-			월별 매출 관리 부분
-			</div>
+		<!-- 구분선 -->
+		
+				<div class="tab-pane fade show active" id="pills-home-dailySales">
+					<div id="chart" style="width:750px;height:324px;"></div>
+				</div>
+							
+				<div class="tab-pane fade" id="pills-profile-monthly-sales">
+				월별 매출 관리 부분
+				</div>
 	</div>
-</div>    
+</div>	
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
-
-
-jQuery(document).ready(function() { 
-	
+$('#sales-management').on('click', function(){
     var barChart1 = [9, 8, 6, 8, 7, 6, 4];
     var barChart2 = [5, 3, 4, 6, 2, 7, 8];
     var lineChart = [12, 7, 4, 10, 8, 5, 7];
-    
-    jQuery('#chart').jqplot([barChart1, barChart2, lineChart], {
-    	title : "막대 그래프 & 꺽은선 그래프"
-    		  , stackSeries : true     
-    		  , series : [
-    	            {     
-    	                  renderer : jQuery.jqplot.BarRenderer
-    	                , rendererOptions : {
-    	                      barWidth : 35                 
-    	                    , barPadding : -15                
-    	                    , highlightMouseOver : false  
-    	                }
-    	            }
-    	           ]
-    	        , axes: {
-    	            xaxis : { 
-    	                  renderer : jQuery.jqplot.CategoryAxisRenderer
-    	                , ticks : ['A Name', 'B Name', 'C Name', 'D Name', 'E Name', 'F Name', 'G Name']
-    	            }
-    	        }
-    });
-    alert("뜨는지 확인");
-    
-});
-	/*
     
     jQuery("#chart").jqplot([barChart1, barChart2, lineChart], {
           title : "막대 그래프 & 꺽은선 그래프"
@@ -93,5 +65,5 @@ jQuery(document).ready(function() {
         }
     });
 });
-*/
 </script>
+

@@ -10,7 +10,7 @@
 		<li class="nav-item"><a class="nav-link" data-toggle="tab"
 			href="#item-management" role="tab">상품 관리</a></li>
 		<li class="nav-item"><a class="nav-link" data-toggle="tab"
-			href="#sales-management" role="tab">매출 관리(개발 보류)</a></li>
+			href="#sales-management" role="tab" id="test">매출 관리(개발 보류)</a></li>
 	</ul>
 	
 	<div class="tab-content" id="myTabContent">
@@ -28,10 +28,7 @@
 		<!-- salesManagement.jsp Include Area -->
 			
 	</div>
-	
-				테스트
-				<div id="chart"></div>
-			테스트2
+				
 </div>
 
 
@@ -42,6 +39,7 @@
 		<!-- modalPage.jsp Include Area  -->
 			<jsp:include page="${itemModalPageDisplay }"/>
 		<!-- modalPage.jsp Include Area  -->
+
 		
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>		
 <script type="text/javascript" src="../js/jquery.jqplot.js"></script>
@@ -50,13 +48,13 @@
 <script type="text/javascript" src="../js/plugins/jqplot.barRenderer.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	
 	var managerPageOk = '${managerPageOk}';
 	if (managerPageOk=='') {
 		location.href="/shoppingmall/manager/managerPageForm.do";
 	}else {
 		return false;
 	}
+	
 });
 </script>
-
-
