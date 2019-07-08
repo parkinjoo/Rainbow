@@ -58,43 +58,43 @@
     <h5>주문자 정보</h5>
       <table class="table">
           <tr>
-            <th class="infoTitle"></th>
-            <td class="infoText"></td>
+            <th class="infoTitle">이름</th>
+            <td class="infoText">${userDTO.name }</td>
           </tr>
           <tr>
             <th class="infoTitle">이메일</th>
             <td class="infoText">
-              <input type="text" class="infoInput" name="email" value="">
+              <input type="text" class="infoInput" name="email" value="${userDTO.email }">
             </td>
           </tr>
           <tr>
             <th class="infoTitle">연락처</th>
             <td class="infoText">
-              <input type="text" class="infoInput" name="email" value="">
+              <input type="text" class="infoInput" name="email" value="${userDTO.tel }">
             </td>
           </tr>
       </table>
     </div>
 
     <div class="postInfo">
-      <h5>배송 정보</h5>
+      <h5>배송 정보 &nbsp;&nbsp;&nbsp;&nbsp;<input type="button" id="pasteBtn" value="주문자정보동일" onclick="paste()"/></h5>
         <table class="table">
             <tr>
               <th class="infoTitle">이름</th>
               <td class="infoText">
-                <input type="text" class="infoInput" name="name" value="">
+                <input type="text" class="infoInput name" name="name" value="">
               </td>
             </tr>
             <tr>
               <th class="infoTitle">연락처</th>
               <td class="infoText">
-                <input type="text" class="infoInput" name="tel" value="">
+                <input type="text" class="infoInput tel" name="tel" value="">
               </td>
             </tr>
             <tr>
               <th class="infoTitle">배송지 선택</th>
               <td class="infoText">
-                <select class="destinationInfo" name="destination">
+                <select class="destinationInfo destination" name="destination">
                   <option value="house">자택</option>
                   <option value="company">회사</option>
                   <option value="newDestination">신규 배송지</option>
@@ -105,18 +105,18 @@
               <th class="infoTitle">주소</th>
               <td class="infoText">
                 <div class="input-group mb-3 zipcodeInput-purchase">
-                  <input type="text" class="form-control" placeholder="우편 번호">
+                  <input type="text" class="form-control zipcode" placeholder="우편 번호">
                   <div class="input-group-append">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2">우편 번호</button>
                   </div>
                 </div>
 
                   <div class="addressInfo-pur">
-                    <input type="text" class="form-control" placeholder="주소">
+                    <input type="text" class="form-control addr1" placeholder="주소">
                   </div>
 
                   <div class="addressInfo-pur">
-                    <input type="text" class="form-control" placeholder="상세 주소">
+                    <input type="text" class="form-control addr2" placeholder="상세 주소">
                   </div>
               </td>
             </tr>
@@ -128,6 +128,11 @@
                   <textarea class="form-control postMessage" id="validationTextarea" placeholder="Required example textarea"></textarea>
                 </div>
               </td>
+            </tr>
+            <tr>
+            <td>
+            	<input type="button" value="구매하기">
+            </td>
             </tr>
         </table>
     </div>
@@ -173,34 +178,17 @@ $(document).ready(function(){
 	'<tr><td></td><td></td><td></td><td></td><td>총가격 : '+sumPrice+'</td><td>총 마일리지 : '+fund+'</td><tr>'
 	
 	$('#superList').append(tmp);
-	/* $('.td'+count).append($('<div/>',{
-		class : 'purchaseImg',
-		//style : 'background-image:url("../storage/'+imgName+'")'		
-		text : 1
-	})); */
-	/* $('#superList').append($('<td>').append($('<div/'),{
-		class : 'purchaseImg',
-		style : 'background-image:url("../storage/'+imgName+'")'		
-	}));
-	$('#superList').append($('<td>').append($('<div/'),{
-		class : 'purchaseImg',
-		style : 'background-image:url("../storage/'+imgName+'")'		
-	}));
-	$('#superList').append($('<td>').append($('<div/'),{
-		class : 'purchaseImg',
-		style : 'background-image:url("../storage/'+imgName+'")'		
-	}));
-	$('#superList').append($('<td>').append($('<div/'),{
-		class : 'purchaseImg',
-		style : 'background-image:url("../storage/'+imgName+'")'		
-	}));
-	$('#superList').append($('<td>').append($('<div/'),{
-		class : 'purchaseImg',
-		style : 'background-image:url("../storage/'+imgName+'")'		
-	})); */
-	
-	
+
+	alert('${userDTO}');	
 });
+
+function paste(){
+	$('.name').val('${userDTO.name}');
+	$('.tel').val('${userDTO.tel}');
+	$('.zipcode').val('${userDTO.zipcode}');
+	$('.addr1').val('${userDTO.addr1}');
+	$('.addr2').val('${userDTO.addr2}');
+}
 </script>
 
 
