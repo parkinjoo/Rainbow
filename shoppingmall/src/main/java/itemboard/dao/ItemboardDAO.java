@@ -32,7 +32,6 @@ public interface ItemboardDAO {
 
 	public void SideBarDeleteItem(int seq);
 
-
 	public List<ItemBasketListDTO> getStayItemList(String id);
 
 	public List<ItemBasketListDTO> getIngItemList(String id);
