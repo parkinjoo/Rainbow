@@ -147,7 +147,9 @@ $(document).ready(function() {
 							$('#img3label').text(data.itemboardDTO.img3);
 							$('#img4label').text(data.itemboardDTO.img4); 
 							
-							$('#itemKeyword').val(data.itemboardDTO.itemKeyword);   
+							$('#itemKeyword').val(data.itemboardDTO.itemKeyword);
+							$('#itemboardWriteBtn').css("display", "none");
+							$('#itemboardUpdateBtn').css("display", "block");
 							
 							$('#itemModal').modal();
 						}
@@ -212,6 +214,8 @@ $('#newItemAdd').click(function(){
 	$('#img3label').text('choose file');
 	$('#img4label').text('choose file'); 
 	$('#itemKeyword').val('');
+	$('#itemboardUpdateBtn').css('display', 'none');
+	$('#itemboardWriteBtn').css('display', 'block');
 	$('#itemModal').modal();
 });
    
