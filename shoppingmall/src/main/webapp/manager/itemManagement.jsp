@@ -321,21 +321,99 @@ $(document).ready(function() {
 									  "<td>"+items.costPrice+"</td>"+
 									  "<td>"+items.salePrice+"</td>"+
 									  "<td><button type='button'"+ 
-						  			  "class='btn btn-secondary'"+
+						  			  "class='btn btn-secondary modifyBtn-itemList'"+
 						  			  "'>수정</button></td>"+
 									  "<td>"+
 									  "<input type='checkbox' name='deleteCheck'"+
 									  		 "class='deleteCheck-itemboard'"+
 									  		 "value="+items.itemCode+">"+
 									  "<input value='"+items.itemCode+
-									  	   "' type='hidden' class='hiddenId' id='modifyHidden"+index+"'>"+
+									  	   "' type='hidden' class='hiddenCode'>"+
 									  "</td>"+
-									  "</tr>");		
+									  "</tr>");
+				
+				$('.modifyBtn-itemList').each(function(index, item){
+					$(item).addClass('modifyArrr_'+index);
+				});
+				
+				$('.hiddenCode').each(function(index, item){
+					$(item).addClass('hiddenArrr_'+index);
+				});
 				
 			});//each;
+			
+			$('.modifyBtn-itemList').each(function(index, item){
+				$(item).click(function(){
+					
+					
+ 					$.ajax({
+						type: 'post',
+						url: '/shoppingmall/manager/getItemInfo.do',
+						data : 'itemcode='+$('.hiddenArrr_'+index).val(),
+						dataType: 'json',
+						success : function(data) {
+							
+							//alert(data.itemboardDTO.itemCode);
+							
+ 	  						$('#itemCode').val(data.itemboardDTO.itemCode);
+ 	  						
+							$('#itemName').val(data.itemboardDTO.itemName);
+							$('#salePrice').val(data.itemboardDTO.salePrice);
+							$('#costPrice').val(data.itemboardDTO.costPrice);
+							
+							$('#col1').val(data.itemboardDTO.col1);
+							/*
+							$('#col1s').val(data.itemboardDTO.col1s);
+							$('#col1m').val(data.itemboardDTO.col1m);
+							$('#col1l').val(data.itemboardDTO.col1l);
+							$('#col1x').val(data.itemboardDTO.col1x);
+							$('#col1f').val(data.itemboardDTO.col1f);
+							$('#col1tot').val(data.itemboardDTO.col1tot);
+							
+							$('#col2').val(data.itemboardDTO.col2);
+							$('#col2s').val(data.itemboardDTO.col2s);
+							$('#col2m').val(data.itemboardDTO.col2m);
+							$('#col2l').val(data.itemboardDTO.col2l);
+							$('#col2x').val(data.itemboardDTO.col2x);
+							$('#col2f').val(data.itemboardDTO.col2f);
+							$('#col2tot').val(data.itemboardDTO.col2tot);
+							
+							$('#col3').val(data.itemboardDTO.col3);
+							$('#col3s').val(data.itemboardDTO.col3s);
+							$('#col3m').val(data.itemboardDTO.col3m);
+							$('#col3l').val(data.itemboardDTO.col3l);
+							$('#col3x').val(data.itemboardDTO.col3x);
+							$('#col3f').val(data.itemboardDTO.col3f);
+							$('#col3tot').val(data.itemboardDTO.col3tot);
+							
+							$('#col4').val(data.itemboardDTO.col4);
+							$('#col4s').val(data.itemboardDTO.col4s);
+							$('#col4m').val(data.itemboardDTO.col4m);
+							$('#col4l').val(data.itemboardDTO.col4l);
+							$('#col4x').val(data.itemboardDTO.col4x);
+							$('#col4f').val(data.itemboardDTO.col4f);
+							$('#col4tot').val(data.itemboardDTO.col4tot);
+							*/
+							
+							$('#itemContent').val(data.itemboardDTO.itemContent);
+							
+							$('#img1label').text(data.itemboardDTO.img1);
+							$('#img2label').text(data.itemboardDTO.img2);
+							$('#img3label').text(data.itemboardDTO.img3);
+							$('#img4label').text(data.itemboardDTO.img4); 
+							
+							$('#itemKeyword').val(data.itemboardDTO.itemKeyword);   
+							
+							$('#itemModal').modal();
+						}
+					}) 
+				});
+			});
 		}
 	});
  });
+ 
+ 
  
 //체크박스 전체선택 기능
 $('#selectAll-itemboard').click(function(){

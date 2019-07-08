@@ -75,4 +75,5 @@ public class ItemboardDAOMybatis implements ItemboardDAO{
 		sqlSession.delete("itemboardSQL.SideBarDeleteItem", seq);
 		
 	}
+
 }
