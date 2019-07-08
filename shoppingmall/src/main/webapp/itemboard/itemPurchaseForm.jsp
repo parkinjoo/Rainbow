@@ -70,7 +70,7 @@
           <tr>
             <th class="infoTitle">연락처</th>
             <td class="infoText">
-              <input type="text" class="infoInput" name="email" value="${userDTO.tel }">
+              <input type="text" class="infoInput" name="tel" value="${userDTO.tel }">
             </td>
           </tr>
       </table>
