@@ -313,4 +313,52 @@ public class ItemboardController {
 	public void SideBarDeleteItem(@RequestParam int seq) {
 		itemboardDAO.SideBarDeleteItem(seq);
 	}
+	
+	@RequestMapping(value="/itemboardReview.do", method=RequestMethod.GET)
+	public ModelAndView reviewForm() {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("display","/itemboard/itemboardReview.jsp");
+		return mav;
+	}
+	
+	@RequestMapping(value="/review.do", method=RequestMethod.POST)
+	public String review(@RequestParam MultipartFile[] img,Model model) {
+		
+		String filePath = "C:\\Spring\\project\\shoppingmall\\src\\main\\webapp\\storage";
+		String fileName;
+		File file;
+		
+		//-----------------------
+		if(img[0]!=null) {
+			fileName = img[0].getOriginalFilename();
+			file = new File(filePath, fileName);
+			try {
+				FileCopyUtils.copy(img[0].getInputStream(), new FileOutputStream(file));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		
+			//itemboardDTO.setImg1(fileName);
+		}else {
+			//itemboardDTO.setImg1(null);
+		}
+		//-------------------
+		if(img[1]!=null) {
+			fileName = img[1].getOriginalFilename();
+			file = new File(filePath, fileName);
+			try {
+				FileCopyUtils.copy(img[1].getInputStream(), new FileOutputStream(file));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		
+			//itemboardDTO.setImg2(fileName);
+		}else {
+			//itemboardDTO.setImg2(null);
+		}
+		
+		
+		model.addAttribute("display", "/itemboard/itemboardView.jsp");
+		return "/main/index";
+	}
 }
