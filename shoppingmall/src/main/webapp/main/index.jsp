@@ -27,16 +27,16 @@
 <c:if test="${display == null }">
 	<jsp:include page="../template/body.jsp"/>
 </c:if>
-
-<div class="sideBar">
-	<div class="cartBoxImage">
-	   	<img src="../images/cart_image.png" class="cart_image">
+<c:if test="${userDTO.userCode != 1 }">
+	<div class="sideBar">
+		<div class="cartBoxImage">
+		   	<img src="../images/cart_image.png" class="cart_image">
+		</div>
+		<div class="cartBox">
+			<!-- 장바구니 list -->
+		</div>
 	</div>
-	<div class="cartBox">
-		<!-- 장바구니 list -->
-	</div>
-</div>
-
+</c:if>
 <div class="btn_gotop">
 	<img class="topBtn" src="../images/top.png">
 </div>

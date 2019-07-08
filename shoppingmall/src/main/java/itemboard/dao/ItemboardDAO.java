@@ -6,6 +6,7 @@ import java.util.Map;
 import itemboard.bean.ItemBasketDTO;
 import itemboard.bean.ItemBasketListDTO;
 import itemboard.bean.ItemboardDTO;
+import user.bean.UserDTO;
 
 public interface ItemboardDAO {
 
@@ -31,4 +32,18 @@ public interface ItemboardDAO {
 
 	public void SideBarDeleteItem(int seq);
 
+
+	public List<ItemBasketListDTO> getStayItemList(String id);
+
+	public List<ItemBasketListDTO> getIngItemList(String id);
+
+	public List<ItemBasketListDTO> getReItemList(String id);
+
+	public List<ItemBasketListDTO> getEdItemList(String id);
+
+	public void StayItemDelete(Map<String,String> map);
+
+	public UserDTO getUserDTO(String id);
+
+	public void refundItem(int seq);
 }
