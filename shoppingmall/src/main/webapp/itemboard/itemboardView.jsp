@@ -614,13 +614,13 @@ $('.purchaseBtn-itemPage').click(function(){
 	for(i=0; i<colName.length;i++)
 		initQty.push($('#itemAccount-itemPage'+i).val());
 	
-
 	//히든 버튼에 값을 넣어 보내주기 
 	var colNameRe = colName.join(',');
 	var sizeNameRe = sizeName.join(',');
 	var initQtyRe = initQty.join(',');
 	var itemCodeNameRe = itemCodeName.join(',');
 	var itemNameRe = itemName.join(',');
+	
 	
 	document.viewForm.itemCode.value=itemCodeNameRe;
 	document.viewForm.itemName.value=itemNameRe;

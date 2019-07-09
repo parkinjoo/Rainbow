@@ -116,6 +116,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
+var id = '${userDTO.id}';
 $(document).ready(function(){	
 	//문자열을 다시 배열로 전환
 	var itemNameRe = '${itemName}';
@@ -189,7 +190,8 @@ function buy(){
 	itemName = itemNameRe.split(',');
 	itemCode = itemCodeRe.split(',');
 	
-	var id = '${itemboardDTO.id}';
+	alert(id);
+	
 	
 	for(i=0;i<colName.length;i++){
 		$.ajax({
@@ -201,7 +203,7 @@ function buy(){
 		      		'itemQty':initQty[i],
 		      		'itemSize':sizeName[i],
 					'Id':id,
-					'stus':'11'},
+					'stus':'stay'},
 		    success: function(data){
 		    	//location.href="/shoppingmall/itemboard/itemBasketList.do";
 		    }
