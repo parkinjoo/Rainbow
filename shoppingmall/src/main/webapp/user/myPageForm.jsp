@@ -121,7 +121,7 @@ $(document).ready(function(){
 			if(data.list != ''){
 				$.each(data.list, function(index,items){
 					$('#itemList1').append("<tr>"+
-											  "<td align='center' width='30%' class='itemList'>"+
+											  "<td align='center' width='20%' class='itemList'>"+
 										      	"<img src='../storage/"+items.img1+"' style='width:80px; height:100px;'>"+
 										      "</td>"+
 										      "<td align='center' width='40%' class='itemList'>"+
@@ -130,10 +130,10 @@ $(document).ready(function(){
 										      		"<span style='color:gray; font-size: 10pt;'>[옵션]색상 : "+items.itemCol+", 사이즈 : "+items.itemSize+", 구매수량 : "+items.itemQty+"개</span>"+
 										      	"</div>"+
 										      "</td>"+
-										      "<td align='center' width='15%' class='itemList'>"+
+										      "<td align='center' width='20%' class='itemList'>"+
 										      	"<div class='test'>"+(items.itemQty*items.salePrice).toLocaleString()+"원</div>"+
 										      "</td>"+
-										      "<td align='center' width='15%' class='itemList'>"+
+										      "<td align='center' width='20%' class='itemList'>"+
 										      	"<div class='test'>"+
 										      		"<input type='button' value='주문취소' class='orderCancle"+items.seq+"'>"+
 										      	"</div>"+
@@ -174,7 +174,7 @@ $(document).ready(function(){
 			if(data.list != ''){
 				$.each(data.list, function(index,items){
 					$('#itemList2').append("<tr>"+
-											  "<td align='center' width='30%' class='itemList'>"+
+											  "<td align='center' width='20%' class='itemList'>"+
 										      	"<img src='../storage/"+items.img1+"' style='width:80px; height:100px;'>"+
 										      "</td>"+
 										      "<td align='center' width='40%' class='itemList'>"+
@@ -183,12 +183,12 @@ $(document).ready(function(){
 										      		"<span style='color:gray; font-size: 10pt;'>[옵션]색상 : "+items.itemCol+", 사이즈 : "+items.itemSize+", 구매수량 : "+items.itemQty+"개</span>"+
 										      	"</div>"+
 										      "</td>"+
-										      "<td align='center' width='15%' class='itemList'>"+
+										      "<td align='center' width='20%' class='itemList'>"+
 										      	"<div class='test'>"+(items.itemQty*items.salePrice).toLocaleString()+"원</div>"+
 										      "</td>"+
-										      "<td align='center' width='15%' class='itemList'>"+
+										      "<td align='center' width='20%' class='itemList'>"+
 										      	"<div class='test'>"+
-										      		"<span style='color:blue; font-size: 15pt;'>배송중</span>"+
+										      		"<span style='color:blue;'>배송중</span>"+
 										      	"</div>"+
 										      "</td>"+
 										   "</tr>");
@@ -210,7 +210,7 @@ $(document).ready(function(){
 			if(data.list != ''){
 				$.each(data.list, function(index,items){
 					$('#itemList3').append("<tr>"+
-											  "<td align='center' width='30%' class='itemList'>"+
+											  "<td align='center' width='20%' class='itemList'>"+
 										      	"<img src='../storage/"+items.img1+"' style='width:80px; height:100px;'>"+
 										      "</td>"+
 										      "<td align='center' width='40%' class='itemList'>"+
@@ -219,12 +219,12 @@ $(document).ready(function(){
 										      		"<span style='color:gray; font-size: 10pt;'>[옵션]색상 : "+items.itemCol+", 사이즈 : "+items.itemSize+", 구매수량 : "+items.itemQty+"개</span>"+
 										      	"</div>"+
 										      "</td>"+
-										      "<td align='center' width='13%' class='itemList'>"+
+										      "<td align='center' width='20%' class='itemList'>"+
 										      	"<div class='test'>"+(items.itemQty*items.salePrice).toLocaleString()+"원</div>"+
 										      "</td>"+
-										      "<td align='center' width='17%' class='itemList'>"+
+										      "<td align='center' width='20%' class='itemList'>"+
 										      	"<div class='test'>"+
-										      		"<span style='color:red; font-size: 15pt;'>환불요청중</span>"+
+										      		"<span style='color:red;'>환불요청중</span>"+
 										      	"</div>"+
 										      "</td>"+
 										   "</tr>");
@@ -246,7 +246,7 @@ $(document).ready(function(){
 			if(data.list != ''){
 				$.each(data.list, function(index,items){
 					$('#itemList4').append("<tr>"+
-											  "<td align='center' width='30%' class='itemList'>"+
+											  "<td align='center' width='20%' class='itemList'>"+
 										      	"<img src='../storage/"+items.img1+"' style='width:80px; height:100px;'>"+
 										      "</td>"+
 										      "<td align='center' width='40%' class='itemList'>"+
@@ -255,10 +255,10 @@ $(document).ready(function(){
 										      		"<span style='color:gray; font-size: 10pt;'>[옵션]색상 : "+items.itemCol+", 사이즈 : "+items.itemSize+", 구매수량 : "+items.itemQty+"개</span>"+
 										      	"</div>"+
 										      "</td>"+
-										      "<td align='center' width='15%' class='itemList'>"+
+										      "<td align='center' width='20%' class='itemList'>"+
 										      	"<div class='test'>"+(items.itemQty*items.salePrice).toLocaleString()+"원</div>"+
 										      "</td>"+
-										      "<td align='center' width='15%' class='itemList'>"+
+										      "<td align='center' width='20%' class='itemList'>"+
 										      	"<div class='test'>"+
 									      			"<input type='button' value='리뷰쓰기' class='review"+items.seq+"'><br>"+
 									      			"<input type='button' value='환불요청' class='refund"+items.seq+"'>"+

@@ -1,8 +1,14 @@
-@charset "UTF-8";
+h4 {
+  width: 80%;
+  margin: 50px auto 4px auto;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+}
 
 .listDiv-basketPage{
-	width: 85%; 
-	margin: 0 auto;
+	width: 70%; 
+	margin: 100px auto;
+	text-align: center;
 	
 }
 
@@ -17,10 +23,13 @@
 .CSSbuttonWhite:hover { color:#fff; background:#231f20 }
 .CSSbuttonWhite:active { position: relative; top: 1px }
 
-.cartTable{
-  width: 1000px;
+.itemList{
+  position: relative;
+  border-bottom: 1px solid #c8c8c8;
 }
-
-td{
-  boder: 1px solid black;
+.test {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
 }
