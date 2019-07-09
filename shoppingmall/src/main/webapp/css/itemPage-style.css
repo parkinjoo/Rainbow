@@ -2,7 +2,7 @@
 #item-box-itemPage {
   position: relative;
   width: 60%;
-  height: 630px;
+  height: 1100px;
   margin: 3% auto 1% auto;
   background: #fff;
 
@@ -134,6 +134,11 @@
   font-size: 18px;
   background-color: black;
   border: none;
+  margin-left: 5px;
+}
+
+.minus {
+	margin-left: 1px;
 }
 
 
@@ -156,10 +161,12 @@
   font-size: 1.3em;
   font-family: 'Nanum Gothic', sans-serif;
   text-align: right;
+  border-bottom: 1px solid #bfbfbf;
+  padding-bottom: 22px;
 }
 
 .totalPriceText-itemPage {
-  font-size: 13px;
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -285,8 +292,17 @@
 }
 /* �뼇�뿴 異붽� */
 .itemPictureDiv{
-   position: relative;
+  position: relative;
   width: 60%;
   margin: 3% auto 1% auto;
   background: #fff;
+}
+
+.td-itemPage {
+	width: 120px;
+}
+
+.middleDiv2 {
+	margin-top: 20px;
+	
 }

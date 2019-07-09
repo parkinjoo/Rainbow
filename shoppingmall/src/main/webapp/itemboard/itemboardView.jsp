@@ -2,8 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<form name="viewForm" method="post" action="/shoppingmall/itemboard/itemPurchaseForm.do">
+
+  <link rel="stylesheet" href="../css/itemPage-style.css">
+  <body>
+  
+  <form name="viewForm" method="post" action="/shoppingmall/itemboard/itemPurchaseForm.do">
 	<input type="hidden" name="imgName" value="${itemboardDTO.img1}" >
 	<input type="hidden" name="itemCode" value="${itemCode }" >
 	<input type="hidden" name="itemName" value="">
@@ -12,18 +15,8 @@
 	<input type="hidden"  name="initQty" value="" >
 	<input type="hidden"  name="salePrice" value="" >
 	<input type="hidden" name="sumPrice" value="" >
-	
 </form>
-  <head>
-    <meta charset="utf-8">
-    <title>아이템 페이지</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/index-style.css">
-    <link rel="stylesheet" href="../css/itemPage-style.css">
 
-  </head>
-  <body>
   <div id="item-box-itemPage">
     <div class="left-box-itemPage" style="background-image:url('../storage/${itemboardDTO.img1}')">
      
@@ -44,12 +37,12 @@
           <table class="table-itemPage">
             <tr class="tr-itemPage">
               <td class="title-itemPage td-itemPage">판매가</td>
-              <td class="itemPrice-itemPage"><b></b></td>
+              <td class="itemPrice-itemPage"></td>
             </tr>
             <tr class="tr-itemPage">
               <td class="title-itemPage td-itemPage">색상</td>
               <td class="td-itemPage">
-                  <select id="color_option" style="width: 110px;">
+                  <select id="color_option" style="width: 160px; height: 33px;">
                            
             </select>
               </td>
@@ -58,7 +51,7 @@
               <td class="title-itemPage td-itemPage">사이즈</td>
               <td class="td-itemPage">
                   <c:if test="${itemboardDTO.col1f eq 0}">
-                        <select id="size_option" style="width: 110px;" onchange="">
+                        <select id="size_option" style="width: 160px; height: 30px;" onchange="">
                            
                      </select>
                   </c:if>
@@ -67,37 +60,35 @@
                   </c:if>
               </td>
             </tr>
-            <tr class="tr-itemPage">
-              <td class="title-itemPage">배송정보</td>
-              <td class="td-itemPage"><a href="#" class="showItem-itemPage">실시간 재고 보기</a></td>
-            </tr>
+
           </table>
       </div>
-      <hr class ="itemList">
-       <div class="middleDiv2">
-        <!-- <p class="colorAndSize-itemPage"></p><br>
+      <div class="middleTest">
+         <div class="middleDiv2">
+<!--    <p class="colorAndSize-itemPage">챠콜, S(28)</p><br>
         <input type="text" class="itemAccount-itemPage" value="1">
 
         <button type="button" class="accountBtn-itemPage plus">+</button>
         <button type="button" class="accountBtn-itemPage minus">-</button>
 
-        <p class="price-ietemPage"></p>  -->
-      </div>
-      <hr>
+        <p class="price-itemPage">19,800</p>   -->
+       </div>   
+      </div>       
+      
       <p class="totalPrice-itemPage"><span class="totalPriceText-itemPage"></span> &nbsp;&nbsp;&nbsp;</p>
-      <hr>
+      
       <div class="btnDiv-itemPage">
         <button type="button" class="purchaseBtn-itemPage">BUY NOW</button>
         <button type="button" class="btn-itemPage cartBtn-itemPage">
-          <img src="../images/basket.gif" class="cartImg-itemPage">
+          <img src="../images/shopping-cart.png" class="cartImg-itemPage">
         </button>
         <button type="button" class="btn-itemPage likeBtn-itemPage">
-          <img src="" class="likeImg-itemPage">
+          <img src="../images/like.png" class="likeImg-itemPage">
         </button>
       </div>
     </div>
   </div>
-  <div class="withItemDiv-itemPage ">
+  <!-- <div class="withItemDiv-itemPage ">
     <div id="carouselExampleFade" class="carousel slide carousel-fade withItemDiv1-itemPage" data-ride="carousel">
       <div class="carousel-inner withItemDiv2-itemPage">
         <h3 class="withItem-itemPage">추천 코디</h3>
@@ -222,7 +213,7 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-  </div>
+  </div> -->
     <hr>
   <div class="itemPictureDiv">
      <img src="../storage/${itemboardDTO.img2 }">
@@ -438,15 +429,22 @@ function listTagAdd(){
 	//수량 선택을 할 태그 생성
     csName.push(colorText+'/'+sizeText);
     csVal.push(color+'/'+size);
+    
+    
+
+	
+
+    
      $('<p/>',{
-        class : 'colorAndSize-itemPage '+optionCnt,
-        text : colorText+'  '+sizeText,    
-        style : 'border : 1px solid blue;'
+        class : 'colorAndSize-itemPage'+optionCnt,
+        text : colorText+','+sizeText,    
+        style : 'font-weight: bold; margin-bottom: 4px;'
      }).appendTo($('.middleDiv2'));
      
      $('<input/>',{
         type : 'text',
         class : 'itemAccount-itemPage',
+        style : 'width: 50px; height: 35px; text-align: center;',
         id : 'itemAccount-itemPage'+optionCnt,
         step : '1',
         min: '1',
@@ -473,6 +471,10 @@ function listTagAdd(){
         id : 'price-itemPage'+optionCnt,
         class : 'price-itemPage',
         text : salePrice
+     }).appendTo($('.middleDiv2'));
+     
+     $('<hr>', {
+    	 
      }).appendTo($('.middleDiv2'));
      
      optionCnt++; //고유번호 증가
