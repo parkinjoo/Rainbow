@@ -11,12 +11,12 @@
 	<input type="hidden" name="itemCode" value="" >
 	<input type="hidden" name="itemName" value="">
 	<input type="hidden" name="colName" value="" >
-	<input type="hidden"  name="sizeName" value="" >
-	<input type="hidden"  name="initQty" value="" >
-	<input type="hidden"  name="salePrice" value="" >
+	<input type="hidden" name="sizeName" value="" >
+	<input type="hidden" name="initQty" value="" >
+	<input type="hidden" name="salePrice" value="" >
 	<input type="hidden" name="sumPrice" value="" >	
 </form>
-
+ 
   <div id="item-box-itemPage">
     <div class="left-box-itemPage" style="background-image:url('../storage/${itemboardDTO.img1}')">
      
@@ -80,7 +80,7 @@
       <div class="btnDiv-itemPage">
         <button type="button" class="purchaseBtn-itemPage">BUY NOW</button>
         <button type="button" class="btn-itemPage cartBtn-itemPage">
-          <img src="../images/shopping-cart.png" class="cartImg-itemPage">
+          <img src="../images/shopping-cart.png" class="cartImg-itemPage" >
         </button>
         <button type="button" class="btn-itemPage likeBtn-itemPage">
           <img src="../images/like.png" class="likeImg-itemPage">
@@ -531,7 +531,7 @@ function listTagAdd(){
      optionCnt++; //고유번호 증가
      sumPrice = sumPrice + salePrice; //새로운 항목 추가될때마다 최종합계 추가
      $('.totalPriceText-itemPage').text(sumPrice);
-};
+}
 
 //증가
 $(document).on('click','.plus',function(){
@@ -561,9 +561,60 @@ $(document).on('click','.minus',function(){
    
 });
 
+//장바구니 리뉴얼
+$('.btn-itemPage').click(function(){
+	var initQty = new Array(); //추가해준 옵션들의 수량을 담을 배열
+	
+	for(i=0; i<colName.length;i++)
+		initQty.push($('#itemAccount-itemPage'+i).val());
+	
+
+	//히든 버튼에 값을 넣어 보내주기 
+	var colNameRe = colName.join(',');
+	var sizeNameRe = sizeName.join(',');
+	var initQtyRe = initQty.join(',');
+	document.viewForm.colName.value=colNameRe;
+	document.viewForm.sizeName.value=sizeNameRe;
+	document.viewForm.initQty.value=initQtyRe;
+	document.viewForm.salePrice.value=salePrice;
+	document.viewForm.sumPrice.value=sumPrice;
+	
+	
+	var itemName = $("input[name= 'itemName']").val();
+	var itemCol = $("input[name= 'colName']").val();
+	var itemSize = $("input[name= 'sizeName']").val();
+	var itemQty = $("input[name= 'initQty']").val();
+	var itemCode = $("input[name= 'itemCode']").val();
+
+	//회원인지 아닌지 구분
+	var id = '${userDTO.id}'; 
+	
+	if(id=='')
+		id='non'+$('.orderName').val();
+	else{
+		$.ajax({
+			type: 'post',
+		    url: '/shoppingmall/itemboard/itemBasket.do',
+		    data: 'itemCode='+itemCode+'&itemName='+itemName+
+		      		'&itemCol='+itemCol+
+		      		'&itemQty='+itemQty+
+		      		'&itemSize='+itemSize+
+					'&Id='+id+
+					'&stus=cart',
+		    success: function(){
+		    	if(confirm('장바구니에 상품이 저장되었습니다. 장바구니리스트로 이동하시겠습니까?')){
+		    		location.href="/shoppingmall/itemboard/itemBasketList.do";
+		    		
+		    	}
+		    }
+		});
+	}
+
+});
+
 
 // 장바구니 회원
-
+/* 
 $('.cartImg-itemPage').click(function(){
 	if('${userDTO}'!=''){
       
@@ -601,6 +652,7 @@ $('.cartImg-itemPage').click(function(){
             location.href = "/shoppingmall/user/loginForm.do";
    }
 });
+ */
 
 //buy now 버튼
 $('.purchaseBtn-itemPage').click(function(){
@@ -623,6 +675,7 @@ $('.purchaseBtn-itemPage').click(function(){
 });
 
 </script>
+
 </html>
 
 
