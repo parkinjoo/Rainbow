@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import itemboard.bean.ItemBasketDTO;
 import itemboard.bean.ItemBasketListDTO;
+import itemboard.bean.ItemOrderDTO;
 import itemboard.bean.ItemboardDTO;
 import itemboard.bean.ReviewDTO;
 import user.bean.UserDTO;
@@ -115,6 +116,14 @@ public class ItemboardDAOMybatis implements ItemboardDAO{
 	public void refundItem(int seq) {
 		sqlSession.update("itemboardSQL.refundItem", seq);
 	}
+
+	@Override
+	public void itemOrder(ItemOrderDTO itemOrderDTO) {
+		sqlSession.insert("itemboardSQL.itemOrder", itemOrderDTO);
+		
+	}
+	
+	
 
 
 }
