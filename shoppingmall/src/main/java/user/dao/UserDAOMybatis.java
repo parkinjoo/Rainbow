@@ -90,5 +90,10 @@ public class UserDAOMybatis implements UserDAO {
 		sqlSession.update("userSQL.because",map);
 		
 	}
+
+	@Override
+	public void charge(String id) {
+		sqlSession.update("userSQL.charge", id);
+	}
 	
 }

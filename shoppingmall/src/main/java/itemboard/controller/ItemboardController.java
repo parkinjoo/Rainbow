@@ -208,6 +208,7 @@ public class ItemboardController {
 		model.addAttribute("itemboardDTO",itemboardDTO);
 		model.addAttribute("categoryCode", categoryCode);
 		model.addAttribute("itemCode", itemCode);
+		model.addAttribute("title", "상품 보기");
 		model.addAttribute("pg", pg);
 		model.addAttribute("display", "/itemboard/itemboardView.jsp");
 		
@@ -270,36 +271,44 @@ public class ItemboardController {
 	@ResponseBody
 	public void basketFlush(@RequestParam String id) {
 		itemboardDAO.basketFlush(id);
+<<<<<<< HEAD
+=======
+		
+		
+>>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
 	}
 	
 	@RequestMapping(value="/basketDelete.do", method=RequestMethod.POST)
     @ResponseBody
-    public void basketDelete(@RequestParam(value="chkbox[]") List<String> itemCode) {
-    	for(int i=0; i<itemCode.size(); i++) {
-    		itemboardDAO.basketDelete(itemCode.get(i));
+    public void basketDelete(@RequestParam(value="chkbox[]") List<Integer> seq) {
+    	for(int i=0; i<seq.size(); i++) {
+    		itemboardDAO.basketDelete(seq.get(i));
     	}
     }
 	
 	@RequestMapping(value="/itemPurchaseForm.do", method=RequestMethod.POST)
-	public String itemPurchaseForm(@RequestParam String csName,
-									@RequestParam String csVal,
+	public String itemPurchaseForm(@RequestParam String colName,
+									@RequestParam String sizeName,
 									@RequestParam String initQty,
 									@RequestParam String salePrice,
 									@RequestParam String sumPrice,
 									@RequestParam String imgName,
 									@RequestParam String itemName,
+									@RequestParam String itemCode,
 									Model model) {
 		model.addAttribute("title", "구매하기");
-		model.addAttribute("csName",csName);
+		model.addAttribute("itemCode",itemCode);
+		model.addAttribute("colName",colName);
 		model.addAttribute("itemName",itemName);
 		model.addAttribute("imgName",imgName);
-		model.addAttribute("csVal",csVal);
+		model.addAttribute("sizeName",sizeName);
 		model.addAttribute("initQty",initQty);
 		model.addAttribute("salePrice",salePrice);
 		model.addAttribute("sumPrice",sumPrice);
 		model.addAttribute("display", "/itemboard/itemPurchaseForm.jsp");
 		return "/main/index";
 	}
+	
 	
 	@RequestMapping(value="/getSideBarList.do", method=RequestMethod.POST)
 	public ModelAndView getSideBarList(@RequestParam String id) {
@@ -381,5 +390,49 @@ public class ItemboardController {
 	@ResponseBody
 	public void refundItem(@RequestParam int seq) {
 		itemboardDAO.refundItem(seq);
+	}
+	
+	@RequestMapping(value="/review.do", method=RequestMethod.POST)
+	public String review(@ModelAttribute ReviewDTO reviewDTO,
+						@RequestParam MultipartFile[] img,
+						Model model) {
+		
+		String filePath = "C:\\Spring\\project\\shoppingmall\\src\\main\\webapp\\storage";
+		String fileName;
+		File file;
+		
+		//-----------------------
+		if(img[0]!=null) {
+			fileName = img[0].getOriginalFilename();
+			file = new File(filePath, fileName);
+			try {
+				FileCopyUtils.copy(img[0].getInputStream(), new FileOutputStream(file));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		
+			reviewDTO.setImg1(fileName);
+		}else {
+			reviewDTO.setImg1(null);
+		}
+		//-------------------
+		if(img[1]!=null) {
+			fileName = img[1].getOriginalFilename();
+			file = new File(filePath, fileName);
+			try {
+				FileCopyUtils.copy(img[1].getInputStream(), new FileOutputStream(file));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		
+			reviewDTO.setImg2(fileName);
+		}else {
+			reviewDTO.setImg2(null);
+		}
+		
+		itemboardDAO.reviewWrite(reviewDTO);
+		
+		model.addAttribute("display", "/itemboard/itemboardView.jsp");
+		return "/main/index";
 	}
 }

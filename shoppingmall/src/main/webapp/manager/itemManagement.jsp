@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <div class="tab-pane fade" id="item-management">
+<<<<<<< HEAD
 	<!-- 구분선(상품관리 세부) -->
 	<ul class="nav nav-pills mb-3 bottomNav-managerPage">
 		<li class="nav-item"><a class="nav-link active"
@@ -10,6 +11,8 @@
 			data-toggle="pill" href="#pills-profile-edit" aria-selected="false">재고 수정/삭제</a></li>
 	</ul>
 	
+=======
+>>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
 <div class="tab-content" id="pills-tabContent">
 	<!-- 구분선 -->
 	
@@ -54,10 +57,13 @@
 					</tbody>
 				</table>
 			</div>
+<<<<<<< HEAD
 			
 			<div class="tab-pane fade" id="pills-profile-edit">
 			수정/삭제 부분
 			</div>
+=======
+>>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
 	</div>
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -160,7 +166,9 @@ $(document).ready(function() {
 							$('#img3label').text(data.itemboardDTO.img3);
 							$('#img4label').text(data.itemboardDTO.img4); 
 							
-							$('#itemKeyword').val(data.itemboardDTO.itemKeyword);   
+							$('#itemKeyword').val(data.itemboardDTO.itemKeyword);
+							$('#itemboardWriteBtn').css("display", "none");
+							$('#itemboardUpdateBtn').css("display", "block");
 							
 							$('#itemModal').modal();
 						}
@@ -213,6 +221,19 @@ $('#selectedItemboardDeleteBtn').click(function(){
 
 //새 상품 등록 버튼 누르면 모달창이 뙇
 $('#newItemAdd').click(function(){
+	$('#itemCode').val('M');
+	$('#itemName').val('');
+	$('#salePrice').val('');
+	$('#costPrice').val('');
+	$('#col1').val('');
+	$('#itemContent').val('');
+	$('#img1label').text('choose file');
+	$('#img2label').text('choose file');
+	$('#img3label').text('choose file');
+	$('#img4label').text('choose file'); 
+	$('#itemKeyword').val('');
+	$('#itemboardUpdateBtn').css('display', 'none');
+	$('#itemboardWriteBtn').css('display', 'block');
 	$('#itemModal').modal();
 });
    

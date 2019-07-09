@@ -23,7 +23,7 @@
 		<jsp:include page="../template/top.jsp" />
 	</c:if>
 </header>
-<hr>
+
 <c:if test="${display != null }">
 	<jsp:include page="${display }"/>
 </c:if>

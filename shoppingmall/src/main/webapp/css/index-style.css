@@ -587,3 +587,108 @@ body {
 .postBtnDiv {
 	top: 6px;
 }
+
+
+/* Navbar container */
+.navbar1 {
+overflow: hidden;
+
+
+width: 100%;
+margin: 0 auto;
+
+
+
+}
+
+.testDivNav {
+
+
+width: 80%;
+margin: 0 auto;
+text-align: center;
+
+}
+
+/* Links inside the navbar */
+.navbar1 a {
+float: left;
+font-size: 16px;
+color: black;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+}
+
+/* The dropdown container */
+.dropdown1 {
+display: inline-block;
+width: 100px;
+margin-right: 50px;
+margin-left: 40px;
+}
+
+/* Dropdown button */
+.dropdown1 .dropbtn {
+font-size: 16px;
+border: none;
+
+color: black;
+padding: 14px 16px;
+
+margin: 0; /* Important for vertical align on mobile phones */
+}
+
+.dropbtn {
+font-weight: lighter;
+background: white;
+}
+
+
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: white;
+width: 150px;
+transform: translateX(-25px);
+z-index: 2;
+
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+
+color: black;
+padding: 5px 12px;
+text-decoration: none;
+display: block;
+text-align: center;
+}
+
+
+/* Show the dropdown menu on hover */
+.dropdown1:hover .dropdown-content {
+display: block;
+}
+
+#arrowCarousel {
+border: 1px solid red;
+height: 200px;
+top: 50%;
+transform: translateY(-50%);
+}
+
+.aTag {
+width: 100%;
+margin-left: 0;
+font-size: 13px !important;
+font-weight: lighter;
+}
+
+.aTag:hover {
+background-color: #f2f1ef;
+color: black;
+transition: .3s ease;
+}

@@ -33,8 +33,8 @@ $(document).ready(function(){
 		type: 'POST',
 		url: '/shoppingmall/itemboard/getItemboardList.do',
 		data: {'pg': '${pg}',
-				'itemCode': '${itemCode}',
-				 'categoryCode': '${categoryCode}'},
+			   'itemCode': '${itemCode}',
+			   'categoryCode': '${categoryCode}'},
 		dataType : 'json',
 		success : function(data){
 			

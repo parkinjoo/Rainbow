@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     
 <div class="modal fade bd-example-modal-xl" id="itemModal" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
 <form name="itemboardWriteForm" id="itemboardWriteForm" method="post" enctype="multipart/form-data" action="/shoppingmall/manager/itemboardWrite.do">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalCenterTitle">»õ »óÇ° µî·Ï</h5>
+				<h5 class="modal-title" id="exampleModalCenterTitle">ìƒˆ ìƒí’ˆ ë“±ë¡</h5>
 				<button type="button" class="close" data-dismiss="modal"
 					aria-label="Close">
 					<span aria-hidden="true">&times;</span>
@@ -15,13 +15,13 @@
 			<div class="modal-body modal-body-managerPage">
 				<div class="input-group mb-3 addnewItemDiv1grid">
 					<div class="input-group-prepend">
-						<span class="input-group-text" id="inputGroup-sizing-default">»óÇ° ÄÚµå</span>
+						<span class="input-group-text" id="inputGroup-sizing-default">ìƒí’ˆ ì½”ë“œ</span>
 					</div>
 					<input type="text" name="itemCode" id="itemCode" class="form-control" value="M">
 				</div>
 				<div class="input-group mb-3 addnewItemDiv1grid">
 					<div class="input-group-prepend">
-						<span class="input-group-text" id="inputGroup-sizing-default">»óÇ°¸í</span>
+						<span class="input-group-text" id="inputGroup-sizing-default">ìƒí’ˆëª…</span>
 					</div>
 					<input type="text" name="itemName" id="itemName" class="form-control">
 				</div>
@@ -30,7 +30,7 @@
 						<div class="col">
 							<div class="input-group mb-3">
 								<div class="input-group-prepend">
-									<span class="input-group-text" id="inputGroup-sizing-default">ÆÇ¸Å ´Ü°¡</span>
+									<span class="input-group-text" id="inputGroup-sizing-default">íŒë§¤ ë‹¨ê°€</span>
 								</div>
 								<input type="number" min="0" step="1000" name="salePrice" id="salePrice" class="form-control">
 							</div>
@@ -38,7 +38,7 @@
 						<div class="col">
 							<div class="input-group mb-3">
 								<div class="input-group-prepend">
-									<span class="input-group-text" id="inputGroup-sizing-default">»óÇ° ¿ø°¡</span>
+									<span class="input-group-text" id="inputGroup-sizing-default">ìƒí’ˆ ì›ê°€</span>
 								</div>
 								<input type="number" min="0" step="1000" name="costPrice" id="costPrice" class="form-control">
 							</div>
@@ -49,7 +49,7 @@
 					<table class="table">
 						<thead class="thead-dark">
 							<tr>
-								<th scope="col">»ö»ó/»çÀÌÁî</th>
+								<th scope="col">ìƒ‰ìƒ/ì‚¬ì´ì¦ˆ</th>
 								<th scope="col">S(90)</th>
 								<th scope="col">M(95)</th>
 								<th scope="col">L(100)</th>
@@ -61,7 +61,7 @@
 						<tbody>
 							<tr>
 								<th scope="row">
-									<input type="text" name="col1" id="col1" size="10" class="colInputModal" list="col1List" placeholder="»ö»ó1 ÀÔ·Â">
+									<input type="text" name="col1" id="col1" size="10" class="colInputModal" list="col1List" placeholder="ìƒ‰ìƒ1 ì…ë ¥">
 									<datalist id="col1List">
 										<option value="black">
 										<option value="white">
@@ -92,7 +92,7 @@
 							</tr>
 
 							<tr>
-								<th scope="row"><input type="text" name="col2" id="col2" size="10" class="colInputModal" list="col2List" placeholder="»ö»ó2 ÀÔ·Â">
+								<th scope="row"><input type="text" name="col2" id="col2" size="10" class="colInputModal" list="col2List" placeholder="ìƒ‰ìƒ2 ì…ë ¥">
 									<datalist id="col2List">
 										<option value="black">
 										<option value="white">
@@ -124,7 +124,7 @@
 
 							<tr>
 								<th scope="row">
-									<input type="text" name="col3" id="col3" size="10" class="colInputModal" list="col3List" placeholder="»ö»ó3 ÀÔ·Â">
+									<input type="text" name="col3" id="col3" size="10" class="colInputModal" list="col3List" placeholder="ìƒ‰ìƒ3 ì…ë ¥">
 									<datalist id="col3List">
 										<option value="black">
 										<option value="white">
@@ -156,7 +156,7 @@
 
 							<tr>
 								<th scope="row">
-									<input type="text" name="col4" id="col4" size="10" class="colInputModal" list="col4List" placeholder="»ö»ó4 ÀÔ·Â">
+									<input type="text" name="col4" id="col4" size="10" class="colInputModal" list="col4List" placeholder="ìƒ‰ìƒ4 ì…ë ¥">
 									<datalist id="col4List">
 										<option value="black">
 										<option value="white">
@@ -215,14 +215,14 @@
 
 				<div class="input-group itemExplain">
 					<div class="input-group-prepend">
-						<span class="input-group-text">»óÇ° ¼³¸í</span>
+						<span class="input-group-text">ìƒí’ˆ ì„¤ëª…</span>
 					</div>
 					<textarea name="itemContent" id="itemContent" class="form-control" aria-label="With textarea"></textarea>
 				</div>
 
 				<div class="input-group mb-3 imageUploadDiv">
 					<div class="input-group-prepend">
-						<span class="input-group-text" id="inputGroupFileAddon01">ÀÌ¹ÌÁö 1</span>
+						<span class="input-group-text" id="inputGroupFileAddon01">ì´ë¯¸ì§€ 1</span>
 					</div>
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" name="img" id="img1" aria-describedby="inputGroupFileAddon01">
@@ -232,7 +232,7 @@
 
 				<div class="input-group mb-3 imageUploadDiv">
 					<div class="input-group-prepend">
-						<span class="input-group-text" id="inputGroupFileAddon01">ÀÌ¹ÌÁö 2</span>
+						<span class="input-group-text" id="inputGroupFileAddon01">ì´ë¯¸ì§€ 2</span>
 					</div>
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" name="img" id="img2" aria-describedby="inputGroupFileAddon01">
@@ -242,7 +242,7 @@
 
 				<div class="input-group mb-3 imageUploadDiv">
 					<div class="input-group-prepend">
-						<span class="input-group-text" id="inputGroupFileAddon01">ÀÌ¹ÌÁö 3</span>
+						<span class="input-group-text" id="inputGroupFileAddon01">ì´ë¯¸ì§€ 3</span>
 					</div>
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" name="img" id="img3" aria-describedby="inputGroupFileAddon01">
@@ -252,7 +252,7 @@
 
 				<div class="input-group mb-3 imageUploadDiv">
 					<div class="input-group-prepend">
-						<span class="input-group-text" id="inputGroupFileAddon01">ÀÌ¹ÌÁö 4</span>
+						<span class="input-group-text" id="inputGroupFileAddon01">ì´ë¯¸ì§€ 4</span>
 					</div>
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" name="img" id="img4" aria-describedby="inputGroupFileAddon01">
@@ -262,7 +262,7 @@
 
 				<div class="input-group mb-3 addnewItemDiv1grid">
 					<div class="input-group-prepend">
-						<span class="input-group-text" id="inputGroup-sizing-default">Å°¿öµå</span>
+						<span class="input-group-text" id="inputGroup-sizing-default">í‚¤ì›Œë“œ</span>
 					</div>
 					<input type="text" name="itemKeyword" id="itemKeyword" class="form-control">
 				</div>
@@ -270,38 +270,40 @@
 
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">´İ±â</button>
-					<button type="button" id="itemboardWriteBtn" class="btn btn-primary">µî·ÏÇÏ±â</button>
-					<button type="reset" class="btn btn-primary">´Ù½Ã ¾²±â</button>
+						data-dismiss="modal">ë‹«ê¸°</button>
+						<button type="button" id="itemboardWriteBtn" class="btn btn-primary">ë“±ë¡í•˜ê¸°</button>
+						<button type="button" id="itemboardUpdateBtn" class="btn btn-primary">ìˆ˜ì •í•˜ê¸°</button>
+					<button type="reset" class="btn btn-primary">ë‹¤ì‹œ ì“°ê¸°</button>
 				</div>
 			</div>
   	</div>
   </div>
  </form>
 </div>
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 $('#itemboardWriteBtn').click(function() {
     if ($('#itemCode').val() == 'M') {
-		alert("»óÇ° ÄÚµå¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ìƒí’ˆ ì½”ë“œë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		document.itemboardWriteForm.itemCode.focus();
     } else if ($('#itemName').val() == '') {
-    	alert("»óÇ°¸íÀ» ÀÔ·ÂÇÏ¼¼¿ä.");
+    	alert("ìƒí’ˆëª…ì„ ì…ë ¥í•˜ì„¸ìš”.");
     	document.itemboardWriteForm.itemName.focus();
     } else if ($('#salePrice').val() == '') {
-    	alert("ÆÇ¸Å ´Ü°¡¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+    	alert("íŒë§¤ ë‹¨ê°€ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
     	document.itemboardWriteForm.salePrice.focus();
     } else if ($('#costPrice').val() == '') {
-    	alert("»óÇ° ¿ø°¡¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+    	alert("ìƒí’ˆ ì›ê°€ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
     	document.itemboardWriteForm.costPrice.focus();
     } else if ($('#col1').val() == '') {
-    	alert("»ö»ó1À» ÀÔ·ÂÇÏ¼¼¿ä.");
+    	alert("ìƒ‰ìƒ1ì„ ì…ë ¥í•˜ì„¸ìš”.");
     	document.itemboardWriteForm.col1.focus();
     } else if ($('#itemContent').val() == '') {
-    	alert("»óÇ° ¼³¸íÀ» ÀÔ·ÂÇÏ¼¼¿ä.");
+    	alert("ìƒí’ˆ ì„¤ëª…ì„ ì…ë ¥í•˜ì„¸ìš”.");
     	document.itemboardWriteForm.itemContent.focus();
     } else if ($('#itemKeyword').val() == '') {
-    	alert("»óÇ° Å°¿öµå¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+    	alert("ìƒí’ˆ í‚¤ì›Œë“œë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
     	document.itemboardWriteForm.itemKeyword.focus();
     }else {
        $('#itemboardWriteForm').submit();
@@ -352,53 +354,53 @@ $('input').focusout(function() {
  
 $(document).ready(function(){ 
 	var fileTarget = $('#img1'); 
-	fileTarget.on('change', function(){ // °ªÀÌ º¯°æµÇ¸é
+	fileTarget.on('change', function(){ // ê°’ì´ ë³€ê²½ë˜ë©´
 		if(window.FileReader){ // modern browser 
 			var filename = $(this)[0].files[0].name; 
 		} else { // old IE 
-			var filename = $(this).val().split('/').pop().split('\\').pop(); // ÆÄÀÏ¸í¸¸ ÃßÃâ 
+			var filename = $(this).val().split('/').pop().split('\\').pop(); // íŒŒì¼ëª…ë§Œ ì¶”ì¶œ 
 			} 
 	
-	// ÃßÃâÇÑ ÆÄÀÏ¸í »ğÀÔ 
+	// ì¶”ì¶œí•œ íŒŒì¼ëª… ì‚½ì… 
 	//$("label[for = 'inputGroupFile01']").text(filename);
 	$("label[id='img1']").text(filename);
 	});
 	
 	var fileTarget = $('#img2'); 
-	fileTarget.on('change', function(){ // °ªÀÌ º¯°æµÇ¸é
+	fileTarget.on('change', function(){ // ê°’ì´ ë³€ê²½ë˜ë©´
 		if(window.FileReader){ // modern browser 
 			var filename = $(this)[0].files[0].name; 
 		} else { // old IE 
-			var filename = $(this).val().split('/').pop().split('\\').pop(); // ÆÄÀÏ¸í¸¸ ÃßÃâ 
+			var filename = $(this).val().split('/').pop().split('\\').pop(); // íŒŒì¼ëª…ë§Œ ì¶”ì¶œ 
 			} 
 	
-	// ÃßÃâÇÑ ÆÄÀÏ¸í »ğÀÔ 
+	// ì¶”ì¶œí•œ íŒŒì¼ëª… ì‚½ì… 
 	//$("label[for = 'inputGroupFile01']").text(filename);
 	$("label[id='img2']").text(filename);
 	});
 	
 	var fileTarget = $('#img3'); 
-	fileTarget.on('change', function(){ // °ªÀÌ º¯°æµÇ¸é
+	fileTarget.on('change', function(){ // ê°’ì´ ë³€ê²½ë˜ë©´
 		if(window.FileReader){ // modern browser 
 			var filename = $(this)[0].files[0].name; 
 		} else { // old IE 
-			var filename = $(this).val().split('/').pop().split('\\').pop(); // ÆÄÀÏ¸í¸¸ ÃßÃâ 
+			var filename = $(this).val().split('/').pop().split('\\').pop(); // íŒŒì¼ëª…ë§Œ ì¶”ì¶œ 
 			} 
 	
-	// ÃßÃâÇÑ ÆÄÀÏ¸í »ğÀÔ 
+	// ì¶”ì¶œí•œ íŒŒì¼ëª… ì‚½ì… 
 	//$("label[for = 'inputGroupFile01']").text(filename);
 	$("label[id='img3']").text(filename);
 	});
 	
 	var fileTarget = $('#img4'); 
-	fileTarget.on('change', function(){ // °ªÀÌ º¯°æµÇ¸é
+	fileTarget.on('change', function(){ // ê°’ì´ ë³€ê²½ë˜ë©´
 		if(window.FileReader){ // modern browser 
 			var filename = $(this)[0].files[0].name; 
 		} else { // old IE 
-			var filename = $(this).val().split('/').pop().split('\\').pop(); // ÆÄÀÏ¸í¸¸ ÃßÃâ 
+			var filename = $(this).val().split('/').pop().split('\\').pop(); // íŒŒì¼ëª…ë§Œ ì¶”ì¶œ 
 			} 
 	
-	// ÃßÃâÇÑ ÆÄÀÏ¸í »ğÀÔ 
+	// ì¶”ì¶œí•œ íŒŒì¼ëª… ì‚½ì… 
 	//$("label[for = 'inputGroupFile01']").text(filename);
 	$("label[id='img4']").text(filename);
 	});

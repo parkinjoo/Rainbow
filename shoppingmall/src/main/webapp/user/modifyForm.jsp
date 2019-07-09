@@ -1,156 +1,100 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<!-- 내 정보 수정창 -->
-<%-- <h4>내 정보 수정</h4>
-<form id="modifyForm" method="post" action="/shoppingmall/user/modify.do">
-	<div class="modifyFormDiv">
-		<table class="modifyTable">
-			<tr>
-			  <td>
-			  	<input type="text" id="name" name="name" value="${userDTO.name }" placeholder="이름">
-			  	<p id="nameDiv"></p>
-			  </td>
-			</tr>
-			<tr>
-			  <td>
-			  	<input type="text" id="id" name="id" value="${userDTO.id }" readonly>
-			  </td>
-			</tr>
-			<tr>
-			  <td>
-			  	<input type="password" id="pwd" name="pwd" placeholder="새비밀번호">
-			  	<p id="pwdDiv"></p>
-			  </td>
-			</tr>
-			<tr>
-			  <td>
-			  	<input type="password" id="repwd" name="repwd" placeholder="새비밀번호 확인">
-			  	<p id="repwdDiv"></p>
-			  </td>
-			</tr>
-			<tr>
-			  <td>
-			  	<input type="text" id="tel" name="tel" value="${userDTO.tel }" placeholder="헨드폰 번호" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
-			  	<p id="telDiv"></p>
-			  </td>
-			</tr>
-			<tr>
-			  <td>
-			  	<input type="email" id="email" name="email" value="${userDTO.email }" placeholder="이메일">
-			  	<p id="emailDiv"></p>
-			  </td>
-			</tr>
-			
-			<tr>
-				<td>
-					<input type="text" id="zipcode" name="zipcode" value="${userDTO.zipcode }" >
-					<input type="button" value="우편번호검색" onclick="checkPost()">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<input type="text"  id="addr1" name="addr1" value="${userDTO.addr1 }" placeholder="주소">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<input type="text" id="addr2" name="addr2" value="${userDTO.addr2 }" placeholder="상세 주소">
-				</td>
-			</tr>
-			
-		</table>
-	</div>
-	<div class="modifyDiv">
-		<input type="button" class="modifyBtn" name="modifyBtn" value="수정하기">
-	</div>
-</form> --%>
-
-<h4 class="h4-joinform">내 정보 수정</h4>
-<form name="modifyForm" id="modifyForm" method="post" action="/shoppingmall/user/modify.do">
-	<div class="joinForm-joinform">
-		<table class="tableForm-joinform">
-			<tr>
-				<td class="checkMessage-joinform">
-					<input class="input-joinform inputName-joinform" 
-					type="text" name="name" id="name" value="${userDTO.name }" placeholder="이름">
-					<div class="checkMessageDiv-joinform nameCheck-joinform"></div>
-				</td>
-			</tr>
-			<tr>
-				<td class="checkMessage-joinform">
-					<input class="input-joinform inputId-joinform" 
-					type="text" name="id" id="id" value="${userDTO.id }" placeholder="아이디" readonly>
-					<input type="hidden" id="idCheck-hidden-joinform" value="">
-					<div class="checkMessageDiv-joinform idCheck-joinform"></div>
-				</td>
-			</tr>
-			<tr>
-				<td class="checkMessage-joinform">
-					<input class="input-joinform inputPwd-joinform" 
-					type="password" name="pwd" id="pwd" placeholder="새 비밀번호">
-					<div class="checkMessageDiv-joinform pwdCheck-joinform"></div>
-				</td>
-			</tr>
-			<tr>
-				<td class="checkMessage-joinform">
-					<input class="input-joinform inputPwd2-joinform" 
-					type="password" name="email1" id="repwd" placeholder="새 비밀번호 확인">
-					<div class="checkMessageDiv-joinform pwdDoublecheck-joinform"></div>
-				</td>
-			</tr>
-			<tr>
-				<td class="checkMessage-joinform">
-					<input class="input-joinform inputTel-joinform inputTel-joinform" type="text" 
-					onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" value="${userDTO.tel }" id="tel" name="tel" placeholder="휴대폰">
-					<div class="checkMessageDiv-joinform telCheck-joinform"></div>	
-				</td>
-			</tr>
-						<tr>
-				<td class="checkMessage-joinform">
-					<input class="input-joinform inputId-joinform" 
-					type="text" name="zipcode" id="zipcode" value="${userDTO.zipcode }" id="zipcode" placeholder="우편번호">
-					<input type="hidden" id="idCheck-hidden-joinform" value="">
-					<div class="checkMessageDiv-joinform idCheck-joinform postBtnDiv">
-						<button type="button" class="btn btn-danger postBtn" onclick="checkPost()">우편번호 검색</button>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td class="checkMessage-joinform">
-					<input class="input-joinform inputId-joinform" 
-					type="text" name="addr1" id="addr1" value="${userDTO.addr1 }" id="addr1" placeholder="주소">
-					<input type="hidden" id="idCheck-hidden-joinform" value="">
-					<div class="checkMessageDiv-joinform idCheck-joinform"></div>
-				</td>
-			</tr>
-			<tr>
-				<td class="checkMessage-joinform">
-					<input class="input-joinform inputId-joinform" 
-					type="text" name="addr2" id="addr2" value="${userDTO.addr2 }" id="addr2" placeholder="상세 주소">
-					<input type="hidden" id="idCheck-hidden-joinform" value="">
-					<div class="checkMessageDiv-joinform idCheck-joinform"></div>
-				</td>
-			</tr>
-			<tr>
-				<td class="checkMessage-joinform">
-					<input class="input-joinform inputLast-joinform inputEmail-joinform" 
-					value="${userDTO.email }" type="email" name="email" id="email" placeholder="이메일"><!-- email Type효과가 안먹음 -->
-					<div class="checkMessageDiv-joinform emailCheck-joinform"></div></td>
-			</tr>
-			
-		</table>
-	</div>
-
-	<div class="joinDiv-joinform">
-		<input type="button" class="input-joinform joinBtn-joinform"
-			name="modifyBtn" id="modifyBtn" value="정보 수정하기">
-	</div>
-</form>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:if test="${userCheck != ture}">
+	<h4 class="h4-joinform">내 정보 수정</h4>
+	<form name="modifyForm" id="modifyForm" method="post" action="/shoppingmall/user/modify.do">
+		<div class="joinForm-joinform">
+			<table class="tableForm-joinform">
+				<tr>
+					<td class="checkMessage-joinform">
+						<input class="input-joinform inputName-joinform" 
+						type="text" name="name" id="name" value="${userDTO.name }" placeholder="이름">
+						<div class="checkMessageDiv-joinform nameCheck-joinform"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="checkMessage-joinform">
+						<input class="input-joinform inputId-joinform" 
+						type="text" name="id" id="id" value="${userDTO.id }" placeholder="아이디" readonly>
+						<input type="hidden" id="idCheck-hidden-joinform" value="">
+						<div class="checkMessageDiv-joinform idCheck-joinform"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="checkMessage-joinform">
+						<input class="input-joinform inputPwd-joinform" 
+						type="password" name="pwd" id="pwd" placeholder="새 비밀번호">
+						<div class="checkMessageDiv-joinform pwdCheck-joinform"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="checkMessage-joinform">
+						<input class="input-joinform inputPwd2-joinform" 
+						type="password" name="email1" id="repwd" placeholder="새 비밀번호 확인">
+						<div class="checkMessageDiv-joinform pwdDoublecheck-joinform"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="checkMessage-joinform">
+						<input class="input-joinform inputTel-joinform inputTel-joinform" type="text" 
+						onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" value="${userDTO.tel }" id="tel" name="tel" placeholder="휴대폰">
+						<div class="checkMessageDiv-joinform telCheck-joinform"></div>	
+					</td>
+				</tr>
+							<tr>
+					<td class="checkMessage-joinform">
+						<input class="input-joinform inputId-joinform" 
+						type="text" name="zipcode" id="zipcode" value="${userDTO.zipcode }" placeholder="우편번호">
+						<input type="hidden" id="idCheck-hidden-joinform" value="">
+						<div class="checkMessageDiv-joinform idCheck-joinform postBtnDiv">
+							<button type="button" class="btn btn-danger postBtn" onclick="checkPost()">우편번호 검색</button>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="checkMessage-joinform">
+						<input class="input-joinform inputId-joinform" 
+						type="text" name="addr1" id="addr1" value="${userDTO.addr1 }" placeholder="주소">
+						<input type="hidden" id="idCheck-hidden-joinform" value="">
+						<div class="checkMessageDiv-joinform idCheck-joinform"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="checkMessage-joinform">
+						<input class="input-joinform inputId-joinform" 
+						type="text" name="addr2" id="addr2" value="${userDTO.addr2 }" placeholder="상세 주소">
+						<input type="hidden" id="idCheck-hidden-joinform" value="">
+						<div class="checkMessageDiv-joinform idCheck-joinform"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="checkMessage-joinform">
+						<input class="input-joinform inputLast-joinform inputEmail-joinform" 
+						value="${userDTO.email }" type="email" name="email" id="email" placeholder="이메일"><!-- email Type효과가 안먹음 -->
+						<div class="checkMessageDiv-joinform emailCheck-joinform"></div></td>
+				</tr>
+				
+			</table>
+		</div>
+	
+		<div class="joinDiv-joinform">
+			<input type="button" class="input-joinform joinBtn-joinform"
+				name="modifyBtn" id="modifyBtn" value="정보 수정하기">
+		</div>
+	</form>
+</c:if>
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
- $('#modifyBtn').click(function(){
+$(document).ready(function(){
+	if(!'${userCheck}'){
+		alert("비정상적인 접근입니다.");
+		location.href='/shoppingmall/main/index.do';
+	}
+});
+
+$('#modifyBtn').click(function(){
 	$('.nameCheck-joinform').empty();
 	$('.pwdCheck-joinform').empty();
 	$('.pwdDoublecheck-joinform').empty();

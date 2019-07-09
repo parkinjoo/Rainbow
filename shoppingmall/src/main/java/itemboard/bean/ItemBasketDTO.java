@@ -10,7 +10,7 @@ public class ItemBasketDTO {
 	private String itemCode;
 	private String itemName;
 	private String itemCol;
-	private int itemQty;
+	private String itemQty;
 	private String itemSize;
 	private String registday;
 	private String id;

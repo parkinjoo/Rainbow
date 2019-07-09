@@ -12,7 +12,7 @@ public class ItemBasketListDTO {
 	private String itemName;
 	private int salePrice;
 	private String itemCol;
-	private int itemQty;
+	private String itemQty;
 	private String img1;
 	private String id;
 	private String itemSize;

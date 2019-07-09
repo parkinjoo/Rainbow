@@ -33,4 +33,6 @@ public interface UserDAO {
 
 	public void because(String id, String reason);
 
+	public void charge(String id);
+
 }

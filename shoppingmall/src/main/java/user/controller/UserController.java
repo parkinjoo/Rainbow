@@ -87,6 +87,20 @@ public class UserController {
 			return "loginFail";
 		}
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/loginCheck.do", method=RequestMethod.POST)
+	public String loginCheck(@RequestParam String id, @RequestParam String pwd, HttpSession session) {
+		String repwd = userDAO.pwdCheck(id);	// 데이터베이스에서 해당 비밀번호를 가지고 옴
+
+		if(passwordEncoder.matches(pwd, repwd)) { //인코더를 이용하여 암호화된 비밀번호와 비교, true or false를 반환
+			session.setAttribute("userCheck", true); //본인확인 여부를 세션에 저장
+			session.setAttribute("userDTO", userDAO.login(id)); //해당 아이디 정보를 가져와서 세션에 저장
+			return "loginOk";
+		}else {
+			return "loginFail";
+		}
+	}
 
 	@ResponseBody
 	@RequestMapping(value="/managerLogin.do", method=RequestMethod.POST)
@@ -254,6 +268,13 @@ public class UserController {
 		 return "null"; 
 	 }
 	 
-	 
+	 //캐쉬충전
+	 @RequestMapping(value="/charge.do", method=RequestMethod.POST)
+	 @ResponseBody
+	 public void charge(@RequestParam String id, HttpSession session) {
+		 userDAO.charge(id);
+		 
+		 session.setAttribute("userDTO", userDAO.login(id)); //해당 아이디 정보를 가져와서 세션에 저장
+	 }
 	 
 }

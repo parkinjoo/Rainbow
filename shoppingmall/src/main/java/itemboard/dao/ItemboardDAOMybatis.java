@@ -61,8 +61,8 @@ public class ItemboardDAOMybatis implements ItemboardDAO{
 	}
 
 	@Override
-	public void basketDelete(String itemCode) {
-		sqlSession.delete("itemboardSQL.basketDelete", itemCode);
+	public void basketDelete(int seq) {
+		sqlSession.delete("itemboardSQL.basketDelete", seq);
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<<<<<<< HEAD
 
 
 <form name="viewForm" method="post" action="/shoppingmall/itemboard/itemPurchaseForm.do">
@@ -11,6 +12,21 @@
 	<input type="hidden"  name="csVal" value="" >
 	<input type="hidden"  name="initQty" value="" >
 	<input type="hidden"  name="salePrice" value="" >
+=======
+<!DOCTYPE html>
+
+  <link rel="stylesheet" href="../css/itemPage-style.css">
+  <body>
+  
+  <form name="viewForm" method="post" action="/shoppingmall/itemboard/itemPurchaseForm.do">
+	<input type="hidden" name="imgName" value="${itemboardDTO.img1}" >
+	<input type="hidden" name="itemCode" value="" >
+	<input type="hidden" name="itemName" value="">
+	<input type="hidden" name="colName" value="" >
+	<input type="hidden" name="sizeName" value="" >
+	<input type="hidden" name="initQty" value="" >
+	<input type="hidden" name="salePrice" value="" >
+>>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
 	<input type="hidden" name="sumPrice" value="" >	
 </form>
  
@@ -34,12 +50,12 @@
           <table class="table-itemPage">
             <tr class="tr-itemPage">
               <td class="title-itemPage td-itemPage">판매가</td>
-              <td class="itemPrice-itemPage"><b></b></td>
+              <td class="itemPrice-itemPage"></td>
             </tr>
             <tr class="tr-itemPage">
               <td class="title-itemPage td-itemPage">색상</td>
               <td class="td-itemPage">
-                  <select id="color_option" style="width: 110px;">
+                  <select id="color_option" style="width: 160px; height: 33px;">
                            
             </select>
               </td>
@@ -48,7 +64,7 @@
               <td class="title-itemPage td-itemPage">사이즈</td>
               <td class="td-itemPage">
                   <c:if test="${itemboardDTO.col1f eq 0}">
-                        <select id="size_option" style="width: 110px;" onchange="">
+                        <select id="size_option" style="width: 160px; height: 30px;" onchange="">
                            
                      </select>
                   </c:if>
@@ -57,37 +73,40 @@
                   </c:if>
               </td>
             </tr>
-            <tr class="tr-itemPage">
-              <td class="title-itemPage">배송정보</td>
-              <td class="td-itemPage"><a href="#" class="showItem-itemPage">실시간 재고 보기</a></td>
-            </tr>
+
           </table>
       </div>
-      <hr class ="itemList">
-       <div class="middleDiv2">
-        <!-- <p class="colorAndSize-itemPage"></p><br>
+      <div class="middleTest">
+         <div class="middleDiv2">
+<!--    <p class="colorAndSize-itemPage">챠콜, S(28)</p><br>
         <input type="text" class="itemAccount-itemPage" value="1">
 
         <button type="button" class="accountBtn-itemPage plus">+</button>
         <button type="button" class="accountBtn-itemPage minus">-</button>
 
-        <p class="price-ietemPage"></p>  -->
-      </div>
-      <hr>
+        <p class="price-itemPage">19,800</p>   -->
+       </div>   
+      </div>       
+      
       <p class="totalPrice-itemPage"><span class="totalPriceText-itemPage"></span> &nbsp;&nbsp;&nbsp;</p>
-      <hr>
+      
       <div class="btnDiv-itemPage">
         <button type="button" class="purchaseBtn-itemPage">BUY NOW</button>
         <button type="button" class="btn-itemPage cartBtn-itemPage">
-          <img src="../images/basket.gif" class="cartImg-itemPage">
+          <img src="../images/shopping-cart.png" class="cartImg-itemPage" >
         </button>
+<<<<<<< HEAD
         <button class="btn-itemPage likeBtn-itemPage">
           <img src="" class="likeImg-itemPage">
+=======
+        <button type="button" class="btn-itemPage likeBtn-itemPage">
+          <img src="../images/like.png" class="likeImg-itemPage">
+>>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
         </button>
       </div>
     </div>
   </div>
-  <div class="withItemDiv-itemPage ">
+  <!-- <div class="withItemDiv-itemPage ">
     <div id="carouselExampleFade" class="carousel slide carousel-fade withItemDiv1-itemPage" data-ride="carousel">
       <div class="carousel-inner withItemDiv2-itemPage">
         <h3 class="withItem-itemPage">추천 코디</h3>
@@ -269,10 +288,23 @@
 		<input type="button" style="margin-left:700px" id="sb_review" value="리뷰 등록하기">
 	</div>
   </body>
+<<<<<<< HEAD
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 
+=======
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+var getItemName='';
+var getItemCode='';
+>>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
 $(document).ready(function(){
    $.ajax({
       type: 'post',
@@ -284,9 +316,13 @@ $(document).ready(function(){
           $('.itemName-itemPage').text(data.itemboardDTO.itemName);
           $('.itemText-itemPage').text(data.itemboardDTO.itemContent);
           $('.itemPrice-itemPage').text(data.itemboardDTO.salePrice);
-          
+          var item = data.itemboardDTO.itemName;
+          getItemName=item;
+          var code = data.itemboardDTO.itemCode;
+          getItemCode = code;
           var itemName = data.itemboardDTO.itemName;
           document.viewForm.itemName.value=itemName;
+          
          /*$('#salePrice').text(data.itemboardDTO.salePrice);
          $('#costPrice').text(data.itemboardDTO.costPrice);
          $('.itemcontent').text(data.itemboardDTO.itemContent);
@@ -435,10 +471,13 @@ $('#color_option').change(function(){
          
    });    
 });
+var itemName = new Array(); // 아이템 이름을 순서대로 넣을 배열
 
-var csName = new Array();//선택된 컬러와 사이즈 이름을 담을 배열 *없어질 수 있음*
+var itemCode = new Array(); // 아이템 코드를 순서대로 넣을 배열
 
-var csVal = new Array(); //선택된 컬러와 사이즈의 값을 담을 배열 
+var colName = new Array();//선택된 컬러를 담을 배열
+
+var sizeName = new Array(); //선택된 사이즈를 담을 배열
 
 var optionCnt = 0;//각 태그의 고유값을 주기위한 값 1씩 증가함
 
@@ -455,14 +494,14 @@ $('#size_option').change(function(){
    if(sizeText=='사이즈선택'){
  	   alert('다시선택해주세요');
     }
-   else if(csName.length==0){
+   else if(colName.length==0){
 	   listTagAdd();
    }
    else{
 	   var count = 0; //구분자
-	   for(i=0;i<csName.length;i++){//중복으로 리스트를 추가하려는지 
+	   for(i=0;i<colName.length;i++){//중복으로 리스트를 추가하려는지 
 		   
-		   if(csName[i] == comCS){
+		   if(colName[i] == colorText){
 		      alert('이미 선택되었습니다.');
 		      count++;
 		   }
@@ -479,17 +518,20 @@ function listTagAdd(){
     var color= $('#color_option').val();
     var size = $('#size_option').val();
 	//수량 선택을 할 태그 생성
-    csName.push(colorText+'/'+sizeText);
-    csVal.push(color+'/'+size);
+    colName.push(colorText);
+	sizeName.push(sizeText);
+	itemName.push(getItemName);
+	itemCode.push(getItemCode);
      $('<p/>',{
-        class : 'colorAndSize-itemPage '+optionCnt,
-        text : colorText+'  '+sizeText,    
-        style : 'border : 1px solid blue;'
+        class : 'colorAndSize-itemPage'+optionCnt,
+        text : colorText+','+sizeText,    
+        style : 'font-weight: bold; margin-bottom: 4px;'
      }).appendTo($('.middleDiv2'));
      
      $('<input/>',{
         type : 'text',
         class : 'itemAccount-itemPage',
+        style : 'width: 50px; height: 35px; text-align: center;',
         id : 'itemAccount-itemPage'+optionCnt,
         step : '1',
         min: '1',
@@ -516,6 +558,10 @@ function listTagAdd(){
         id : 'price-itemPage'+optionCnt,
         class : 'price-itemPage',
         text : salePrice
+     }).appendTo($('.middleDiv2'));
+     
+     $('<hr>', {
+    	 
      }).appendTo($('.middleDiv2'));
      
      optionCnt++; //고유번호 증가
@@ -555,62 +601,62 @@ $(document).on('click','.minus',function(){
 // 장바구니 회원
 
 $('.cartImg-itemPage').click(function(){
-	if('${userDTO}'!=''){
-      
-      var itemCode = $('#itemCodeDiv').text();
-      var itemName = $('.itemName-itemPage').text();
-      var itemCol = $('#color_option option:selected').text();
-      var itemQty = 1;
-      var itemSize = $('#size_option option:selected').text();
-      var id = '${userDTO.id }';
-      //건들지마세요
-      var stus = 'cart';
-      //alert(itemCol+','+itemSize);
-      if(itemCol!='색상선택' && itemSize!='사이즈선택'){
-	      $.ajax({
-	         type: 'post',
-	         url: '/shoppingmall/itemboard/itemBasket.do',
-	         data: 'itemCode='+itemCode+'&itemName='+itemName+'&itemCol='+itemCol+'&itemQty='+itemQty+'&itemSize='+itemSize+'&id='+id+'&stus='+stus+'&categoryCode=${categoryCode}&pg=${pg}',
-	         success: function(){
-	            if(confirm("상품이 저장되었습니다. 장바구니로 가시겠습니까?")){
-	               location.href="/shoppingmall/itemboard/itemBasketList.do";
-	            }else{
-					location.reload();
-	            }
-	            
-	         } 
-	      });
-      }else{
-    	  alert("색상과 사이즈를 선택해주세요.");
-      }
-   
-   }else {
-         if(confirm('비회원으로 구매를 진행하시겠습니까?')){
-            location.href = "/shoppingmall/itemboard/itemBasketList.do";
-         }else
-            location.href = "/shoppingmall/user/loginForm.do";
-   }
+	if('${userDTO.id}'!=''){
+		if(colName.length!=0){
+			var initQty = new Array(); //추가해준 옵션들의 수량을 담을 배열
+			for(i=0; i<colName.length;i++)
+				initQty.push($('#itemAccount-itemPage'+i).val());
+			var userId = '${userDTO.id}';
+			for(j=0; j<colName.length;j++){
+				$.ajax({
+					type: 'post',
+				    url: '/shoppingmall/itemboard/itemBasket.do',
+				    data: {'itemCode':itemCode[j],
+				    		'itemName':itemName[j],
+				      		'itemCol':colName[j],
+				      		'itemQty':initQty[j],
+				      		'itemSize':sizeName[j],
+							'Id':userId,
+							'stus':'cart'},
+				    success: function(data){
+				    	alert('성공');
+				    }
+				});	
+			}
+			location.href="/shoppingmall/itemboard/itemBasketList.do";
+		}
+	}
+	else{
+		alert('로그인 하세요');
+	}
 });
 
 //buy now 버튼
 $('.purchaseBtn-itemPage').click(function(){
 	var initQty = new Array(); //추가해준 옵션들의 수량을 담을 배열
 	
-	for(i=0; i<csVal.length;i++)
+	for(i=0; i<colName.length;i++)
 		initQty.push($('#itemAccount-itemPage'+i).val());
 	
 	//히든 버튼에 값을 넣어 보내주기 
-	var csNameRe = csName.join(',');
-	var csValRe = csVal.join(',');
+	var colNameRe = colName.join(',');
+	var sizeNameRe = sizeName.join(',');
 	var initQtyRe = initQty.join(',');
-	document.viewForm.csName.value=csNameRe;
-	document.viewForm.csVal.value=csValRe;
+	var itemCodeNameRe = itemCode.join(',');
+	var itemNameRe = itemName.join(',');
+	
+	
+	document.viewForm.itemCode.value=itemCodeNameRe;
+	document.viewForm.itemName.value=itemNameRe;
+	document.viewForm.colName.value=colNameRe;
+	document.viewForm.sizeName.value=sizeNameRe;
 	document.viewForm.initQty.value=initQtyRe;
 	document.viewForm.salePrice.value=salePrice;
 	document.viewForm.sumPrice.value=sumPrice;
 	document.viewForm.submit();
 });
 
+<<<<<<< HEAD
 
 $('#review_txt').click(function(){
 
@@ -621,5 +667,30 @@ $('#review_txt').click(function(){
 });
 
 
+=======
+>>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
 </script>
+<<<<<<< HEAD
+=======
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
 
