@@ -5,7 +5,7 @@
 <html lang="en" dir="ltr">
 <form name="viewForm" method="post" action="/shoppingmall/itemboard/itemPurchaseForm.do">
 	<input type="hidden" name="imgName" value="${itemboardDTO.img1}" >
-	<input type="hidden" name="itemCode" value="${itemCode }" >
+	<input type="hidden" name="itemCode" value="" >
 	<input type="hidden" name="itemName" value="">
 	<input type="hidden" name="colName" value="" >
 	<input type="hidden"  name="sizeName" value="" >
@@ -251,7 +251,8 @@ $(document).ready(function(){
           $('.itemName-itemPage').text(data.itemboardDTO.itemName);
           $('.itemText-itemPage').text(data.itemboardDTO.itemContent);
           $('.itemPrice-itemPage').text(data.itemboardDTO.salePrice);
-          
+          var itemCode = data.itemboardDTO.itemCode;
+          document.viewForm.itemCode.value=itemCode;
           var itemName = data.itemboardDTO.itemName;
           document.viewForm.itemName.value=itemName;
          /*$('#salePrice').text(data.itemboardDTO.salePrice);

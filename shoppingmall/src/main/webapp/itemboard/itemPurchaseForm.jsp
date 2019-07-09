@@ -59,18 +59,20 @@
       <table class="table">
           <tr>
             <th class="infoTitle">이름</th>
-            <td class="infoText">${userDTO.name }</td>
+            <td class="infoText">
+            	<input type="text" class="infoInput orderName" name="name" value="${userDTO.name }">
+            </td>
           </tr>
           <tr>
             <th class="infoTitle">이메일</th>
             <td class="infoText">
-              <input type="text" class="infoInput" name="email" value="${userDTO.email }">
+              <input type="text" class="infoInput orderEmail" name="email" value="${userDTO.email }">
             </td>
           </tr>
           <tr>
             <th class="infoTitle">연락처</th>
             <td class="infoText">
-              <input type="text" class="infoInput" name="tel" value="${userDTO.tel }">
+              <input type="text" class="infoInput orderTel" name="tel" value="${userDTO.tel }">
             </td>
           </tr>
       </table>
@@ -131,7 +133,7 @@
             </tr>
             <tr>
             <td>
-            	<input type="button" value="구매하기" onclick="buy()" >
+            	<input type="button" value="구매하기" onclick="buy()" />
             </td>
             </tr>
         </table>
@@ -162,7 +164,7 @@ $(document).ready(function(){
 	
 	var tmp='';
 	var fund=0;
-	for(i=0;i<csVal.length;i++){
+	for(i=0;i<colName.length;i++){
 		tmp = tmp + 
 		'<tr>'+
 		'<td><div class="purchaseImg" style="background-image:url(../storage/'+imgName+'")"></div></td>'+
@@ -182,8 +184,8 @@ $(document).ready(function(){
 });
 
 function paste(){
-	$('.name').val('${userDTO.name}');
-	$('.tel').val('${userDTO.tel}');
+	$('.name').val($('.orderName').val());
+	$('.tel').val($('.orderTel').val());
 	$('.zipcode').val('${userDTO.zipcode}');
 	$('.addr1').val('${userDTO.addr1}');
 	$('.addr2').val('${userDTO.addr2}');
@@ -191,20 +193,33 @@ function paste(){
 
 function buy(){
 	var itemName = '${itemName}';
-	var colNameRe = '${colName}';
-	var sizeNameRe ='${sizeName}';
-	var initQtyRe = '${initQty}';
+	var colName = '${colName}';
+	var sizeName ='${sizeName}';
+	var initQty = '${initQty}';
 	var salePrice = ${salePrice};
 	var sumPrice = ${sumPrice};
 	var imgName = '${imgName}';
-	
-/* 	$.ajax({
-		type: 'post',
-	      url: '/shoppingmall/itemboard/itemBasket.do',
-	      data: 'itemCode='+itemCode+'&itemName='+itemName+'&',
-	      dataType: 'json',
-	      success: 
-	}) */
+	var itemCode = '${itemCode}';
+	alert(initQty);
+	//회원인지 아닌지 구분
+	var id = '${userDTO.id}'; 
+	if(id=='')
+		id='non'+$('.orderName').val();
+	else{
+		$.ajax({
+			type: 'post',
+		    url: '/shoppingmall/itemboard/itemBasket.do',
+		    data: 'itemCode='+itemCode+'&itemName='+itemName+
+		      		'&itemCol='+colName+
+		      		'&itemQty='+initQty+
+		      		'&itemSize='+sizeName+
+					'&Id='+id+
+					'&stus=stay',
+		    success: function(){
+		    	location.href="/shoppingmall/itemboard/itemBasketList.do";
+		    }
+		});
+	}
 }
 </script>
 
