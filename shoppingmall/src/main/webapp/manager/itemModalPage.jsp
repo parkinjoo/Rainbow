@@ -276,7 +276,6 @@
 					<button type="reset" class="btn btn-primary">다시 쓰기</button>
 				</div>
 			</div>
-  	</div>
   </div>
  </form>
 </div>
