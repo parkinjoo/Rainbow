@@ -19,7 +19,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import itemboard.bean.ItemboardDTO;
-import itemboard.dao.ItemboardDAO;
 import manager.dao.ManagerDAO;
 import user.bean.UserDTO;
 
@@ -31,8 +30,6 @@ public class ManagerController {
 	@Autowired
 	private ManagerDAO managerDAO;
 	
-	@Autowired
-	private ItemboardDAO itemboardDAO;
 	
 	@RequestMapping(value="/managerPageForm.do")
 	public String managerPageForm() {

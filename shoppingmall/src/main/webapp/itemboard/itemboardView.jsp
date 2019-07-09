@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<<<<<<< HEAD
-=======
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+
+
 <form name="viewForm" method="post" action="/shoppingmall/itemboard/itemPurchaseForm.do">
 	<input type="hidden" name="imgName" value="${itemboardDTO.img1}" >
 	<input type="hidden" name="itemCode" value="${itemCode }" >
@@ -13,23 +11,8 @@
 	<input type="hidden"  name="csVal" value="" >
 	<input type="hidden"  name="initQty" value="" >
 	<input type="hidden"  name="salePrice" value="" >
-	<input type="hidden" name="sumPrice" value="" >
-	
+	<input type="hidden" name="sumPrice" value="" >	
 </form>
-  <head>
-    <meta charset="utf-8">
-    <title>아이템 페이지</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/index-style.css">
-    <link rel="stylesheet" href="../css/itemPage-style.css">
-    <link rel="stylesheet" href="../css/review.css">
->>>>>>> refs/heads/master
-
- 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/itemPage-style.css">
  
   <div id="item-box-itemPage">
     <div class="left-box-itemPage" style="background-image:url('../storage/${itemboardDTO.img1}')">
@@ -238,8 +221,7 @@
   
   </div>
   
-<<<<<<< HEAD
-=======
+
   <div class="manager-managerPage"><!-- 전체 영역 감싸고 있음 -->
 	<!-- 최상단 메뉴 [회원 관리(사용자 목록, 탈퇴 회원 관리), 상품 관리(??), 매출 관리(보류)]-->
 	<ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -254,7 +236,7 @@
 	</div>
 </div>
   
-	<table border="0" cellpading="0" cellpacing="0" width="1200">
+	<table  cellpading="0" cellpacing="0" width="1200">
 		<tr id="review_name">
 			<td colspan="1" align="center">
 				<font color="black" size="2" face="돋움">작성자</font>
@@ -293,9 +275,7 @@
 
   </body>
 
->>>>>>> refs/heads/master
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<<<<<<< HEAD
 <script>
 $('.nav-area-index').on('click', function(){
   $($('.nav-item').children('ul')).slideDown();
@@ -304,13 +284,6 @@ $('.nav-area-index').on('mouseleave', function(){
   $($('.nav-item').children('ul')).slideUp();
 });
 
-=======
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-<script type="text/javascript">
->>>>>>> refs/heads/master
 $(document).ready(function(){
    $.ajax({
       type: 'post',
@@ -638,8 +611,6 @@ $('.purchaseBtn-itemPage').click(function(){
 	document.viewForm.sumPrice.value=sumPrice;
 	document.viewForm.submit();
 });
-
-
 
 
 $('#review_txt').click(function(){
