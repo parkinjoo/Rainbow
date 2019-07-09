@@ -226,7 +226,7 @@
 					</div>
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" name="img" id="img1" aria-describedby="inputGroupFileAddon01">
-						<label class="custom-file-label" id="img1" for="inputGroupFile01">Choose file</label>
+						<label class="custom-file-label" id="img1label" for="inputGroupFile01">Choose file</label>
 					</div>
 				</div>
 
@@ -236,7 +236,7 @@
 					</div>
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" name="img" id="img2" aria-describedby="inputGroupFileAddon01">
-						<label class="custom-file-label" id="img2" for="inputGroupFile01">Choose file</label>
+						<label class="custom-file-label" id="img2label" for="inputGroupFile01">Choose file</label>
 					</div>
 				</div>
 
@@ -246,7 +246,7 @@
 					</div>
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" name="img" id="img3" aria-describedby="inputGroupFileAddon01">
-						<label class="custom-file-label" id="img3" for="inputGroupFile01">Choose file</label>
+						<label class="custom-file-label" id="img3label" for="inputGroupFile01">Choose file</label>
 					</div>
 				</div>
 
@@ -256,7 +256,7 @@
 					</div>
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" name="img" id="img4" aria-describedby="inputGroupFileAddon01">
-						<label class="custom-file-label" id="img4" for="inputGroupFile01">Choose file</label>
+						<label class="custom-file-label" id="img4label" for="inputGroupFile01">Choose file</label>
 					</div>
 				</div>
 

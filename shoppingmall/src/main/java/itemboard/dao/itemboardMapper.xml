@@ -68,4 +68,53 @@
 	<insert id="reviewWrite" parameterType="review">
 	 	insert into reviewtable(seq,id,name,review,img1,img2,registday) values(seq_reviewtable, #{id},#{name},#{review},#{img1},#img{2},sysdate)
 	</insert>
+	
+	<!-- 출고대기인 상품 리스트 -->
+	<select id="getStayItemList" parameterType="String" resultType="itembasketList">
+		select *
+		from itembasketTable join ITEMTABLE using (itemcode)
+		where stus='stay' and id=#{id}
+		order by seq desc
+	</select>
+	
+	<!-- 배송중인 상품 리스트 -->
+	<select id="getIngItemList" parameterType="String" resultType="itembasketList">
+		select *
+		from itembasketTable join ITEMTABLE using (itemcode)
+		where stus='ing' and id=#{id}
+		order by seq desc
+	</select>
+	
+	<!-- 환불요청중인 상품 리스트 -->
+	<select id="getReItemList" parameterType="String" resultType="itembasketList">
+		select *
+		from itembasketTable join ITEMTABLE using (itemcode)
+		where stus='re' and id=#{id}
+		order by seq desc
+	</select>
+	
+	<!-- 배송완료된 상품 리스트 -->
+	<select id="getEdItemList" parameterType="String" resultType="itembasketList">
+		select *
+		from itembasketTable join ITEMTABLE using (itemcode)
+		where stus='ed' and id=#{id}
+		order by seq desc
+	</select>
+	
+	<!-- 주문취소 -->
+	<update id="StayItemDelete" parameterType="java.util.Map">
+		begin
+			update user_table set cash=#{reCash} where id=#{id};
+			delete itembasketTable where seq=#{seq};
+		end;
+	</update>
+	
+	<!-- 바뀐 userDTO 다시 가져오기 -->
+	<select id="getUserDTO" parameterType="String" resultType="user">		  
+		select * from user_table where id=#{id}
+	</select>
+	
+	<update id="refundItem" parameterType="int">
+		update itembasketTable set stus='re' where seq=#{seq}
+	</update>
 </mapper>
