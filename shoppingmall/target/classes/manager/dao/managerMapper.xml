@@ -81,7 +81,7 @@
 	 (select registday , sum(saleprice) as saleprice from
 	(select to_char(registday, 'yyyy"."MM"."dd') as registday , sum(saleprice) as saleprice from itemtable group by registday) group by registday)aa,
 	(SELECT TO_CHAR(TO_DATE('2019.07.01', 'yyyy.mm.dd') + LEVEL - 1, 'yyyy.mm.dd') as data FROM DUAL 
-	CONNECT BY  TO_DATE('2019.07.01', 'yyyy.mm.dd') + LEVEL - 1 <![CDATA[<]]>= TO_DATE('2019.07.31', 'yyyy.mm.dd'))tt where tt.data=aa.registday
+	CONNECT BY  TO_DATE('2019.07.01', 'yyyy.mm.dd') + LEVEL - 1 <![CDATA[<]]>= TO_DATE('2019.07.31', 'yyyy.mm.dd'))tt where tt.data=aa.registday order by 2
 	</select>
 	
 	<select id="getX" resultType="String">

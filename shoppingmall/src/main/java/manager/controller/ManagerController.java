@@ -233,22 +233,22 @@ public class ManagerController {
 
 		List<String> y = new ArrayList<String>();
 
-		for(int i=0; i<data.size(); i++) {
-			String aaa = data.get(i).getData();
-			for(int j=0; j<date.size(); j++) {
-				if(aaa.equals(date.get(j))) {
-					y.add(data.get(i).getSaleprice());
-				}else {
-					y.add("0");
+		int max = 0;		
+		for(int i=0; i<date.size(); i++) {
+			y.add("0");
+			for(int j=0; j<data.size(); j++) {
+				if(date.get(i).equals(data.get(j).getData())) {
+					y.set(i, data.get(j).getSaleprice());
+					if(max<Integer.parseInt(data.get(j).getSaleprice())) {
+						max = Integer.parseInt(data.get(j).getSaleprice());
+					}
 				}
 			}
 		}
-		
 		List<String> x = managerDAO.getX();
-
 		mav.addObject("y", y);  //2 1=2
 		mav.addObject("x", x);
-
+		mav.addObject("max", max);
 		mav.setViewName("jsonView");
 		return mav;
     }
