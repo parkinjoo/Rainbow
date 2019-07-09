@@ -45,7 +45,7 @@
 							<tr>
 					<td class="checkMessage-joinform">
 						<input class="input-joinform inputId-joinform" 
-						type="text" name="zipcode" id="zipcode" value="${userDTO.zipcode }" id="zipcode" placeholder="우편번호">
+						type="text" name="zipcode" id="zipcode" value="${userDTO.zipcode }" placeholder="우편번호">
 						<input type="hidden" id="idCheck-hidden-joinform" value="">
 						<div class="checkMessageDiv-joinform idCheck-joinform postBtnDiv">
 							<button type="button" class="btn btn-danger postBtn" onclick="checkPost()">우편번호 검색</button>
@@ -55,7 +55,7 @@
 				<tr>
 					<td class="checkMessage-joinform">
 						<input class="input-joinform inputId-joinform" 
-						type="text" name="addr1" id="addr1" value="${userDTO.addr1 }" id="addr1" placeholder="주소">
+						type="text" name="addr1" id="addr1" value="${userDTO.addr1 }" placeholder="주소">
 						<input type="hidden" id="idCheck-hidden-joinform" value="">
 						<div class="checkMessageDiv-joinform idCheck-joinform"></div>
 					</td>
@@ -63,7 +63,7 @@
 				<tr>
 					<td class="checkMessage-joinform">
 						<input class="input-joinform inputId-joinform" 
-						type="text" name="addr2" id="addr2" value="${userDTO.addr2 }" id="addr2" placeholder="상세 주소">
+						type="text" name="addr2" id="addr2" value="${userDTO.addr2 }" placeholder="상세 주소">
 						<input type="hidden" id="idCheck-hidden-joinform" value="">
 						<div class="checkMessageDiv-joinform idCheck-joinform"></div>
 					</td>
