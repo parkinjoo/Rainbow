@@ -240,7 +240,7 @@ public class ItemboardController {
 		mav.setViewName("jsonView");
 		
 		return mav;
-		 
+		
 	}
 	
 	//�옣諛붽뎄�땲
@@ -315,54 +315,6 @@ public class ItemboardController {
 		itemboardDAO.SideBarDeleteItem(seq);
 	}
 	
-	@RequestMapping(value="/itemboardReview.do", method=RequestMethod.GET)
-	public ModelAndView reviewForm() {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("display","/itemboard/itemboardReview.jsp");
-		return mav;
-	}
 	
-	@RequestMapping(value="/review.do", method=RequestMethod.POST)
-	public String review(@ModelAttribute ReviewDTO reviewDTO,
-						@RequestParam MultipartFile[] img,
-						Model model) {
-		
-		String filePath = "C:\\Spring\\project\\shoppingmall\\src\\main\\webapp\\storage";
-		String fileName;
-		File file;
-		
-		//-----------------------
-		if(img[0]!=null) {
-			fileName = img[0].getOriginalFilename();
-			file = new File(filePath, fileName);
-			try {
-				FileCopyUtils.copy(img[0].getInputStream(), new FileOutputStream(file));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		
-			reviewDTO.setImg1(fileName);
-		}else {
-			reviewDTO.setImg1(null);
-		}
-		//-------------------
-		if(img[1]!=null) {
-			fileName = img[1].getOriginalFilename();
-			file = new File(filePath, fileName);
-			try {
-				FileCopyUtils.copy(img[1].getInputStream(), new FileOutputStream(file));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		
-			reviewDTO.setImg2(fileName);
-		}else {
-			reviewDTO.setImg2(null);
-		}
-		
-		itemboardDAO.reviewWrite(reviewDTO);
-		
-		model.addAttribute("display", "/itemboard/itemboardView.jsp");
-		return "/main/index";
-	}
+	
 }

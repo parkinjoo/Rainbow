@@ -231,6 +231,7 @@
      <img src="../storage/${itemboardDTO.img4 }">
   
   </div>
+  
   <div class="manager-managerPage"><!-- 전체 영역 감싸고 있음 -->
 	<!-- 최상단 메뉴 [회원 관리(사용자 목록, 탈퇴 회원 관리), 상품 관리(??), 매출 관리(보류)]-->
 	<ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -242,14 +243,6 @@
 	
 	<div class="tab-content" id="myTabContent">
 	
-		<!-- userManagement.jsp Include Area -->
-			<jsp:include page="${managerUserDisplay }"/>
-		<!-- userManagement.jsp Include Area -->
-		
-		<!-- itemManagement.jsp Include Area -->
-			<jsp:include page="${managerItemDisplay }"/>
-		<!-- itemManagement.jsp Include Area -->	
-			
 	</div>
 </div>
   
@@ -635,56 +628,9 @@ $('#review_txt').click(function(){
 		alert('로그인후 작성가능합니다 ')
 		this.blur();
 	}		
-})
-
-/*
-$(document).ready(function(){ 
-	var fileTarget = $('#img1'); 
-	fileTarget.on('change', function(){ // 값이 변경되면
-		if(window.FileReader){ // modern browser 
-			var filename = $(this)[0].files[0].name; 
-		} else { // old IE 
-			var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
-			} 
-	
-	// 추출한 파일명 삽입 
-	
-	//$("label[id='img1']").text(filename);
-	});
-	
-	
-	var fileTarget = $('#img2'); 
-	fileTarget.on('change', function(){ // 값이 변경되면
-		if(window.FileReader){ // modern browser 
-			var filename = $(this)[0].files[0].name; 
-		} else { // old IE 
-			var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
-			} 
-	
-	// 추출한 파일명 삽입 
-	
-	//$("label[id='img2']").text(filename);
 });
-	*/
-$('#sb_review').click(function(){
-	if($('.review_txt').val()== null || $('.review_txt').val()=="로그인후 작성가능합니다"){
-		alert('리뷰를 작성해주세요')
-	}else{
-		$.ajax({
-			type: 'POST',
-			url: '/shoppingmall/itemboard/review.do',
-			data: {'name': ${'#re_input_name'}.val(),
-					'review': ${'.review_txt'}.val(),
-					'img1':${'#img1'}.val()},
-					//'ima2':${'#img2'}.val()},
-			dataType : 'text',
-			success : function(data){
-				alert('성공')
-			}
-			})
-	}
-})
-*/
+
+
 </script>
 </html>
 
