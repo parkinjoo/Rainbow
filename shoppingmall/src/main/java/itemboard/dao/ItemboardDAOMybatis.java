@@ -140,5 +140,7 @@ public class ItemboardDAOMybatis implements ItemboardDAO{
 	public void refund(Map<String, Object> map) {
 		sqlSession.update("itemboardSQL.refund", map);
 	}
+	
+
 
 }

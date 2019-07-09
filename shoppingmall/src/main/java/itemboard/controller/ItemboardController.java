@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import itemboard.bean.ItemBasketDTO;
 import itemboard.bean.ItemBasketListDTO;
+import itemboard.bean.ItemOrderDTO;
 import itemboard.bean.ItemboardDTO;
 import itemboard.bean.ItemboardPaging;
 import itemboard.bean.ReviewDTO;
@@ -250,19 +251,28 @@ public class ItemboardController {
 	//�옣諛붽뎄�땲
 	@RequestMapping(value="/itemBasket.do", method=RequestMethod.POST)
 	@ResponseBody
-	public void itemBasket(@ModelAttribute ItemBasketDTO itemBasketDTO, Model model) {
+	public void itemBasket(@ModelAttribute ItemBasketDTO itemBasketDTO,
+							Model model) {
 		
-		System.out.println("itemCode="+itemBasketDTO.getItemCode());
-		System.out.println("itemName =" + itemBasketDTO.getItemName());
-	    
-	    System.out.println("itemCol =" + itemBasketDTO.getItemCol());
-	    System.out.println("itemQty =" + itemBasketDTO.getItemQty());
-	    System.out.println("itemSize="+itemBasketDTO.getItemSize());
-	    System.out.println("itemRegistday =" + itemBasketDTO.getRegistday());
-	    System.out.println("Id =" + itemBasketDTO.getId());
-	    System.out.println("stus= "+ itemBasketDTO.getStus());
 	    itemboardDAO.itemBasket(itemBasketDTO);
 	}    
+	
+	/*
+	 * @RequestMapping(value="/itemOrder.do", method=RequestMethod.POST)
+	 * 
+	 * @ResponseBody public void itemBasket(@ModelAttribute ItemOrderDTO
+	 * itemOrderDTO, Model model) {
+	 * 
+	 * System.out.println("order_name="+itemOrderDTO.getOrder_name());
+	 * System.out.println("order_tel =" + itemOrderDTO.getOrder_tel());
+	 * 
+	 * System.out.println("receive_name =" + itemOrderDTO.getReceive_name());
+	 * System.out.println("receive_tel =" + itemOrderDTO.getReceive_tel());
+	 * System.out.println("address="+itemOrderDTO.getAddress());
+	 * System.out.println("message =" + itemOrderDTO.getMessage());
+	 * System.out.println("stus= "+ itemOrderDTO.getStus());
+	 * itemboardDAO.itemOrder(itemOrderDTO); }
+	 */
 	@RequestMapping(value="/basketFlush.do", method=RequestMethod.POST)
 	@ResponseBody
 	public void basketFlush(@RequestParam String id) {
@@ -271,8 +281,7 @@ public class ItemboardController {
 		itemboardDAO.basketFlush(id);
 		
 		
-	}
-	
+	}	
 	@RequestMapping(value="/basketDelete.do", method=RequestMethod.POST)
     @ResponseBody
     public void basketDelete(@RequestParam(value="chkbox[]") List<Integer> seq) {
