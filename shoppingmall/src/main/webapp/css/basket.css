@@ -16,3 +16,11 @@
 .CSSbuttonWhite { display:inline-block;  color:#231f20; text-align:center;  border:1px solid #231f20; background:#fff; -webkit-transition:all 0.3s ease; transition:all 0.3s ease }
 .CSSbuttonWhite:hover { color:#fff; background:#231f20 }
 .CSSbuttonWhite:active { position: relative; top: 1px }
+
+.cartTable{
+  width: 1000px;
+}
+
+td{
+  boder: 1px solid black;
+}

@@ -27,7 +27,7 @@ public interface ItemboardDAO {
 
 	public void basketFlush(String id);
 
-	public void basketDelete(String itemCode);
+	public void basketDelete(int seq);
 
 	public List<ItemBasketListDTO> getSideBarList(String id);
 

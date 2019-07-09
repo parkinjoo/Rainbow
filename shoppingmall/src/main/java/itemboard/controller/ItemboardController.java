@@ -274,9 +274,9 @@ public class ItemboardController {
 	
 	@RequestMapping(value="/basketDelete.do", method=RequestMethod.POST)
     @ResponseBody
-    public void basketDelete(@RequestParam(value="chkbox[]") List<String> itemCode) {
-    	for(int i=0; i<itemCode.size(); i++) {
-    		itemboardDAO.basketDelete(itemCode.get(i));
+    public void basketDelete(@RequestParam(value="chkbox[]") List<Integer> seq) {
+    	for(int i=0; i<seq.size(); i++) {
+    		itemboardDAO.basketDelete(seq.get(i));
     	}
     }
 	
