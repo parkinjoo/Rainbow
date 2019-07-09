@@ -1,41 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="../css/modifyform-style.css">
 
-<!-- 본인확인창 -->
-<h4>본인 확인</h4>
-
-<form name="modifyCheckForm" id="modifyForm">
-  <div class="modifyCheckDiv">
-  	<table class="modifyCheckTable">
-  	  <tr>
-  	    <td>
-  	      <span>본인 확인을 위하여 비밀번호를 입력해주세요.<br><br><br></span>
-  	    </td>
-  	  </tr>
-  	  <tr>
-  	    <td>
-	      <input type="text" name="id" id="id" value="${userDTO.id }" readonly />
-	    </td>
-  	  </tr>
-  	  <tr>
-	    <td>
-	      <input type="password" name="pwd" id="pwd" onkeyup="enterkey();" placeholder="PASSWORD" />
-  		</td>
-  	  </tr>
-  	  <tr>
-	   	<td>
-	   	  <input type="button" id="inputBtn" value="입력" class="inputBtn"/>
-  		</td>
-  	  </tr>
-    </table>
-  </div>
-</form>
-
+<c:if test="${userDTO != null}">
+	<!-- 본인확인창 -->
+	<h4>본인 확인</h4>
+	
+	<form name="modifyCheckForm" id="modifyForm">
+	  <div class="modifyCheckDiv">
+	  	<table class="modifyCheckTable">
+	  	  <tr>
+	  	    <td>
+	  	      <span>본인 확인을 위하여 비밀번호를 입력해주세요.<br><br><br></span>
+	  	    </td>
+	  	  </tr>
+	  	  <tr>
+	  	    <td>
+		      <input type="text" name="id" id="id" value="${userDTO.id }" readonly />
+		    </td>
+	  	  </tr>
+	  	  <tr>
+		    <td>
+		      <input type="password" name="pwd" id="pwd" onkeyup="enterkey();" placeholder="PASSWORD" />
+	  		</td>
+	  	  </tr>
+	  	  <tr>
+		   	<td>
+		   	  <input type="button" id="inputBtn" value="입력" class="inputBtn"/>
+	  		</td>
+	  	  </tr>
+	    </table>
+	  </div>
+	</form>
+</c:if>
 <script>
 $(document).ready(function() {
-	 document.modifyCheckForm.pwd.focus();
+	if('${userDTO}'==''){
+		alert("비정상적인 접근입니다.");
+		location.href='/shoppingmall/main/index.do';
+	}else{
+		document.modifyCheckForm.pwd.focus();
+	}
 });
 $('#inputBtn').click(function(){
 	if($('#pwd').val()=='')

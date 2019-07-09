@@ -69,4 +69,8 @@
 		delete user_table where id=#{id}
 	</delete>
 	
+	<!-- 캐쉬충전 -->
+	<update id="charge" parameterType="String">
+		update user_table set cash=cash+10000, totalpay=totalpay+10000 where id=#{id}
+	</update>
 </mapper>

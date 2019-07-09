@@ -268,6 +268,13 @@ public class UserController {
 		 return "null"; 
 	 }
 	 
-	 
+	 //캐쉬충전
+	 @RequestMapping(value="/charge.do", method=RequestMethod.POST)
+	 @ResponseBody
+	 public void charge(@RequestParam String id, HttpSession session) {
+		 userDAO.charge(id);
+		 
+		 session.setAttribute("userDTO", userDAO.login(id)); //해당 아이디 정보를 가져와서 세션에 저장
+	 }
 	 
 }
