@@ -2,12 +2,12 @@ h4 {
   width: 80%;
   margin: 50px auto 4px auto;
   font-weight: bold;
+  border-bottom: 1px solid black;
 }
 
 .myPage {
-  width: 80%;
+  width: 1000px;
   height: 300px;
-  border-top: 1px solid black;
   margin: 0 auto;
   /* position: relative; */
 }
@@ -17,19 +17,46 @@ h4 {
 }
 
 .myItemDiv {
-  width: 80%;
+  width: 1000px;
   /* border: 1px solid black; */
-  margin: auto auto 100px auto;
+  margin: auto auto 150px auto;
 }
 
 .myItemTableDiv {
   margin: auto auto;
-  /* border: 1px solid black; */
   
 }
 
+.card-text {
+	font-size: 11pt;
+}
+
+/* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 .table {
   border-top: 5px solid white;
-  border-bottom: 1px solid #c8c8c8;
   
 }
+
+.itemList{
+  text-align: center;
+  position: relative;
+  border-bottom: 1px solid #c8c8c8;
+}
+.test {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+input{
+  border: none;
+  border-radius: 5px;
+  padding: 8px 8px;
+  margin: 3px 0;
+  color: white;
+  font-weight: bold;
+  background-color: #c8c8c8;
+  
+}
+
+
+

@@ -21,7 +21,7 @@
   	  </tr>
   	  <tr>
 	    <td>
-	      <input type="password" name="password" id="pwd" onkeyup="enterkey();" placeholder="PASSWORD" />
+	      <input type="password" name="pwd" id="pwd" onkeyup="enterkey();" placeholder="PASSWORD" />
   		</td>
   	  </tr>
   	  <tr>
@@ -34,6 +34,9 @@
 </form>
 
 <script>
+$(document).ready(function() {
+	 document.modifyCheckForm.pwd.focus();
+});
 $('#inputBtn').click(function(){
 	if($('#pwd').val()=='')
 		alert("비밀번호를 입력해주세요")

@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 @Component
 public class ItemBasketListDTO {
+	private int seq;
 	private String itemCode;
 	private String itemName;
 	private int salePrice;

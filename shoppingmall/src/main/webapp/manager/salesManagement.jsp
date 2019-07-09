@@ -56,6 +56,10 @@ $('#clickTest').on('click', function(){
 				line[i]=[[data.ticks[i]],data.barChart2[i]];
 			}
 			alert(line);
+<<<<<<< HEAD
+=======
+			
+>>>>>>> refs/heads/master
 		    jQuery("#chart").jqplot([line], {
 		          title: today  
 		        , seriesDefaults:{

@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import itemboard.bean.ItemBasketDTO;
 import itemboard.bean.ItemBasketListDTO;
 import itemboard.bean.ItemboardDTO;
+import itemboard.bean.ReviewDTO;
+import user.bean.UserDTO;
 
 @Transactional
 @Repository
@@ -56,12 +58,63 @@ public class ItemboardDAOMybatis implements ItemboardDAO{
 	@Override
 	public void basketFlush(String id) {
 		sqlSession.delete("itemboardSQL.basketFlush", id);
+	}
+
+	@Override
+	public void basketDelete(String itemCode) {
+		sqlSession.delete("itemboardSQL.basketDelete", itemCode);
+	}
+
+	@Override
+	public List<ItemBasketListDTO> getSideBarList(String id) {
+		return sqlSession.selectList("itemboardSQL.getSideBarList", id);
+	}
+
+	@Override
+	public void SideBarDeleteItem(int seq) {
+		sqlSession.delete("itemboardSQL.SideBarDeleteItem", seq);
+	}
+
+	@Override
+	public void reviewWrite(ReviewDTO reviewDTO) {
+		sqlSession.delete("itemboardSQL.reviewWrite",reviewDTO);
 		
 	}
 
 	@Override
-	public int basketDelete(String itemCode) {
-		return sqlSession.delete("itemboardSQL.basketDelete", itemCode);
-		
+	public List<ItemBasketListDTO> getStayItemList(String id) {
+		return sqlSession.selectList("itemboardSQL.getStayItemList", id);
 	}
+
+	@Override
+	public List<ItemBasketListDTO> getIngItemList(String id) {
+		return sqlSession.selectList("itemboardSQL.getIngItemList", id);
+	}
+
+	@Override
+	public List<ItemBasketListDTO> getReItemList(String id) {
+		return sqlSession.selectList("itemboardSQL.getReItemList", id);
+	}
+
+	@Override
+	public List<ItemBasketListDTO> getEdItemList(String id) {
+		return sqlSession.selectList("itemboardSQL.getEdItemList", id);
+	}
+
+	@Override
+	public void StayItemDelete(Map<String,String> map) {
+		sqlSession.update("itemboardSQL.StayItemDelete", map);
+	}
+
+	@Override
+	public UserDTO getUserDTO(String id) {
+		return sqlSession.selectOne("itemboardSQL.getUserDTO", id);
+	}
+
+	@Override
+	public void refundItem(int seq) {
+		sqlSession.update("itemboardSQL.refundItem", seq);
+	}
+
+
 }

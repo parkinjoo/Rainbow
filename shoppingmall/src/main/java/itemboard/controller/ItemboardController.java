@@ -7,10 +7,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,7 +26,9 @@ import itemboard.bean.ItemBasketDTO;
 import itemboard.bean.ItemBasketListDTO;
 import itemboard.bean.ItemboardDTO;
 import itemboard.bean.ItemboardPaging;
+import itemboard.bean.ReviewDTO;
 import itemboard.dao.ItemboardDAO;
+import user.bean.UserDTO;
 
 @Controller
 @RequestMapping(value="/itemboard")
@@ -119,6 +124,7 @@ public class ItemboardController {
 	public String itemBasketList(@RequestParam(required=false, defaultValue="1") String pg, @RequestParam(required=false, defaultValue="") String categoryCode, Model model) {
 		model.addAttribute("pg", pg);
 		model.addAttribute("categoryCode", categoryCode);
+		model.addAttribute("title", "나의 장바구니");
 		model.addAttribute("display", "/itemboard/itemBasketList.jsp");
 		return "/main/index";
 	}
@@ -193,7 +199,10 @@ public class ItemboardController {
 	}
 	
 	@RequestMapping(value="/itemboardView.do", method=RequestMethod.GET)
-	public String itemboardView(@RequestParam String categoryCode, @RequestParam String itemCode, @RequestParam String pg, Model model) {
+	public String itemboardView(@RequestParam String categoryCode,
+								@RequestParam String itemCode,
+								@RequestParam(required=false, defaultValue="1") String pg,
+								Model model) {
 		
 		ItemboardDTO itemboardDTO = itemboardDAO.getItemboardView(itemCode);
 		model.addAttribute("itemboardDTO",itemboardDTO);
@@ -235,7 +244,7 @@ public class ItemboardController {
 		mav.setViewName("jsonView");
 		
 		return mav;
-		 
+		
 	}
 	
 	//�옣諛붽뎄�땲
@@ -271,12 +280,106 @@ public class ItemboardController {
     	}
     }
 	
-	@RequestMapping(value="/itemPurchaseForm.do", method=RequestMethod.GET)
-	public ModelAndView itemPurchaseForm(Model model) {
+	@RequestMapping(value="/itemPurchaseForm.do", method=RequestMethod.POST)
+	public String itemPurchaseForm(@RequestParam String csName,
+									@RequestParam String csVal,
+									@RequestParam String initQty,
+									@RequestParam String salePrice,
+									@RequestParam String sumPrice,
+									@RequestParam String imgName,
+									@RequestParam String itemName,
+									Model model) {
+		model.addAttribute("title", "구매하기");
+		model.addAttribute("csName",csName);
+		model.addAttribute("itemName",itemName);
+		model.addAttribute("imgName",imgName);
+		model.addAttribute("csVal",csVal);
+		model.addAttribute("initQty",initQty);
+		model.addAttribute("salePrice",salePrice);
+		model.addAttribute("sumPrice",sumPrice);
+		model.addAttribute("display", "/itemboard/itemPurchaseForm.jsp");
+		return "/main/index";
+	}
+	
+	@RequestMapping(value="/getSideBarList.do", method=RequestMethod.POST)
+	public ModelAndView getSideBarList(@RequestParam String id) {
+		List<ItemBasketListDTO> list = itemboardDAO.getSideBarList(id);
+		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("title", "구매하기");
-		mav.addObject("display", "/itemboard/itemPurchaseForm.jsp");
-		mav.setViewName("/main/index");
+		mav.addObject("list", list);
+		mav.setViewName("jsonView");
 		return mav;
+	}
+	
+	@RequestMapping(value="/SideBarDeleteItem.do", method=RequestMethod.POST)
+	@ResponseBody
+	public void SideBarDeleteItem(@RequestParam int seq) {
+		itemboardDAO.SideBarDeleteItem(seq);
+	}
+	
+	
+	@RequestMapping(value="/getStayItemList.do", method=RequestMethod.POST)
+	public ModelAndView getStayItemList(@RequestParam String id) {
+		List<ItemBasketListDTO> list = itemboardDAO.getStayItemList(id);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		mav.setViewName("jsonView");
+		return mav;
+	}
+	
+	@RequestMapping(value="/getIngItemList.do", method=RequestMethod.POST)
+	public ModelAndView getIngItemList(@RequestParam String id) {
+		List<ItemBasketListDTO> list = itemboardDAO.getIngItemList(id);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		mav.setViewName("jsonView");
+		return mav;
+	}
+	
+	@RequestMapping(value="/getReItemList.do", method=RequestMethod.POST)
+	public ModelAndView getReItemList(@RequestParam String id) {
+		List<ItemBasketListDTO> list = itemboardDAO.getReItemList(id);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		mav.setViewName("jsonView");
+		return mav;
+	}
+	
+	@RequestMapping(value="/getEdItemList.do", method=RequestMethod.POST)
+	public ModelAndView getEdItemList(@RequestParam String id) {
+		List<ItemBasketListDTO> list = itemboardDAO.getEdItemList(id);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		mav.setViewName("jsonView");
+		return mav;
+	}
+	
+	@RequestMapping(value="/StayItemDelete.do", method=RequestMethod.POST)
+	@ResponseBody
+	public void StayItemDelete(@RequestParam String id,
+									   @RequestParam int seq,
+									   @RequestParam int reCash,
+									   HttpSession session) {
+		Map<String,String> map = new HashMap<String,String>();
+		
+		map.put("id", id);
+		map.put("seq", seq+""); 
+		map.put("reCash", reCash+"");
+		
+		itemboardDAO.StayItemDelete(map);
+
+		UserDTO userDTO = itemboardDAO.getUserDTO(id);
+		
+		session.setAttribute("userDTO", userDTO);
+	}
+	
+	@RequestMapping(value="/refundItem.do", method=RequestMethod.POST)
+	@ResponseBody
+	public void refundItem(@RequestParam int seq) {
+		itemboardDAO.refundItem(seq);
 	}
 }

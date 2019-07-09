@@ -2,7 +2,7 @@
     pageEncoding="EUC-KR"%>
     
 <div class="modal fade bd-example-modal-xl" id="itemModal" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-<form id="itemboardWriteForm" method="post" enctype="multipart/form-data" action="/shoppingmall/manager/itemboardWrite.do">
+<form name="itemboardWriteForm" id="itemboardWriteForm" method="post" enctype="multipart/form-data" action="/shoppingmall/manager/itemboardWrite.do">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
 			<div class="modal-header">
@@ -226,7 +226,7 @@
 					</div>
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" name="img" id="img1" aria-describedby="inputGroupFileAddon01">
-						<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+						<label class="custom-file-label" id="img1label" for="inputGroupFile01">Choose file</label>
 					</div>
 				</div>
 
@@ -236,7 +236,7 @@
 					</div>
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" name="img" id="img2" aria-describedby="inputGroupFileAddon01">
-						<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+						<label class="custom-file-label" id="img2label" for="inputGroupFile01">Choose file</label>
 					</div>
 				</div>
 
@@ -246,7 +246,7 @@
 					</div>
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" name="img" id="img3" aria-describedby="inputGroupFileAddon01">
-						<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+						<label class="custom-file-label" id="img3label" for="inputGroupFile01">Choose file</label>
 					</div>
 				</div>
 
@@ -256,7 +256,7 @@
 					</div>
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" name="img" id="img4" aria-describedby="inputGroupFileAddon01">
-						<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+						<label class="custom-file-label" id="img4label" for="inputGroupFile01">Choose file</label>
 					</div>
 				</div>
 
@@ -284,18 +284,25 @@
 $('#itemboardWriteBtn').click(function() {
     if ($('#itemCode').val() == 'M') {
 		alert("상품 코드를 입력하세요.");
+		document.itemboardWriteForm.itemCode.focus();
     } else if ($('#itemName').val() == '') {
     	alert("상품명을 입력하세요.");
+    	document.itemboardWriteForm.itemName.focus();
     } else if ($('#salePrice').val() == '') {
     	alert("판매 단가를 입력하세요.");
+    	document.itemboardWriteForm.salePrice.focus();
     } else if ($('#costPrice').val() == '') {
     	alert("상품 원가를 입력하세요.");
+    	document.itemboardWriteForm.costPrice.focus();
     } else if ($('#col1').val() == '') {
     	alert("색상1을 입력하세요.");
+    	document.itemboardWriteForm.col1.focus();
     } else if ($('#itemContent').val() == '') {
     	alert("상품 설명을 입력하세요.");
+    	document.itemboardWriteForm.itemContent.focus();
     } else if ($('#itemKeyword').val() == '') {
     	alert("상품 키워드를 입력하세요.");
+    	document.itemboardWriteForm.itemKeyword.focus();
     }else {
        $('#itemboardWriteForm').submit();
     }
@@ -342,4 +349,59 @@ $('input').focusout(function() {
     $('#f').val(f);
     $('#totQty').val(s + m + l + x + f);
  });
+ 
+$(document).ready(function(){ 
+	var fileTarget = $('#img1'); 
+	fileTarget.on('change', function(){ // 값이 변경되면
+		if(window.FileReader){ // modern browser 
+			var filename = $(this)[0].files[0].name; 
+		} else { // old IE 
+			var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+			} 
+	
+	// 추출한 파일명 삽입 
+	//$("label[for = 'inputGroupFile01']").text(filename);
+	$("label[id='img1']").text(filename);
+	});
+	
+	var fileTarget = $('#img2'); 
+	fileTarget.on('change', function(){ // 값이 변경되면
+		if(window.FileReader){ // modern browser 
+			var filename = $(this)[0].files[0].name; 
+		} else { // old IE 
+			var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+			} 
+	
+	// 추출한 파일명 삽입 
+	//$("label[for = 'inputGroupFile01']").text(filename);
+	$("label[id='img2']").text(filename);
+	});
+	
+	var fileTarget = $('#img3'); 
+	fileTarget.on('change', function(){ // 값이 변경되면
+		if(window.FileReader){ // modern browser 
+			var filename = $(this)[0].files[0].name; 
+		} else { // old IE 
+			var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+			} 
+	
+	// 추출한 파일명 삽입 
+	//$("label[for = 'inputGroupFile01']").text(filename);
+	$("label[id='img3']").text(filename);
+	});
+	
+	var fileTarget = $('#img4'); 
+	fileTarget.on('change', function(){ // 값이 변경되면
+		if(window.FileReader){ // modern browser 
+			var filename = $(this)[0].files[0].name; 
+		} else { // old IE 
+			var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+			} 
+	
+	// 추출한 파일명 삽입 
+	//$("label[for = 'inputGroupFile01']").text(filename);
+	$("label[id='img4']").text(filename);
+	});
+}); 
+
 </script>

@@ -23,5 +23,7 @@ public interface ManagerDAO {
 
 	public List<ItemboardDTO> salesManage();
 
+	public ItemboardDTO getItemInfo(String itemCode);
+
 
 }

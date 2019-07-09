@@ -25,16 +25,15 @@
 	
 	<!-- 장바구니 등록 -->
 	<insert id="itemBasket" parameterType="itembasket">
-		insert into itembasketTable (itemcode, itemname, itemcol, itemqty, id, itemsize, stus) 
-		values(#{itemCode}, #{itemName},  #{itemCol}, #{itemQty}, #{id}, #{itemSize}, #{stus})
+		insert into itembasketTable (seq, itemcode, itemname, itemcol, itemqty, registday, id, itemsize, stus) values(seq_itembaskettable.nextval ,#{itemCode}, #{itemName},  #{itemCol}, #{itemQty}, sysdate, #{id}, #{itemSize}, #{stus})
 	</insert>
   
     <!-- 장바구니 리스트 -->
 	<select id="getItembasketList" parameterType="java.util.Map" resultType="itembasketList">
-		select * from
-	(select tt.*from
- 	(select * from itembasketTable join ITEMTABLE using (itemcode) 
-	 where itemcode like '%'||#{itemCode}||'%' and stus = 'cart' )tt) where id like '%'||#{id}||'%'
+		select *
+		from itembasketTable join ITEMTABLE using (itemcode)
+		where stus='cart' and id=#{id}
+		order by seq desc
 	</select>
 	<!-- 겟사이즈-->	
 	<select id="getSize" parameterType="java.util.Map" resultType="itemboard">
@@ -44,11 +43,78 @@
 	
 	<!-- 장바구니 비우기 -->
 	<delete id="basketFlush" parameterType="String">
-		delete itembasketTable where id like '%'||#{id}||'%'
+		delete itembasketTable where id=#{id} and stus='cart'
 	</delete>
 	
-	<!-- 장바구니 선택 삭제 -->
+	<!-- 장바구니  삭제 -->
 	<delete id="basketDelete" parameterType="String">
-		delete from itembaskettable where itemCode = #{itemCode}
+		delete itembasketTable where itemCode=#{itemCode}
 	</delete>
+	
+	<!-- sideBar 장바구니 리스트 -->
+	<select id="getSideBarList" parameterType="String" resultType="itembasketList">
+		select *
+		from itembasketTable join ITEMTABLE using (itemcode)
+		where stus='cart' and id=#{id}
+		order by seq desc
+	</select>
+	
+	<!-- sideBar 장바구니  삭제 -->
+	<delete id="SideBarDeleteItem" parameterType="int">
+		delete itembasketTable where seq=#{seq}
+	</delete>
+	
+	<!--  리뷰 작성 -->
+	<insert id="reviewWrite" parameterType="review">
+	 	insert into reviewtable(seq,id,name,review,img1,img2,registday) values(seq_reviewtable, #{id},#{name},#{review},#{img1},#img{2},sysdate)
+	</insert>
+	
+	<!-- 출고대기인 상품 리스트 -->
+	<select id="getStayItemList" parameterType="String" resultType="itembasketList">
+		select *
+		from itembasketTable join ITEMTABLE using (itemcode)
+		where stus='stay' and id=#{id}
+		order by seq desc
+	</select>
+	
+	<!-- 배송중인 상품 리스트 -->
+	<select id="getIngItemList" parameterType="String" resultType="itembasketList">
+		select *
+		from itembasketTable join ITEMTABLE using (itemcode)
+		where stus='ing' and id=#{id}
+		order by seq desc
+	</select>
+	
+	<!-- 환불요청중인 상품 리스트 -->
+	<select id="getReItemList" parameterType="String" resultType="itembasketList">
+		select *
+		from itembasketTable join ITEMTABLE using (itemcode)
+		where stus='re' and id=#{id}
+		order by seq desc
+	</select>
+	
+	<!-- 배송완료된 상품 리스트 -->
+	<select id="getEdItemList" parameterType="String" resultType="itembasketList">
+		select *
+		from itembasketTable join ITEMTABLE using (itemcode)
+		where stus='ed' and id=#{id}
+		order by seq desc
+	</select>
+	
+	<!-- 주문취소 -->
+	<update id="StayItemDelete" parameterType="java.util.Map">
+		begin
+			update user_table set cash=#{reCash} where id=#{id};
+			delete itembasketTable where seq=#{seq};
+		end;
+	</update>
+	
+	<!-- 바뀐 userDTO 다시 가져오기 -->
+	<select id="getUserDTO" parameterType="String" resultType="user">		  
+		select * from user_table where id=#{id}
+	</select>
+	
+	<update id="refundItem" parameterType="int">
+		update itembasketTable set stus='re' where seq=#{seq}
+	</update>
 </mapper>

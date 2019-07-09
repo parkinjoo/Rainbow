@@ -33,7 +33,7 @@
 			</tr>
 			<tr>
 				<td class="checkMessage-joinform">
-					<input class="input-joinform inputTel-joinform inputTel-joinform" type="text" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="tel" placeholder="헨드폰">
+					<input class="input-joinform inputTel-joinform inputTel-joinform" type="text" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="tel" placeholder="휴대폰">
 					<div class="checkMessageDiv-joinform telCheck-joinform"></div>	
 				</td>
 			</tr>

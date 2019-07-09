@@ -49,21 +49,20 @@
 <div class="myItemDiv">
     <ul class="nav nav-tabs">
 	  	<li class="nav-item">
-	    	<a id="item-ed" class="nav-link active">출고 대기중인 상품</a>
+	    	<a class="nav-link active">출고 대기중인 상품</a>
 	  	</li>
 	</ul>
-	<div class="myItemTableDiv">
-		<table class="table table-hover">
-			<tbody id="itemList1">
-				<!-- ajax로 호출되는 부분 -->
-			</tbody>
-		</table>
-	</div>
+	
+	<table class="table table-hover">
+	  <tbody id="itemList1">
+	    <!-- ajax로 호출되는 부분 -->
+	  </tbody>
+	</table>
 </div>
 <div class="myItemDiv">
     <ul class="nav nav-tabs">
 	  	<li class="nav-item">
-	    	<a id="item-ed" class="nav-link active">배송중인 상품</a>
+	    	<a class="nav-link active">배송중인 상품</a>
 	  	</li>
 	</ul>
 	<div class="myItemTableDiv">
@@ -77,9 +76,10 @@
 <div class="myItemDiv">
     <ul class="nav nav-tabs">
 	  	<li class="nav-item">
-	    	<a id="item-ing" class="nav-link active">환불요청 중인 상품</a>
+	    	<a class="nav-link active">환불요청 중인 상품</a>
 	  	</li>
 	</ul>
+	
 	<div class="myItemTableDiv">
 		<table class="table table-hover">
 			<tbody id="itemList3">
@@ -91,7 +91,7 @@
 <div class="myItemDiv">
     <ul class="nav nav-tabs">
 	  	<li class="nav-item">
-	    	<a id="item-re" class="nav-link active" href="#">배송완료 상품</a>
+	    	<a class="nav-link active">배송완료 상품</a>
 	  	</li>
 	</ul>
 	<div class="myItemTableDiv">
@@ -104,79 +104,198 @@
 </div>
 
 <script>
-function userOut(){
-	if(confirm('회원탈퇴를 하시겠습니까?'))
-		location.href="/shoppingmall/user/withdrawalCheckForm.do";
-}
 $(document).ready(function(){
 	var point = ${userDTO.point};
 	var cash = ${userDTO.cash};
 	$('#point').text(point.toLocaleString()+' 점');
 	$('#cash').text(cash.toLocaleString()+' 원');	//.toLocaleString() 3자리수마다 쉼표
-/*
-	$('ul.nav li a').click(function(){
-		$('ul.nav li a').removeClass('active');
-		$(this).attr('class', 'nav-link active');
-	});
-*/
-	var id = ${userDTO.id};
-	//-------------아이템 목록을 뿌려주는 함수-------------------
+
+	//--------------------------------------- 출고 대기중 리스트 -----------------------------------
 	$.ajax({
 		type : 'POST' ,
-		url : '/shoppingmall/user/getItemList.do',
-		data : 'id='+id,
-		dataType : 'text',
+		url : '/shoppingmall/itemboard/getStayItemList.do',
+		data : 'id=${userDTO.id}',
+		dataType : 'json',
 		success : function(data){
-			if(data!='null'){
+			//alert(JSON.stringify(data));
+			if(data.list != ''){
 				$.each(data.list, function(index,items){
 					$('#itemList1').append("<tr>"+
-							  "<th scope='row'>"+(index+1)+
-							  "</th>"+
-							  "<td>"+items.name+"</td>"+
-							  "<td>"+items.id+"</td>"+
-							  "<td>"+items.email+"</td>"+
-							  "<td><button type='button'"+ 
-							  			  "class='btn btn-secondary modifyBtn-managerPage'"+
-							  			  "name=id"+
-							  			  "value='jinsol'"+
-							  			  "id='modifyBtn"+index+
-							  			  "'>수정</button></td>"+
-							  "<td>"+
-							  "<input type='checkbox' name='deleteCheck'"+
-							  		 "class='deleteCheck-managerPage'"+
-							  		 "value="+items.id+">"+
-							  "<input value='"+items.id+
-							  	   "' type='hidden' class='hiddenId' id='modifyHidden"+index+"'>"+
-							  "</td>"+
-							  "</tr>");
+											  "<td align='center' width='30%' class='itemList'>"+
+										      	"<img src='../storage/"+items.img1+"' style='width:80px; height:100px;'>"+
+										      "</td>"+
+										      "<td align='center' width='40%' class='itemList'>"+
+										      	"<div class='test'>"+
+										      		"<span style='color:red; font-size: 13pt;'>-상품명 : "+items.itemName+"<br></span>"+
+										      		"<span style='color:gray; font-size: 10pt;'>[옵션]색상 : "+items.itemCol+", 사이즈 : "+items.itemSize+", 구매수량 : "+items.itemQty+"개</span>"+
+										      	"</div>"+
+										      "</td>"+
+										      "<td align='center' width='15%' class='itemList'>"+
+										      	"<div class='test'>"+(items.itemQty*items.salePrice).toLocaleString()+"원</div>"+
+										      "</td>"+
+										      "<td align='center' width='15%' class='itemList'>"+
+										      	"<div class='test'>"+
+										      		"<input type='button' value='주문취소' class='orderCancle"+items.seq+"'>"+
+										      	"</div>"+
+										      "</td>"+
+										   "</tr>");
 					
-					$('#itemList2').append();
-					
-					$('#itemList3').append();
-					
-					$('#itemList4').append();
+					$('.orderCancle'+items.seq).click(function(){
+						if(confirm('주문을 취소하시겠습니까?')){
+							$.ajax({
+								type : 'POST' ,
+								url : '/shoppingmall/itemboard/StayItemDelete.do',
+								data : {'id' : '${userDTO.id}',
+										'seq' : items.seq,
+										'reCash' : ${userDTO.cash}+(items.itemQty*items.salePrice)},
+								dataType : 'text',
+								success : function(data){
+									alert('정상적으로 취소처리되었습니다.');
+									location.reload();
+								}
+							});
+						}
+					});
 				});//each;
 			}else{
 				$('#itemList1').append("<tr>"+
-										  "<td align='center'>출고 대기중인 상품이 없습니다.</td>"+
-									  "</tr>");
-				
+										  "<td align='center' class='itemList'>출고 대기중인 상품이 없습니다.</td>"+
+									   "</tr>");
+			}
+		}
+	});
+	//----------------------------------------- 배송중인 상품 리스트 --------------------------------
+	$.ajax({
+		type : 'POST' ,
+		url : '/shoppingmall/itemboard/getIngItemList.do',
+		data : 'id=${userDTO.id}',
+		dataType : 'json',
+		success : function(data){
+			if(data.list != ''){
+				$.each(data.list, function(index,items){
+					$('#itemList2').append("<tr>"+
+											  "<td align='center' width='30%' class='itemList'>"+
+										      	"<img src='../storage/"+items.img1+"' style='width:80px; height:100px;'>"+
+										      "</td>"+
+										      "<td align='center' width='40%' class='itemList'>"+
+										      	"<div class='test'>"+
+										      		"<span style='color:red; font-size: 13pt;'>-상품명 : "+items.itemName+"<br></span>"+
+										      		"<span style='color:gray; font-size: 10pt;'>[옵션]색상 : "+items.itemCol+", 사이즈 : "+items.itemSize+", 구매수량 : "+items.itemQty+"개</span>"+
+										      	"</div>"+
+										      "</td>"+
+										      "<td align='center' width='15%' class='itemList'>"+
+										      	"<div class='test'>"+(items.itemQty*items.salePrice).toLocaleString()+"원</div>"+
+										      "</td>"+
+										      "<td align='center' width='15%' class='itemList'>"+
+										      	"<div class='test'>"+
+										      		"<span style='color:blue; font-size: 15pt;'>배송중</span>"+
+										      	"</div>"+
+										      "</td>"+
+										   "</tr>");
+				});//each;
+			}else{
 				$('#itemList2').append("<tr>"+
-										  "<td align='center'>배송중인 상품이 없습니다.</td>"+
-									  "</tr>");
-				
+										  "<td align='center' class='itemList'>배송중인 상품이 없습니다.</td>"+
+									   "</tr>");
+			}
+		}
+	});
+	//-------------------------------------- 환불 요청중인 상품 리스트 --------------------------------
+	$.ajax({
+		type : 'POST' ,
+		url : '/shoppingmall/itemboard/getReItemList.do',
+		data : 'id=${userDTO.id}',
+		dataType : 'json',
+		success : function(data){
+			if(data.list != ''){
+				$.each(data.list, function(index,items){
+					$('#itemList3').append("<tr>"+
+											  "<td align='center' width='30%' class='itemList'>"+
+										      	"<img src='../storage/"+items.img1+"' style='width:80px; height:100px;'>"+
+										      "</td>"+
+										      "<td align='center' width='40%' class='itemList'>"+
+										      	"<div class='test'>"+
+										      		"<span style='color:red; font-size: 13pt;'>-상품명 : "+items.itemName+"<br></span>"+
+										      		"<span style='color:gray; font-size: 10pt;'>[옵션]색상 : "+items.itemCol+", 사이즈 : "+items.itemSize+", 구매수량 : "+items.itemQty+"개</span>"+
+										      	"</div>"+
+										      "</td>"+
+										      "<td align='center' width='13%' class='itemList'>"+
+										      	"<div class='test'>"+(items.itemQty*items.salePrice).toLocaleString()+"원</div>"+
+										      "</td>"+
+										      "<td align='center' width='17%' class='itemList'>"+
+										      	"<div class='test'>"+
+										      		"<span style='color:red; font-size: 15pt;'>환불요청중</span>"+
+										      	"</div>"+
+										      "</td>"+
+										   "</tr>");
+				});//each;
+			}else{
 				$('#itemList3').append("<tr>"+
-										  "<td align='center'>환불요청 중인 상품이 없습니다."+
-										  "</th>"+
-									  "</tr>");
-				
-				$('#itemList4').append("<tr>"+
-										  "<td align='center'>배송완료 상품이 없습니다."+
-										  "</th>"+
+										  "<td align='center' class='itemList'>환불요청 중인 상품이 없습니다.</td>"+
 									  "</tr>");
 			}
 		}
 	});
-	//---------------------------------------------------	
+	//----------------------------------------- 배송완료 상품 리스트 --------------------------------
+	$.ajax({
+		type : 'POST' ,
+		url : '/shoppingmall/itemboard/getEdItemList.do',
+		data : 'id=${userDTO.id}',
+		dataType : 'json',
+		success : function(data){
+			if(data.list != ''){
+				$.each(data.list, function(index,items){
+					$('#itemList4').append("<tr>"+
+											  "<td align='center' width='30%' class='itemList'>"+
+										      	"<img src='../storage/"+items.img1+"' style='width:80px; height:100px;'>"+
+										      "</td>"+
+										      "<td align='center' width='40%' class='itemList'>"+
+										      	"<div class='test'>"+
+										      		"<span style='color:red; font-size: 13pt;'>-상품명 : "+items.itemName+"<br></span>"+
+										      		"<span style='color:gray; font-size: 10pt;'>[옵션]색상 : "+items.itemCol+", 사이즈 : "+items.itemSize+", 구매수량 : "+items.itemQty+"개</span>"+
+										      	"</div>"+
+										      "</td>"+
+										      "<td align='center' width='15%' class='itemList'>"+
+										      	"<div class='test'>"+(items.itemQty*items.salePrice).toLocaleString()+"원</div>"+
+										      "</td>"+
+										      "<td align='center' width='15%' class='itemList'>"+
+										      	"<div class='test'>"+
+									      			"<input type='button' value='리뷰쓰기' class='review"+items.seq+"'><br>"+
+									      			"<input type='button' value='환불요청' class='refund"+items.seq+"'>"+
+										      	"</div>"+
+										      "</td>"+
+										   "</tr>");
+					
+					$('.refund'+items.seq).click(function(){
+						if(confirm('환불을 신청하시겠습니까?')){
+							$.ajax({
+								type : 'POST' ,
+								url : '/shoppingmall/itemboard/refundItem.do',
+								data : {'seq' : items.seq},
+								dataType : 'text',
+								success : function(data){
+									alert('정상적으로 환불요청 처리되었습니다.');
+									location.reload();
+									location.href='/shoppingmall/itemboard/itemboardView.do?itemCode='+items.itemCode+'&categoryCode=${categoryCode}&pg=${pg}'; 
+								}
+							});
+						}
+					});
+					$('.review'+items.seq).click(function(){
+						location.href='/shoppingmall/itemboard/itemboardView.do?itemCode='+items.itemCode+'&categoryCode=${categoryCode}'; 
+					});
+				});//each;
+			}else{
+				$('#itemList4').append("<tr>"+
+										  "<td align='center' class='itemList'>배송완료 상품이 없습니다.</td>"+
+									  "</tr>");
+			}
+		}
+	});
 });
+
+function userOut(){
+	if(confirm('회원탈퇴를 하시겠습니까?'))
+		location.href="/shoppingmall/user/withdrawalCheckForm.do";
+}
 </script>

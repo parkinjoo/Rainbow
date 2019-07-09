@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import itemboard.bean.ItemboardDTO;
+import itemboard.dao.ItemboardDAO;
 import manager.dao.ManagerDAO;
 import user.bean.UserDTO;
 
@@ -29,6 +30,9 @@ public class ManagerController {
 	//매니저컨트롤러는 반드시 managerDAO 만 사용 userDAO 삭제
 	@Autowired
 	private ManagerDAO managerDAO;
+	
+	@Autowired
+	private ItemboardDAO itemboardDAO;
 	
 	@RequestMapping(value="/managerPageForm.do")
 	public String managerPageForm() {
@@ -61,6 +65,15 @@ public class ManagerController {
 		UserDTO userDTO = managerDAO.getUserInfo(id);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("userDTO", userDTO);
+		mav.setViewName("jsonView");
+		return mav;
+	}
+	
+	@RequestMapping(value= "/getItemInfo.do")
+	public ModelAndView getItemInfo(@RequestParam String itemcode) {
+		ItemboardDTO itemboardDTO = managerDAO.getItemInfo(itemcode);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("itemboardDTO", itemboardDTO);
 		mav.setViewName("jsonView");
 		return mav;
 	}

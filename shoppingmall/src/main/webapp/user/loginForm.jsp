@@ -40,6 +40,9 @@
 </div>
  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
  <script>
+ $(document).ready(function() {
+	 document.joinForm.id.focus();
+ });
  $('.loginBtn-loginform').click(function(){
 		if($('#id').val()=='')
 			alert("아이디를 입력해주세요")

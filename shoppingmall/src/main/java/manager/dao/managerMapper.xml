@@ -18,6 +18,11 @@
 		select * from user_table where id = #{id}
 	</select>
 	
+	<!-- 모달창으로 상품 상세 정보 불러오기 -->
+	<select id="getItemInfo" parameterType="String" resultType="itemboard">
+		select * from itemtable where itemCode = #{itemCode}
+	</select>
+	
 	<!-- 물품 등록 -->
    	<insert id="itemboardWrite" parameterType="itemboard">
 	   begin
