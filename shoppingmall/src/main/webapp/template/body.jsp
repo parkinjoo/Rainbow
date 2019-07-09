@@ -98,7 +98,7 @@ $(document).ready(function(){
                          "<div class='card-body'>"+
                          "<h5 class='card-text card-text-name'>"+items.itemName+"</h5>"+
 						 "<p class='card-text card-text-size'>"+size+"</p><br>"+
-						 "<p class='card-text card-text-price'>"+items.salePrice+"</p>"+
+						 "<p class='card-text card-text-price'>"+items.salePrice.toLocaleString()+"</p>"+
                          "<a class='reserveItem-index' href='#'><img src='../images/cart_image.png' class='cartImg'></a>"+                  
                          "</div>"+
                          "</div>");
@@ -130,7 +130,7 @@ $(document).ready(function(){
 		                       "<div class='card-body'>"+
 		                       "<h5 class='card-text card-text-name'>"+items.itemName+"</h5>"+
 								  "<p class='card-text card-text-size'>"+size+"</p><br>"+
-								  "<p class='card-text card-text-price'>"+items.salePrice+"</p>"+
+								  "<p class='card-text card-text-price'>"+items.salePrice.toLocaleString()+"</p>"+
 		                       "<a class='reserveItem-index' href='#'><img src='../storage/new_icon.gif' class='newImg'><img src='../images/cart_image.png' class='cartImg'></a>"+                  
 		                       "</div>"+
 		                       "</div>");
@@ -141,7 +141,7 @@ $(document).ready(function(){
 	                       "<div class='card-body'>"+
 	                       "<h5 class='card-text card-text-name'>"+items.itemName+"</h5>"+
 	                       "<p class='card-text card-text-size'>"+size+"</p><br>"+
-	                       "<p class='card-text card-text-price'>"+items.salePrice+"</p>"+
+	                       "<p class='card-text card-text-price'>"+items.salePrice.toLocaleString()+"</p>"+
 	                       "<a class='reserveItem-index' href='#'><img src='../storage/new_icon.gif' class='newImg'><img src='../images/cart_image.png' class='cartImg'></a>"+                  
 	                       "</div>"+
 	                       "</div>");
