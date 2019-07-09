@@ -630,7 +630,55 @@ $('#review_txt').click(function(){
 	}		
 });
 
-
+/*
+$(document).ready(function(){ 
+	var fileTarget = $('#img1'); 
+	fileTarget.on('change', function(){ // 값이 변경되면
+		if(window.FileReader){ // modern browser 
+			var filename = $(this)[0].files[0].name; 
+		} else { // old IE 
+			var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+			} 
+	
+	// 추출한 파일명 삽입 
+	
+	//$("label[id='img1']").text(filename);
+	});
+	
+	
+	var fileTarget = $('#img2'); 
+	fileTarget.on('change', function(){ // 값이 변경되면
+		if(window.FileReader){ // modern browser 
+			var filename = $(this)[0].files[0].name; 
+		} else { // old IE 
+			var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+			} 
+	
+	// 추출한 파일명 삽입 
+	
+	//$("label[id='img2']").text(filename);
+});
+	
+	
+$('#sb_review').click(function(){
+	if($('.review_txt').val()== null || $('.review_txt').val()=="로그인후 작성가능합니다"){
+		alert('리뷰를 작성해주세요')
+	}else{
+		$.ajax({
+			type: 'POST',
+			url: '/shoppingmall/itemboard/review.do',
+			data: {'name': ${'#re_input_name'}.val(),
+					'review': ${'.review_txt'}.val(),
+					'img1':${'#img1'}.val(),
+					'img2':${'#img2'}.val()},
+			dataType : 'text',
+			success : function(data){
+				alert('성공')
+			}
+			})
+	}
+})
+*/
 </script>
 </html>
 

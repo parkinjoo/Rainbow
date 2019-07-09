@@ -382,4 +382,48 @@ public class ItemboardController {
 	public void refundItem(@RequestParam int seq) {
 		itemboardDAO.refundItem(seq);
 	}
+	
+	@RequestMapping(value="/review.do", method=RequestMethod.POST)
+	public String review(@ModelAttribute ReviewDTO reviewDTO,
+						@RequestParam MultipartFile[] img,
+						Model model) {
+		
+		String filePath = "C:\\Spring\\project\\shoppingmall\\src\\main\\webapp\\storage";
+		String fileName;
+		File file;
+		
+		//-----------------------
+		if(img[0]!=null) {
+			fileName = img[0].getOriginalFilename();
+			file = new File(filePath, fileName);
+			try {
+				FileCopyUtils.copy(img[0].getInputStream(), new FileOutputStream(file));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		
+			reviewDTO.setImg1(fileName);
+		}else {
+			reviewDTO.setImg1(null);
+		}
+		//-------------------
+		if(img[1]!=null) {
+			fileName = img[1].getOriginalFilename();
+			file = new File(filePath, fileName);
+			try {
+				FileCopyUtils.copy(img[1].getInputStream(), new FileOutputStream(file));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		
+			reviewDTO.setImg2(fileName);
+		}else {
+			reviewDTO.setImg2(null);
+		}
+		
+		itemboardDAO.reviewWrite(reviewDTO);
+		
+		model.addAttribute("display", "/itemboard/itemboardView.jsp");
+		return "/main/index";
+	}
 }
