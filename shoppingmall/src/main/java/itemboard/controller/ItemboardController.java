@@ -271,11 +271,6 @@ public class ItemboardController {
 	@ResponseBody
 	public void basketFlush(@RequestParam String id) {
 		itemboardDAO.basketFlush(id);
-<<<<<<< HEAD
-=======
-		
-		
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
 	}
 	
 	@RequestMapping(value="/basketDelete.do", method=RequestMethod.POST)
