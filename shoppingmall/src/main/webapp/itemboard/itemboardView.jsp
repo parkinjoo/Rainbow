@@ -568,7 +568,7 @@ $(document).on('click','.minus',function(){
 
 
 // 장바구니 회원
-/* 
+
 $('.cartImg-itemPage').click(function(){
 	if('${userDTO.id}'!=''){
 		if(colName.length!=0){

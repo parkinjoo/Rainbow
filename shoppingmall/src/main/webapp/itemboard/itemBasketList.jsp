@@ -81,36 +81,6 @@ $(document).ready(function(){
 			}
 		});
 	}
-	var id = '${userDTO.id }';
-	$.ajax({
-		type: 'post',
-		url: '/shoppingmall/itemboard/getItembasketList.do',
-		data: {'itemCode': '${itemCode}', 'pg': '${pg}', 'categoryCode': '${categoryCode}', 'id': id},
-		dataType: 'json',
-		success: function(data){
-			alert(JSON.stringify(data));
-			$.each(data.list, function(index,items){
-				$('#itemList').append("<tr>"+
-									  "<th scope='row'"+(index+1)+
-									  "</th>"+
-									  "<td>"+items.itemName+"</td>"+
-									  "<td><img src='../storage/"+items.img1+"' style='cursor: pointer; width:100px; height:100px;'></td>"+
-									  "<td>"+items.salePrice+"</td>"+
-									  "<td>"+items.itemCol+"</td>"+
-									  "<td>"+items.itemQty+"</td>"+
-									  "<td>"+items.itemSize+"</td>"+
-									  "<td>"+
-									  "<input type='checkbox' id='deleteCheck'  name='deleteCheck'"+
-									  		"class='deleteCheck-basket'"+
-									  		"value="+items.itemCode+">"+
-									  "<input value='"+items.itemCode+
-									  	"'type='hidden' class='hiddenId' id='modifyHidden"+index+"'>"+
-									  	"</td>"+
-									  	"</tr>");
-			
-			});
-		}
-	});
 });
 $('#flushBtn').click(function(){
 	var id = '${userDTO.id}';
