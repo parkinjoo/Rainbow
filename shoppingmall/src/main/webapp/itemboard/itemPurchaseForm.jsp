@@ -208,6 +208,24 @@ function buy(){
 		    }
 		});		
 	}
+	
+	$.ajax({
+		type: 'post',
+		url: '/shoppingmall/itemboard/itemOrder.do',
+		data: {
+			'order_name': $('.orderName').val(),
+			'order_tel': $('.orderTel').val(),
+			'receive_name': $('.name').val(),
+			'receive_tel': $('.tel').val(),
+			'address': $('.addr2').val(),
+			'message': $('.postMessage').val(),
+			'stus' : 'stay'			
+		},
+		success: function(data){
+			alert('성공');
+		}
+	})
+	
 	location.href="/shoppingmall/itemboard/itemBasketList.do";
 	
 }

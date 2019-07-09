@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import itemboard.bean.ItemBasketDTO;
 import itemboard.bean.ItemBasketListDTO;
+import itemboard.bean.ItemOrderDTO;
 import itemboard.bean.ItemboardDTO;
 import itemboard.bean.ItemboardPaging;
 import itemboard.bean.ReviewDTO;
@@ -263,6 +263,20 @@ public class ItemboardController {
 	    System.out.println("Id =" + itemBasketDTO.getId());
 	    System.out.println("stus= "+ itemBasketDTO.getStus());
 	    itemboardDAO.itemBasket(itemBasketDTO);
+	}    
+	@RequestMapping(value="/itemOrder.do", method=RequestMethod.POST)
+	@ResponseBody
+	public void itemBasket(@ModelAttribute ItemOrderDTO itemOrderDTO, Model model) {
+		
+		System.out.println("order_name="+itemOrderDTO.getOrder_name());
+		System.out.println("order_tel =" + itemOrderDTO.getOrder_tel());
+	    
+	    System.out.println("receive_name =" + itemOrderDTO.getReceive_name());
+	    System.out.println("receive_tel =" + itemOrderDTO.getReceive_tel());
+	    System.out.println("address="+itemOrderDTO.getAddress());
+	    System.out.println("message =" + itemOrderDTO.getMessage());
+	    System.out.println("stus= "+ itemOrderDTO.getStus());
+	    itemboardDAO.itemOrder(itemOrderDTO);
 	}    
 	@RequestMapping(value="/basketFlush.do", method=RequestMethod.POST)
 	@ResponseBody

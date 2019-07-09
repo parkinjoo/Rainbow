@@ -5,6 +5,7 @@ import java.util.Map;
 
 import itemboard.bean.ItemBasketDTO;
 import itemboard.bean.ItemBasketListDTO;
+import itemboard.bean.ItemOrderDTO;
 import itemboard.bean.ItemboardDTO;
 import user.bean.UserDTO;
 import itemboard.bean.ReviewDTO;
@@ -48,4 +49,6 @@ public interface ItemboardDAO {
 	public UserDTO getUserDTO(String id);
 
 	public void refundItem(int seq);
+
+	public void itemOrder(ItemOrderDTO itemOrderDTO);
 }
