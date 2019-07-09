@@ -51,4 +51,6 @@ public interface ItemboardDAO {
 	public void refundItem(int seq);
 
 	public void itemOrder(ItemOrderDTO itemOrderDTO);
+
+	public int getSeq();
 }

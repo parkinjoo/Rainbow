@@ -122,6 +122,11 @@ public class ItemboardDAOMybatis implements ItemboardDAO{
 		sqlSession.insert("itemboardSQL.itemOrder", itemOrderDTO);
 		
 	}
+
+	@Override
+	public int getSeq() {
+		return sqlSession.selectOne("itemboardSQL.getSeq");
+	}
 	
 	
 

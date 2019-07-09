@@ -30,8 +30,12 @@
 	
 	<!-- 구매테이블 등록 -->
 	<insert id="itemOrder" parameterType="itemOrder">
-		insert into buyertable(seq,order_name,order_tel,receive_name,receive_tel,address,message,stus)  values(seq_itembaskettable.nextval ,#{order_name},#{order_tel},#{receive_name},#{receive_tel},#{address},#{message},#{stus})		
+		insert into buyertable(seq,order_name,order_tel,receive_name,receive_tel,address,message,stus)  values(#{seq},#{order_name},#{order_tel},#{receive_name},#{receive_tel},#{address},#{message},#{stus})		
 	</insert>
+	
+	<select id="getSeq" resultType="Integer">
+		select max(seq) from itembaskettalbe
+	</select>
   
     <!-- 장바구니 리스트 -->
 	<select id="getItembasketList" parameterType="java.util.Map" resultType="itembasketList">
