@@ -183,6 +183,7 @@ function buy(){
 	var initQty = new Array();
 	var itemName = new Array();
 	var itemCode = new Array();
+	var seq = new Array();//seq배열 
 	
 	//문자열을 배열로 변환
 	colName = colNameRe.split(',');
@@ -190,6 +191,7 @@ function buy(){
 	initQty = initQtyRe.split(',');
 	itemName = itemNameRe.split(',');
 	itemCode = itemCodeRe.split(',');
+	
 	
 	
 	for(i=0;i<colName.length;i++){
@@ -202,12 +204,36 @@ function buy(){
 		      		'itemQty':initQty[i],
 		      		'itemSize':sizeName[i],
 					'Id':id,
+					'order_name': $('.orderName').val(),
+					'order_tel': $('.orderTel').val(),
+					'receive_name': $('.name').val(),
+					'receive_tel': $('.tel').val(),
+					'address': $('.addr2').val(),
+					'message': $('.postMessage').val(),
 					'stus':'stay'},
 		    success: function(data){
-		    	//location.href="/shoppingmall/itemboard/itemBasketList.do";
+		    	
 		    }
 		});		
 	}
+	
+	/* $.ajax({
+		type: 'post',
+		url: '/shoppingmall/itemboard/itemOrder.do',
+		data: {
+			'order_name': $('.orderName').val(),
+			'order_tel': $('.orderTel').val(),
+			'receive_name': $('.name').val(),
+			'receive_tel': $('.tel').val(),
+			'address': $('.addr2').val(),
+			'message': $('.postMessage').val(), 
+			'stus' : 'stay'			
+		},
+		success: function(data){
+			alert('성공');
+		}
+	}) */
+	
 	location.href="/shoppingmall/itemboard/itemBasketList.do";
 	
 }

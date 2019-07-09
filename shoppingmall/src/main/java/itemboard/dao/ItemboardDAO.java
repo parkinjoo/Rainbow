@@ -5,6 +5,7 @@ import java.util.Map;
 
 import itemboard.bean.ItemBasketDTO;
 import itemboard.bean.ItemBasketListDTO;
+import itemboard.bean.ItemOrderDTO;
 import itemboard.bean.ItemboardDTO;
 import user.bean.UserDTO;
 import itemboard.bean.ReviewDTO;
@@ -52,4 +53,8 @@ public interface ItemboardDAO {
 	public List<ItemBasketListDTO> orderList(String stus);
 
 	public void sendItem(int seq, String stus);
+
+	public void itemOrder(ItemOrderDTO itemOrderDTO);
+
+	public int getSeq();
 }
