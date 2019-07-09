@@ -43,7 +43,7 @@ $('#inputBtn').click(function(){
 	else
 		$.ajax({
 			type : 'POST',
-			url : '/shoppingmall/user/login.do',
+			url : '/shoppingmall/user/loginCheck.do',
 			data : {"id":$('#id').val(),
 					"pwd":$('#pwd').val()},
 			dataType : 'text',
@@ -66,7 +66,7 @@ function enterkey() {
     	else
     		$.ajax({
     			type : 'POST',
-    			url : '/shoppingmall/user/login.do',
+    			url : '/shoppingmall/user/loginCheck.do',
     			data : {"id":$('#id').val(),
     					"pwd":$('#pwd').val()},
     			dataType : 'text',

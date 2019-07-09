@@ -47,8 +47,8 @@
 	</delete>
 	
 	<!-- 장바구니  삭제 -->
-	<delete id="basketDelete" parameterType="String">
-		delete itembasketTable where itemCode=#{itemCode}
+	<delete id="basketDelete" parameterType="int">
+		delete itembasketTable where seq=#{seq}
 	</delete>
 	
 	<!-- sideBar 장바구니 리스트 -->
