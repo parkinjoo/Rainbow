@@ -51,7 +51,7 @@ $(document).ready(function(){
                          "<div class='card-body'>"+
                          "<h5 class='card-text card-text-name'>"+items.itemName+"</h5>"+
                          "<p class='card-text card-text-size'>"+size+"</p><br>"+
-						  "<p class='card-text card-text-price'>"+items.salePrice.toLocaleString()+"</p>"+
+						  "<p class='card-text card-text-price'>"+items.salePrice+"</p>"+
                          "<a class='reserveItem-index' href='#'>"+
                          "<img src='../images/cart_image.png' class='cardImg'>"+
                          "</a>"+

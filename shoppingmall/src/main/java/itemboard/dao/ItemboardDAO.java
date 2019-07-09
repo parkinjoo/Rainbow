@@ -52,4 +52,8 @@ public interface ItemboardDAO {
 	public List<ItemBasketListDTO> orderList(String stus);
 
 	public void sendItem(int seq, String stus);
+
+	public ItemBasketListDTO getSeqId(int seq);
+
+	public void refund(Map<String, Object> map);
 }

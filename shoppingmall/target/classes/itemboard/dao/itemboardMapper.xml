@@ -130,4 +130,17 @@
 	<update id="sendItem" parameterType="java.util.Map">
 		update itembasketTable set stus=#{stus} where seq=#{seq}
 	</update>
+	
+	<select id="getSeqId" parameterType="int" resultType="itembasketList">
+		select *
+		from itembasketTable join ITEMTABLE using (itemcode)
+		where seq=#{seq}
+	</select>
+	
+	<update id="refund" parameterType="java.util.Map">
+		begin
+		    update user_table set cash=cash+#{money} where id=#{id};
+		    delete itembasketTable where seq=#{seq};
+		end;
+	</update>
 </mapper>
