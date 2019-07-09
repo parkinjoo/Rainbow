@@ -15,7 +15,7 @@
 	<input type="hidden"  name="initQty" value="" >
 	<input type="hidden"  name="salePrice" value="" >
 	<input type="hidden" name="sumPrice" value="" >	
-</form>
+	</form>
 
   <div id="item-box-itemPage">
     <div class="left-box-itemPage" style="background-image:url('../storage/${itemboardDTO.img1}')">
@@ -281,6 +281,9 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
+
+var getItemName='';
+var getItemCode='';
 $(document).ready(function(){
    $.ajax({
       type: 'post',
@@ -292,10 +295,13 @@ $(document).ready(function(){
           $('.itemName-itemPage').text(data.itemboardDTO.itemName);
           $('.itemText-itemPage').text(data.itemboardDTO.itemContent);
           $('.itemPrice-itemPage').text(data.itemboardDTO.salePrice);
-          var itemCode = data.itemboardDTO.itemCode;
-          document.viewForm.itemCode.value=itemCode;
+          var item = data.itemboardDTO.itemName;
+          getItemName=item;
+          var code = data.itemboardDTO.itemCode;
+          getItemCode = code;
           var itemName = data.itemboardDTO.itemName;
           document.viewForm.itemName.value=itemName;
+          
          /*$('#salePrice').text(data.itemboardDTO.salePrice);
          $('#costPrice').text(data.itemboardDTO.costPrice);
          $('.itemcontent').text(data.itemboardDTO.itemContent);
@@ -434,6 +440,9 @@ $('#color_option').change(function(){
          
    });    
 });
+var itemName = new Array(); // 아이템 이름을 순서대로 넣을 배열
+
+var itemCodeName = new Array(); // 아이템 코드를 순서대로 넣을 배열
 
 var colName = new Array();//선택된 컬러를 담을 배열
 
@@ -480,12 +489,8 @@ function listTagAdd(){
 	//수량 선택을 할 태그 생성
     colName.push(colorText);
 	sizeName.push(sizeText);
-    
-    
-
-	
-
-    
+	itemName.push(getItemName);
+	itemCodeName.push(getItemCode);
      $('<p/>',{
         class : 'colorAndSize-itemPage'+optionCnt,
         text : colorText+','+sizeText,    
@@ -614,6 +619,11 @@ $('.purchaseBtn-itemPage').click(function(){
 	var colNameRe = colName.join(',');
 	var sizeNameRe = sizeName.join(',');
 	var initQtyRe = initQty.join(',');
+	var itemCodeNameRe = itemCodeName.join(',');
+	var itemNameRe = itemName.join(',');
+	
+	document.viewForm.itemCode.value=itemCodeNameRe;
+	document.viewForm.itemName.value=itemNameRe;
 	document.viewForm.colName.value=colNameRe;
 	document.viewForm.sizeName.value=sizeNameRe;
 	document.viewForm.initQty.value=initQtyRe;

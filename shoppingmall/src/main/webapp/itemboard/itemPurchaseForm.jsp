@@ -118,7 +118,8 @@
 <script type="text/javascript">
 $(document).ready(function(){	
 	//문자열을 다시 배열로 전환
-	var itemName = '${itemName}';
+	var itemNameRe = '${itemName}';
+	var itemCodeRe = '${itemCode}';
 	var colNameRe = '${colName}';
 	var sizeNameRe ='${sizeName}';
 	var initQtyRe = '${initQty}';
@@ -128,10 +129,14 @@ $(document).ready(function(){
 	var colName = new Array();
 	var sizeName = new Array();
 	var initQty = new Array();
+	var itemName = new Array();
+	var itemCode = new Array();
 	//문자열을 배열로 변환
 	colName = colNameRe.split(',');
 	sizeName = sizeNameRe.split(',');
 	initQty = initQtyRe.split(',');
+	itemName = itemNameRe.split(',');
+	itemCode = itemCodeRe.split(',');
 	
 	var tmp='';
 	var fund=0;
@@ -139,7 +144,7 @@ $(document).ready(function(){
 		tmp = tmp + 
 		'<tr>'+
 		'<td><div class="purchaseImg" style="background-image:url(../storage/'+imgName+'")"></div></td>'+
-		'<td><div class="purchaseText"><div class="purchaseText2">'+itemName+'</div></div></td>'+
+		'<td><div class="purchaseText"><div class="purchaseText2">'+itemName[i]+'</div></div></td>'+
 		'<td><div class="purchaseText size-pur"><div class="purchaseText2">'+colName[i]+'/'+sizeName[i]+'</div></div></td>'+
 		'<td><div class="purchaseText account-pur"><div class="purchaseText2">'+initQty[i]+'</div></div></td>'+
 		'<td><div class="purchaseText price-pur"><div class="purchaseText2">'+initQty[i]*salePrice+'</div></div></td>'+
@@ -163,34 +168,47 @@ function paste(){
 }
 
 function buy(){
-	var itemName = '${itemName}';
-	var colName = '${colName}';
-	var sizeName ='${sizeName}';
-	var initQty = '${initQty}';
+	var itemNameRe = '${itemName}';
+	var itemCodeRe = '${itemCode}';
+	var colNameRe = '${colName}';
+	var sizeNameRe ='${sizeName}';
+	var initQtyRe = '${initQty}';
 	var salePrice = ${salePrice};
 	var sumPrice = ${sumPrice};
-	var imgName = '${imgName}';
-	var itemCode = '${itemCode}';
-	alert(initQty);
-	//회원인지 아닌지 구분
-	var id = '${userDTO.id}'; 
-	if(id=='')
-		id='non'+$('.orderName').val();
-	else{
+	
+	var colName = new Array();
+	var sizeName = new Array();
+	var initQty = new Array();
+	var itemName = new Array();
+	var itemCode = new Array();
+	
+	//문자열을 배열로 변환
+	colName = colNameRe.split(',');
+	sizeName = sizeNameRe.split(',');
+	initQty = initQtyRe.split(',');
+	itemName = itemNameRe.split(',');
+	itemCode = itemCodeRe.split(',');
+	
+	var id = '${itemboardDTO.id}';
+	
+	for(i=0;i<colName.length;i++){
 		$.ajax({
 			type: 'post',
 		    url: '/shoppingmall/itemboard/itemBasket.do',
-		    data: 'itemCode='+itemCode+'&itemName='+itemName+
-		      		'&itemCol='+colName+
-		      		'&itemQty='+initQty+
-		      		'&itemSize='+sizeName+
-					'&Id='+id+
-					'&stus=stay',
-		    success: function(){
-		    	location.href="/shoppingmall/itemboard/itemBasketList.do";
+		    data: {'itemCode':itemCode[i],
+		    		'itemName' : itemName[i],
+		      		'itemCol':colName[i],
+		      		'itemQty':initQty[i],
+		      		'itemSize':sizeName[i],
+					'Id':id,
+					'stus':'11'},
+		    success: function(data){
+		    	//location.href="/shoppingmall/itemboard/itemBasketList.do";
 		    }
-		});
+		});		
 	}
+	location.href="/shoppingmall/itemboard/itemBasketList.do";
+	
 }
 </script>
 
