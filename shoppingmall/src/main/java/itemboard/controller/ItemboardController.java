@@ -421,6 +421,7 @@ public class ItemboardController {
 		}else {
 			reviewDTO.setImg2(null);
 		}
+		
 		System.out.println(reviewDTO);
 		itemboardDAO.reviewWrite(reviewDTO);
 		

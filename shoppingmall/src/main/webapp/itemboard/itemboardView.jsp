@@ -252,7 +252,8 @@
 				<font color="black" size="2" face="돋움">작성자</font>
 			</td>
 			<td align="left" colspan="1">
-				<input type="text" id="re_name" >
+				<input type="text" name="name" id="name" >
+				<input type="hidden" id="id" name="id" value= "${userDTO.id}">
 			</td>
 		</tr>
 		<tr id="review_content">
@@ -260,7 +261,7 @@
 				<font color="black" size="2" face="돋움">리뷰 내용</font>
 			</td>
 			<td height="10" colspan="2">
-				<textarea class="review_txt" id="review_txt" placeholder="로그인후 작성가능합니다"></textarea>
+				<textarea class="review_txt"  name="review" id="review" placeholder="로그인후 작성가능합니다"></textarea>
 			</td>
 		</tr>
 		<tr>
