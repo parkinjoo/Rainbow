@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import itemboard.bean.ChartDTO;
 import itemboard.bean.ItemboardDTO;
 import manager.dao.ManagerDAO;
 import user.bean.UserDTO;
@@ -197,18 +198,28 @@ public class ManagerController {
     @RequestMapping(value="/salesManage.do", method=RequestMethod.POST)
 	public ModelAndView salesManage() {
 		ModelAndView mav = new ModelAndView();
-		List<ItemboardDTO> list = managerDAO.salesManage();
 		
-		List<String> ticks = new ArrayList<String>();
-		List<String> barChart2 = new ArrayList<String>();
+		List<String> x = managerDAO.getItemcode();
+		List<ChartDTO> dto = managerDAO.getToday();
+		List<String> y = new ArrayList<String>();
 
-		for(ItemboardDTO data : list) {
-			ticks.add(data.getItemCode());
-			barChart2.add(data.getSalePrice()+"");
-			
+		int max = 0;
+		for(int i=0; i<dto.size(); i++) {
+			for(int j=0; j<x.size(); j++) {
+				if(dto.get(i).getItemcode().equals(x.get(j))) {
+					y.add(dto.get(i).getSaleprice());
+					if(max<Integer.parseInt(dto.get(i).getSaleprice())) {
+						max=Integer.parseInt(dto.get(i).getSaleprice());
+					}
+				}else {
+					y.add("0");
+				}
+			}
 		}
-		mav.addObject("ticks", ticks);
-		mav.addObject("barChart2", barChart2); //가격
+		mav.addObject("x", x);
+		mav.addObject("y", y); //가격
+		mav.addObject("max",max);
+		mav.addObject("today", dto.get(0).getData());
 		mav.setViewName("jsonView");
 		return mav;
 	}
@@ -216,17 +227,28 @@ public class ManagerController {
     @RequestMapping(value="/salesManage2.do", method=RequestMethod.POST)
 	public ModelAndView salesManage2() {
 		ModelAndView mav = new ModelAndView();
+		
 		List<String> date = managerDAO.getDate();
-		List<ItemboardDTO> list = managerDAO.salesManage2();
-		List<String> barChart1 = new ArrayList<String>();
-		List<String> ticks2 = new ArrayList<String>();
-		for(ItemboardDTO data : list) {
-			ticks2.add(data.getRegistday());
-			barChart1.add(data.getSalePrice()+"");
+		List<ChartDTO> data = managerDAO.getDate2();
+
+		List<String> y = new ArrayList<String>();
+
+		for(int i=0; i<data.size(); i++) {
+			String aaa = data.get(i).getData();
+			for(int j=0; j<date.size(); j++) {
+				if(aaa.equals(date.get(j))) {
+					y.add(data.get(i).getSaleprice());
+				}else {
+					y.add("0");
+				}
+			}
 		}
-		mav.addObject("barChart1", barChart1);  //2 1=2
-		mav.addObject("ticks2", ticks2); //1
-		mav.addObject("date", date);
+		
+		List<String> x = managerDAO.getX();
+
+		mav.addObject("y", y);  //2 1=2
+		mav.addObject("x", x);
+
 		mav.setViewName("jsonView");
 		return mav;
     }

@@ -28,21 +28,6 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>	
 <script type="text/javascript">
 $('#clickTest').on('click', function(){
-	
-	var today = new Date();
-	var dd = today.getDate();
-	var mm = today.getMonth()+1; //January is 0!
-	var yyyy = today.getFullYear();
-
-	if(dd<10) {
-	    dd='0'+dd
-	} 
-
-	if(mm<10) {
-	    mm='0'+mm
-	} 
-
-	today = yyyy+'.'+mm+'.'+dd;
     
 	$.ajax({
 		type : 'post' ,
@@ -51,11 +36,11 @@ $('#clickTest').on('click', function(){
 		success : function(data){
 
 			var line = new Array();
-			for(i=0; i<data.ticks.length; i++) {
-				line[i]=[[data.ticks[i]],data.barChart2[i]];
+			for(i=0; i<data.x.length; i++) {
+				line[i]=[[data.x[i]],data.y[i]];
 			}
 		    jQuery("#chart").jqplot([line], {
-		          title: today  
+		          title: data.today  
 		        , seriesDefaults:{
 		            renderer:jQuery.jqplot.BarRenderer
 		        }
@@ -65,7 +50,7 @@ $('#clickTest').on('click', function(){
 		            }
 		      	, yaxis:{ 
 				         min : 0, 
-				         max : 500,  
+				         max : data.max,  
 				 }
 		        }
 		    });
@@ -78,13 +63,12 @@ $('#clickTest').on('click', function(){
 		dataType : 'json' ,
 		success : function(data){
 			var line = new Array();
-			for(i=0; i<data.date.length; i++) {
-				line[i]=[[data.ticks[i]],data.date[i]];
+			for(i=0; i<data.x.length; i++) {
+				line[i]=[[data.x[i]],data.y[i]];
 			}
-
 		    jQuery("#chart2").jqplot([line], {
-		          title: today  
-		        , seriesDefaults:{
+	//	          title: today  
+		         seriesDefaults:{
 		            renderer:jQuery.jqplot.BarRenderer
 		        }
 		        , axes:{
@@ -94,6 +78,10 @@ $('#clickTest').on('click', function(){
 		            		formatString:'%'
 		            	}
 		            }
+		      	, yaxis:{ 
+			         min : 0, 
+			         max : 500,  
+				  }
 		        }
 		    });
 		}

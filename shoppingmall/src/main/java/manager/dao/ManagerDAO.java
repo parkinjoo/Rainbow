@@ -1,8 +1,8 @@
 package manager.dao;
 
-import java.util.Date;
 import java.util.List;
 
+import itemboard.bean.ChartDTO;
 import itemboard.bean.ItemboardDTO;
 import user.bean.UserDTO;
 
@@ -22,13 +22,18 @@ public interface ManagerDAO {
 
 	public UserDTO getUserInfo(String id);
 
-	public List<ItemboardDTO> salesManage();
-
 	public ItemboardDTO getItemInfo(String itemCode);
 
-	public List<ItemboardDTO> salesManage2();
-
 	public List<String> getDate();
+	
+	public List<String> getItemcode();
+	
+	public List<ChartDTO> getToday();
+	
+	public List<ChartDTO> getDate2();
+
+	public List<String> getX();
+
 
 
 }
