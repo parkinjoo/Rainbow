@@ -2,22 +2,10 @@
 	pageEncoding="UTF-8"%>
 
 <div class="tab-pane fade" id="item-management">
-<<<<<<< HEAD
-	<!-- 구분선(상품관리 세부) -->
-	<ul class="nav nav-pills mb-3 bottomNav-managerPage">
-		<li class="nav-item"><a class="nav-link active"
-			data-toggle="pill" href="#pills-home-insert-data" aria-selected="true">재고 관리</a></li>
-		<li class="nav-item"><a class="nav-link"
-			data-toggle="pill" href="#pills-profile-edit" aria-selected="false">재고 수정/삭제</a></li>
-	</ul>
-	
-=======
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
 <div class="tab-content" id="pills-tabContent">
 	<!-- 구분선 -->
 	
 			<div class="tab-pane fade show active listDiv-managerPage" id="pills-home-insert-data">
-			
 				<div class="searchDiv">
 					<form class="form-inline my-2 my-lg-0 searchBtn-managerPage">
 						<div class="input-group mb-3 searchDiv">
@@ -57,13 +45,6 @@
 					</tbody>
 				</table>
 			</div>
-<<<<<<< HEAD
-			
-			<div class="tab-pane fade" id="pills-profile-edit">
-			수정/삭제 부분
-			</div>
-=======
->>>>>>> branch 'master' of https://github.com/parkinjoo/rainbow.git
 	</div>
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -194,7 +175,6 @@ $('#selectAll-itemboard').click(function(){
 $('#selectedItemboardDeleteBtn').click(function(){
 	var checkArr = [];
 	
-
 	$('.deleteCheck-itemboard:checked').each(function(i){
 		checkArr.push($(this).val());
 	});
@@ -215,6 +195,8 @@ $('#selectedItemboardDeleteBtn').click(function(){
 					location.href="/shoppingmall/manager/managerPage.do";
 				}
 			});
+		}else {
+			//없음
 		}
 	}
 });
