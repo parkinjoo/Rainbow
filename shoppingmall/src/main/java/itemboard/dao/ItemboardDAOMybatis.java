@@ -131,5 +131,14 @@ public class ItemboardDAOMybatis implements ItemboardDAO{
 		sqlSession.update("itemboardSQL.sendItem", map);
 	}
 
+	@Override
+	public ItemBasketListDTO getSeqId(int seq) {
+		return sqlSession.selectOne("itemboardSQL.getSeqId", seq);
+	}
+
+	@Override
+	public void refund(Map<String, Object> map) {
+		sqlSession.update("itemboardSQL.refund", map);
+	}
 
 }

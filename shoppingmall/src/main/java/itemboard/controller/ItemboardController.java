@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -451,4 +450,45 @@ public class ItemboardController {
     		itemboardDAO.sendItem(seq.get(i), stus);
     	}
     }
+	
+	@RequestMapping(value="/refund.do", method=RequestMethod.POST)
+    @ResponseBody
+    public void refund(@RequestParam(value="chkbox[]") List<Integer> seq) {
+		for(int i=0; i<seq.size(); i++) {
+			ItemBasketListDTO itemBasketListDTO = itemboardDAO.getSeqId(seq.get(i));
+
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("id", itemBasketListDTO.getId());
+			map.put("money", Integer.parseInt(itemBasketListDTO.getItemQty())*itemBasketListDTO.getSalePrice());
+			map.put("seq", itemBasketListDTO.getSeq());
+			
+			itemboardDAO.refund(map);
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
