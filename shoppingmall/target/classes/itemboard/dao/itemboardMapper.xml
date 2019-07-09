@@ -130,19 +130,4 @@
 	<update id="sendItem" parameterType="java.util.Map">
 		update itembasketTable set stus=#{stus} where seq=#{seq}
 	</update>
-	
-	<!-- seq로 DTO가져오기 -->
-	<select id="getSeqId" parameterType="int" resultType="itembasketList">
-		select *
-		from itembasketTable join ITEMTABLE using (itemcode)
-		where seq=#{seq}
-	</select>
-	
-	<!-- 환불 -->
-	<update id="refund" parameterType="java.util.Map">
-		begin
-		    update user_table set cash=cash+#{money} where id=#{id};
-			delete itembasketTable where seq=#{seq};
-		end;
-	</update>
 </mapper>

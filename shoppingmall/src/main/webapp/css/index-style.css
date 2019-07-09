@@ -166,8 +166,6 @@ body {
 .card-text-price {
 	font-size: 14px;
 	font-weight: 500;
-	display: inline-block;
-	width: 50px;
 }
 
 .price-index {
@@ -264,11 +262,7 @@ body {
 
 .newImg {
 	display:inline-block;
-	margin:0 195px 20px 0;
-}
-
-.cartImg1 {
-	margin-bottom: 20px;
+	margin:0 195px 0 0;
 }
 
 /* index-style */
