@@ -12,6 +12,7 @@
 	<input type="hidden"  name="initQty" value="" >
 	<input type="hidden"  name="salePrice" value="" >
 	<input type="hidden" name="sumPrice" value="" >
+	<input type="hidden" name="itemCodeRev" value="" >
 	
 </form>
   <head>
@@ -247,13 +248,17 @@
 </div>
   <form name="reviewForm" id="reviewForm" method="post" enctype="multipart/form-data" action="/shoppingmall/itemboard/review.do" >
 	<table border="0" cellpading="0" cellpacing="0" width="1200">
+	
 		<tr id="review_name">
 			<td colspan="1" align="center">
 				<font color="black" size="2" face="돋움">작성자</font>
 			</td>
 			<td align="left" colspan="1">
 				<input type="text" name="name" id="name" >
-				<input type="hidden" id="id" name="id" value= "${userDTO.id}">
+				<input type="hidden"  name="id" value= "${userDTO.id }">
+				
+				<!-- review 작성후 itemcode값 담는 hidden-->
+				<input type="hidden" id="test" name="itemCodeRev" value="${itemCode }" >
 			</td>
 		</tr>
 		<tr id="review_content">
@@ -305,10 +310,17 @@ $(document).ready(function(){
           
           var itemName = data.itemboardDTO.itemName;
           document.viewForm.itemName.value=itemName;
+          
+          
+          var itemCodeRev = data.itemboardDTO.itemCode;
+          document.viewForm.itemCodeRev.value=itemCodeRev;
+          
+          
          /*$('#salePrice').text(data.itemboardDTO.salePrice);
          $('#costPrice').text(data.itemboardDTO.costPrice);
          $('.itemcontent').text(data.itemboardDTO.itemContent);
          $('.saleprice_right').text(data.itemboardDTO.salePrice);
+         
          
          
          $('#totQty').text(data.itemboardDTO.totQty);
@@ -638,20 +650,7 @@ $('#sb_review').click(function(){
 		
 		$('#reviewForm').submit();
 		
-		/*
-		$.ajax({
-			type: 'POST',
-			url: '/shoppingmall/itemboard/review.do',
-			data: {'name': $('#re_name').val(),
-					'review': $('.review_txt').val(),
-					'img1':$('#img1').val(),
-					'img2':$('#img2').val()},
-			dataType : 'text',
-			success : function(data){
-				alert('리뷰작성 성공')
-			}
-			})
-		*/
+		
 	}
 });
 

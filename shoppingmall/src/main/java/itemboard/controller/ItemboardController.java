@@ -383,10 +383,11 @@ public class ItemboardController {
 		itemboardDAO.refundItem(seq);
 	}
 	
+	
 	@RequestMapping(value="/review.do", method=RequestMethod.POST)
-	@ResponseBody
 	public String review(@ModelAttribute ReviewDTO reviewDTO,
 						@RequestParam MultipartFile[] img,
+						@RequestParam  String itemCodeRev,
 						Model model) {
 		
 		String filePath = "C:\\Users\\user\\git\\rainbow\\shoppingmall\\src\\main\\webapp\\storage";
@@ -422,9 +423,13 @@ public class ItemboardController {
 			reviewDTO.setImg2(null);
 		}
 		
-		System.out.println(reviewDTO);
-		itemboardDAO.reviewWrite(reviewDTO);
+		System.out.println(itemCodeRev);
 		
+		itemboardDAO.reviewWrite(reviewDTO);
+		ItemboardDTO itemboardDTO = itemboardDAO.getItemboardView(itemCodeRev);
+		
+		model.addAttribute("itemboardDTO",itemboardDTO);
+		model.addAttribute("itemCode", itemCodeRev);
 		model.addAttribute("display", "/itemboard/itemboardView.jsp");
 		return "/main/index";
 	}
