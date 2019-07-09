@@ -132,6 +132,7 @@ $(document).ready(function(){
 	var initQty = new Array();
 	var itemName = new Array();
 	var itemCode = new Array();
+	
 	//문자열을 배열로 변환
 	colName = colNameRe.split(',');
 	sizeName = sizeNameRe.split(',');
@@ -189,8 +190,6 @@ function buy(){
 	initQty = initQtyRe.split(',');
 	itemName = itemNameRe.split(',');
 	itemCode = itemCodeRe.split(',');
-	
-	alert(id);
 	
 	
 	for(i=0;i<colName.length;i++){

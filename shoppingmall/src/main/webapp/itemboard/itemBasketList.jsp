@@ -48,7 +48,7 @@ $(document).ready(function(){
 		data: {'itemCode': '${itemCode}', 'pg': '${pg}', 'categoryCode': '${categoryCode}', 'id': id},
 		dataType: 'json',
 		success: function(data){
-			//alert(JSON.stringify(data));
+			alert(JSON.stringify(data));
 			$.each(data.list, function(index,items){
 				$('#itemList').append("<tr>"+
 									  "<th scope='row'"+(index+1)+

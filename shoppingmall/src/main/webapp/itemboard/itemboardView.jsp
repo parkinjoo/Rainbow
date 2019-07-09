@@ -442,7 +442,7 @@ $('#color_option').change(function(){
 });
 var itemName = new Array(); // 아이템 이름을 순서대로 넣을 배열
 
-var itemCodeName = new Array(); // 아이템 코드를 순서대로 넣을 배열
+var itemCode = new Array(); // 아이템 코드를 순서대로 넣을 배열
 
 var colName = new Array();//선택된 컬러를 담을 배열
 
@@ -490,7 +490,7 @@ function listTagAdd(){
     colName.push(colorText);
 	sizeName.push(sizeText);
 	itemName.push(getItemName);
-	itemCodeName.push(getItemCode);
+	itemCode.push(getItemCode);
      $('<p/>',{
         class : 'colorAndSize-itemPage'+optionCnt,
         text : colorText+','+sizeText,    
@@ -570,41 +570,34 @@ $(document).on('click','.minus',function(){
 // 장바구니 회원
 
 $('.cartImg-itemPage').click(function(){
-	if('${userDTO}'!=''){
-      
-      var itemCode = $('#itemCodeDiv').text();
-      var itemName = $('.itemName-itemPage').text();
-      var itemCol = $('#color_option option:selected').text();
-      var itemQty = 1;
-      var itemSize = $('#size_option option:selected').text();
-      var id = '${userDTO.id }';
-      //건들지마세요
-      var stus = 'cart';
-      //alert(itemCol+','+itemSize);
-      if(itemCol!='색상선택' && itemSize!='사이즈선택'){
-	      $.ajax({
-	         type: 'post',
-	         url: '/shoppingmall/itemboard/itemBasket.do',
-	         data: 'itemCode='+itemCode+'&itemName='+itemName+'&itemCol='+itemCol+'&itemQty='+itemQty+'&itemSize='+itemSize+'&id='+id+'&stus='+stus+'&categoryCode=${categoryCode}&pg=${pg}',
-	         success: function(){
-	            if(confirm("상품이 저장되었습니다. 장바구니로 가시겠습니까?")){
-	               location.href="/shoppingmall/itemboard/itemBasketList.do";
-	            }else{
-					location.reload();
-	            }
-	            
-	         } 
-	      });
-      }else{
-    	  alert("색상과 사이즈를 선택해주세요.");
-      }
-   
-   }else {
-         if(confirm('비회원으로 구매를 진행하시겠습니까?')){
-            location.href = "/shoppingmall/itemboard/itemBasketList.do";
-         }else
-            location.href = "/shoppingmall/user/loginForm.do";
-   }
+	if('${userDTO.id}'!=''){
+		if(colName.length!=0){
+			var initQty = new Array(); //추가해준 옵션들의 수량을 담을 배열
+			for(i=0; i<colName.length;i++)
+				initQty.push($('#itemAccount-itemPage'+i).val());
+			var userId = '${userDTO.id}';
+			for(j=0; j<colName.length;j++){
+				$.ajax({
+					type: 'post',
+				    url: '/shoppingmall/itemboard/itemBasket.do',
+				    data: {'itemCode':itemCode[j],
+				    		'itemName':itemName[j],
+				      		'itemCol':colName[j],
+				      		'itemQty':initQty[j],
+				      		'itemSize':sizeName[j],
+							'Id':userId,
+							'stus':'cart'},
+				    success: function(data){
+				    	alert('성공');
+				    }
+				});	
+			}
+			location.href="/shoppingmall/itemboard/itemBasketList.do";
+		}
+	}
+	else{
+		alert('로그인 하세요');
+	}
 });
 
 //buy now 버튼
@@ -618,7 +611,7 @@ $('.purchaseBtn-itemPage').click(function(){
 	var colNameRe = colName.join(',');
 	var sizeNameRe = sizeName.join(',');
 	var initQtyRe = initQty.join(',');
-	var itemCodeNameRe = itemCodeName.join(',');
+	var itemCodeNameRe = itemCode.join(',');
 	var itemNameRe = itemName.join(',');
 	
 	
