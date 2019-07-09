@@ -290,8 +290,10 @@ public class ItemboardController {
 									@RequestParam String sumPrice,
 									@RequestParam String imgName,
 									@RequestParam String itemName,
+									@RequestParam String itemCode,
 									Model model) {
 		model.addAttribute("title", "구매하기");
+		model.addAttribute("itemCode",itemCode);
 		model.addAttribute("colName",colName);
 		model.addAttribute("itemName",itemName);
 		model.addAttribute("imgName",imgName);
