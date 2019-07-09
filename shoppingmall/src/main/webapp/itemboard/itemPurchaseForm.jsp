@@ -101,19 +101,11 @@
                 </div>
               </td>
             </tr>
-<<<<<<< HEAD
-            <tr>
-            <td>
-            	<input type="button" value="구매하기" onclick="buy()" />
-            </td>
-            </tr>
-=======
->>>>>>> refs/heads/master
         </table>
     </div>
     
     <div class="buttonDiv">
-    	<input type="button" class="purchaseBtn" value="구매하기">
+    	<input type="button" class="purchaseBtn" value="구매하기" onclick="buy()">
     	<input type="reset" class="purchaseBtn" value="다시 쓰기">
     </div>
     </form>
