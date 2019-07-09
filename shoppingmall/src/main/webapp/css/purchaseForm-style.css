@@ -15,12 +15,6 @@
   margin: 0 auto;
   background-size: cover;
 }
-.purchaseText {
-  width: 200px;
-  height: 90px;
-
-  position: relative;
-}
 
 .size-pur {
   width: 100px;
@@ -33,6 +27,12 @@
 }
 .mileage-pur {
   width: 100px;
+}
+
+.purchaseText {
+  width: 200px;
+  height: 90px;
+  position: relative;
 }
 
 .purchaseText2 {
@@ -92,4 +92,27 @@
 
 .postMessage {
   width: 600px;
+}
+
+.buttonDiv {
+	width: 80%;
+	margin: 0 auto;
+	height: 100px;
+	text-align: center;
+}
+
+.purchaseBtn {
+	width: 300px;
+	height: 100px;
+	font-size: 20px;
+	border: none;
+	background-color: black;
+	color: white;
+}
+
+.purchaseBtn:hover {
+	color: black;
+	background-color: white;
+	border: 1px solid black;
+	transition: .3s ease;
 }

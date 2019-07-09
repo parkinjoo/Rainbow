@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import itemboard.bean.ItemBasketDTO;
 import itemboard.bean.ItemBasketListDTO;
 import itemboard.bean.ItemboardDTO;
+import itemboard.bean.ReviewDTO;
 import user.bean.UserDTO;
 
 @Transactional
@@ -75,6 +76,12 @@ public class ItemboardDAOMybatis implements ItemboardDAO{
 	}
 
 	@Override
+	public void reviewWrite(ReviewDTO reviewDTO) {
+		sqlSession.delete("itemboardSQL.reviewWrite",reviewDTO);
+		
+	}
+
+	@Override
 	public List<ItemBasketListDTO> getStayItemList(String id) {
 		return sqlSession.selectList("itemboardSQL.getStayItemList", id);
 	}
@@ -108,5 +115,6 @@ public class ItemboardDAOMybatis implements ItemboardDAO{
 	public void refundItem(int seq) {
 		sqlSession.update("itemboardSQL.refundItem", seq);
 	}
+
 
 }

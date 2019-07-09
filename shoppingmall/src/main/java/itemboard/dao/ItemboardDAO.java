@@ -7,6 +7,7 @@ import itemboard.bean.ItemBasketDTO;
 import itemboard.bean.ItemBasketListDTO;
 import itemboard.bean.ItemboardDTO;
 import user.bean.UserDTO;
+import itemboard.bean.ReviewDTO;
 
 public interface ItemboardDAO {
 
@@ -31,6 +32,8 @@ public interface ItemboardDAO {
 	public List<ItemBasketListDTO> getSideBarList(String id);
 
 	public void SideBarDeleteItem(int seq);
+
+	public void reviewWrite(ReviewDTO reviewDTO);
 
 	public List<ItemBasketListDTO> getStayItemList(String id);
 

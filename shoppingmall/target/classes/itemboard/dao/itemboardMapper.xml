@@ -64,6 +64,11 @@
 		delete itembasketTable where seq=#{seq}
 	</delete>
 	
+	<!--  리뷰 작성 -->
+	<insert id="reviewWrite" parameterType="review">
+	 	insert into reviewtable(seq,id,name,review,img1,img2,registday) values(seq_reviewtable, #{id},#{name},#{review},#{img1},#img{2},sysdate)
+	</insert>
+	
 	<!-- 출고대기인 상품 리스트 -->
 	<select id="getStayItemList" parameterType="String" resultType="itembasketList">
 		select *

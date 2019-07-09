@@ -17,37 +17,6 @@
           </tr>
         </thead>
         <tbody id="superList">
-          <!-- 구분 -->
-         <!-- <tr>
-             <td>
-             <div class="purchaseImg"></div>
-            </td>
-            <td>
-              <div class="purchaseText">
-                <div class="purchaseText2">베이지색 슬랙스 9부 팬츠</div>
-              </div>
-            </td>
-            <td>
-              <div class="purchaseText size-pur">
-                <div class="purchaseText2">챠콜,S(28)</div>
-              </div>
-            </td>
-            <td>
-              <div class="purchaseText account-pur">
-                <div class="purchaseText2">1</div>
-              </div>
-            </td>
-            <td>
-              <div class="purchaseText price-pur">
-                <div class="purchaseText2">19,800</div>
-              </div>
-            </td>
-            <td>
-              <div class="purchaseText mileage-pur">
-                <div class="purchaseText2">200</div>
-              </div>
-            </td> 
-          </tr>-->
        
         </tbody>
       </table>
@@ -77,9 +46,10 @@
           </tr>
       </table>
     </div>
-
+	<form>
     <div class="postInfo">
-      <h5>배송 정보 &nbsp;&nbsp;&nbsp;&nbsp;<input type="button" id="pasteBtn" value="주문자정보동일" onclick="paste()"/></h5>
+      <h5>배송 정보 &nbsp;&nbsp;<span><a id="pasteBtn" onclick="paste()">
+      <small style="color:red; cursor: pointer;">주문자와 정보 동일</small></a></span></h5>
         <table class="table">
             <tr>
               <th class="infoTitle">이름</th>
@@ -127,17 +97,26 @@
               <td>
                 <div class="mb-3">
                   <label for="validationTextarea">배송 메시지</label>
-                  <textarea class="form-control postMessage" id="validationTextarea" placeholder="Required example textarea"></textarea>
+                  <textarea class="form-control postMessage" id="validationTextarea" placeholder="배송 시 요구사항을 입력하세요 (Ex. 경비실에 보관 부탁드립니다)"></textarea>
                 </div>
               </td>
             </tr>
+<<<<<<< HEAD
             <tr>
             <td>
             	<input type="button" value="구매하기" onclick="buy()" />
             </td>
             </tr>
+=======
+>>>>>>> refs/heads/master
         </table>
     </div>
+    
+    <div class="buttonDiv">
+    	<input type="button" class="purchaseBtn" value="구매하기">
+    	<input type="reset" class="purchaseBtn" value="다시 쓰기">
+    </div>
+    </form>
     
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

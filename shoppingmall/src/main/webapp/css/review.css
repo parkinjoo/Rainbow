@@ -1,0 +1,10 @@
+@charset "EUC-KR";
+.review_txt{
+	
+	min-height:100px;
+	margin: 0px;
+	line-hight: 16px;
+	width: 100%;
+	font-size: 14px;
+	
+}
