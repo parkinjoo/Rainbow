@@ -207,6 +207,7 @@ public class ItemboardController {
 		model.addAttribute("itemboardDTO",itemboardDTO);
 		model.addAttribute("categoryCode", categoryCode);
 		model.addAttribute("itemCode", itemCode);
+		model.addAttribute("title", "상품 보기");
 		model.addAttribute("pg", pg);
 		model.addAttribute("display", "/itemboard/itemboardView.jsp");
 		
