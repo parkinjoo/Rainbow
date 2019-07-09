@@ -89,8 +89,8 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	if(!'${userCheck}'){
-		alert("비정상적인 접근입니다. 본인확인 페이지로 이동합니다");
-		location.href='/shoppingmall/user/modifyCheckForm.do';
+		alert("비정상적인 접근입니다.");
+		location.href='/shoppingmall/main/index.do';
 	}
 });
 
