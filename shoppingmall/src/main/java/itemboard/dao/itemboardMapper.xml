@@ -9,7 +9,7 @@
 	<select id="getItemboardList" parameterType="java.util.Map" resultType="itemboard">
 		select * from
 		(select rownum rn, tt.* from
-		(select * from itemtable where  itemcode like '%'||#{categoryCode }||'%' order by itemcode desc)tt
+		(select * from itemtable join stocktable using(itemcode) where  itemcode like '%'||#{categoryCode }||'%' order by itemcode desc)tt
 		)where rn>=#{startNum} and rn <![CDATA[<=]]> #{endNum}
 	</select>
    

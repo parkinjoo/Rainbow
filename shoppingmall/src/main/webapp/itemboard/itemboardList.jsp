@@ -39,18 +39,23 @@ $(document).ready(function(){
 		success : function(data){
 			
 			$.each(data.list, function(index,items){
-				$('.cardDiv-index').append("<div class='card card-index' style='width:18rem;'>"+
-											"<img class='card-img-top "+items.itemCode+"' src='../storage/"+items.img1+"'>"+
-											"<div class='card-body'>"+
-											"<h5 class='card-title-index'>"+items.itemName+"(상품 이름 나오게)</h5>"+
-											"<p class='card-text cart-text-index'>상품에 대한 설명(약 2줄 db에 추가해야할듯)<br>S~XL(28~34)</p>"+
-											"<p class='card-text-index price-index'>"+items.salePrice+"(가격)</p>"+
-											"<a class='reserveItem-index' href='#'>"+
-											"<img src='../images/cart_image.png' class='cardImg'>"+
-											"</a>"+
-											"</div>"+
-											"</div>"
-						);	
+				var size;
+				if(items.col1f == 0) {
+					size = "S~XL(90~105)";
+				} else {
+					size = "FREE";
+				}
+				
+				$('.cardDiv-index').append("</h2><div class='card card-index' style='width: 18rem;'>"+
+						  "<img src='../storage/"+items.img1+"' class='card-img-top' id='"+items.itemCode+"' style='cursor: pointer;'>"+
+						  "<div class='card-body'>"+
+						  "<h5 class='card-text card-text-name'>"+items.itemName+"</h5>"+
+						  "<p class='card-text card-text-size'>"+size+"</p><br>"+
+						  "<p class='card-text card-text-price'>"+items.salePrice+"</p>"+
+						  "<a class='reserveItem-index' href='#'><img src='../images/cart_image.png' class='cartImg'></a>"+						
+						  "</div>"+
+						  "</div>"
+						  );
 				
  				//이미지보기
 				$('.'+items.itemCode).css('cursor', 'pointer');
