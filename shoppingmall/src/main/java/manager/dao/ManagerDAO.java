@@ -21,5 +21,7 @@ public interface ManagerDAO {
 
 	public UserDTO getUserInfo(String id);
 
+	public List<ItemboardDTO> salesManage();
+
 
 }

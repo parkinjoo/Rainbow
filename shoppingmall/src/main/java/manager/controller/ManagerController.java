@@ -3,6 +3,7 @@ package manager.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -183,4 +184,25 @@ public class ManagerController {
     	}
     }
 
+    @RequestMapping(value="/salesManage.do", method=RequestMethod.POST)
+	public ModelAndView salesManage() {
+		ModelAndView mav = new ModelAndView();
+		List<ItemboardDTO> list = managerDAO.salesManage();
+		
+		List<String> ticks = new ArrayList<String>();
+		List<String> barChart1 = new ArrayList<String>();
+		List<String> barChart2 = new ArrayList<String>();
+
+		for(ItemboardDTO data : list) {
+			ticks.add(data.getItemCode());
+			barChart1.add(data.getRegistday());
+			barChart2.add(data.getSalePrice()+"");
+			
+		}
+		mav.addObject("ticks", ticks);
+	//	mav.addObject("barChart1", barChart1); //날짜
+		mav.addObject("barChart2", barChart2); //가격
+		mav.setViewName("jsonView");
+		return mav;
+	}
 }

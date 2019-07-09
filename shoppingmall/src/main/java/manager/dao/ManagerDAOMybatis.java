@@ -51,6 +51,11 @@ public class ManagerDAOMybatis implements ManagerDAO {
 		return sqlSession.selectOne("managerSQL.getUserInfo", id);
 	}
 
+	@Override
+	public List<ItemboardDTO> salesManage() {
+		return sqlSession.selectList("managerSQL.salesManage");
+	}
+
 
 
 

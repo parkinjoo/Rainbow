@@ -52,11 +52,7 @@ $(document).ready(function(){
 	var managerPageOk = '${managerPageOk}';
 	if (managerPageOk=='') {
 		location.href="/shoppingmall/manager/managerPageForm.do";
-	}else {
-		return false;
 	}
 
 }); 
-
-
 </script>

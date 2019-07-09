@@ -52,5 +52,11 @@
 	<delete id="deleteItemboard" parameterType="String">
 		delete from itemtable where itemCode = #{itemCode}
 	</delete>
+	
+	<!-- 일별 통계 -->
+	<select id="salesManage" resultType="itemboard">
+		select itemcode, to_char(registday, 'yyyy"."MM"."dd') as registday , sum(saleprice) as saleprice from 
+		itemtable group by registday,itemcode order by itemcode
+	</select>
    
 </mapper>

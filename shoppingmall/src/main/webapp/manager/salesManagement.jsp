@@ -16,7 +16,7 @@
 		<!-- 구분선 -->
 		
 				<div class="tab-pane fade show active" id="pills-home-dailySales">
-					<div id="chart" style="width:750px;height:324px;"></div>
+					<div id="chart" style="width:950px;height:424px;"></div>
 				</div>
 							
 				<div class="tab-pane fade" id="pills-profile-monthly-sales">
@@ -27,43 +27,51 @@
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>	
 <script type="text/javascript">
+$('#clickTest').on('click', function(){
+	
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yyyy = today.getFullYear();
 
-setInterval(function(){
-	var barChart1 = [9, 8, 6, 8, 7, 6, 4];
-    var barChart2 = [5, 3, 4, 6, 2, 7, 8];
-    var lineChart = [12, 7, 4, 10, 8, 5, 7];
-    jQuery("#chart").jqplot([barChart1, barChart2, lineChart], {
+	if(dd<10) {
+	    dd='0'+dd
+	} 
 
-          title : "막대 그래프 & 꺽은선 그래프"
-        , stackSeries : true     
-        , series : [
-            {     
-                  renderer : jQuery.jqplot.BarRenderer
-                , rendererOptions : {
-                      barWidth : 35                 
-                    , barPadding : -15                
-                    , highlightMouseOver : false  
-                }
-            }
-            , {   
-                  renderer : jQuery.jqplot.BarRenderer
-                , rendererOptions : {
-                      barWidth : 35                   
-                    , barPadding : -15               
-                    , highlightMouseOver : false   
-                }
-            }
-            , {  
-                  disableStack : true 
-                , renderer : jQuery.jqplot.LineRenderer
-            }
-        ]
-        , axes: {
-            xaxis : { 
-                  renderer : jQuery.jqplot.CategoryAxisRenderer
-                , ticks : ['A Name', 'B Name', 'C Name', 'D Name', 'E Name', 'F Name', 'G Name']
-            }
-        }
-    });
-},1000);
+	if(mm<10) {
+	    mm='0'+mm
+	} 
+
+	today = yyyy+'.'+mm+'.'+dd;
+    
+	$.ajax({
+		type : 'post' ,
+		url : '/shoppingmall/manager/salesManage.do' ,
+		dataType : 'json' ,
+		success : function(data){
+	//		alert(JSON.stringify(data));
+
+			var line = new Array();
+			for(i=0; i<data.ticks.length; i++) {
+				line[i]=[[data.ticks[i]],data.barChart2[i]];
+			}
+			alert(line);
+		    jQuery("#chart").jqplot([line], {
+		          title: today  
+		        , seriesDefaults:{
+		            renderer:jQuery.jqplot.BarRenderer
+		        }
+		        , axes:{
+		            xaxis:{
+		            	renderer:jQuery.jqplot.CategoryAxisRenderer
+		            , tickOptions : {
+		            		formatString:'%'
+		            	}
+		            }
+		        }
+		    });
+		}
+	});
+});
+
 </script>
