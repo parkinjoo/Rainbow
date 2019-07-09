@@ -280,8 +280,8 @@ public class ItemboardController {
     }
 	
 	@RequestMapping(value="/itemPurchaseForm.do", method=RequestMethod.POST)
-	public String itemPurchaseForm(@RequestParam String csName,
-									@RequestParam String csVal,
+	public String itemPurchaseForm(@RequestParam String colName,
+									@RequestParam String sizeName,
 									@RequestParam String initQty,
 									@RequestParam String salePrice,
 									@RequestParam String sumPrice,
@@ -289,10 +289,10 @@ public class ItemboardController {
 									@RequestParam String itemName,
 									Model model) {
 		model.addAttribute("title", "구매하기");
-		model.addAttribute("csName",csName);
+		model.addAttribute("colName",colName);
 		model.addAttribute("itemName",itemName);
 		model.addAttribute("imgName",imgName);
-		model.addAttribute("csVal",csVal);
+		model.addAttribute("sizeName",sizeName);
 		model.addAttribute("initQty",initQty);
 		model.addAttribute("salePrice",salePrice);
 		model.addAttribute("sumPrice",sumPrice);

@@ -7,8 +7,8 @@
 	<input type="hidden" name="imgName" value="${itemboardDTO.img1}" >
 	<input type="hidden" name="itemCode" value="${itemCode }" >
 	<input type="hidden" name="itemName" value="">
-	<input type="hidden" name="csName" value="" >
-	<input type="hidden"  name="csVal" value="" >
+	<input type="hidden" name="colName" value="" >
+	<input type="hidden"  name="sizeName" value="" >
 	<input type="hidden"  name="initQty" value="" >
 	<input type="hidden"  name="salePrice" value="" >
 	<input type="hidden" name="sumPrice" value="" >
@@ -393,9 +393,9 @@ $('#color_option').change(function(){
    });    
 });
 
-var csName = new Array();//선택된 컬러와 사이즈 이름을 담을 배열 *없어질 수 있음*
+var colName = new Array();//선택된 컬러를 담을 배열
 
-var csVal = new Array(); //선택된 컬러와 사이즈의 값을 담을 배열 
+var sizeName = new Array(); //선택된 사이즈를 담을 배열
 
 var optionCnt = 0;//각 태그의 고유값을 주기위한 값 1씩 증가함
 
@@ -412,14 +412,14 @@ $('#size_option').change(function(){
    if(sizeText=='사이즈선택'){
  	   alert('다시선택해주세요');
     }
-   else if(csName.length==0){
+   else if(colName.length==0){
 	   listTagAdd();
    }
    else{
 	   var count = 0; //구분자
-	   for(i=0;i<csName.length;i++){//중복으로 리스트를 추가하려는지 
+	   for(i=0;i<colName.length;i++){//중복으로 리스트를 추가하려는지 
 		   
-		   if(csName[i] == comCS){
+		   if(colName[i] == colorText){
 		      alert('이미 선택되었습니다.');
 		      count++;
 		   }
@@ -436,8 +436,8 @@ function listTagAdd(){
     var color= $('#color_option').val();
     var size = $('#size_option').val();
 	//수량 선택을 할 태그 생성
-    csName.push(colorText+'/'+sizeText);
-    csVal.push(color+'/'+size);
+    colName.push(colorText);
+	sizeName.push(sizeText);
      $('<p/>',{
         class : 'colorAndSize-itemPage '+optionCnt,
         text : colorText+'  '+sizeText,    
@@ -553,15 +553,16 @@ $('.cartImg-itemPage').click(function(){
 $('.purchaseBtn-itemPage').click(function(){
 	var initQty = new Array(); //추가해준 옵션들의 수량을 담을 배열
 	
-	for(i=0; i<csVal.length;i++)
+	for(i=0; i<colName.length;i++)
 		initQty.push($('#itemAccount-itemPage'+i).val());
 	
+
 	//히든 버튼에 값을 넣어 보내주기 
-	var csNameRe = csName.join(',');
-	var csValRe = csVal.join(',');
+	var colNameRe = colName.join(',');
+	var sizeNameRe = sizeName.join(',');
 	var initQtyRe = initQty.join(',');
-	document.viewForm.csName.value=csNameRe;
-	document.viewForm.csVal.value=csValRe;
+	document.viewForm.colName.value=colNameRe;
+	document.viewForm.sizeName.value=sizeNameRe;
 	document.viewForm.initQty.value=initQtyRe;
 	document.viewForm.salePrice.value=salePrice;
 	document.viewForm.sumPrice.value=sumPrice;

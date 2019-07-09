@@ -131,7 +131,7 @@
             </tr>
             <tr>
             <td>
-            	<input type="button" value="구매하기">
+            	<input type="button" value="구매하기" onclick="buy()" >
             </td>
             </tr>
         </table>
@@ -146,18 +146,18 @@
 $(document).ready(function(){	
 	//문자열을 다시 배열로 전환
 	var itemName = '${itemName}';
-	var csNameRe = '${csName}';
-	var csValRe ='${csVal}';
+	var colNameRe = '${colName}';
+	var sizeNameRe ='${sizeName}';
 	var initQtyRe = '${initQty}';
 	var salePrice = ${salePrice};
 	var sumPrice = ${sumPrice};
 	var imgName = '${imgName}';
-	var csName = new Array();
-	var csVal = new Array();
+	var colName = new Array();
+	var sizeName = new Array();
 	var initQty = new Array();
-	
-	csName = csNameRe.split(',');
-	csVal = csValRe.split(',');
+	//문자열을 배열로 변환
+	colName = colNameRe.split(',');
+	sizeName = sizeNameRe.split(',');
 	initQty = initQtyRe.split(',');
 	
 	var tmp='';
@@ -167,7 +167,7 @@ $(document).ready(function(){
 		'<tr>'+
 		'<td><div class="purchaseImg" style="background-image:url(../storage/'+imgName+'")"></div></td>'+
 		'<td><div class="purchaseText"><div class="purchaseText2">'+itemName+'</div></div></td>'+
-		'<td><div class="purchaseText size-pur"><div class="purchaseText2">'+csName[i]+'</div></div></td>'+
+		'<td><div class="purchaseText size-pur"><div class="purchaseText2">'+colName[i]+'/'+sizeName[i]+'</div></div></td>'+
 		'<td><div class="purchaseText account-pur"><div class="purchaseText2">'+initQty[i]+'</div></div></td>'+
 		'<td><div class="purchaseText price-pur"><div class="purchaseText2">'+initQty[i]*salePrice+'</div></div></td>'+
 		'<td><div class="purchaseText price-pur"><div class="purchaseText2">200</div></div></td>'+
@@ -179,7 +179,6 @@ $(document).ready(function(){
 	
 	$('#superList').append(tmp);
 
-	alert('${userDTO}');	
 });
 
 function paste(){
@@ -188,6 +187,24 @@ function paste(){
 	$('.zipcode').val('${userDTO.zipcode}');
 	$('.addr1').val('${userDTO.addr1}');
 	$('.addr2').val('${userDTO.addr2}');
+}
+
+function buy(){
+	var itemName = '${itemName}';
+	var colNameRe = '${colName}';
+	var sizeNameRe ='${sizeName}';
+	var initQtyRe = '${initQty}';
+	var salePrice = ${salePrice};
+	var sumPrice = ${sumPrice};
+	var imgName = '${imgName}';
+	
+/* 	$.ajax({
+		type: 'post',
+	      url: '/shoppingmall/itemboard/itemBasket.do',
+	      data: 'itemCode='+itemCode+'&itemName='+itemName+'&',
+	      dataType: 'json',
+	      success: 
+	}) */
 }
 </script>
 
