@@ -117,4 +117,17 @@
 	<update id="refundItem" parameterType="int">
 		update itembasketTable set stus='re' where seq=#{seq}
 	</update>
+	
+	<!-- 주문 상품 리스트 -->
+	<select id="orderList" parameterType="String" resultType="itembasketList">
+		select *
+		from itembasketTable join ITEMTABLE using (itemcode)
+		where stus=#{stus}
+		order by seq asc
+	</select>
+	
+	<!-- 상품 보내기 -->
+	<update id="sendItem" parameterType="java.util.Map">
+		update itembasketTable set stus=#{stus} where seq=#{seq}
+	</update>
 </mapper>

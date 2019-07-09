@@ -11,6 +11,8 @@
 			href="#item-management" role="tab">상품 관리</a></li>
 		<li class="nav-item"><a class="nav-link" data-toggle="tab"
 			href="#contact" role="tab">매출 관리(개발 보류)</a></li>
+		<li class="nav-item"><a class="nav-link" data-toggle="tab"
+			href="#order-management" role="tab">주문 관리</a></li>
 	</ul>
 	
 	<div class="tab-content" id="myTabContent">
@@ -21,7 +23,11 @@
 		
 		<!-- itemManagement.jsp Include Area -->
 			<jsp:include page="${managerItemDisplay }"/>
-		<!-- itemManagement.jsp Include Area -->	
+		<!-- itemManagement.jsp Include Area -->
+		
+		<!-- itemManagement.jsp Include Area -->
+			<jsp:include page="${managerOrderDisplay }"/>
+		<!-- itemManagement.jsp Include Area -->
 			
 	</div>
 </div>

@@ -431,4 +431,24 @@ public class ItemboardController {
 		model.addAttribute("display", "/itemboard/itemboardView.jsp");
 		return "/main/index";
 	}
+	
+	@RequestMapping(value="/orderList.do", method=RequestMethod.POST)
+	public ModelAndView orderList(@RequestParam String stus) {
+		
+		ModelAndView mav = new ModelAndView();
+		List<ItemBasketListDTO> list = itemboardDAO.orderList(stus);
+		mav.addObject("list", list);
+		mav.setViewName("jsonView");
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/sendItem.do", method=RequestMethod.POST)
+    @ResponseBody
+    public void sendItem(@RequestParam(value="chkbox[]") List<Integer> seq,
+    					 @RequestParam String stus) {
+    	for(int i=0; i<seq.size(); i++) {
+    		itemboardDAO.sendItem(seq.get(i), stus);
+    	}
+    }
 }

@@ -48,4 +48,8 @@ public interface ItemboardDAO {
 	public UserDTO getUserDTO(String id);
 
 	public void refundItem(int seq);
+
+	public List<ItemBasketListDTO> orderList(String stus);
+
+	public void sendItem(int seq, String stus);
 }
