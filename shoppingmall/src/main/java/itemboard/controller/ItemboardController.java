@@ -296,8 +296,7 @@ public class ItemboardController {
 		itemboardDAO.basketFlush(id);
 		
 		
-	}
-	
+	}	
 	@RequestMapping(value="/basketDelete.do", method=RequestMethod.POST)
     @ResponseBody
     public void basketDelete(@RequestParam(value="chkbox[]") List<Integer> seq) {
