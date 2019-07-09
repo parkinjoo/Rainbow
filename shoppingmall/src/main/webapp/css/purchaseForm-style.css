@@ -15,12 +15,6 @@
   margin: 0 auto;
   background-size: cover;
 }
-.purchaseText {
-  width: 200px;
-  height: 90px;
-
-  position: relative;
-}
 
 .size-pur {
   width: 100px;
@@ -33,6 +27,12 @@
 }
 .mileage-pur {
   width: 100px;
+}
+
+.purchaseText {
+  width: 200px;
+  height: 90px;
+  position: relative;
 }
 
 .purchaseText2 {
