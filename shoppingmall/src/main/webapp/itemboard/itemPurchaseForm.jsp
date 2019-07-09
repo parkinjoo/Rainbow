@@ -77,7 +77,8 @@
     </div>
 
     <div class="postInfo">
-      <h5>배송 정보 &nbsp;&nbsp;&nbsp;&nbsp;<input type="button" id="pasteBtn" value="주문자정보동일" onclick="paste()"/></h5>
+      <h5>배송 정보 &nbsp;&nbsp;&nbsp;&nbsp;<span><a id="pasteBtn" onclick="paste()">
+      <small style="color:red; cursor: pointer;">주문자와 정보 동일</small></a></span></h5>
         <table class="table">
             <tr>
               <th class="infoTitle">이름</th>
