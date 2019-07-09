@@ -271,6 +271,7 @@ public class ItemboardController {
 		
 		itemboardDAO.basketFlush(id);
 		
+		
 	}
 	
 	@RequestMapping(value="/basketDelete.do", method=RequestMethod.POST)
@@ -301,6 +302,7 @@ public class ItemboardController {
 		model.addAttribute("display", "/itemboard/itemPurchaseForm.jsp");
 		return "/main/index";
 	}
+	
 	
 	@RequestMapping(value="/getSideBarList.do", method=RequestMethod.POST)
 	public ModelAndView getSideBarList(@RequestParam String id) {
