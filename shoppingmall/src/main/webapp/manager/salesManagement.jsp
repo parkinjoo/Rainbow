@@ -20,7 +20,7 @@
 				</div>
 							
 				<div class="tab-pane fade" id="pills-profile-monthly-sales">
-				월별 매출 관리 부분
+					<div id="chart2" style="width:950px;height:424px;"></div>
 				</div>
 	</div>
 </div>	
@@ -49,15 +49,40 @@ $('#clickTest').on('click', function(){
 		url : '/shoppingmall/manager/salesManage.do' ,
 		dataType : 'json' ,
 		success : function(data){
-	//		alert(JSON.stringify(data));
 
 			var line = new Array();
 			for(i=0; i<data.ticks.length; i++) {
 				line[i]=[[data.ticks[i]],data.barChart2[i]];
 			}
-			alert(line);
-
 		    jQuery("#chart").jqplot([line], {
+		          title: today  
+		        , seriesDefaults:{
+		            renderer:jQuery.jqplot.BarRenderer
+		        }
+		        , axes:{
+		            xaxis:{
+		            	renderer:jQuery.jqplot.CategoryAxisRenderer
+		            }
+		      	, yaxis:{ 
+				         min : 0, 
+				         max : 500,  
+				 }
+		        }
+		    });
+		}
+	});
+	
+	$.ajax({
+		type : 'post' ,
+		url : '/shoppingmall/manager/salesManage2.do' ,
+		dataType : 'json' ,
+		success : function(data){
+			var line = new Array();
+			for(i=0; i<data.date.length; i++) {
+				line[i]=[[data.ticks[i]],data.date[i]];
+			}
+
+		    jQuery("#chart2").jqplot([line], {
 		          title: today  
 		        , seriesDefaults:{
 		            renderer:jQuery.jqplot.BarRenderer
@@ -73,6 +98,7 @@ $('#clickTest').on('click', function(){
 		    });
 		}
 	});
+	
 });
 
 </script>

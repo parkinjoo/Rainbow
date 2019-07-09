@@ -63,5 +63,16 @@
 		select itemcode, to_char(registday, 'yyyy"."MM"."dd') as registday , sum(saleprice) as saleprice from 
 		itemtable group by registday,itemcode order by itemcode
 	</select>
+	
+	<!-- 월별 통계 -->
+	<select id="salesManage2" resultType="itemboard">
+		select registday , sum(saleprice) as saleprice from
+		(select to_char(registday, 'yyyy"."MM"."dd') as registday , sum(saleprice) as saleprice from itemtable group by registday) group by registday
+	</select>
+	
+	<select id="getDate" resultType="String">
+		SELECT TO_CHAR(TO_DATE('2019.07.01', 'yyyy.mm.dd') + LEVEL - 1, 'yyyy.mm.dd')
+		FROM DUAL CONNECT BY TO_DATE('2019.07.01', 'yyyy.mm.dd') + LEVEL - 1 <![CDATA[<]]>= TO_DATE('2019.07.31', 'yyyy.mm.dd')
+	</select>
    
 </mapper>

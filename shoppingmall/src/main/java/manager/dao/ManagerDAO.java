@@ -1,5 +1,6 @@
 package manager.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import itemboard.bean.ItemboardDTO;
@@ -24,6 +25,10 @@ public interface ManagerDAO {
 	public List<ItemboardDTO> salesManage();
 
 	public ItemboardDTO getItemInfo(String itemCode);
+
+	public List<ItemboardDTO> salesManage2();
+
+	public List<String> getDate();
 
 
 }

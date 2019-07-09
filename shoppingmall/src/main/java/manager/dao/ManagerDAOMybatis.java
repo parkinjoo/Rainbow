@@ -1,5 +1,6 @@
 package manager.dao;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -52,16 +53,23 @@ public class ManagerDAOMybatis implements ManagerDAO {
 	}
 
 	@Override
+	public ItemboardDTO getItemInfo(String itemCode) {
+		return sqlSession.selectOne("managerSQL.getItemInfo", itemCode);
+	}
+	
+	@Override
 	public List<ItemboardDTO> salesManage() {
 		return sqlSession.selectList("managerSQL.salesManage");
 	}
 
 	@Override
-	public ItemboardDTO getItemInfo(String itemCode) {
-		return sqlSession.selectOne("managerSQL.getItemInfo", itemCode);
+	public List<ItemboardDTO> salesManage2() {
+		return sqlSession.selectList("managerSQL.salesManage2");
 	}
 
-
-
+	@Override
+	public List<String> getDate() {
+		return sqlSession.selectList("managerSQL.getDate");
+	}
 
 }

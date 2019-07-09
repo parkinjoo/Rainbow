@@ -89,7 +89,7 @@ public class ManagerController {
 	@RequestMapping(value="/itemboardWrite.do", method=RequestMethod.POST)
 	public String itemboardWrite(@ModelAttribute ItemboardDTO itemboardDTO, @RequestParam MultipartFile[] img, Model model) {
 		//filePath 이 부분 통힐하기 전까지 각자 설정하셔야 해요
-		String filePath = "C:\\Spring\\project\\shoppingmall\\src\\main\\webapp\\storage";
+		String filePath = "C:\\Users\\SEUNGHO\\git\\shoppingmall\\src\\main\\webapp\\storage";
 		String fileName;
 		File file;
 		
@@ -200,19 +200,34 @@ public class ManagerController {
 		List<ItemboardDTO> list = managerDAO.salesManage();
 		
 		List<String> ticks = new ArrayList<String>();
-		List<String> barChart1 = new ArrayList<String>();
 		List<String> barChart2 = new ArrayList<String>();
 
 		for(ItemboardDTO data : list) {
 			ticks.add(data.getItemCode());
-			barChart1.add(data.getRegistday());
 			barChart2.add(data.getSalePrice()+"");
 			
 		}
 		mav.addObject("ticks", ticks);
-	//	mav.addObject("barChart1", barChart1); //날짜
 		mav.addObject("barChart2", barChart2); //가격
 		mav.setViewName("jsonView");
 		return mav;
 	}
+    
+    @RequestMapping(value="/salesManage2.do", method=RequestMethod.POST)
+	public ModelAndView salesManage2() {
+		ModelAndView mav = new ModelAndView();
+		List<String> date = managerDAO.getDate();
+		List<ItemboardDTO> list = managerDAO.salesManage2();
+		List<String> barChart1 = new ArrayList<String>();
+		List<String> ticks2 = new ArrayList<String>();
+		for(ItemboardDTO data : list) {
+			ticks2.add(data.getRegistday());
+			barChart1.add(data.getSalePrice()+"");
+		}
+		mav.addObject("barChart1", barChart1);  //2 1=2
+		mav.addObject("ticks2", ticks2); //1
+		mav.addObject("date", date);
+		mav.setViewName("jsonView");
+		return mav;
+    }
 }
