@@ -252,24 +252,9 @@ public class ItemboardController {
 	@RequestMapping(value="/itemBasket.do", method=RequestMethod.POST)
 	@ResponseBody
 	public void itemBasket(@ModelAttribute ItemBasketDTO itemBasketDTO,
-							@ModelAttribute ItemOrderDTO itemOrderDTO,
 							Model model) {
 		
-		System.out.println("itemCode="+itemBasketDTO.getItemCode());
-		System.out.println("itemName =" + itemBasketDTO.getItemName());
-	    
-	    System.out.println("itemCol =" + itemBasketDTO.getItemCol());
-	    System.out.println("itemQty =" + itemBasketDTO.getItemQty());
-	    System.out.println("itemSize="+itemBasketDTO.getItemSize());
-	    System.out.println("itemRegistday =" + itemBasketDTO.getRegistday());
-	    System.out.println("Id =" + itemBasketDTO.getId());
-	    System.out.println("stus= "+ itemBasketDTO.getStus());
-	    
 	    itemboardDAO.itemBasket(itemBasketDTO);
-	    
-	    int seq =itemboardDAO.getSeq();
-	    itemOrderDTO.setSeq(seq);
-	    itemboardDAO.itemOrder(itemOrderDTO);
 	}    
 	
 	/*

@@ -208,7 +208,9 @@ function buy(){
 					'order_tel': $('.orderTel').val(),
 					'receive_name': $('.name').val(),
 					'receive_tel': $('.tel').val(),
-					'address': $('.addr2').val(),
+					'zipcode' : $('.zipcode').val(),
+					'addr1' : $('.addr1').val(),
+					'addr2': $('.addr2').val(),
 					'message': $('.postMessage').val(),
 					'stus':'stay'},
 		    success: function(data){
