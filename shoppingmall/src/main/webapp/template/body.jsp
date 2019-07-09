@@ -93,15 +93,15 @@ $(document).ready(function(){
 					size = "FREE";
 				}
 				
-				$('#bestItems').append("</h2><div class='card card-index' style='width: 18rem;'>"+
-						  "<img src='../storage/"+items.img1+"' class='card-img-top' id='"+items.itemCode+"' style='cursor: pointer;'>"+
-						  "<div class='card-body'>"+
-						  "<h5 class='card-text card-text-name'>"+items.itemName+"</h5>"+
-						  "<p class='card-text card-text-size'>"+size+"</p><br>"+
-						  "<p class='card-text card-text-price'>"+items.salePrice+"</p>"+
-						  "<a class='reserveItem-index' href='#'><img src='../images/cart_image.png' class='cartImg'></a>"+						
-						  "</div>"+
-						  "</div>");
+				 $('#bestItems').append("</h2><div class='card card-index' style='width: 18rem;'>"+
+                         "<img src='../storage/"+items.img1+"' class='card-img-top' id='"+items.itemCode+"' style='cursor: pointer;'>"+
+                         "<div class='card-body'>"+
+                         "<h5 class='card-text card-text-name'>"+items.itemName+"</h5>"+
+						 "<p class='card-text card-text-size'>"+size+"</p><br>"+
+						 "<p class='card-text card-text-price'>"+items.salePrice+"</p>"+
+                         "<a class='reserveItem-index' href='#'><img src='../images/cart_image.png' class='cartImg'></a>"+                  
+                         "</div>"+
+                         "</div>");
 				
 				//이미지보기
 				$('#'+items.itemCode).click(function(){
