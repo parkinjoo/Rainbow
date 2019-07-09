@@ -93,3 +93,26 @@
 .postMessage {
   width: 600px;
 }
+
+.buttonDiv {
+	width: 80%;
+	margin: 0 auto;
+	height: 100px;
+	text-align: center;
+}
+
+.purchaseBtn {
+	width: 300px;
+	height: 100px;
+	font-size: 20px;
+	border: none;
+	background-color: black;
+	color: white;
+}
+
+.purchaseBtn:hover {
+	color: black;
+	background-color: white;
+	border: 1px solid black;
+	transition: .3s ease;
+}
