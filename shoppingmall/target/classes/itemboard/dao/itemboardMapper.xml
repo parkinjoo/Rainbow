@@ -34,7 +34,7 @@
 	</insert>
 	
 	<select id="getSeq" resultType="Integer">
-		select max(seq) from itembaskettalbe
+		select max(seq) from itembasketTable
 	</select>
   
     <!-- 장바구니 리스트 -->

@@ -120,7 +120,6 @@ public class ItemboardDAOMybatis implements ItemboardDAO{
 	@Override
 	public void itemOrder(ItemOrderDTO itemOrderDTO) {
 		sqlSession.insert("itemboardSQL.itemOrder", itemOrderDTO);
-		
 	}
 
 	@Override

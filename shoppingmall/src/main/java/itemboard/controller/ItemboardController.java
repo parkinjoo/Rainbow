@@ -268,7 +268,8 @@ public class ItemboardController {
 	    itemboardDAO.itemBasket(itemBasketDTO);
 	    
 	    int seq =itemboardDAO.getSeq();
-	    itemboardDAO.itemOrder(itemOrderDTO,seq);
+	    itemOrderDTO.setSeq(seq);
+	    itemboardDAO.itemOrder(itemOrderDTO);
 	}    
 	
 	/*

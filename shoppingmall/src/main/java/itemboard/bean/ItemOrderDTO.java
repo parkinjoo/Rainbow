@@ -14,4 +14,5 @@ public class ItemOrderDTO {
 	private String address;
 	private String message;
 	private String stus;
+	private int seq;
 }
