@@ -252,37 +252,26 @@
 			<td height="10" colspan="2">
 				<textarea class="review_txt" id="review_txt" placeholder="로그인후 작성가능합니다"></textarea>
 			</td>
-		</tr>
-		<tr>
-			<td align="center" colspan="1" height="20">
-				<font color="black" size="2" face="돋움">사진 등록</font>
-			<td height="10" colspan="2">
-				<input type="file"  name="img" id="img1">
-				
-		</tr>
-		<tr>
-			<td align="center" colspan="1" height="20">
-				<font color="black" size="2" face="돋움">사진 등록</font>
-			<td height="10" colspan="2">
-				<input type="file" class="custom-file-input" name="img" id="img2">
-		</tr>
-		<tr>
-			<td align="right" colspan="3">
-				<input type="button" id="sb_review" value="리뷰 등록하기">
-			</td>
 		</tr>	
 	</table>
-
+	<span style="margin:0 94px 0 95px; font-size:14px;">사진 등록</span>
+	<div class="filebox" style="display:inline-block;"> 
+		<input class="upload-name" value="파일선택" disabled="disabled"> 
+		<label for="ex_filename">업로드</label> 
+		<input type="file" id="ex_filename" class="upload-hidden"> 
+	</div>
+	<div></div>
+	<span style="margin:0 94px 0 95px; font-size:14px;">사진 등록</span>
+	<div class="filebox" style="display:inline-block;"> 
+		<input class="upload-name" value="파일선택" disabled="disabled"> 
+		<label for="ex_filename2">업로드</label> 
+		<input type="file" id="ex_filename2" class="upload-hidden"> 
+		<input type="button" style="margin-left:700px" id="sb_review" value="리뷰 등록하기">
+	</div>
   </body>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
-$('.nav-area-index').on('click', function(){
-  $($('.nav-item').children('ul')).slideDown();
-});
-$('.nav-area-index').on('mouseleave', function(){
-  $($('.nav-item').children('ul')).slideUp();
-});
 
 $(document).ready(function(){
    $.ajax({
@@ -342,6 +331,16 @@ $(document).ready(function(){
       } 
    });
 });
+
+var fileTarget = $('.filebox .upload-hidden');
+fileTarget.on('change', function(){
+	if(window.FileReader){ 
+		var filename = $(this)[0].files[0].name; 
+	} else { 
+		var filename = $(this).val().split('/').pop().split('\\').pop(); 
+	} 
+	$(this).siblings('.upload-name').val(filename); 
+}); 
 
 $('#color_option').change(function(){
    
