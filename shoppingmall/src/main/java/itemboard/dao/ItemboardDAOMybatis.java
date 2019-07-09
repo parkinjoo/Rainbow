@@ -1,5 +1,6 @@
 package itemboard.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -114,6 +115,20 @@ public class ItemboardDAOMybatis implements ItemboardDAO{
 	@Override
 	public void refundItem(int seq) {
 		sqlSession.update("itemboardSQL.refundItem", seq);
+	}
+
+	@Override
+	public List<ItemBasketListDTO> orderList(String stus) {
+		return sqlSession.selectList("itemboardSQL.orderList", stus);
+	}
+
+	@Override
+	public void sendItem(int seq, String stus) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("seq", seq+"");
+		map.put("stus", stus);
+		
+		sqlSession.update("itemboardSQL.sendItem", map);
 	}
 
 

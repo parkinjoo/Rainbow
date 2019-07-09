@@ -286,7 +286,6 @@ $(document).ready(function(){
 								success : function(data){
 									alert('정상적으로 환불요청 처리되었습니다.');
 									location.reload();
-									location.href='/shoppingmall/itemboard/itemboardView.do?itemCode='+items.itemCode+'&categoryCode=${categoryCode}&pg=${pg}'; 
 								}
 							});
 						}
