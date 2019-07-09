@@ -245,14 +245,14 @@
 	
 	</div>
 </div>
-  
+  <form name="reviewForm" id="reviewForm" method="post" enctype="multipart/form-data" action="/shoppingmall/itemboard/review.do" >
 	<table border="0" cellpading="0" cellpacing="0" width="1200">
 		<tr id="review_name">
 			<td colspan="1" align="center">
 				<font color="black" size="2" face="돋움">작성자</font>
 			</td>
 			<td align="left" colspan="1">
-				<input type="text" id="re_input_name" >
+				<input type="text" id="re_name" >
 			</td>
 		</tr>
 		<tr id="review_content">
@@ -282,14 +282,13 @@
 			</td>
 		</tr>	
 	</table>
-
+	</form>
   </body>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
 <script type="text/javascript">
 $(document).ready(function(){
    $.ajax({
@@ -630,6 +629,33 @@ $('#review_txt').click(function(){
 	}		
 });
 
+$('#sb_review').click(function(){
+	if($('.review_txt').val()== '' || $('.review_txt').val()=="로그인후 작성가능합니다"){
+		alert('리뷰를 작성해주세요')
+		
+	}else{
+		
+		$('#reviewForm').submit();
+		
+		/*
+		$.ajax({
+			type: 'POST',
+			url: '/shoppingmall/itemboard/review.do',
+			data: {'name': $('#re_name').val(),
+					'review': $('.review_txt').val(),
+					'img1':$('#img1').val(),
+					'img2':$('#img2').val()},
+			dataType : 'text',
+			success : function(data){
+				alert('리뷰작성 성공')
+			}
+			})
+		*/
+	}
+});
+
+
+
 /*
 $(document).ready(function(){ 
 	var fileTarget = $('#img1'); 
@@ -658,27 +684,8 @@ $(document).ready(function(){
 	
 	//$("label[id='img2']").text(filename);
 });
-	
-	
-$('#sb_review').click(function(){
-	if($('.review_txt').val()== null || $('.review_txt').val()=="로그인후 작성가능합니다"){
-		alert('리뷰를 작성해주세요')
-	}else{
-		$.ajax({
-			type: 'POST',
-			url: '/shoppingmall/itemboard/review.do',
-			data: {'name': ${'#re_input_name'}.val(),
-					'review': ${'.review_txt'}.val(),
-					'img1':${'#img1'}.val(),
-					'img2':${'#img2'}.val()},
-			dataType : 'text',
-			success : function(data){
-				alert('성공')
-			}
-			})
-	}
-})
-*/
+	*/
+
 </script>
 </html>
 

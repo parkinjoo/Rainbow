@@ -44,7 +44,7 @@ public class ItemboardController {
 								  @RequestParam MultipartFile[] img,
 								  Model model) {
 		//filePath 이 부분 통힐하기 전까지 각자 설정하셔야 해요
-		String filePath = "C:\\Spring\\project\\shoppingmall\\src\\main\\webapp\\storage";
+		String filePath = "C:\\Users\\user\\git\\rainbow\\shoppingmall\\src\\main\\webapp\\storage";
 		String fileName;
 		File file;
 		
@@ -384,11 +384,12 @@ public class ItemboardController {
 	}
 	
 	@RequestMapping(value="/review.do", method=RequestMethod.POST)
+	@ResponseBody
 	public String review(@ModelAttribute ReviewDTO reviewDTO,
 						@RequestParam MultipartFile[] img,
 						Model model) {
 		
-		String filePath = "C:\\Spring\\project\\shoppingmall\\src\\main\\webapp\\storage";
+		String filePath = "C:\\Users\\user\\git\\rainbow\\shoppingmall\\src\\main\\webapp\\storage";
 		String fileName;
 		File file;
 		
@@ -420,7 +421,7 @@ public class ItemboardController {
 		}else {
 			reviewDTO.setImg2(null);
 		}
-		
+		System.out.println(reviewDTO);
 		itemboardDAO.reviewWrite(reviewDTO);
 		
 		model.addAttribute("display", "/itemboard/itemboardView.jsp");
