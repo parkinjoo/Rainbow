@@ -15,6 +15,7 @@
 	<input type="hidden" name="initQty" value="" >
 	<input type="hidden" name="salePrice" value="" >
 	<input type="hidden" name="sumPrice" value="" >	
+	<input type="hidden" name="colVal" value="" >	
 </form>
  
   <div id="item-box-itemPage">
@@ -380,7 +381,7 @@ $('#color_option').change(function(){
             }).appendTo($('#size_option'));
             $('<option/>',{
                value : '14',
-               text : 'XL'
+               text : 'X'
             }).appendTo($('#size_option'));
          }else if(color=='col2'){
             $('<option/>',{
@@ -397,7 +398,7 @@ $('#color_option').change(function(){
             }).appendTo($('#size_option'));
             $('<option/>',{
                value : '24',
-               text : 'XL'
+               text : 'X'
             }).appendTo($('#size_option'));
             
          }else if(color=='col3'){
@@ -416,7 +417,7 @@ $('#color_option').change(function(){
             }).appendTo($('#size_option'));
             $('<option/>',{
                value : '34',
-               text : 'XL'
+               text : 'X'
             }).appendTo($('#size_option'));
          }else if(color=='col4'){
             $('<option/>',{
@@ -433,7 +434,7 @@ $('#color_option').change(function(){
             }).appendTo($('#size_option'));
             $('<option/>',{
                value : '44',
-               text : 'XL'
+               text : 'X'
             }).appendTo($('#size_option'));
          }   
       }
@@ -447,6 +448,8 @@ var itemCode = new Array(); // 아이템 코드를 순서대로 넣을 배열
 var colName = new Array();//선택된 컬러를 담을 배열
 
 var sizeName = new Array(); //선택된 사이즈를 담을 배열
+
+var colVal = new Array(); //컬러의 밸류값을 담을 배열
 
 var optionCnt = 0;//각 태그의 고유값을 주기위한 값 1씩 증가함
 
@@ -491,6 +494,7 @@ function listTagAdd(){
 	sizeName.push(sizeText);
 	itemName.push(getItemName);
 	itemCode.push(getItemCode);
+	colVal.push(color);
      $('<p/>',{
         class : 'colorAndSize-itemPage'+optionCnt,
         text : colorText+','+sizeText,    
@@ -613,8 +617,9 @@ $('.purchaseBtn-itemPage').click(function(){
 	var initQtyRe = initQty.join(',');
 	var itemCodeNameRe = itemCode.join(',');
 	var itemNameRe = itemName.join(',');
+	var colValRe = colVal.join(',');
 	
-	
+	document.viewForm.colVal.value=colValRe;
 	document.viewForm.itemCode.value=itemCodeNameRe;
 	document.viewForm.itemName.value=itemNameRe;
 	document.viewForm.colName.value=colNameRe;

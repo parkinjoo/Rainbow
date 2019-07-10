@@ -252,27 +252,20 @@ public class ItemboardController {
 	@RequestMapping(value="/itemBasket.do", method=RequestMethod.POST)
 	@ResponseBody
 	public void itemBasket(@ModelAttribute ItemBasketDTO itemBasketDTO,
+							@RequestParam String colVal,
 							Model model) {
+		String qty = itemBasketDTO.getItemQty();
+		String itemCode = itemBasketDTO.getItemCode();
 		
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("colVal", colVal);
+		map.put("size",itemBasketDTO.getItemSize());
+		map.put("qty",qty);
+		map.put("itemCode",itemCode);
+		itemboardDAO.qtyChg(map);
 	    itemboardDAO.itemBasket(itemBasketDTO);
 	}    
 	
-	/*
-	 * @RequestMapping(value="/itemOrder.do", method=RequestMethod.POST)
-	 * 
-	 * @ResponseBody public void itemBasket(@ModelAttribute ItemOrderDTO
-	 * itemOrderDTO, Model model) {
-	 * 
-	 * System.out.println("order_name="+itemOrderDTO.getOrder_name());
-	 * System.out.println("order_tel =" + itemOrderDTO.getOrder_tel());
-	 * 
-	 * System.out.println("receive_name =" + itemOrderDTO.getReceive_name());
-	 * System.out.println("receive_tel =" + itemOrderDTO.getReceive_tel());
-	 * System.out.println("address="+itemOrderDTO.getAddress());
-	 * System.out.println("message =" + itemOrderDTO.getMessage());
-	 * System.out.println("stus= "+ itemOrderDTO.getStus());
-	 * itemboardDAO.itemOrder(itemOrderDTO); }
-	 */
 	@RequestMapping(value="/basketFlush.do", method=RequestMethod.POST)
 	@ResponseBody
 	public void basketFlush(@RequestParam String id) {
@@ -299,9 +292,11 @@ public class ItemboardController {
 									@RequestParam String imgName,
 									@RequestParam String itemName,
 									@RequestParam String itemCode,
+									@RequestParam String colVal,
 									Model model) {
 		model.addAttribute("title", "구매하기");
 		model.addAttribute("itemCode",itemCode);
+		model.addAttribute("colVal",colVal);
 		model.addAttribute("colName",colName);
 		model.addAttribute("itemName",itemName);
 		model.addAttribute("imgName",imgName);

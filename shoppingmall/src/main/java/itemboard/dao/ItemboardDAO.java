@@ -56,4 +56,6 @@ public interface ItemboardDAO {
 	public ItemBasketListDTO getSeqId(int seq);
 
 	public void refund(Map<String, Object> map);
+
+	public void qtyChg(Map<String, String> map);
 }
