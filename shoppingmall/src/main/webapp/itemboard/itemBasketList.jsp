@@ -56,7 +56,7 @@ $(document).ready(function(){
 											  "<td class='itemList'><div class='test'>"+items.seq+"</div></td>"+
 											  "<td class='itemList'><div class='test'>"+items.itemName+"</div></td>"+
 											  "<td class='itemList'><img src='../storage/"+items.img1+"' style='cursor: pointer; width:100px; height:100px;'></td>"+
-											  "<td class='itemList'><div class='test'>"+items.salePrice+"</div></td>"+
+											  "<td class='itemList'><div class='test'>"+items.salePrice.toLocaleString()+"</div></td>"+
 											  "<td class='itemList'><div class='test'>"+items.itemCol+"</div></td>"+
 											  "<td class='itemList'><div class='test'>"+items.itemQty+"</div></td>"+
 											  "<td class='itemList'><div class='test'>"+items.itemSize+"</div></td>"+
