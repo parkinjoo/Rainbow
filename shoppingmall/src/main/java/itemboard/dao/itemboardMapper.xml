@@ -9,7 +9,7 @@
 	<select id="getItemboardList" parameterType="java.util.Map" resultType="itemboard">
 		select * from
 		(select rownum rn, tt.* from
-		(select * from itemtable where  itemcode like '%'||#{categoryCode }||'%' order by itemcode desc)tt
+		(select * from itemtable join stocktable using(itemcode) where  itemcode like '%'||#{categoryCode }||'%' order by itemcode desc)tt
 		)where rn>=#{startNum} and rn <![CDATA[<=]]> #{endNum}
 	</select>
    
@@ -25,7 +25,7 @@
 	
 	<!-- 장바구니 등록 -->
 	<insert id="itemBasket" parameterType="itembasket">
-		insert into itembasketTable (seq, itemcode, itemname, itemcol, itemqty, registday, id, itemsize, stus) values(seq_itembaskettable.nextval ,#{itemCode}, #{itemName},  #{itemCol}, #{itemQty}, sysdate, #{id}, #{itemSize}, #{stus})
+		insert into itembasketTable (seq, itemcode, itemname, itemcol, itemqty, registday, id, itemsize, stus,order_name, order_tel,receive_name,receive_tel,zipcode,addr1,addr2,message) values(seq_itembaskettable.nextval ,#{itemCode}, #{itemName},  #{itemCol}, #{itemQty}, sysdate, #{id}, #{itemSize}, #{stus},#{order_name},#{order_tel},#{receive_name},#{receive_tel},#{zipcode},#{addr1},#{addr2},#{message})                   
 	</insert>
   
     <!-- 장바구니 리스트 -->
@@ -116,5 +116,36 @@
 	
 	<update id="refundItem" parameterType="int">
 		update itembasketTable set stus='re' where seq=#{seq}
+	</update>
+	
+	<!-- 주문 상품 리스트 -->
+	<select id="orderList" parameterType="String" resultType="itembasketList">
+		select *
+		from itembasketTable join ITEMTABLE using (itemcode)
+		where stus=#{stus}
+		order by seq asc
+	</select>
+	
+	<!-- 상품 보내기 -->
+	<update id="sendItem" parameterType="java.util.Map">
+		update itembasketTable set stus=#{stus} where seq=#{seq}
+	</update>
+	
+	<select id="getSeqId" parameterType="int" resultType="itembasketList">
+		select *
+		from itembasketTable join ITEMTABLE using (itemcode)
+		where seq=#{seq}
+	</select>
+	
+	<update id="refund" parameterType="java.util.Map">
+		begin
+		    update user_table set cash=cash+#{money} where id=#{id};
+		    delete itembasketTable where seq=#{seq};
+		end;
+	</update>
+	
+	<!-- 수량 변경 -->
+	<update id="qtyChg" parameterType="java.util.Map">
+		update stocktable set ${colVal}${size}=${colVal}${size}-#{qty} where itemCode=#{itemCode}
 	</update>
 </mapper>
