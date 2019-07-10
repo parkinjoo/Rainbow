@@ -128,7 +128,7 @@ public class ItemboardController {
 		model.addAttribute("display", "/itemboard/itemBasketList.jsp");
 		return "/main/index";
 	}
-	
+
 	@RequestMapping(value="/getItemboardList.do", method=RequestMethod.POST)
 	public ModelAndView getItemboardList(@RequestParam(required=false, defaultValue="1") String pg, @RequestParam(required=false, defaultValue="") String categoryCode) {
 //		System.out.println("categoryCode = " + categoryCode);
@@ -265,6 +265,27 @@ public class ItemboardController {
 		map.put("itemCode",itemCode);
 		itemboardDAO.qtyChg(map);
 	    itemboardDAO.itemBasket(itemBasketDTO);
+	}   
+	@RequestMapping(value="/itemBasket2.do", method=RequestMethod.POST)
+	@ResponseBody
+	public void itemBasket2(@RequestParam String colVal,
+			@RequestParam String itemCode,
+			@RequestParam String itemName,
+			@RequestParam String itemCol,
+			@RequestParam String itemQty,
+			@RequestParam String itemSize,
+			@RequestParam String Id,
+			@RequestParam String stus,		
+							Model model) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("itemCode", itemCode);
+		map.put("itemName",itemName);
+		map.put("itemCol",itemCol);
+		map.put("itemQty",itemQty);
+		map.put("itemSize",itemSize);
+		map.put("id",Id);
+		map.put("stus",stus);
+	    itemboardDAO.itemBasket2(map);
 	}    
 	
 	@RequestMapping(value="/basketFlush.do", method=RequestMethod.POST)

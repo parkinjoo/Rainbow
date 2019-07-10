@@ -27,6 +27,10 @@
 	<insert id="itemBasket" parameterType="itembasket">
 		insert into itembasketTable (seq, itemcode, itemname, itemcol, itemqty, registday, id, itemsize, stus,order_name, order_tel,receive_name,receive_tel,zipcode,addr1,addr2,message) values(seq_itembaskettable.nextval ,#{itemCode}, #{itemName},  #{itemCol}, #{itemQty}, sysdate, #{id}, #{itemSize}, #{stus},#{order_name},#{order_tel},#{receive_name},#{receive_tel},#{zipcode},#{addr1},#{addr2},#{message})                   
 	</insert>
+	<!-- 장바구니 등록 -->
+	<insert id="itemBasket2" parameterType="java.util.Map">
+		insert into itembasketTable (seq, itemcode, itemname, itemcol, itemqty, registday, id, itemsize, stus) values(seq_itembaskettable.nextval ,#{itemCode}, #{itemName},  #{itemCol}, #{itemQty}, sysdate, #{id}, #{itemSize}, #{stus})                   
+	</insert>
   
     <!-- 장바구니 리스트 -->
 	<select id="getItembasketList" parameterType="java.util.Map" resultType="itembasketList">

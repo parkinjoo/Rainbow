@@ -586,12 +586,13 @@ $('.cartImg-itemPage').click(function(){
 			for(j=0; j<colName.length;j++){
 				$.ajax({
 					type: 'post',
-				    url: '/shoppingmall/itemboard/itemBasket.do',
+				    url: '/shoppingmall/itemboard/itemBasket2.do',
 				    data: {'itemCode':itemCode[j],
 				    		'itemName':itemName[j],
 				      		'itemCol':colName[j],
 				      		'itemQty':initQty[j],
 				      		'itemSize':sizeName[j],
+				      		'colVal':colVal[j],
 							'Id':userId,
 							'stus':'cart'},
 				    success: function(data){

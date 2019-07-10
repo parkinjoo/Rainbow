@@ -157,6 +157,14 @@ public class ItemboardDAOMybatis implements ItemboardDAO{
 		sqlSession.update("itemboardSQL.cashChg", map);
 		
 	}
+
+	@Override
+	public void itemBasket2(Map<String, Object> map) {
+		sqlSession.insert("itemboardSQL.itemBasket2", map);
+		
+	}
+
+	
 	
 
 
