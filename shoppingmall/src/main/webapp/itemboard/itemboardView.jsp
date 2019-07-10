@@ -298,7 +298,7 @@ $(document).ready(function(){
     	  $('#itemCodeDiv').text(data.itemboardDTO.itemCode);
           $('.itemName-itemPage').text(data.itemboardDTO.itemName);
           $('.itemText-itemPage').text(data.itemboardDTO.itemContent);
-          $('.itemPrice-itemPage').text(data.itemboardDTO.salePrice);
+          $('.itemPrice-itemPage').text(data.itemboardDTO.salePrice.toLocaleString());
           var item = data.itemboardDTO.itemName;
           getItemName=item;
           var code = data.itemboardDTO.itemCode;
