@@ -20,7 +20,7 @@
        
         </tbody>
       </table>
-    </div>
+</div>
 
 
     <div class="clientInfo">

@@ -17,4 +17,9 @@ public class ItemBasketListDTO {
 	private String id;
 	private String itemSize;
 	private String registday;
+	private String receive_name;
+	private String receive_tel;
+	private String zipcode;
+	private String addr1;
+	private String addr2;
 }

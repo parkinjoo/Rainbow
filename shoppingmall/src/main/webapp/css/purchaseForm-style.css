@@ -1,5 +1,5 @@
 .purchaseDiv-purchase {
-  width: 90%;
+  width: 80%;
   height: auto;
   margin: 80px auto 30px auto;
   border-bottom: 1px solid black;
@@ -47,14 +47,14 @@
 }
 
 .clientInfo {
-  width: 90%;
+  width: 80%;
   margin: 20px auto 30px auto;
   border-bottom: 1px solid black;
 
 }
 
 .postInfo {
-  width: 90%;
+  width: 80%;
   margin: 20px auto 30px auto;
   border-bottom: 1px solid black;
 

@@ -203,8 +203,8 @@ $(document).ready(function(){
 										  "<td>"+items.itemSize+"</td>"+
 										  "<td>"+items.itemQty+"</td>"+
 										  "<td>"+(parseInt(items.itemQty)*items.salePrice).toLocaleString()+"원</td>"+
-										  "<td>"+items.id+" (010-xxxx-xxxx)</td>"+
-										  "<td>서울 영등포구 xxxx동 xxxx아파트 x동 xxxx호</td>"+
+										  "<td>"+items.receive_name+" ("+items.receive_tel+")</td>"+
+										  "<td>"+items.addr1+" "+items.addr2+"("+items.zipcode+")</td>"+
 										  "<td>"+
 											  "<input type='checkbox'"+
 											  		 "class='sendCheck'"+
@@ -240,8 +240,8 @@ $(document).ready(function(){
 										  "<td>"+items.itemSize+"</td>"+
 										  "<td>"+items.itemQty+"</td>"+
 										  "<td>"+(parseInt(items.itemQty)*items.salePrice).toLocaleString()+"원</td>"+
-										  "<td>"+items.id+" (010-xxxx-xxxx)</td>"+
-										  "<td>서울 영등포구 xxxx동 xxxx아파트 x동 xxxx호</td>"+
+										  "<td>"+items.receive_name+" ("+items.receive_tel+")</td>"+
+										  "<td>"+items.addr1+" "+items.addr2+"("+items.zipcode+")</td>"+
 										  "<td>"+
 											  "<input type='checkbox'"+
 											  		 "class='arrivalCheck'"+
@@ -277,8 +277,8 @@ $(document).ready(function(){
 										  "<td>"+items.itemSize+"</td>"+
 										  "<td>"+items.itemQty+"</td>"+
 										  "<td>"+(parseInt(items.itemQty)*items.salePrice).toLocaleString()+"원</td>"+
-										  "<td>"+items.id+" (010-xxxx-xxxx)</td>"+
-										  "<td>서울 영등포구 xxxx동 xxxx아파트 x동 xxxx호</td>"+
+										  "<td>"+items.receive_name+" ("+items.receive_tel+")</td>"+
+										  "<td>"+items.addr1+" "+items.addr2+"("+items.zipcode+")</td>"+
 										  "<td>"+
 											  "<input type='checkbox'"+
 											  		 "class='refundCheck'"+
