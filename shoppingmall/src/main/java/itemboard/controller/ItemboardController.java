@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import itemboard.bean.ItemBasketDTO;
 import itemboard.bean.ItemBasketListDTO;
+import itemboard.bean.ItemOrderDTO;
 import itemboard.bean.ItemboardDTO;
 import itemboard.bean.ItemboardPaging;
 import itemboard.bean.ReviewDTO;
@@ -247,8 +247,10 @@ public class ItemboardController {
 		return mav;
 		
 	}
-
 	
+	//�옣諛붽뎄�땲
+	@RequestMapping(value="/itemBasket.do", method=RequestMethod.POST)
+	@ResponseBody
 	public void itemBasket(@ModelAttribute ItemBasketDTO itemBasketDTO,
 							@RequestParam String colVal,
 							Model model) {
@@ -261,14 +263,18 @@ public class ItemboardController {
 		map.put("qty",qty);
 		map.put("itemCode",itemCode);
 		itemboardDAO.qtyChg(map);
-	}
+	    itemboardDAO.itemBasket(itemBasketDTO);
+	}    
 	
 	@RequestMapping(value="/basketFlush.do", method=RequestMethod.POST)
 	@ResponseBody
 	public void basketFlush(@RequestParam String id) {
+		
+		
 		itemboardDAO.basketFlush(id);
-	}
-
+		
+		
+	}	
 	@RequestMapping(value="/basketDelete.do", method=RequestMethod.POST)
     @ResponseBody
     public void basketDelete(@RequestParam(value="chkbox[]") List<Integer> seq) {
@@ -286,9 +292,11 @@ public class ItemboardController {
 									@RequestParam String imgName,
 									@RequestParam String itemName,
 									@RequestParam String itemCode,
+									@RequestParam String colVal,
 									Model model) {
 		model.addAttribute("title", "구매하기");
 		model.addAttribute("itemCode",itemCode);
+		model.addAttribute("colVal",colVal);
 		model.addAttribute("colName",colName);
 		model.addAttribute("itemName",itemName);
 		model.addAttribute("imgName",imgName);
@@ -425,5 +433,40 @@ public class ItemboardController {
 		
 		model.addAttribute("display", "/itemboard/itemboardView.jsp");
 		return "/main/index";
+	}
+	
+	@RequestMapping(value="/orderList.do", method=RequestMethod.POST)
+	public ModelAndView orderList(@RequestParam String stus) {
+		
+		ModelAndView mav = new ModelAndView();
+		List<ItemBasketListDTO> list = itemboardDAO.orderList(stus);
+		mav.addObject("list", list);
+		mav.setViewName("jsonView");
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/sendItem.do", method=RequestMethod.POST)
+    @ResponseBody
+    public void sendItem(@RequestParam(value="chkbox[]") List<Integer> seq,
+    					 @RequestParam String stus) {
+    	for(int i=0; i<seq.size(); i++) {
+    		itemboardDAO.sendItem(seq.get(i), stus);
+    	}
+    }
+	
+	@RequestMapping(value="/refund.do", method=RequestMethod.POST)
+    @ResponseBody
+    public void refund(@RequestParam(value="chkbox[]") List<Integer> seq) {
+		for(int i=0; i<seq.size(); i++) {
+			ItemBasketListDTO itemBasketListDTO = itemboardDAO.getSeqId(seq.get(i));
+
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("id", itemBasketListDTO.getId());
+			map.put("money", Integer.parseInt(itemBasketListDTO.getItemQty())*itemBasketListDTO.getSalePrice());
+			map.put("seq", itemBasketListDTO.getSeq());
+			
+			itemboardDAO.refund(map);
+		}
 	}
 }
