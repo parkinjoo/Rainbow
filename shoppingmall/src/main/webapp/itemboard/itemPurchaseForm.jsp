@@ -153,13 +153,13 @@ $(document).ready(function(){
 		'<td><div class="purchaseText"><div class="purchaseText2">'+itemName[i]+'</div></div></td>'+
 		'<td><div class="purchaseText size-pur"><div class="purchaseText2">'+colName[i]+'/'+sizeName[i]+'</div></div></td>'+
 		'<td><div class="purchaseText account-pur"><div class="purchaseText2">'+initQty[i]+'</div></div></td>'+
-		'<td><div class="purchaseText price-pur"><div class="purchaseText2">'+initQty[i]*salePrice+'</div></div></td>'+
+		'<td><div class="purchaseText price-pur"><div class="purchaseText2">'+(initQty[i]*salePrice).toLocaleString()+'</div></div></td>'+
 		'<td><div class="purchaseText price-pur"><div class="purchaseText2">200</div></div></td>'+
 		'</tr>'
 		fund+=200;
 	}
 	tmp=tmp+
-	'<tr><td></td><td></td><td></td><td></td><td>총가격 : '+sumPrice+'</td><td>총 마일리지 : '+fund+'</td><tr>'
+	'<tr><td></td><td></td><td></td><td></td><td>총가격 : '+sumPrice.toLocaleString()+'</td><td>총 마일리지 : '+fund.toLocaleString()+'</td><tr>'
 	
 	$('#superList').append(tmp);
 
