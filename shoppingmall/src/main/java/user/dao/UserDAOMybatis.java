@@ -95,5 +95,7 @@ public class UserDAOMybatis implements UserDAO {
 	public void charge(String id) {
 		sqlSession.update("userSQL.charge", id);
 	}
+
+
 	
 }
