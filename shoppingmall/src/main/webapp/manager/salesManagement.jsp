@@ -7,12 +7,12 @@
 		<!-- 구분선 -->
 				<br><br>
 				<div class="tab-pane fade show active" id="pills-home-dailySales">
-					<div style="text-align:center; font-weight:40;">일별 매출 현황</div>
+					<div style="text-align:center; font-weight:40;">일 매출 현황</div>
 					<br>
 					<div id="chart" style="width:1350px;height:424px;"></div>
 					<br><br><hr><br><br>
 					
-					<div style="text-align:center; font-weight:40;">월별 매출 현황</div>
+					<div style="text-align:center; font-weight:40;">월 매출 현황</div>
 					<br>
 					<div id="chart2" style="width:1350px;height:424px;"></div>
 				</div>
