@@ -533,7 +533,7 @@ function listTagAdd(){
      $('<p/>',{
         id : 'price-itemPage'+optionCnt,
         class : 'price-itemPage',
-        text : salePrice
+        text : salePrice.toLocaleString()
      }).appendTo($('.middleDiv2'));
      
      $('<hr>', {
@@ -542,7 +542,7 @@ function listTagAdd(){
      
      optionCnt++; //고유번호 증가
      sumPrice = sumPrice + salePrice; //새로운 항목 추가될때마다 최종합계 추가
-     $('.totalPriceText-itemPage').text(sumPrice);
+     $('.totalPriceText-itemPage').text(sumPrice.toLocaleString());
 };
 
 //증가
