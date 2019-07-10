@@ -27,16 +27,12 @@
 		
 		<!-- salesManagement.jsp Include Area -->
 			<jsp:include page="${managerSalesDisplay }"/>
-			
-		<!-- salesManagement.jsp Include Area -->
-		<!-- itemManagement.jsp Include Area -->
-		
+
 		<!-- itemManagement.jsp Include Area -->
 			<jsp:include page="${managerOrderDisplay }"/>
-		<!-- itemManagement.jsp Include Area -->
+
 			
 	</div>
-				
 </div>
 
 
@@ -47,20 +43,17 @@
 		<!-- modalPage.jsp Include Area  -->
 			<jsp:include page="${itemModalPageDisplay }"/>
 		<!-- modalPage.jsp Include Area  -->
-
 		
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>		
-<script type="text/javascript" src="../js/jquery.jqplot.js"></script>
-<script type="text/javascript" src="../js/plugins/jqplot.pointLabels.js"></script>
-<script type="text/javascript" src="../js/plugins/jqplot.categoryAxisRenderer.js"></script>
-<script type="text/javascript" src="../js/plugins/jqplot.barRenderer.js"></script>
-<script type="text/javascript">
+<script>
 $(document).ready(function(){
-
 	var managerPageOk = '${managerPageOk}';
 	if (managerPageOk=='') {
 		location.href="/shoppingmall/manager/managerPageForm.do";
+	}else {
+		return false;
 	}
-
-}); 
+});
 </script>
+
+

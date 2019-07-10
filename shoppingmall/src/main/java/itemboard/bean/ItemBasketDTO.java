@@ -2,7 +2,6 @@ package itemboard.bean;
 
 import org.springframework.stereotype.Component;
 
-
 import lombok.Data;
 
 @Data
@@ -15,16 +14,7 @@ public class ItemBasketDTO {
 	private String itemSize;
 	private String registday;
 	private String id;
-	private String order_name;
-	private String order_tel;
-	private String receive_name;
-	private String receive_tel;
-	private String addr1;
-	private String zipcode;
-	private String addr2;
-	private String message;
 	private String stus;
-	private int seq;
 
 	
 
