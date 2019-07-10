@@ -140,13 +140,34 @@ body {
 
 .card-title-index {
   font-size: 0.8rem;
-  margin: 0 0 6px 0;
+  margin: 0 0 1px 0;
 }
 
 .card-text {
   margin: 0;
   font-size: 0.7rem;
 }
+
+.card-text-name {
+  display: block;
+  font-size: 12px;
+  color: #1c1c1c;
+  line-height: 17px;
+  text-overflow: ellipsis;
+  world-wrap: normal;
+  text-align: left;
+}
+
+.card-text-size {
+	font-size: 11px;
+	color: #595959;
+}
+
+.card-text-price {
+	font-size: 14px;
+	font-weight: 500;
+}
+
 .price-index {
   margin: 0;
   display: inline;

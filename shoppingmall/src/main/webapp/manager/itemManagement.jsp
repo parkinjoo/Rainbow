@@ -63,8 +63,8 @@ $(document).ready(function() {
 									  "<td>"+items.itemCode+"</td>"+
 									  "<td>"+items.itemName+"</td>"+
 									  "<td><img src='../storage/"+items.img1+"' style='cursor: pointer; width:50px; height:50px;'></td>"+
-									  "<td>"+items.costPrice+"</td>"+
-									  "<td>"+items.salePrice+"</td>"+
+									  "<td>"+items.costPrice.toLocaleString()+"</td>"+
+									  "<td>"+items.salePrice.toLocaleString()+"</td>"+
 									  "<td><button type='button'"+ 
 						  			  "class='btn btn-secondary modifyBtn-itemList'"+
 						  			  "'>수정</button></td>"+
@@ -107,13 +107,16 @@ $(document).ready(function() {
 							$('#costPrice').val(data.itemboardDTO.costPrice);
 							
 							$('#col1').val(data.itemboardDTO.col1);
-							/*
 							$('#col1s').val(data.itemboardDTO.col1s);
 							$('#col1m').val(data.itemboardDTO.col1m);
 							$('#col1l').val(data.itemboardDTO.col1l);
 							$('#col1x').val(data.itemboardDTO.col1x);
 							$('#col1f').val(data.itemboardDTO.col1f);
-							$('#col1tot').val(data.itemboardDTO.col1tot);
+							$('#col1tot').val(data.itemboardDTO.col1s
+												+data.itemboardDTO.col1m
+												+data.itemboardDTO.col1l
+												+data.itemboardDTO.col1x
+												+data.itemboardDTO.col1f);
 							
 							$('#col2').val(data.itemboardDTO.col2);
 							$('#col2s').val(data.itemboardDTO.col2s);
@@ -121,7 +124,11 @@ $(document).ready(function() {
 							$('#col2l').val(data.itemboardDTO.col2l);
 							$('#col2x').val(data.itemboardDTO.col2x);
 							$('#col2f').val(data.itemboardDTO.col2f);
-							$('#col2tot').val(data.itemboardDTO.col2tot);
+							$('#col2tot').val(data.itemboardDTO.col2s
+												+data.itemboardDTO.col2m
+												+data.itemboardDTO.col2l
+												+data.itemboardDTO.col2x
+												+data.itemboardDTO.col2f);
 							
 							$('#col3').val(data.itemboardDTO.col3);
 							$('#col3s').val(data.itemboardDTO.col3s);
@@ -129,7 +136,11 @@ $(document).ready(function() {
 							$('#col3l').val(data.itemboardDTO.col3l);
 							$('#col3x').val(data.itemboardDTO.col3x);
 							$('#col3f').val(data.itemboardDTO.col3f);
-							$('#col3tot').val(data.itemboardDTO.col3tot);
+							$('#col3tot').val(data.itemboardDTO.col3s
+												+data.itemboardDTO.col3m
+												+data.itemboardDTO.col3l
+												+data.itemboardDTO.col3x
+												+data.itemboardDTO.col3f);
 							
 							$('#col4').val(data.itemboardDTO.col4);
 							$('#col4s').val(data.itemboardDTO.col4s);
@@ -137,8 +148,39 @@ $(document).ready(function() {
 							$('#col4l').val(data.itemboardDTO.col4l);
 							$('#col4x').val(data.itemboardDTO.col4x);
 							$('#col4f').val(data.itemboardDTO.col4f);
-							$('#col4tot').val(data.itemboardDTO.col4tot);
-							*/
+							$('#col4tot').val(data.itemboardDTO.col4s
+												+data.itemboardDTO.col4m
+												+data.itemboardDTO.col4l
+												+data.itemboardDTO.col4x
+												+data.itemboardDTO.col4f);
+							
+							
+							$('#s').val(data.itemboardDTO.col1s
+										+data.itemboardDTO.col2s
+										+data.itemboardDTO.col3s
+										+data.itemboardDTO.col4s);
+							
+							$('#m').val(data.itemboardDTO.col1m
+										 +data.itemboardDTO.col2m
+										 +data.itemboardDTO.col3m
+									   	 +data.itemboardDTO.col4m);
+							
+							$('#l').val(data.itemboardDTO.col1l
+										+data.itemboardDTO.col2l
+									 	+data.itemboardDTO.col3l
+									   	+data.itemboardDTO.col4l);
+							
+							$('#x').val(data.itemboardDTO.col1x
+										+data.itemboardDTO.col2x
+									 	+data.itemboardDTO.col3x
+									   	+data.itemboardDTO.col4x);
+								
+							$('#f').val(data.itemboardDTO.col1f
+										+data.itemboardDTO.col2f
+									 	+data.itemboardDTO.col3f
+									   	+data.itemboardDTO.col4f);
+							
+							$('#totQty').val(data.itemboardDTO.totQty);
 							
 							$('#itemContent').val(data.itemboardDTO.itemContent);
 							

@@ -10,7 +10,13 @@
 		<li class="nav-item"><a class="nav-link" data-toggle="tab"
 			href="#item-management" role="tab">상품 관리</a></li>
 		<li class="nav-item"><a class="nav-link" data-toggle="tab"
+<<<<<<< HEAD
 			href="#sales-management" role="tab" id="clickTest">매출 관리(개발 보류)</a></li>
+=======
+			href="#contact" role="tab">매출 관리(개발 보류)</a></li>
+		<li class="nav-item"><a class="nav-link" data-toggle="tab"
+			href="#order-management" role="tab">주문 관리</a></li>
+>>>>>>> refs/heads/master
 	</ul>
 	
 	<div class="tab-content" id="myTabContent">
@@ -21,11 +27,19 @@
 		
 		<!-- itemManagement.jsp Include Area -->
 			<jsp:include page="${managerItemDisplay }"/>
+<<<<<<< HEAD
 		<!-- itemManagement.jsp Include Area -->	
 		
 		<!-- salesManagement.jsp Include Area -->
 			<jsp:include page="${managerSalesDisplay }"/>
 		<!-- salesManagement.jsp Include Area -->
+=======
+		<!-- itemManagement.jsp Include Area -->
+		
+		<!-- itemManagement.jsp Include Area -->
+			<jsp:include page="${managerOrderDisplay }"/>
+		<!-- itemManagement.jsp Include Area -->
+>>>>>>> refs/heads/master
 			
 	</div>
 				

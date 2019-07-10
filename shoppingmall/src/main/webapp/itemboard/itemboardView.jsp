@@ -2,10 +2,27 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<<<<<<< HEAD
  
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/itemPage-style.css">
+=======
+  <link rel="stylesheet" href="../css/itemPage-style.css">
+  <body>
+  
+  <form name="viewForm" method="post" action="/shoppingmall/itemboard/itemPurchaseForm.do">
+	<input type="hidden" name="imgName" value="${itemboardDTO.img1}" >
+	<input type="hidden" name="itemCode" value="" >
+	<input type="hidden" name="itemName" value="">
+	<input type="hidden" name="colName" value="" >
+	<input type="hidden" name="sizeName" value="" >
+	<input type="hidden" name="initQty" value="" >
+	<input type="hidden" name="salePrice" value="" >
+	<input type="hidden" name="sumPrice" value="" >	
+	<input type="hidden" name="colVal" value="" >	
+</form>
+>>>>>>> refs/heads/master
  
   <div id="item-box-itemPage">
     <div class="left-box-itemPage" style="background-image:url('../storage/${itemboardDTO.img1}')">
@@ -306,7 +323,11 @@ $('#color_option').change(function(){
             }).appendTo($('#size_option'));
             $('<option/>',{
                value : '14',
+<<<<<<< HEAD
                text : 'XL 수량:'+data.itemboardDTO.col1x
+=======
+               text : 'X'
+>>>>>>> refs/heads/master
             }).appendTo($('#size_option'));
          }else if(color=='col2'){
             $('<option/>',{
@@ -323,7 +344,11 @@ $('#color_option').change(function(){
             }).appendTo($('#size_option'));
             $('<option/>',{
                value : '24',
+<<<<<<< HEAD
                text : 'XL 수량:'+data.itemboardDTO.col2x
+=======
+               text : 'X'
+>>>>>>> refs/heads/master
             }).appendTo($('#size_option'));
             
          }else if(color=='col3'){
@@ -342,7 +367,11 @@ $('#color_option').change(function(){
             }).appendTo($('#size_option'));
             $('<option/>',{
                value : '34',
+<<<<<<< HEAD
                text : 'XL 수량:'+data.itemboardDTO.col3x
+=======
+               text : 'X'
+>>>>>>> refs/heads/master
             }).appendTo($('#size_option'));
          }else if(color=='col4'){
             $('<option/>',{
@@ -359,7 +388,11 @@ $('#color_option').change(function(){
             }).appendTo($('#size_option'));
             $('<option/>',{
                value : '44',
+<<<<<<< HEAD
                text : 'XL 수량:'+data.itemboardDTO.col4x
+=======
+               text : 'X'
+>>>>>>> refs/heads/master
             }).appendTo($('#size_option'));
          }   
       }
@@ -367,7 +400,19 @@ $('#color_option').change(function(){
    });    
 });
 
+<<<<<<< HEAD
 var optionCnt = 1;//각 태그의 고유값을 주기위한 값 1씩 증가함
+=======
+var itemCode = new Array(); // 아이템 코드를 순서대로 넣을 배열
+
+var colName = new Array();//선택된 컬러를 담을 배열
+
+var sizeName = new Array(); //선택된 사이즈를 담을 배열
+
+var colVal = new Array(); //컬러의 밸류값을 담을 배열
+
+var optionCnt = 0;//각 태그의 고유값을 주기위한 값 1씩 증가함
+>>>>>>> refs/heads/master
 
 var salePrice = ${itemboardDTO.salePrice }; 
 
@@ -429,6 +474,67 @@ $('#size_option').change(function(){
    }
 });
 
+<<<<<<< HEAD
+=======
+function listTagAdd(){
+	var colorText = $('#color_option option:selected').text();
+ 	var sizeText = $('#size_option option:selected').text();
+    var color= $('#color_option').val();
+    var size = $('#size_option').val();
+	//수량 선택을 할 태그 생성
+    colName.push(colorText);
+	sizeName.push(sizeText);
+	itemName.push(getItemName);
+	itemCode.push(getItemCode);
+	colVal.push(color);
+     $('<p/>',{
+        class : 'colorAndSize-itemPage'+optionCnt,
+        text : colorText+','+sizeText,    
+        style : 'font-weight: bold; margin-bottom: 4px;'
+     }).appendTo($('.middleDiv2'));
+     
+     $('<input/>',{
+        type : 'text',
+        class : 'itemAccount-itemPage',
+        style : 'width: 50px; height: 35px; text-align: center;',
+        id : 'itemAccount-itemPage'+optionCnt,
+        step : '1',
+        min: '1',
+        max: '0',
+        size: '2',
+        value : '1'
+     }).appendTo($('.middleDiv2'));
+     
+     $('<button/>',{
+        type : 'button',
+        id : 'plus'+optionCnt,
+        class : 'accountBtn-itemPage plus',
+        text : '+'
+     }).appendTo($('.middleDiv2'));
+     
+     $('<button/>',{
+        type : 'button',
+        id : 'minus'+optionCnt,
+        class : 'accountBtn-itemPage minus',
+        text : '-'
+     }).appendTo($('.middleDiv2'));
+     
+     $('<p/>',{
+        id : 'price-itemPage'+optionCnt,
+        class : 'price-itemPage',
+        text : salePrice
+     }).appendTo($('.middleDiv2'));
+     
+     $('<hr>', {
+    	 
+     }).appendTo($('.middleDiv2'));
+     
+     optionCnt++; //고유번호 증가
+     sumPrice = sumPrice + salePrice; //새로운 항목 추가될때마다 최종합계 추가
+     $('.totalPriceText-itemPage').text(sumPrice);
+};
+
+>>>>>>> refs/heads/master
 //증가
 $(document).on('click','.plus',function(){
    var id = $(this).attr('id');
@@ -487,5 +593,40 @@ $('.cartImg-itemPage').click(function(){
             location.href = "/shoppingmall/user/loginForm.do";
    }
 });
+<<<<<<< HEAD
+=======
+
+//buy now 버튼
+$('.purchaseBtn-itemPage').click(function(){
+	if('${userDTO.id}'!=''){
+		var initQty = new Array(); //추가해준 옵션들의 수량을 담을 배열
+		
+		for(i=0; i<colName.length;i++)
+			initQty.push($('#itemAccount-itemPage'+i).val());
+		
+		//히든 버튼에 값을 넣어 보내주기 
+		var colNameRe = colName.join(',');
+		var sizeNameRe = sizeName.join(',');
+		var initQtyRe = initQty.join(',');
+		var itemCodeNameRe = itemCode.join(',');
+		var itemNameRe = itemName.join(',');
+		var colValRe = colVal.join(',');
+		
+		document.viewForm.colVal.value=colValRe;
+		document.viewForm.itemCode.value=itemCodeNameRe;
+		document.viewForm.itemName.value=itemNameRe;
+		document.viewForm.colName.value=colNameRe;
+		document.viewForm.sizeName.value=sizeNameRe;
+		document.viewForm.initQty.value=initQtyRe;
+		document.viewForm.salePrice.value=salePrice;
+		document.viewForm.sumPrice.value=sumPrice;
+		document.viewForm.submit();
+	}
+	else{
+		alert('로그인해주세요');
+	}
+});
+
+>>>>>>> refs/heads/master
 </script>
 

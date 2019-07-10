@@ -20,7 +20,7 @@
 	
 	<!-- 모달창으로 상품 상세 정보 불러오기 -->
 	<select id="getItemInfo" parameterType="String" resultType="itemboard">
-		select * from itemtable where itemCode = #{itemCode}
+		select * from itemtable join stocktable using(itemcode) where itemCode = #{itemCode}
 	</select>
 	
 	<!-- 물품 등록 -->
@@ -44,14 +44,14 @@
    
    <!-- 물품 리스트 -->
    <select id="getItemboardList" resultType="itemboard">
- 	  select * from itemtable
+ 	  select * from itemtable join stocktable using(itemcode)
    </select>
    
      <!-- 신규 상품 리스트 , 8 개 정도만 뿌림-->
     <select id="getIndexBodyNewList" resultType="itemboard">
  		 select rownum , tt.* from 
- 		 (select * from itemtable order by registday desc)tt where rownum<![CDATA[<]]>9
-   </select>
+ 		 (select * from itemtable join stocktable using(itemcode) order by registday desc)tt where rownum<![CDATA[<]]>9
+    </select>
    
    	<!-- 아이템 선택 삭제 -->
 	<delete id="deleteItemboard" parameterType="String">

@@ -1,3 +1,10 @@
+h4 {
+  width: 100%;
+  margin: 50px auto 4px auto;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+}
+
 .manager-managerPage {
   width: 82%;
   margin: 50px auto 0 auto;

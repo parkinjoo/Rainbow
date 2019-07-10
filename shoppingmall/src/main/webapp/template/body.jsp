@@ -86,6 +86,7 @@ $(document).ready(function(){
 		dataType : 'json',
 		success : function(data){	
 			$.each(data.list, function(index,items){
+<<<<<<< HEAD
 				$('#bestItems').append("</h2><div class='card card-index' style='width: 18rem;'>"+
 									  "<img src='../storage/"+items.img1+"' class='card-img-top' id='"+items.itemCode+"' style='cursor: pointer;'>"+
 									  "<div class='card-body'>"+
@@ -96,6 +97,24 @@ $(document).ready(function(){
 									  "<img src='../images/cart_image.png' class='cartImg'></p>"+						
 									  "</div>"+
 									  "</div>");
+=======
+				var size;
+				if(items.col1f == 0) {
+					size = "S~XL(90~105)";
+				} else {
+					size = "FREE";
+				}
+				
+				 $('#bestItems').append("</h2><div class='card card-index' style='width: 18rem;'>"+
+                         "<img src='../storage/"+items.img1+"' class='card-img-top' id='"+items.itemCode+"' style='cursor: pointer;'>"+
+                         "<div class='card-body'>"+
+                         "<h5 class='card-text card-text-name'>"+items.itemName+"</h5>"+
+						 "<p class='card-text card-text-size'>"+size+"</p><br>"+
+						 "<p class='card-text card-text-price'>"+items.salePrice.toLocaleString()+"</p>"+
+                         "<a class='reserveItem-index' href='#'><img src='../images/cart_image.png' class='cartImg'></a>"+                  
+                         "</div>"+
+                         "</div>");
+>>>>>>> refs/heads/master
 				
 				//이미지보기
 				$('#'+items.itemCode).click(function(){
@@ -111,8 +130,16 @@ $(document).ready(function(){
 		dataType : 'json',
 		success : function(data){	
 			$.each(data.list, function(index,items){
+				var size;
+				if(items.col1f == 0) {
+					size = "S~XL(90~105)";
+				} else {
+					size = "FREE";
+				}
+				
 				if(index<4){
 					$('#new_itemList').append("</h2><div class='card card-index' style='width: 18rem;'>"+
+<<<<<<< HEAD
 							  "<img src='../storage/"+items.img1+"' class='card-img-top' id='"+items.itemCode+"' style='cursor: pointer;'>"+
 							  "<div class='card-body'>"+
 							  "<h5 class='card-title-index'>"+items.itemCode+"</h5>"+
@@ -122,7 +149,19 @@ $(document).ready(function(){
 							  "<img src='../images/cart_image.png' class='cartImg'>"+						
 							  "</div>"+
 							  "</div>");	
+=======
+		                       "<img src='../storage/"+items.img1+"' class='card-img-top' id='"+items.itemCode+"' style='cursor: pointer;'>"+
+		                       "<div class='card-body'>"+
+		                       "<h5 class='card-text card-text-name'>"+items.itemName+"</h5>"+
+								  "<p class='card-text card-text-size'>"+size+"</p><br>"+
+								  "<p class='card-text card-text-price'>"+items.salePrice.toLocaleString()+"</p>"+
+		                       "<a class='reserveItem-index' href='#'><img src='../storage/new_icon.gif' class='newImg'><img src='../images/cart_image.png' class='cartImg cartImg1'></a>"+                  
+		                       "</div>"+
+		                       "</div>");
+					
+>>>>>>> refs/heads/master
 				}else {
+<<<<<<< HEAD
 					$('#new_itemList2').append("</h2><div class='card card-index' style='width: 18rem;'>"+
 							  "<img src='../storage/"+items.img1+"' class='card-img-top' id='"+items.itemCode+"' style='cursor: pointer;'>"+
 							  "<div class='card-body'>"+
@@ -134,6 +173,18 @@ $(document).ready(function(){
 							  "</div>"+
 							  "</div>");
 				}
+=======
+				 $('#new_itemList2').append("</h2><div class='card card-index' style='width: 18rem;'>"+
+	                       "<img src='../storage/"+items.img1+"' class='card-img-top' id='"+items.itemCode+"' style='cursor: pointer;'>"+
+	                       "<div class='card-body'>"+
+	                       "<h5 class='card-text card-text-name'>"+items.itemName+"</h5>"+
+	                       "<p class='card-text card-text-size'>"+size+"</p><br>"+
+	                       "<p class='card-text card-text-price'>"+items.salePrice.toLocaleString()+"</p>"+
+	                       "<a class='reserveItem-index' href='#'><img src='../storage/new_icon.gif' class='newImg'><img src='../images/cart_image.png' class='cartImg'></a>"+                  
+	                       "</div>"+
+	                       "</div>");
+	            }
+>>>>>>> refs/heads/master
 				//이미지보기
 				$('#'+items.itemCode).click(function(){
 					location.href='/shoppingmall/itemboard/itemboardView.do?itemCode='+items.itemCode+'&categoryCode=${categoryCode}&pg=${pg}';     
