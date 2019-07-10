@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
 
-  <link rel="stylesheet" href="../css/itemPage-style.css">
-  <body>
+<link rel="stylesheet" href="../css/itemPage-style.css">
   
-  <form name="viewForm" method="post" action="/shoppingmall/itemboard/itemPurchaseForm.do">
+<form name="viewForm" method="post" action="/shoppingmall/itemboard/itemPurchaseForm.do">
 	<input type="hidden" name="imgName" value="${itemboardDTO.img1}" >
 	<input type="hidden" name="itemCode" value="" >
 	<input type="hidden" name="itemName" value="">
@@ -235,46 +233,44 @@
 	<div class="tab-content" id="myTabContent">
 	
 	</div>
-</div>
+<!-- </div> -->
   
-	<table border="0" cellpading="0" cellpacing="0" width="1200">
-		<tr id="review_name">
-			<td colspan="1" align="center">
-				<font color="black" size="2" face="돋움">작성자</font>
-			</td>
-			<td align="left" colspan="1">
-				<input type="text" id="re_input_name" >
-			</td>
-		</tr>
-		<tr id="review_content">
-			<td align="center" colspan="1" height="30">
-				<font color="black" size="2" face="돋움">리뷰 내용</font>
-			</td>
-			<td height="10" colspan="2">
-				<textarea class="review_txt" id="review_txt" placeholder="로그인후 작성가능합니다"></textarea>
-			</td>
-		</tr>
-		<tr>
-			<td align="center" colspan="1" height="20">
-				<font color="black" size="2" face="돋움">사진 등록</font>
-			<td height="10" colspan="2">
-				<input type="file"  name="img" id="img1">
-				
-		</tr>
-		<tr>
-			<td align="center" colspan="1" height="20">
-				<font color="black" size="2" face="돋움">사진 등록</font>
-			<td height="10" colspan="2">
-				<input type="file" class="custom-file-input" name="img" id="img2">
-		</tr>
-		<tr>
-			<td align="right" colspan="3">
-				<input type="button" id="sb_review" value="리뷰 등록하기">
-			</td>
-		</tr>	
-	</table>
-
-  </body>
+<table border="0" cellpading="0" cellpacing="0" width="1200">
+	<tr id="review_name">
+		<td colspan="1" align="center">
+			<font color="black" size="2" face="돋움">작성자</font>
+		</td>
+		<td align="left" colspan="1">
+			<input type="text" id="re_input_name" >
+		</td>
+	</tr>
+	<tr id="review_content">
+		<td align="center" colspan="1" height="30">
+			<font color="black" size="2" face="돋움">리뷰 내용</font>
+		</td>
+		<td height="10" colspan="2">
+			<textarea class="review_txt" id="review_txt" placeholder="로그인후 작성가능합니다"></textarea>
+		</td>
+	</tr>
+	<tr>
+		<td align="center" colspan="1" height="20">
+			<font color="black" size="2" face="돋움">사진 등록</font>
+		<td height="10" colspan="2">
+			<input type="file"  name="img" id="img1">
+			
+	</tr>
+	<tr>
+		<td align="center" colspan="1" height="20">
+			<font color="black" size="2" face="돋움">사진 등록</font>
+		<td height="10" colspan="2">
+			<input type="file" class="custom-file-input" name="img" id="img2">
+	</tr>
+	<tr>
+		<td align="right" colspan="3">
+			<input type="button" id="sb_review" value="리뷰 등록하기">
+		</td>
+	</tr>	
+</table>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
