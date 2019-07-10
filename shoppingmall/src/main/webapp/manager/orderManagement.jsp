@@ -29,7 +29,7 @@
 			</div>
 			
 			<div class="deleteBtnDiv-managerPage">
-				<input type="button" class="sendBtn-managerPage" name="sendBtn"
+				<input type="button" class="sendBtn-managerPage selected" name="sendBtn"
 					value="선택 보내기" id="selectedItemSendBtn">
 			</div>
 			<form>
@@ -84,7 +84,7 @@
 			id="pills-home">
 			
 			<div class="deleteBtnDiv-managerPage">
-				<input type="button" class="arrivalBtn-managerPage" name="arrivalBtn"
+				<input type="button" class="arrivalBtn-managerPage selected" name="arrivalBtn"
 					value="선택 도착완료" id="selectedItemArrivalBtn">
 			</div>
 			<form>
@@ -138,7 +138,7 @@
 			id="pills-home">
 			
 			<div class="deleteBtnDiv-managerPage">
-				<input type="button" class="refundBtn-managerPage" name="refundlBtn"
+				<input type="button" class="refundBtn-managerPage selected" name="refundlBtn"
 					value="선택 환불완료" id="selectedItemRefundBtn">
 			</div>
 			<form>
