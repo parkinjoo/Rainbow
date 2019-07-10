@@ -102,9 +102,9 @@
 
     </div>
 </header>
-  
- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
- <script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+ <script> 
  
  //중앙 상단 로고 이미지 버튼을 누르면 메인페이로 회귀
  $('#logoImg-index').click(function(){	

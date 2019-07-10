@@ -57,5 +57,28 @@
 	<delete id="deleteItemboard" parameterType="String">
 		delete from itemtable where itemCode = #{itemCode}
 	</delete>
+	
+	<!-- 일별 통계 -->	
+	<select id="getItemcode" resultType="String">
+		select itemcode from itemtable order by registday
+	</select>
+	
+	<select id="getToday" parameterType="String" resultType="itemboard.bean.ChartDTO">
+		select itemcode, saleprice,to_char(registday, 'yyyy"."MM"."dd') as registday from itemtable where registday like '%'||#{date }||'%'
+	</select>
+	
+	<!-- 월별 통계 -->
+	<select id="getDate" resultType="String">
+		SELECT TO_CHAR(TO_DATE('2019.07.01', 'yyyy.mm.dd') + LEVEL - 1, 'yyyy.mm.dd')
+		FROM DUAL CONNECT BY TO_DATE('2019.07.01', 'yyyy.mm.dd') + LEVEL - 1 <![CDATA[<]]>= TO_DATE('2019.07.31', 'yyyy.mm.dd')
+	</select>
+	
+	<select id="getDate2" resultType="itemboard.bean.ChartDTO">
+	 select aa.saleprice as saleprice ,tt.* from 
+	 (select registday , sum(saleprice) as saleprice from
+	(select to_char(registday, 'yyyy"."MM"."dd') as registday , sum(saleprice) as saleprice from itemtable group by registday) group by registday)aa,
+	(SELECT TO_CHAR(TO_DATE('2019.07.01', 'yyyy.mm.dd') + LEVEL - 1, 'yyyy.mm.dd') as data FROM DUAL 
+	CONNECT BY  TO_DATE('2019.07.01', 'yyyy.mm.dd') + LEVEL - 1 <![CDATA[<]]>= TO_DATE('2019.07.31', 'yyyy.mm.dd'))tt where tt.data=aa.registday order by 2
+	</select>
    
 </mapper>

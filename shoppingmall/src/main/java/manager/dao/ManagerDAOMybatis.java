@@ -1,12 +1,12 @@
 package manager.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import itemboard.bean.ChartDTO;
 import itemboard.bean.ItemboardDTO;
 import user.bean.UserDTO;
 
@@ -56,7 +56,24 @@ public class ManagerDAOMybatis implements ManagerDAO {
 		return sqlSession.selectOne("managerSQL.getItemInfo", itemCode);
 	}
 
+	@Override
+	public List<String> getDate() {
+		return sqlSession.selectList("managerSQL.getDate");
+	}
 
-
+	@Override
+	public List<String> getItemcode() {
+		return sqlSession.selectList("managerSQL.getItemcode");
+	}
+	
+	@Override
+	public List<ChartDTO> getToday(String date) {
+		return sqlSession.selectList("managerSQL.getToday",date);
+	}
+	
+	@Override
+	public List<ChartDTO> getDate2() {
+		return sqlSession.selectList("managerSQL.getDate2");
+	}
 
 }

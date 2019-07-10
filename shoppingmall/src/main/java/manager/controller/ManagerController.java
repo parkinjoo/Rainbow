@@ -3,6 +3,8 @@ package manager.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import itemboard.bean.ChartDTO;
 import itemboard.bean.ItemboardDTO;
-import itemboard.dao.ItemboardDAO;
 import manager.dao.ManagerDAO;
 import user.bean.UserDTO;
 
@@ -30,8 +32,8 @@ public class ManagerController {
 	@Autowired
 	private ManagerDAO managerDAO;
 	
-	@Autowired
-	private ItemboardDAO itemboardDAO;
+	private Calendar cal = Calendar.getInstance();
+	
 	
 	@RequestMapping(value="/managerPageForm.do")
 	public String managerPageForm() {
@@ -43,6 +45,7 @@ public class ManagerController {
 		model.addAttribute("title", "관리자 페이지");
 		model.addAttribute("managerUserDisplay", "/manager/userManagement.jsp");
 		model.addAttribute("managerItemDisplay", "/manager/itemManagement.jsp");
+		model.addAttribute("managerSalesDisplay", "/manager/salesManagement.jsp");
 		model.addAttribute("managerOrderDisplay", "/manager/orderManagement.jsp");
 		model.addAttribute("userModalPageDisplay", "/manager/userModalPage.jsp");
 		model.addAttribute("itemModalPageDisplay", "/manager/itemModalPage.jsp");
@@ -91,12 +94,9 @@ public class ManagerController {
 	@RequestMapping(value="/itemboardWrite.do", method=RequestMethod.POST)
 	public String itemboardWrite(@ModelAttribute ItemboardDTO itemboardDTO, @RequestParam MultipartFile[] img, Model model) {
 		//filePath 이 부분 통힐하기 전까지 각자 설정하셔야 해요
-		String filePath = "C:\\Spring\\project\\shoppingmall\\src\\main\\webapp\\storage";
+		String filePath = "C:\\Users\\SEUNGHO\\git\\shoppingmall\\src\\main\\webapp\\storage";
 		String fileName;
 		File file;
-		
-		//-----------------------
-		System.out.println(img.length);
 		//-----------------------
 		if(img[0]!=null) {
 			fileName = img[0].getOriginalFilename();
@@ -157,6 +157,7 @@ public class ManagerController {
 		model.addAttribute("managerUserDisplay", "/manager/userManagement.jsp");
 		model.addAttribute("managerItemDisplay", "/manager/itemManagement.jsp");
 		model.addAttribute("modalPageDisplay", "/manager/modalPage.jsp");
+		model.addAttribute("managerSalesDisplay", "/manager/salesManagement.jsp");
 		model.addAttribute("display", "/manager/managerPage.jsp");
 		return "/main/index";
 	}
@@ -196,4 +197,70 @@ public class ManagerController {
     	}
     }
 
+    @RequestMapping(value="/salesManage.do", method=RequestMethod.POST)
+	public ModelAndView salesManage() {
+		ModelAndView mav = new ModelAndView();
+		
+		List<String> x = managerDAO.getItemcode();
+		List<String> y = new ArrayList<String>();
+		String date = (cal.get(Calendar.MONTH) + 1)+"/"+cal.get(Calendar.DAY_OF_MONTH);
+		List<ChartDTO> dto = managerDAO.getToday(date);
+		
+		int max = 0;
+		for(int i=0; i<x.size(); i++) {
+			y.add("0");
+			for(int j=0; j<dto.size(); j++) {
+				if(x.get(i).equals(dto.get(j).getItemcode())) {
+					y.set(i, dto.get(j).getSaleprice());
+					if(max<Integer.parseInt(dto.get(j).getSaleprice())) {
+						max=Integer.parseInt(dto.get(j).getSaleprice());
+					}
+				}
+			}
+		}
+		mav.addObject("x", x);
+		mav.addObject("y", y);
+		mav.addObject("max",max);
+		mav.addObject("today",cal.get(Calendar.YEAR)+"."+(cal.get(Calendar.MONTH) + 1)+"."+cal.get(Calendar.DAY_OF_MONTH));
+		mav.setViewName("jsonView");
+		return mav;
+	}
+    
+    @RequestMapping(value="/salesManage2.do", method=RequestMethod.POST)
+	public ModelAndView salesManage2() {
+		ModelAndView mav = new ModelAndView();
+		
+		List<String> date = managerDAO.getDate();
+		List<ChartDTO> data = managerDAO.getDate2();
+
+		List<String> y = new ArrayList<String>();
+
+		int max = 0;		
+		for(int i=0; i<date.size(); i++) {
+			y.add("0");
+			for(int j=0; j<data.size(); j++) {
+				if(date.get(i).equals(data.get(j).getData())) {
+					y.set(i, data.get(j).getSaleprice());
+					if(max<Integer.parseInt(data.get(j).getSaleprice())) {
+						max = Integer.parseInt(data.get(j).getSaleprice());
+					}
+				}
+			}
+		}
+		
+		List<String> x = new ArrayList<String>();
+		
+		int lastDay = cal.getActualMaximum(Calendar.DATE); // 월 마지막 날짜
+		
+		for(int i=1; i<=lastDay; i++){
+			x.add(i+"");
+		}
+		
+		mav.addObject("y", y);  //2 1=2
+		mav.addObject("x", x);
+		mav.addObject("today",cal.get(Calendar.YEAR)+"."+(cal.get(Calendar.MONTH) + 1)+"."+cal.get(Calendar.DAY_OF_MONTH));
+		mav.addObject("max", max);
+		mav.setViewName("jsonView");
+		return mav;
+    }
 }
