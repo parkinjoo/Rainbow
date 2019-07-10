@@ -606,28 +606,33 @@ $('.cartImg-itemPage').click(function(){
 
 //buy now 버튼
 $('.purchaseBtn-itemPage').click(function(){
-	var initQty = new Array(); //추가해준 옵션들의 수량을 담을 배열
-	
-	for(i=0; i<colName.length;i++)
-		initQty.push($('#itemAccount-itemPage'+i).val());
-	
-	//히든 버튼에 값을 넣어 보내주기 
-	var colNameRe = colName.join(',');
-	var sizeNameRe = sizeName.join(',');
-	var initQtyRe = initQty.join(',');
-	var itemCodeNameRe = itemCode.join(',');
-	var itemNameRe = itemName.join(',');
-	var colValRe = colVal.join(',');
-	
-	document.viewForm.colVal.value=colValRe;
-	document.viewForm.itemCode.value=itemCodeNameRe;
-	document.viewForm.itemName.value=itemNameRe;
-	document.viewForm.colName.value=colNameRe;
-	document.viewForm.sizeName.value=sizeNameRe;
-	document.viewForm.initQty.value=initQtyRe;
-	document.viewForm.salePrice.value=salePrice;
-	document.viewForm.sumPrice.value=sumPrice;
-	document.viewForm.submit();
+	if('${userDTO.id}'!=''){
+		var initQty = new Array(); //추가해준 옵션들의 수량을 담을 배열
+		
+		for(i=0; i<colName.length;i++)
+			initQty.push($('#itemAccount-itemPage'+i).val());
+		
+		//히든 버튼에 값을 넣어 보내주기 
+		var colNameRe = colName.join(',');
+		var sizeNameRe = sizeName.join(',');
+		var initQtyRe = initQty.join(',');
+		var itemCodeNameRe = itemCode.join(',');
+		var itemNameRe = itemName.join(',');
+		var colValRe = colVal.join(',');
+		
+		document.viewForm.colVal.value=colValRe;
+		document.viewForm.itemCode.value=itemCodeNameRe;
+		document.viewForm.itemName.value=itemNameRe;
+		document.viewForm.colName.value=colNameRe;
+		document.viewForm.sizeName.value=sizeNameRe;
+		document.viewForm.initQty.value=initQtyRe;
+		document.viewForm.salePrice.value=salePrice;
+		document.viewForm.sumPrice.value=sumPrice;
+		document.viewForm.submit();
+	}
+	else{
+		alert('로그인해주세요');
+	}
 });
 
 </script>
