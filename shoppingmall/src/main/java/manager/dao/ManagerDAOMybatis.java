@@ -67,18 +67,14 @@ public class ManagerDAOMybatis implements ManagerDAO {
 	}
 	
 	@Override
-	public List<ChartDTO> getToday() {
-		return sqlSession.selectList("managerSQL.getToday");
+	public List<ChartDTO> getToday(String date) {
+		System.out.println(date);
+		return sqlSession.selectList("managerSQL.getToday",date);
 	}
 	
 	@Override
 	public List<ChartDTO> getDate2() {
 		return sqlSession.selectList("managerSQL.getDate2");
-	}
-
-	@Override
-	public List<String> getX() {
-		return sqlSession.selectList("managerSQL.getX");
 	}
 
 }

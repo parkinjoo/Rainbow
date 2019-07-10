@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,8 @@ public class ManagerController {
 	//매니저컨트롤러는 반드시 managerDAO 만 사용 userDAO 삭제
 	@Autowired
 	private ManagerDAO managerDAO;
+	
+	private Calendar cal = Calendar.getInstance();
 	
 	
 	@RequestMapping(value="/managerPageForm.do")
@@ -93,9 +96,6 @@ public class ManagerController {
 		String filePath = "C:\\Users\\SEUNGHO\\git\\shoppingmall\\src\\main\\webapp\\storage";
 		String fileName;
 		File file;
-		
-		//-----------------------
-		System.out.println(img.length);
 		//-----------------------
 		if(img[0]!=null) {
 			fileName = img[0].getOriginalFilename();
@@ -156,6 +156,7 @@ public class ManagerController {
 		model.addAttribute("managerUserDisplay", "/manager/userManagement.jsp");
 		model.addAttribute("managerItemDisplay", "/manager/itemManagement.jsp");
 		model.addAttribute("modalPageDisplay", "/manager/modalPage.jsp");
+		model.addAttribute("managerSalesDisplay", "/manager/salesManagement.jsp");
 		model.addAttribute("display", "/manager/managerPage.jsp");
 		return "/main/index";
 	}
@@ -200,26 +201,26 @@ public class ManagerController {
 		ModelAndView mav = new ModelAndView();
 		
 		List<String> x = managerDAO.getItemcode();
-		List<ChartDTO> dto = managerDAO.getToday();
 		List<String> y = new ArrayList<String>();
-
+		String date = (cal.get(Calendar.MONTH) + 1)+"/"+cal.get(Calendar.DAY_OF_MONTH);
+		List<ChartDTO> dto = managerDAO.getToday(date);
+		
 		int max = 0;
-		for(int i=0; i<dto.size(); i++) {
-			for(int j=0; j<x.size(); j++) {
-				if(dto.get(i).getItemcode().equals(x.get(j))) {
-					y.add(dto.get(i).getSaleprice());
-					if(max<Integer.parseInt(dto.get(i).getSaleprice())) {
-						max=Integer.parseInt(dto.get(i).getSaleprice());
+		for(int i=0; i<x.size(); i++) {
+			y.add("0");
+			for(int j=0; j<dto.size(); j++) {
+				if(x.get(i).equals(dto.get(j).getItemcode())) {
+					y.set(i, dto.get(j).getSaleprice());
+					if(max<Integer.parseInt(dto.get(j).getSaleprice())) {
+						max=Integer.parseInt(dto.get(j).getSaleprice());
 					}
-				}else {
-					y.add("0");
 				}
 			}
 		}
 		mav.addObject("x", x);
-		mav.addObject("y", y); //가격
+		mav.addObject("y", y);
 		mav.addObject("max",max);
-		mav.addObject("today", dto.get(0).getData());
+		mav.addObject("today",cal.get(Calendar.YEAR)+"."+(cal.get(Calendar.MONTH) + 1)+"."+cal.get(Calendar.DAY_OF_MONTH));
 		mav.setViewName("jsonView");
 		return mav;
 	}
@@ -245,9 +246,18 @@ public class ManagerController {
 				}
 			}
 		}
-		List<String> x = managerDAO.getX();
+		
+		List<String> x = new ArrayList<String>();
+		
+		int lastDay = cal.getActualMaximum(Calendar.DATE); // 월 마지막 날짜
+		
+		for(int i=1; i<=lastDay; i++){
+			x.add(i+"");
+		}
+		
 		mav.addObject("y", y);  //2 1=2
 		mav.addObject("x", x);
+		mav.addObject("today",cal.get(Calendar.YEAR)+"."+(cal.get(Calendar.MONTH) + 1)+"."+cal.get(Calendar.DAY_OF_MONTH));
 		mav.addObject("max", max);
 		mav.setViewName("jsonView");
 		return mav;

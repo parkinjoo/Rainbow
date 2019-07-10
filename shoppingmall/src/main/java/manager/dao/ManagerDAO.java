@@ -28,12 +28,8 @@ public interface ManagerDAO {
 	
 	public List<String> getItemcode();
 	
-	public List<ChartDTO> getToday();
+	public List<ChartDTO> getToday(String date);
 	
 	public List<ChartDTO> getDate2();
-
-	public List<String> getX();
-
-
 
 }

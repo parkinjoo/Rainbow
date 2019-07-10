@@ -60,14 +60,11 @@
 	
 	<!-- 일별 통계 -->	
 	<select id="getItemcode" resultType="String">
-		select itemcode from itemtable
+		select itemcode from itemtable order by registday
 	</select>
 	
-	<select id="getToday" resultType="itemboard.bean.ChartDTO">
-		select itemtable.itemcode , tt.registday as data, tt.saleprice from itemtable,
-		(select registday, sum(saleprice)  as saleprice from
-		(select to_char(registday, 'yyyy"."MM"."dd') as registday , sum(saleprice) as saleprice from itemtable group by registday) group by registday 
-		having registday <![CDATA[<]]>= sysdate and registday >=sysdate-1)tt where tt.registday<![CDATA[<]]>=itemtable.registday
+	<select id="getToday" parameterType="String" resultType="itemboard.bean.ChartDTO">
+		select itemcode, saleprice,to_char(registday, 'yyyy"."MM"."dd') as registday from itemtable where registday like '%'||#{date }||'%'
 	</select>
 	
 	<!-- 월별 통계 -->
@@ -82,11 +79,6 @@
 	(select to_char(registday, 'yyyy"."MM"."dd') as registday , sum(saleprice) as saleprice from itemtable group by registday) group by registday)aa,
 	(SELECT TO_CHAR(TO_DATE('2019.07.01', 'yyyy.mm.dd') + LEVEL - 1, 'yyyy.mm.dd') as data FROM DUAL 
 	CONNECT BY  TO_DATE('2019.07.01', 'yyyy.mm.dd') + LEVEL - 1 <![CDATA[<]]>= TO_DATE('2019.07.31', 'yyyy.mm.dd'))tt where tt.data=aa.registday order by 2
-	</select>
-	
-	<select id="getX" resultType="String">
-		SELECT TO_CHAR(TO_DATE('2019.07.01', 'yyyy.mm.dd') + LEVEL - 1, 'dd') as data FROM DUAL 
-		CONNECT BY  TO_DATE('2019.07.01', 'yyyy.mm.dd') + LEVEL - 1 <![CDATA[<]]>= TO_DATE('2019.07.31', 'yyyy.mm.dd')
 	</select>
    
 </mapper>

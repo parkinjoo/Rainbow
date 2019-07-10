@@ -2,33 +2,29 @@
     pageEncoding="EUC-KR"%>
 
 <div class="tab-pane fade" id="sales-management">
-	<!-- 구분선(상품관리 세부) -->
-	<ul class="nav nav-pills mb-3 bottomNav-managerPage">
-		<li class="nav-item">
-			<a class="nav-link active" data-toggle="pill" href="#pills-home-dailySales" aria-selected="true">일일 매출 관리</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link"	data-toggle="pill" href="#pills-profile-monthly-sales" aria-selected="false">월별 매출 관리</a>
-		</li>
-	</ul>
 	
 	<div class="tab-content" id="pills-tabContent">
 		<!-- 구분선 -->
-		
+				<br><br>
 				<div class="tab-pane fade show active" id="pills-home-dailySales">
-					<div id="chart" style="width:950px;height:424px;"></div>
+					<div style="text-align:center; font-weight:40;">일별 매출 현황</div>
+					<br>
+					<div id="chart" style="width:1350px;height:424px;"></div>
+					<br><br><hr><br><br>
+					
+					<div style="text-align:center; font-weight:40;">월별 매출 현황</div>
+					<br>
+					<div id="chart2" style="width:1350px;height:424px;"></div>
 				</div>
+				<br><br><hr><br>
 							
-				<div class="tab-pane fade" id="pills-profile-monthly-sales">
-					<div id="chart2" style="width:950px;height:424px;"></div>
-				</div>
 	</div>
 </div>	
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>	
 <script type="text/javascript">
 $('#clickTest').on('click', function(){
-    
+	
 	$.ajax({
 		type : 'post' ,
 		url : '/shoppingmall/manager/salesManage.do' ,
@@ -67,8 +63,8 @@ $('#clickTest').on('click', function(){
 				line[i]=[[data.x[i]],data.y[i]];
 			}
 		    jQuery("#chart2").jqplot([line], {
-	//	          title: today  
-		         seriesDefaults:{
+		            title: data.today  
+		      	,   seriesDefaults:{
 		            renderer:jQuery.jqplot.BarRenderer
 		        }
 		        , axes:{
