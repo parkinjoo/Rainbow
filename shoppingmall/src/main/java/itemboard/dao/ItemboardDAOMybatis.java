@@ -164,6 +164,12 @@ public class ItemboardDAOMybatis implements ItemboardDAO{
 		
 	}
 
+	@Override
+	public void setAddimp(Map<String, Object> map) {
+		sqlSession.update("itemboardSQL.setAddimp", map);
+		
+	}
+
 	
 	
 

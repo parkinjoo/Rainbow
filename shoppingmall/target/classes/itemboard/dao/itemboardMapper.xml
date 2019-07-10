@@ -158,6 +158,14 @@
 	<update id="cashChg" parameterType="java.util.Map">
 		update user_table set cash=cash-#{sumPrice} where id=#{id}
 	</update>
+	<update id="setAddimp" parameterType="java.util.Map">
+		begin
+			update user_table set zipcode=#{zipcode} where id=#{id};
+			update user_table set addr1=#{addr1} where id=#{id};
+			update user_table set addr2=#{addr2} where id=#{id};
+		end;
+			
+	</update>
 </mapper>
 
 

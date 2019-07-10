@@ -64,4 +64,6 @@ public interface ItemboardDAO {
 	public void cashChg(Map<String, Object> map);
 
 	public void itemBasket2(Map<String, Object> map);
+
+	public void setAddimp(Map<String, Object> map);
 }

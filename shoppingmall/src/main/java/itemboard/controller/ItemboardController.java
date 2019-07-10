@@ -263,7 +263,11 @@ public class ItemboardController {
 		map.put("qty",qty);
 		map.put("id",Id);
 		map.put("itemCode",itemCode);
+		map.put("zipcode",itemBasketDTO.getZipcode());
+		map.put("addr1",itemBasketDTO.getAddr1());
+		map.put("addr2",itemBasketDTO.getAddr2());
 		itemboardDAO.qtyChg(map);
+		itemboardDAO.setAddimp(map);
 	    itemboardDAO.itemBasket(itemBasketDTO);
 	}   
 	@RequestMapping(value="/itemBasket2.do", method=RequestMethod.POST)
