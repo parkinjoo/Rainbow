@@ -476,7 +476,7 @@ $('#size_option').change(function(){
 	   var count = 0; //구분자
 	   for(i=0;i<colName.length;i++){//중복으로 리스트를 추가하려는지 
 		   
-		   if(colName[i] == colorText){
+		   if(colName[i] == colorText && sizeName[i] == sizeText){
 		      alert('이미 선택되었습니다.');
 		      count++;
 		   }
