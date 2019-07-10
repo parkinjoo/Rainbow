@@ -223,53 +223,61 @@
   
   <div class="manager-managerPage"><!-- 전체 영역 감싸고 있음 -->
 	<!-- 최상단 메뉴 [회원 관리(사용자 목록, 탈퇴 회원 관리), 상품 관리(??), 매출 관리(보류)]-->
-	<ul class="nav nav-tabs" id="myTab" role="tablist">
-		<li class="nav-item"><a class="nav-link active" data-toggle="tab"
-			href="#user-management">리뷰 작성</a></li>
-		<li class="nav-item"><a class="nav-link" data-toggle="tab"
-			href="#item-management" role="tab">리뷰 보기 </a></li>
-	</ul>
-	
-	<div class="tab-content" id="myTabContent">
-	
-	</div>
-<!-- </div> -->
-  
-<table border="0" cellpading="0" cellpacing="0" width="1200">
-	<tr id="review_name">
-		<td colspan="1" align="center">
-			<font color="black" size="2" face="돋움">작성자</font>
-		</td>
-		<td align="left" colspan="1">
-			<input type="text" id="re_input_name" >
-		</td>
-	</tr>
-	<tr id="review_content">
-		<td align="center" colspan="1" height="30">
-			<font color="black" size="2" face="돋움">리뷰 내용</font>
-		</td>
-		<td height="10" colspan="2">
-			<textarea class="review_txt" id="review_txt" placeholder="로그인후 작성가능합니다"></textarea>
-		</td>
-	</tr>
-	<tr>
-		<td align="center" colspan="1" height="20">
-			<font color="black" size="2" face="돋움">사진 등록</font>
-		<td height="10" colspan="2">
-			<input type="file"  name="img" id="img1">
-			
-	</tr>
-	<tr>
-		<td align="center" colspan="1" height="20">
-			<font color="black" size="2" face="돋움">사진 등록</font>
-		<td height="10" colspan="2">
-			<input type="file" class="custom-file-input" name="img" id="img2">
-	</tr>
-	<tr>
-		<td align="right" colspan="3">
-			<input type="button" id="sb_review" value="리뷰 등록하기">
-		</td>
-	</tr>	
+	 <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item"><a class="nav-link active" data-toggle="tab"
+         href="#user-management">리뷰 작성</a></li>
+      <li class="nav-item"><a class="nav-link" data-toggle="tab"
+         href="#item-management" role="tab">리뷰 보기 </a></li>
+   </ul>
+   
+   <div class="tab-content" id="myTabContent">
+   
+   </div>
+</div>
+  <form name="reviewForm" id="reviewForm" method="post" enctype="multipart/form-data" action="/shoppingmall/itemboard/review.do" >
+   <table border="0" cellpading="0" cellpacing="0" width="1200">
+   
+      <tr id="review_name">
+         <td colspan="1" align="center">
+            <font color="black" size="2" face="돋움">작성자</font>
+         </td>
+         <td align="left" colspan="1">
+            <input type="text" name="name" id="name" >
+            <input type="hidden"  name="id" value= "${userDTO.id }">
+            
+            <!-- review 작성후 itemcode값 담는 hidden-->
+            <input type="hidden" id="test" name="itemCodeRev" value="${itemCode }" >
+         </td>
+      </tr>
+      <tr id="review_content">
+         <td align="center" colspan="1" height="30">
+            <font color="black" size="2" face="돋움">리뷰 내용</font>
+         </td>
+         <td height="10" colspan="2">
+            <textarea class="review_txt"  name="review" id="review" placeholder="로그인후 작성가능합니다"></textarea>
+         </td>
+      </tr>
+      <tr>
+         <td align="center" colspan="1" height="20">
+            <font color="black" size="2" face="돋움">사진 등록</font>
+         <td height="10" colspan="2">
+            <input type="file"  name="img" id="img1">
+            
+      </tr>
+      <tr>
+         <td align="center" colspan="1" height="20">
+            <font color="black" size="2" face="돋움">사진 등록</font>
+         <td height="10" colspan="2">
+            <input type="file" class="custom-file-input" name="img" id="img2">
+      </tr>
+      <tr>
+         <td align="right" colspan="3">
+            <input type="button" id="sb_review" value="리뷰 등록하기">
+         </td>
+      </tr>   
+   </table>
+ </form>
+
 </table>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -630,6 +638,27 @@ $('.purchaseBtn-itemPage').click(function(){
 		alert('로그인해주세요');
 	}
 });
+
+$('#review_txt').click(function(){
+
+      if(${userDTO == null}){
+         alert('로그인후 작성가능합니다 ')
+         this.blur();
+      }      
+   });
+
+   $('#sb_review').click(function(){
+      if($('.review_txt').val()== '' || $('.review_txt').val()=="로그인후 작성가능합니다"){
+         alert('리뷰를 작성해주세요')
+         
+      }else{
+         
+         $('#reviewForm').submit();
+         
+         
+      }
+});
+
 
 </script>
 
