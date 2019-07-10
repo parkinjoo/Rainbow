@@ -10,7 +10,9 @@
 		<li class="nav-item"><a class="nav-link" data-toggle="tab"
 			href="#item-management" role="tab">상품 관리</a></li>
 		<li class="nav-item"><a class="nav-link" data-toggle="tab"
-			href="#sales-management" role="tab" id="clickTest">매출 관리(개발 보류)</a></li>
+			href="#contact" role="tab">매출 관리(개발 보류)</a></li>
+		<li class="nav-item"><a class="nav-link" data-toggle="tab"
+			href="#order-management" role="tab">주문 관리</a></li>
 	</ul>
 	
 	<div class="tab-content" id="myTabContent">
@@ -21,14 +23,13 @@
 		
 		<!-- itemManagement.jsp Include Area -->
 			<jsp:include page="${managerItemDisplay }"/>
-		<!-- itemManagement.jsp Include Area -->	
+		<!-- itemManagement.jsp Include Area -->
 		
-		<!-- salesManagement.jsp Include Area -->
-			<jsp:include page="${managerSalesDisplay }"/>
-		<!-- salesManagement.jsp Include Area -->
+		<!-- itemManagement.jsp Include Area -->
+			<jsp:include page="${managerOrderDisplay }"/>
+		<!-- itemManagement.jsp Include Area -->
 			
 	</div>
-				
 </div>
 
 
@@ -39,20 +40,17 @@
 		<!-- modalPage.jsp Include Area  -->
 			<jsp:include page="${itemModalPageDisplay }"/>
 		<!-- modalPage.jsp Include Area  -->
-
 		
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>		
-<script type="text/javascript" src="../js/jquery.jqplot.js"></script>
-<script type="text/javascript" src="../js/plugins/jqplot.pointLabels.js"></script>
-<script type="text/javascript" src="../js/plugins/jqplot.categoryAxisRenderer.js"></script>
-<script type="text/javascript" src="../js/plugins/jqplot.barRenderer.js"></script>
-<script type="text/javascript">
+<script>
 $(document).ready(function(){
-
 	var managerPageOk = '${managerPageOk}';
 	if (managerPageOk=='') {
 		location.href="/shoppingmall/manager/managerPageForm.do";
+	}else {
+		return false;
 	}
-
-}); 
+});
 </script>
+
+
