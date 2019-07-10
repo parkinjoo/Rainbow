@@ -248,23 +248,6 @@ public class ItemboardController {
 		
 	}
 	
-	//�옣諛붽뎄�땲
-	@RequestMapping(value="/itemBasket.do", method=RequestMethod.POST)
-	@ResponseBody
-<<<<<<< HEAD
-	public void itemBasket(@ModelAttribute ItemBasketDTO itemBasketDTO, Model model) {
-		/*
-		System.out.println("itemCode="+itemBasketDTO.getItemCode());
-		System.out.println("itemName =" + itemBasketDTO.getItemName());
-	    
-	    System.out.println("itemCol =" + itemBasketDTO.getItemCol());
-	    System.out.println("itemQty =" + itemBasketDTO.getItemQty());
-	    System.out.println("itemSize="+itemBasketDTO.getItemSize());
-	    System.out.println("itemRegistday =" + itemBasketDTO.getRegistday());
-	    System.out.println("Id =" + itemBasketDTO.getId());
-	    System.out.println("stus= "+ itemBasketDTO.getStus());
-	    */
-=======
 	public void itemBasket(@ModelAttribute ItemBasketDTO itemBasketDTO,
 							@RequestParam String colVal,
 							Model model) {
@@ -277,29 +260,14 @@ public class ItemboardController {
 		map.put("qty",qty);
 		map.put("itemCode",itemCode);
 		itemboardDAO.qtyChg(map);
->>>>>>> refs/heads/master
 	    itemboardDAO.itemBasket(itemBasketDTO);
 	}    
-	
-<<<<<<< HEAD
 
-=======
->>>>>>> refs/heads/master
 	@RequestMapping(value="/basketFlush.do", method=RequestMethod.POST)
 	@ResponseBody
 	public void basketFlush(@RequestParam String id) {
-<<<<<<< HEAD
 		itemboardDAO.basketFlush(id);
-	}
-	
-=======
-		
-		
-		itemboardDAO.basketFlush(id);
-		
-		
 	}	
->>>>>>> refs/heads/master
 	@RequestMapping(value="/basketDelete.do", method=RequestMethod.POST)
     @ResponseBody
     public void basketDelete(@RequestParam(value="chkbox[]") List<Integer> seq) {
@@ -495,29 +463,3 @@ public class ItemboardController {
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
