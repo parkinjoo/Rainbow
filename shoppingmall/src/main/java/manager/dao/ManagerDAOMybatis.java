@@ -68,7 +68,6 @@ public class ManagerDAOMybatis implements ManagerDAO {
 	
 	@Override
 	public List<ChartDTO> getToday(String date) {
-		System.out.println(date);
 		return sqlSession.selectList("managerSQL.getToday",date);
 	}
 	
