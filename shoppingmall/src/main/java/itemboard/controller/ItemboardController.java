@@ -253,14 +253,15 @@ public class ItemboardController {
 	@ResponseBody
 	public void itemBasket(@ModelAttribute ItemBasketDTO itemBasketDTO,
 							@RequestParam String colVal,
+							@RequestParam String Id,							
 							Model model) {
 		String qty = itemBasketDTO.getItemQty();
 		String itemCode = itemBasketDTO.getItemCode();
-		
-		Map<String,String> map = new HashMap<String,String>();
+		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("colVal", colVal);
 		map.put("size",itemBasketDTO.getItemSize());
 		map.put("qty",qty);
+		map.put("id",Id);
 		map.put("itemCode",itemCode);
 		itemboardDAO.qtyChg(map);
 	    itemboardDAO.itemBasket(itemBasketDTO);
@@ -476,4 +477,16 @@ public class ItemboardController {
 			itemboardDAO.refund(map);
 		}
 	}
+	
+	@RequestMapping(value="/cashCount.do", method=RequestMethod.POST)
+	@ResponseBody
+	public void cashCount(@RequestParam String sumPrice,
+							@RequestParam String Id,
+							Model model) {
+		System.out.println(sumPrice);
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("id",Id);
+		map.put("sumPrice",Integer.parseInt(sumPrice));
+		itemboardDAO.cashChg(map);
+	}    
 }

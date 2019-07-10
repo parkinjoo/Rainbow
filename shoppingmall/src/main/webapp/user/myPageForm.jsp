@@ -110,16 +110,27 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 $(document).ready(function(){
+	$.ajax({
+		type : 'POST' ,
+		url : '/shoppingmall/user/reload.do',
+		data : 'id=${userDTO.id}',
+		dataType : 'json',
+		success : function(data){
+			location.reload();
+		}
+	});
 	if('${userDTO}'==''){
 		alert("비정상적인 접근입니다.");
 		location.href='/shoppingmall/main/index.do';
 	}else{
+		
 		var point = parseInt('${userDTO.point}');
 		var cash = parseInt('${userDTO.cash}');
 		$('#point').text(point.toLocaleString()+' 점');
 		$('#cash').text(cash.toLocaleString()+' 원');	//.toLocaleString() 3자리수마다 쉼표
 	}
-
+	
+	
 	//--------------------------------------- 출고 대기중 리스트 -----------------------------------
 	$.ajax({
 		type : 'POST' ,

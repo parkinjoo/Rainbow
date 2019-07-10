@@ -149,4 +149,14 @@
 	<update id="qtyChg" parameterType="java.util.Map">
 		update stocktable set ${colVal}${size}=${colVal}${size}-#{qty} where itemCode=#{itemCode}
 	</update>
+
+	<!-- 캐쉬 변경 -->
+	<update id="cashChg" parameterType="java.util.Map">
+		update user_table set cash=cash-#{sumPrice} where id=#{id}
+	</update>
 </mapper>
+
+
+
+
+

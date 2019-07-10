@@ -57,5 +57,9 @@ public interface ItemboardDAO {
 
 	public void refund(Map<String, Object> map);
 
-	public void qtyChg(Map<String, String> map);
+	public void qtyChg(Map<String, Object> map);
+
+	public int getCash(String id);
+
+	public void cashChg(Map<String, Object> map);
 }

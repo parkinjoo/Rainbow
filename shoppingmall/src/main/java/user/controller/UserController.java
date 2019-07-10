@@ -277,4 +277,11 @@ public class UserController {
 		 session.setAttribute("userDTO", userDAO.login(id)); //해당 아이디 정보를 가져와서 세션에 저장
 	 }
 	 
+	 @RequestMapping(value="/reload.do", method=RequestMethod.POST)
+	 @ResponseBody
+	 public void reload(@RequestParam String id, HttpSession session) {
+		 
+		 session.setAttribute("userDTO", userDAO.login(id)); //해당 아이디 정보를 가져와서 세션에 저장
+	 }
+	 
 }

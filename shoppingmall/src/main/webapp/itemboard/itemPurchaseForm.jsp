@@ -174,6 +174,7 @@ function paste(){
 }
 
 function buy(){
+	
 	var itemNameRe = '${itemName}';
 	var itemCodeRe = '${itemCode}';
 	var colNameRe = '${colName}';
@@ -198,54 +199,50 @@ function buy(){
 	itemCode = itemCodeRe.split(',');
 	colVal = colValRe.split(',');
 	
-	alert(colVal);
 	
+	//총구매가격과 사용자계정의 cash 비교하기
+	if(sumPrice>'${userDTO.cash}'){
+		alert('캐쉬가 부족합니다');
+		return;
+	}
+	else{	
+	//구매
+		for(i=0;i<colName.length;i++){
+			$.ajax({
+				type: 'post',
+			    url: '/shoppingmall/itemboard/itemBasket.do',
+			    data: {	'colVal': colVal[i],
+			    		'itemCode':itemCode[i],
+			    		'itemName' : itemName[i],
+			      		'itemCol':colName[i],
+			      		'itemQty':initQty[i],
+			      		'itemSize':sizeName[i],
+						'Id':id,
+						'order_name': $('.orderName').val(),
+						'order_tel': $('.orderTel').val(),
+						'receive_name': $('.name').val(),
+						'receive_tel': $('.tel').val(),
+						'zipcode' : $('.zipcode').val(),
+						'addr1' : $('.addr1').val(),
+						'addr2': $('.addr2').val(),
+						'message': $('.postMessage').val(),
+						'stus':'stay'},
+			    success: function(data){
+			    }
+			});		
+		}
 	
-	for(i=0;i<colName.length;i++){
 		$.ajax({
 			type: 'post',
-		    url: '/shoppingmall/itemboard/itemBasket.do',
-		    data: {	'colVal': colVal[i],
-		    		'itemCode':itemCode[i],
-		    		'itemName' : itemName[i],
-		      		'itemCol':colName[i],
-		      		'itemQty':initQty[i],
-		      		'itemSize':sizeName[i],
-					'Id':id,
-					'order_name': $('.orderName').val(),
-					'order_tel': $('.orderTel').val(),
-					'receive_name': $('.name').val(),
-					'receive_tel': $('.tel').val(),
-					'zipcode' : $('.zipcode').val(),
-					'addr1' : $('.addr1').val(),
-					'addr2': $('.addr2').val(),
-					'message': $('.postMessage').val(),
-					'stus':'stay'},
-		    success: function(data){
-		    	
-		    }
-		});		
+		    url: '/shoppingmall/itemboard/cashCount.do',
+		    data: {	'sumPrice': sumPrice,
+					'Id':id},
+			success: function(data){
+				location.href="/shoppingmall/user/myPageForm.do";
+			}
+    	});	
+    	
 	}
-	
-	/* $.ajax({
-		type: 'post',
-		url: '/shoppingmall/itemboard/itemOrder.do',
-		data: {
-			'order_name': $('.orderName').val(),
-			'order_tel': $('.orderTel').val(),
-			'receive_name': $('.name').val(),
-			'receive_tel': $('.tel').val(),
-			'address': $('.addr2').val(),
-			'message': $('.postMessage').val(), 
-			'stus' : 'stay'			
-		},
-		success: function(data){
-			alert('성공');
-		}
-	}) */
-	
-	location.href="/shoppingmall/itemboard/itemBasketList.do";
-	
 }
 
 function checkPost() {

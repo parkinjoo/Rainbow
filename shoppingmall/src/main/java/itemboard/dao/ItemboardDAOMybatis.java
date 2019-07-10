@@ -142,8 +142,19 @@ public class ItemboardDAOMybatis implements ItemboardDAO{
 	}
 
 	@Override
-	public void qtyChg(Map<String, String> map) {
+	public void qtyChg(Map<String, Object> map) {
 		sqlSession.update("itemboardSQL.qtyChg", map);
+		
+	}
+
+	@Override
+	public int getCash(String id) {
+		return sqlSession.selectOne("itemboardSQL.getCash", id);
+	}
+
+	@Override
+	public void cashChg(Map<String, Object> map) {
+		sqlSession.update("itemboardSQL.cashChg", map);
 		
 	}
 	
