@@ -213,6 +213,7 @@
       </a>
     </div>
   </div>
+  -->
     <hr>
   <div class="itemPictureDiv">
      <img src="../storage/${itemboardDTO.img2 }">
@@ -221,7 +222,7 @@
   
   </div>
   
-  <div class="manager-managerPage"><!-- 전체 영역 감싸고 있음 -->
+  <!--<div class="manager-managerPage"><!-- 전체 영역 감싸고 있음 -->
 	<!-- 최상단 메뉴 [회원 관리(사용자 목록, 탈퇴 회원 관리), 상품 관리(??), 매출 관리(보류)]-->
 	<ul class="nav nav-tabs" id="myTab" role="tablist">
 		<li class="nav-item"><a class="nav-link active" data-toggle="tab"
